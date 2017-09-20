@@ -5,7 +5,7 @@ class CfgPatches {
 		author = "McDiod";
 
 		requiredVersion = 1.0;
-		requiredAddons[] = {"cba_versioning"};
+		requiredAddons[] = {"grad_main","ace_common"};
 
 		units[] = {};
 		weapons[] = {};
