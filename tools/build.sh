@@ -1,8 +1,8 @@
 ### CONFIG ###
 armake_path="$1"
 modname="@gruppe_adler2"
-moddirectoryname="grad"
-excluded=()
+moddirectoryname="gruppe_adler_mod"
+excluded=("tools" ".git" ".gitattributes" ".gitignore")
 
 ### AS AS USER, DONT EDIT BELOW THIS LINE ###
 
@@ -19,23 +19,22 @@ fi
 
 
 #copy to release directory
-releasedir="../release"
+releasedir="../../release/$modname"
 mkdir -p "$releasedir"
-cp -r ../"$moddirectoryname"/ "$releasedir"
-mv "$releasedir/$moddirectoryname" "$releasedir/$modname"
+cp -r ../ "$releasedir"
 
 
 # remove excluded files/folders
 if [ ${#excluded[@]} -gt 0 ]; then
-	for excl in "$excluded"
+	for excl in "${excluded[@]}"
 	do
-		rm -r "$releasedir/$modname/$excl"
+		rm -fr "$releasedir/$excl"
 	done
 fi
 
 
 # pbo and remove folders in addons directory
-addonsdir="$releasedir/$modname/addons"
+addonsdir="$releasedir/addons"
 for component in `find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d`
 do
 	echo "packing $component"
