@@ -1,6 +1,6 @@
 # Gruppe Adler Mod
 
-[![GitHub tag](https://img.shields.io/github/tag/expressjs/express.svg)]()
+[![GitHub tag](https://img.shields.io/github/tag/gruppe-adler/gruppe_adler_mod.svg?style=flat-square)](https://github.com/gruppe-adler/gruppe_adler_mod/releases)
 [![Build Status](https://travis-ci.org/gruppe-adler/gruppe_adler_mod.svg?branch=master)](https://travis-ci.org/gruppe-adler/gruppe_adler_mod)
 
 ## Building
