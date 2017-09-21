@@ -3,6 +3,7 @@ armake_path="$1"
 zip_path="$1"
 modname="@gruppe_adler2"
 moddirectoryname="gruppe_adler_mod"
+pboprefix="grad_"
 excluded=("tools" ".git" ".gitattributes" ".gitignore" ".travis.yml")
 
 ### AS AS USER, DONT EDIT BELOW THIS LINE ###
@@ -39,13 +40,19 @@ addonsdir="$releasedir/addons"
 for component in `find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d`
 do
 	echo "packing $component"
-	$armake_path build -f -p "$component" "${component}.pbo"
+
+	componentname=`basename $component`
+	componentpath=`dirname $component`
+
+	pbofilename="${pboprefix}${componentname}.pbo"
+	pbofilepath="${componentpath}/$pbofilename"
+
+	$armake_path build -f -p "$component" $pbofilepath
 	rm -r "$component"
 
-	pbofilename="${component}.pbo"
-	if [[ ! -f "$pbofilename" ]]; then
+	if [[ ! -f "$pbofilepath" ]]; then
 		echo "failed"
-		rm -r "$releasedir"
+		# rm -r "$releasedir"
 		exit 2
 	fi
 done
