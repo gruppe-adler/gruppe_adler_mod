@@ -9,6 +9,6 @@ class CfgPatches {
         weapons[] = {};
         requiredAddons[] = {"cba_main","ace_main"};
         VERSION_CONFIG;
-        authors[] = {};
+        authors[] = {"McDiod"};
     };
 };

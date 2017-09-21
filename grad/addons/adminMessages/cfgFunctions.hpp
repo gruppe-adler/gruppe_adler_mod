@@ -1,8 +1,10 @@
 class CfgFunctions {
     class grad_adminMessages {
         class adminMessages {
-            PATHTO_FNC(receiveMessage);
-            PATHTO_FNC(sendMessage);
+            file = "x\grad\addons\adminMessages\functions";
+
+            class receiveMessage {};
+            class sendMessage {};
         };
     };
 };
