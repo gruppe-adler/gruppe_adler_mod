@@ -9,8 +9,9 @@ excluded=("tools" ".git" ".gitattributes" ".gitignore" ".travis.yml")
 ### AS AS USER, DONT EDIT BELOW THIS LINE ###
 
 toolsDir=$(realpath "$(pwd)/$(dirname $0)")
-baseDir=`dirname ${toolsDir}`
+baseDir=`dirname "${toolsDir}"`
 platform=`uname`
+
 
 if [[ ${platform} == "Linux" ]]; then
 	armakePath="${toolsDir}/armake"
@@ -27,7 +28,7 @@ fi
 releaseDir="$baseDir/release/$modname"
 mkdir -p "$releaseDir"
 cp -r "${baseDir}/addons" "${releaseDir}/addons"
-cp ${baseDir}/*.paa ${baseDir}/*.cpp "${releaseDir}"
+cp "${baseDir}"/*.paa "${baseDir}"/*.cpp "${releaseDir}"
 
 
 # remove excluded files/folders
@@ -38,20 +39,19 @@ if [ ${#excluded[@]} -gt 0 ]; then
 	done
 fi
 
-
 # pbo and remove folders in addons directory
-addonsdir="$releaseDir/addons"
-for component in `find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d`
-do
+addonsdir="$releaseDir"/addons
+
+find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d | while read component; do
 	echo "packing $component"
 
-	componentname=`basename ${component}`
-	componentpath=`dirname ${component}`
+	componentname=`basename "$component"`
+	componentpath=`dirname "$component"`
 
 	pbofilename="${pboprefix}${componentname}.pbo"
 	pbofilepath="${componentpath}/$pbofilename"
 
-	${armakePath} build -f -p "$component" ${pbofilepath}
+	"${armakePath}" build -f -p "$component" "$pbofilepath"
 	rm -r "$component"
 
 	if [[ ! -f "$pbofilepath" ]]; then
@@ -92,8 +92,8 @@ else
 		exit 1
 	fi
 
-	cp -r ${releaseDir} ./
+	cp -r "${releaseDir}" ./
 	${zip_path} -r ${zipname} ${modname}
-	mv ./${zipname}.zip  ../../release/${zipname}.zip
+	mv "./${zipname}.zip"  "$baseDir/release/${zipname}.zip"
+	rm -fr "./$modname"
 fi
-rm -fr ${releaseDir}
