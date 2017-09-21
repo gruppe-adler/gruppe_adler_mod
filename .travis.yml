@@ -2,12 +2,14 @@ language: python
 python:
 - '3.4'
 before_script:
+- sudo apt-get install realpath
 - mkdir -p tools
 - wget http://gruppe-adler.de/api/travis/sqf_validator.py
 - sed -i -e 's/addons//g' sqf_validator.py
 - mv sqf_validator.py tools/
 script:
 - python3 tools/sqf_validator.py
+- tools/build.sh
 notifications:
   slack: gruppe-adler:WUbRswFJEqy55XKuLhtXTlOf
   template:
