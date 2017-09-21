@@ -94,6 +94,6 @@ else
 	fi
 
 	pushd "${baseDir}/release"
-		${zip_path} -r "$baseDir/release/${zipname}" "${modname}"
+		"${zip_path}" -r "$baseDir/release/${zipname}" "${modname}"
 	popd
 fi
