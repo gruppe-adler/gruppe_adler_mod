@@ -5,3 +5,5 @@
 
 ## Building
 On Windows (x64), execute `tools\build.sh`. This will create a packed version of the mod in `..\release`.
+
+When adding new files to the GitHub repo, that should not be included in the packed release version, edit `build.sh` and add the file names to the `excluded` array in the *CONFIG* section.
