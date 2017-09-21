@@ -84,7 +84,7 @@ if [[ ${platform} == "Linux" ]]; then
 else
 	# check zipper
 	if [[ ! -f ${zip_path} ]]; then
-		zip_path="./zip.exe"
+		zip_path="${toolsDir}/zip.exe"
 	fi
 
 	if [[ ! -f ${zip_path} ]]; then
@@ -92,8 +92,7 @@ else
 		exit 1
 	fi
 
-	cp -r "${releaseDir}" ./
-	${zip_path} -r ${zipname} ${modname}
-	mv "./${zipname}.zip"  "$baseDir/release/${zipname}.zip"
-	rm -fr "./$modname"
+	pushd "${baseDir}/release"
+	${zip_path} -r "$baseDir/release/${zipname}" "${modname}"
+	popd
 fi
