@@ -61,10 +61,11 @@ find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d | while read componen
 	fi
 done
 
-
-# get version
-head=`git reflog --decorate -1 --no-color`
-version=`echo ${head} | sed -re 's/^.*tag: ([0-9a-z\.\-]+).*$/\1/'`
+pushd "$baseDir" # get into git directory - elsewise we will not be able to get version info
+	# get version
+	head=`git reflog --decorate -1 --no-color`
+	version=`echo ${head} | sed -re 's/^.*tag: ([0-9a-z\.\-]+).*$/\1/'`
+popd
 
 if [[ "$head" == "$version" ]]; then
 	# ...if not, use commit hash
@@ -93,6 +94,6 @@ else
 	fi
 
 	pushd "${baseDir}/release"
-	${zip_path} -r "$baseDir/release/${zipname}" "${modname}"
+		${zip_path} -r "$baseDir/release/${zipname}" "${modname}"
 	popd
 fi
