@@ -1,17 +1,18 @@
+#include "script_component.hpp"
+
 class CfgPatches {
-	class grad_versionCheck {
-
-		name = "GRAD versionCheck";
-		author = "McDiod";
-
+	class ADDON {
+		author = "$STR_grad_Author";
+		name = CSTRING(component);
+		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
 		requiredAddons[] = {"grad_main","ace_common"};
-
 		units[] = {};
 		weapons[] = {};
+		VERSION_CONFIG;
+        authors[] = {"McDiod"};
 	};
 };
 
-#include "script_component.hpp"
 #include "cfgEventHandlers.hpp"
 #include "cfgFunctions.hpp"
