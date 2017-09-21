@@ -7,7 +7,7 @@ class ga_adminMessages_sendBoxTitleBase: RscTitle {
     idc = -1;
     style = 0;
 
-    text = "$STR_GA_ADMINMESSAGES_SENDBOXTITLE";
+    text = "$STR_grad_ADMINMESSAGES_SENDBOXTITLE";
     colorBackground[] = {
         "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])",
         "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])",
@@ -53,7 +53,7 @@ class ga_adminMessages_sendBoxBase: RscEdit {
 class ga_adminMessages_sendBoxButtonBase: RscButtonMenu {
     idc = -1;
 
-    text = "$STR_GA_ADMINMESSAGES_SENDBOXBUTTON";
+    text = "$STR_grad_ADMINMESSAGES_SENDBOXBUTTON";
     action = "call grad_adminMessages_fnc_sendMessage";
 
     x = GA_ADMINMESSAGES_TITLE_X;

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Project name="ga_adminMessages">
-	<Package name="ga_adminMessages">
+<Project name="gruppe_adler_mod">
+	<Package name="adminMessages">
 		<Container name="gui">
-			<Key ID="STR_GA_ADMINMESSAGES_SENDBOXTITLE">
+			<Key ID="STR_grad_ADMINMESSAGES_SENDBOXTITLE">
 				<Original>MESSAGE ADMIN</Original>
 				<English>MESSAGE ADMIN</English>
 				<German>NACHRICHT AN ADMIN</German>
 			</Key>
-            <Key ID="STR_GA_ADMINMESSAGES_SENDBOXBUTTON">
+            <Key ID="STR_grad_ADMINMESSAGES_SENDBOXBUTTON">
                 <Original>SEND</Original>
 				<English>SEND</English>
 				<German>SENDEN</German>
 			</Key>
 		</Container>
         <Container name="functions">
-			<Key ID="STR_GA_ADMINMESSAGES_SENDCONFIRM">
+			<Key ID="STR_grad_ADMINMESSAGES_SENDCONFIRM">
 				<Original>Message sent.</Original>
 				<English>Message sent.</English>
 				<German>Nachricht gesendet.</German>
 			</Key>
-			<Key ID="STR_GA_ADMINMESSAGES_SENDCONFIRM_CHANNEL">
+			<Key ID="STR_grad_ADMINMESSAGES_SENDCONFIRM_CHANNEL">
                 <Original>Adminmessage:</Original>
 				<English>Adminmessage:</English>
 				<German>Adminnachricht:</German>
 			</Key>
-            <Key ID="STR_GA_ADMINMESSAGES_RECEIVE_CHANNEL">
+            <Key ID="STR_grad_ADMINMESSAGES_RECEIVE_CHANNEL">
                 <Original>Adminmessage (%1):</Original>
 				<English>Adminmessage (%1):</English>
 				<German>Adminnachricht (%1):</German>
