@@ -3,8 +3,6 @@
 zip_path="$1"
 modname="@gruppe_adler_mod"
 pboprefix="grad_"
-excluded=("tools" ".git" ".gitattributes" ".gitignore" ".travis.yml")
-
 
 ### AS AS USER, DONT EDIT BELOW THIS LINE ###
 
@@ -27,39 +25,34 @@ fi
 #copy to release directory
 releaseDir="$baseDir/release/$modname"
 mkdir -p "$releaseDir"
-cp -r "${baseDir}/addons" "${releaseDir}/addons"
-cp "${baseDir}"/*.paa "${baseDir}"/*.cpp "${releaseDir}"
+cp -r "${baseDir}/addons" "${releaseDir}/"
+cp -r "${baseDir}/optionals" "${releaseDir}/" 
+cp "${baseDir}"/*.paa "${baseDir}"/*.cpp "${releaseDir}/"
 
+build_pbos() {
+	local addonsdir="$releaseDir/$1"
+	find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d | while read component; do
+		echo "packing $component"
 
-# remove excluded files/folders
-if [ ${#excluded[@]} -gt 0 ]; then
-	for excl in "${excluded[@]}"
-	do
-		rm -fr "$releaseDir/$excl"
+		componentname=`basename "$component"`
+		componentpath=`dirname "$component"`
+
+		pbofilename="${pboprefix}${componentname}.pbo"
+		pbofilepath="${componentpath}/$pbofilename"
+
+		"${armakePath}" build -f -p "$component" "$pbofilepath"
+		rm -r "$component"
+
+		if [[ ! -f "$pbofilepath" ]]; then
+			echo "failed"
+			exit 2
+		fi
 	done
-fi
+}
 
 # pbo and remove folders in addons directory
-addonsdir="$releaseDir"/addons
-
-find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d | while read component; do
-	echo "packing $component"
-
-	componentname=`basename "$component"`
-	componentpath=`dirname "$component"`
-
-	pbofilename="${pboprefix}${componentname}.pbo"
-	pbofilepath="${componentpath}/$pbofilename"
-
-	"${armakePath}" build -f -p "$component" "$pbofilepath"
-	rm -r "$component"
-
-	if [[ ! -f "$pbofilepath" ]]; then
-		echo "failed"
-		# rm -r "$releaseDir"
-		exit 2
-	fi
-done
+build_pbos addons
+build_pbos optionals
 
 pushd "$baseDir" # get into git directory - elsewise we will not be able to get version info
 	# get version
@@ -77,7 +70,6 @@ if [[ ${version} == "" ]]; then
 	echo "cant find tag OR commit hash. are you sure we're having a .git directory here?"
 	exit 2
 fi
-
 
 zipname="${modname}_$version"
 if [[ ${platform} == "Linux" ]]; then
