@@ -6,14 +6,14 @@ class CfgPatches {
 		name = CSTRING(COMPONENT);
 		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F"};
+		requiredAddons[] = {"grad_main", "A3_Data_F", "A3_Weapons_F"};
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;
         authors[] = {
 			"Fusselwurm <fusselwurm@gmail.com>"
 		};
-	};	
+	};
 };
 
 #include "cfgAmmo.hpp"
