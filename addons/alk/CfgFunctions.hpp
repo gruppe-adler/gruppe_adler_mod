@@ -6,11 +6,11 @@ class CfgFunctions
 		class misc
 		{
 			file = "x\grad\addons\alk\functions";
-			class condition {};
-			class treatmentTime {};
 			class callbackSuccess {};
-			class treatLegs {};
+			class condition {};
 			class treatArms {};
+			class treatLegs {};
+			class treatmentTime {};
 		};
 	};
 };
