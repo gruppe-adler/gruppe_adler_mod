@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
-grad_versionCheck_versions = [[],""] call CBA_fnc_hashCreate;
+grad_versionCheck_versions = [[],nil] call CBA_fnc_hashCreate;
 
 private _cfgPatches = (configFile >> "CfgPatches");
 for [{_i=0},{_i<(count _cfgPatches)-1},{_i=_i+1}] do {
