@@ -38,9 +38,9 @@ private _onTimeOut = {ERROR_2("Server versions received: %1, Whitelist received:
     }] call CBA_fnc_hashEachPair;
 
     _kick = switch (true) do {
-        case (_kickOnMismatch && {count grad_versionCheck_versionMismatches > 0}): {true};
-        case (_kickOnMissingClient && {count grad_versionCheck_missingAddonsClient > 0}): {true};
-        case (_kickOnMissingServer && {count grad_versionCheck_missingAddonsServer > 0}): {true};
+        case (_kickOnMismatch && count grad_versionCheck_versionMismatches > 0): {true};
+        case (_kickOnMissingClient && count grad_versionCheck_missingAddonsClient > 0): {true};
+        case (_kickOnMissingServer && count grad_versionCheck_missingAddonsServer > 0): {true};
         default {false};
     };
 

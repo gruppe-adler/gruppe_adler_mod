@@ -3,7 +3,10 @@
 if (count grad_versionCheck_versionMismatches > 0) then {
     {
         _x params ["_addon","_serverVersion","_clientVersion"];
-        INFO_3("Client version mismatch: addon %1, server version %2, client version %3",_addon,_serverVersion,_clientVersion);
+        _logMessage = format ["Client %1 version mismatch: addon %2, server version %3, client version %4",profileName,_addon,_serverVersion,_clientVersion];
+        INFO(_logMessage);
+        [_logMessage] remoteExec ["grad_versionCheck_fnc_logServer",2,false];
+
 
         if (_forEachIndex < 3) then {
             _message = format ["[GRAD] (versionCheck): %1 version mismatch in addon %2, server version %3, client version %4)",profileName,_addon,_serverVersion,_clientVersion];
@@ -18,7 +21,10 @@ if (count grad_versionCheck_versionMismatches > 0) then {
 };
 
 if (count grad_versionCheck_missingAddonsClient > 0) then {
-    INFO_1("Client is missing addons: %1",grad_versionCheck_missingAddonsClient);
+
+    _logMessage = format ["Client %1 is missing addons: %2",profileName,grad_versionCheck_missingAddonsClient];
+    INFO(_logMessage);
+    [_logMessage] remoteExec ["grad_versionCheck_fnc_logServer",2,false];
 
     _displayList = +grad_versionCheck_missingAddonsClient;
     if (count _displayList > 3) then {
@@ -31,7 +37,10 @@ if (count grad_versionCheck_missingAddonsClient > 0) then {
 };
 
 if (count grad_versionCheck_missingAddonsServer > 0) then {
-    INFO_1("Client has additional addons: %1",grad_versionCheck_missingAddonsServer);
+
+    _logMessage = format ["Client %1 has additional addons: %2",profileName,grad_versionCheck_missingAddonsServer];
+    INFO(_logMessage);
+    [_logMessage] remoteExec ["grad_versionCheck_fnc_logServer",2,false];
 
     _displayList = +grad_versionCheck_missingAddonsServer;
     if (count _displayList > 3) then {
