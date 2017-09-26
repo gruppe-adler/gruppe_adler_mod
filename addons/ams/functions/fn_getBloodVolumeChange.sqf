@@ -12,7 +12,7 @@
  * Public: No
  */
 
-#include "\z\ace\addons\medical\script_component.hpp"
+#include "script_component.hpp"
 
 /*
     IV Change per second calculation:

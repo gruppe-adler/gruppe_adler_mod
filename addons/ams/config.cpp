@@ -10,9 +10,10 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;
-        authors[] = {"DerZade [A]"};
+        authors[] = {"DerZade [A]","Willard"};
 	};
 };
 
-#include "ACE_Treatments.hpp"
 #include "CfgFunctions.hpp"
+#include "ACE_Treatments.hpp"
+#include "cfgEventHandlers.hpp"
