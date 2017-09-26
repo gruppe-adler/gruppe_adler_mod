@@ -29,7 +29,7 @@ if (count grad_versionCheck_missingAddonsClient > 0) then {
     _displayList = +grad_versionCheck_missingAddonsClient;
     if (count _displayList > 3) then {
         _displayList resize 3;
-        _displayList pushBack (format ["...and %1 other addons."(count grad_versionCheck_missingAddonsClient)-3]);
+        _displayList pushBack (format ["...and %1 other addons.",(count grad_versionCheck_missingAddonsClient)-3]);
     };
 
     _message = format ["[GRAD] (versionCheck): %1 missing: %2",profileName,_displayList];
@@ -45,7 +45,7 @@ if (count grad_versionCheck_missingAddonsServer > 0) then {
     _displayList = +grad_versionCheck_missingAddonsServer;
     if (count _displayList > 3) then {
         _displayList resize 3;
-        _displayList pushBack (format ["...and %1 other addons."(count grad_versionCheck_missingAddonsServer)-3]);
+        _displayList pushBack (format ["...and %1 other addons.",(count grad_versionCheck_missingAddonsServer)-3]);
     };
 
     _message = format ["[GRAD] (versionCheck): %1 additional addons: %2",profileName,_displayList];
