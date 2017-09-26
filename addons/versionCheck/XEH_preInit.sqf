@@ -42,3 +42,12 @@ for [{_i=0},{_i<(count _cfgPatches)-1},{_i=_i+1}] do {
     true,
     1
 ] call CBA_settings_fnc_init;
+
+[
+    "grad_versionCheck_setting_kickOnTimeout",
+    "CHECKBOX",
+    "Kick if client check times out",
+    "GRAD Version Check",
+    false,
+    1
+] call CBA_settings_fnc_init;

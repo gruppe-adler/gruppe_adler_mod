@@ -3,7 +3,18 @@ SCRIPT(XEH_postInitClient);
 
 
 private _waitUntil = {!isNil "grad_versionCheck_versions_server" && {!isNil "ace_common_checkPBOsWhitelist"}};
-private _onTimeOut = {ERROR_2("Server versions received: %1, Whitelist received: %2",!isNil "grad_versionCheck_versions_server",!isNil "ace_common_checkPBOsWhitelist")};
+private _onTimeOut = {
+    _logMessage = format ["Server versions received: %1, Whitelist received: %2",!isNil "grad_versionCheck_versions_server",!isNil "ace_common_checkPBOsWhitelist"];
+    ERROR(_logMessage);
+    [_logMessage] remoteExec ["grad_versionCheck_fnc_logServer",2,false];
+
+    _message = format ["[GRAD] (versionCheck): %1 versionCheck timed out.",profileName];
+    _message remoteExec ["systemChat",0,false];
+
+    if ("grad_versionCheck_setting_kickOnTimeout" call CBA_settings_fnc_get) then {
+        [{endMission "END1"},[],3] call CBA_fnc_waitAndExecute;
+    };
+};
 
 [_waitUntil,{
 
