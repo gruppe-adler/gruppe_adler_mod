@@ -1,0 +1,36 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+     <Package name="ALK">
+          <Key ID="STR_GRAD_ALK_ACTION_LEGS">
+               <Original>Apply ALK to legs</Original>
+               <English>Apply ALK to legs</English>
+               <German>ABK auf Beine anwenden</German>
+          </Key>
+          <Key ID="STR_GRAD_ALK_ACTION_ARMS">
+               <Original>Apply ALK to arms</Original>
+               <English>Apply ALK to arms</English>
+               <German>ABK auf Arme anwenden</German>
+          </Key>
+          <Key ID="STR_GRAD_ALK_LOG_LEGS">
+               <Original>%1 has applied ALK to legs</Original>
+               <English>%1 has applied ALK to legs</English>
+               <German>%1 hat ABK auf Beine angewendet</German>
+          </Key>
+          <Key ID="STR_GRAD_ALK_LOG_ARMS">
+               <Original>%1 has applied ALK to arms</Original>
+               <English>%1 has applied ALK to arms</English>
+               <German>%1 hat ABK auf Arme angewendet</German>
+          </Key>
+          <Key ID="STR_GRAD_ALK_ITEM_DISPLAY">
+               <Original>Arm-Leg Kit</Original>
+               <English>Arm-Leg Kit</English>
+               <German>Arm-Bein Kit</German>
+          </Key>
+          <Key ID="STR_GRAD_ALK_ITEM_DESCRIPTION">
+               <Original>For final treatment of severe arm and leg wounds.</Original>
+               <English>For final treatment of severe arm and leg wounds.</English>
+               <German>Zur abschließenden Behandlung von schweren Arm- und Beinverletzungen.</German>
+          </Key>
+     </Package>
+</Project>
