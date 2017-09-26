@@ -1,5 +1,5 @@
 /*
- * Author: Glowbal
+ * Author: Glowbal / edit by derZade
  * Calculates the blood volume change and decreases the IVs given to the unit.
  *
  * Arguments:
