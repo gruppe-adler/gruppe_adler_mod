@@ -26,7 +26,7 @@ fi
 releaseDir="$baseDir/release/$modname"
 mkdir -p "$releaseDir"
 cp -r "${baseDir}/addons" "${releaseDir}/"
-cp -r "${baseDir}/optionals" "${releaseDir}/" 
+cp -r "${baseDir}/optionals" "${releaseDir}/"
 cp "${baseDir}"/*.paa "${baseDir}"/*.cpp "${releaseDir}/"
 
 build_pbos() {
@@ -70,6 +70,9 @@ if [[ ${version} == "" ]]; then
 	echo "cant find tag OR commit hash. are you sure we're having a .git directory here?"
 	exit 2
 fi
+
+### version removed from zip filename until we figure out how to tell travis ###
+# zipname="${modname}_$version"
 
 zipname="${modname}_$version"
 if [[ ${platform} == "Linux" ]]; then
