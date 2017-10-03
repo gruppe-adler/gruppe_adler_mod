@@ -3,9 +3,9 @@ class CfgFunctions {
 		class misc
 		{
 			file = "x\grad\addons\cinematicSpec\functions";
-            class cam {};
+			class cam {};
 			class isACESpectator {};
-            class ui_handleKeyDown {};
+			class ui_handleKeyDown {};
 		};
 	};
 };
