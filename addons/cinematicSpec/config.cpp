@@ -10,7 +10,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;
-        authors[] = {"[A] Fusselwurm <fusselwurm@gmail.com>"};
+		authors[] = {"[A] Fusselwurm <fusselwurm@gmail.com>"};
 	};
 };
 
@@ -18,5 +18,5 @@ class CfgPatches {
 #include "cfgEventHandlers.hpp"
 
 class ACE_spectator_display {
-    onKeyDown = "_this call GRAD_cinematicSpec_fnc_ui_handleKeyDown"
+	onKeyDown = "_this call GRAD_cinematicSpec_fnc_ui_handleKeyDown"
 };
