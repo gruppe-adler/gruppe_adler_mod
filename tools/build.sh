@@ -29,6 +29,7 @@ cp -r "${baseDir}/addons" "${releaseDir}/"
 cp -r "${baseDir}/optionals" "${releaseDir}/"
 cp "${baseDir}"/*.paa "${baseDir}"/*.cpp "${baseDir}/README.md" "${releaseDir}/"
 
+
 build_pbo() {
 	componentname=`basename "${1}"`
 	componentpath=`dirname "${1}"`
@@ -55,18 +56,17 @@ merge_readme() {
 
 pack_directory() {
 	find "$1" -maxdepth 1 ! -path "$1" -type d | while read component; do
-		echo "${component}"
-		build_pbo "${component}"
 		merge_readme "${component}"
-		rm -r "$1"
+		build_pbo "${component}"
+		rm -r "${component}"
 	done
 }
 
-sed -i '$a # Components' "${releaseDir}/README.md"
+sed -i '$a ## Components' "${releaseDir}/README.md"
 sed -i '$a These components are part of Gruppe Adler Mod.' "${releaseDir}/README.md"
 pack_directory "$releaseDir/addons"
 
-sed -i '$a # Optional Components' "${releaseDir}/README.md"
+sed -i '$a ## Optional Components' "${releaseDir}/README.md"
 sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the addons *directory*.' "${releaseDir}/README.md"
 pack_directory "$releaseDir/optionals"
 
