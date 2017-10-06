@@ -51,6 +51,7 @@ merge_readme() {
 	componentpath=`dirname "${1}"`
 	echo "merging $componentname readme"
 
+	sed -i '$a ***' "${releaseDir}/README.md"
 	cat "$componentpath/$componentname/README.md" >> "$releaseDir/README.md"
 }
 
@@ -62,17 +63,23 @@ pack_directory() {
 	done
 }
 
-sed -i '$a ## Components' "${releaseDir}/README.md"
-sed -i '$a These components are part of Gruppe Adler Mod.' "${releaseDir}/README.md"
+#format readme
+readmeFile="${releaseDir}/README.md"
+
+sed -i '4d' "${readmeFile}"
+sed -i '$a ***\n***' "${readmeFile}"
+sed -i '$a ## Components' "${readmeFile}"
+sed -i '$a These components are part of Gruppe Adler Mod.' "${readmeFile}"
 pack_directory "$releaseDir/addons"
 
-sed -i '$a ## Optional Components' "${releaseDir}/README.md"
-sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the addons *directory*.' "${releaseDir}/README.md"
+sed -i '$a ***\n***' "${readmeFile}"
+sed -i '$a ## Optional Components' "${readmeFile}"
+sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the addons *directory*.' "${readmeFile}"
 pack_directory "$releaseDir/optionals"
 
 npm install -g markdown-pdf
-markdown-pdf "${releaseDir}/README.md"
-rm "${releaseDir}/README.md"
+markdown-pdf "${readmeFile}"
+# rm "${readmeFile}"
 
 
 pushd "$baseDir" # get into git directory - elsewise we will not be able to get version info
@@ -93,7 +100,6 @@ if [[ ${version} == "" ]]; then
 fi
 
 ### version removed from zip filename until we figure out how to tell travis ###
-# zipname="${modname}_$version"
 
 zipname="${modname}_$version"
 if [[ ${platform} == "Linux" ]]; then
