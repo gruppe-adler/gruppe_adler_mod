@@ -22,6 +22,8 @@ if [[ ! -f ${armakePath} ]]; then
 	exit 1
 fi
 
+bash "${toolsDir}/update-versionfile.sh"
+
 #copy to release directory
 releaseDir="$baseDir/release/$modname"
 mkdir -p "$releaseDir"
