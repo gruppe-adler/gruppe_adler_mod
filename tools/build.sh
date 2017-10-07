@@ -67,6 +67,7 @@ pack_directory() {
 readmeFile="${releaseDir}/README.md"
 
 sed -i '4d' "${readmeFile}"
+sed -i '7,$d' "${readmeFile}"
 sed -i '$a ***\n***' "${readmeFile}"
 sed -i '$a ## Components' "${readmeFile}"
 sed -i '$a These components are part of Gruppe Adler Mod.' "${readmeFile}"
