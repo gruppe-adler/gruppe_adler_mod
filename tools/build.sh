@@ -29,32 +29,61 @@ releaseDir="$baseDir/release/$modname"
 mkdir -p "$releaseDir"
 cp -r "${baseDir}/addons" "${releaseDir}/"
 cp -r "${baseDir}/optionals" "${releaseDir}/"
-cp "${baseDir}"/*.paa "${baseDir}"/*.cpp "${releaseDir}/"
+cp "${baseDir}"/*.paa "${baseDir}"/*.cpp "${baseDir}/README.md" "${releaseDir}/"
 
-build_pbos() {
-	local addonsdir="$releaseDir/$1"
-	find "$addonsdir" -maxdepth 1 ! -path "$addonsdir" -type d | while read component; do
-		echo "packing $component"
 
-		componentname=`basename "$component"`
-		componentpath=`dirname "$component"`
+build_pbo() {
+	componentname=`basename "${1}"`
+	componentpath=`dirname "${1}"`
+	echo "packing $componentname"
 
-		pbofilename="${pboprefix}${componentname}.pbo"
-		pbofilepath="${componentpath}/$pbofilename"
+	pbofilename="${pboprefix}${componentname}.pbo"
+	pbofilepath="${componentpath}/$pbofilename"
 
-		"${armakePath}" build -f -p "$component" "$pbofilepath"
-		rm -r "$component"
+	"${armakePath}" build -f -p "${1}" "$pbofilepath"
 
-		if [[ ! -f "$pbofilepath" ]]; then
-			echo "failed"
-			exit 2
-		fi
+	if [[ ! -f "$pbofilepath" ]]; then
+		echo "failed"
+		exit 2
+	fi
+}
+
+merge_readme() {
+	componentname=`basename "${1}"`
+	componentpath=`dirname "${1}"`
+	echo "merging $componentname readme"
+
+	sed -i '$a ***' "${releaseDir}/README.md"
+	cat "$componentpath/$componentname/README.md" >> "$releaseDir/README.md"
+}
+
+pack_directory() {
+	find "$1" -maxdepth 1 ! -path "$1" -type d | while read component; do
+		merge_readme "${component}"
+		build_pbo "${component}"
+		rm -r "${component}"
 	done
 }
 
-# pbo and remove folders in addons directory
-build_pbos addons
-build_pbos optionals
+#format readme
+readmeFile="${releaseDir}/README.md"
+
+sed -i '4d' "${readmeFile}"
+sed -i '7,$d' "${readmeFile}"
+sed -i '$a ***\n***' "${readmeFile}"
+sed -i '$a ## Components' "${readmeFile}"
+sed -i '$a These components are part of Gruppe Adler Mod.' "${readmeFile}"
+pack_directory "$releaseDir/addons"
+
+sed -i '$a ***\n***' "${readmeFile}"
+sed -i '$a ## Optional Components' "${readmeFile}"
+sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the addons *directory*.' "${readmeFile}"
+pack_directory "$releaseDir/optionals"
+
+npm install -g markdown-pdf
+markdown-pdf "${readmeFile}"
+rm "${readmeFile}"
+
 
 pushd "$baseDir" # get into git directory - elsewise we will not be able to get version info
 	# get version
@@ -74,7 +103,6 @@ if [[ ${version} == "" ]]; then
 fi
 
 ### version removed from zip filename until we figure out how to tell travis ###
-# zipname="${modname}_$version"
 
 zipname="${modname}_$version"
 if [[ ${platform} == "Linux" ]]; then
