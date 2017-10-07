@@ -80,7 +80,7 @@ pack_directory "$releaseDir/optionals"
 
 npm install -g markdown-pdf
 markdown-pdf "${readmeFile}"
-# rm "${readmeFile}"
+rm "${readmeFile}"
 
 
 pushd "$baseDir" # get into git directory - elsewise we will not be able to get version info
