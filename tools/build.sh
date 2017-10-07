@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ### CONFIG ###
-zip_path="$1"
+zip_path=zip
 modname="@gruppe_adler_mod"
 pboprefix="grad_"
 
@@ -85,28 +85,24 @@ markdown-pdf "${readmeFile}"
 rm "${readmeFile}"
 
 
+version=$RAW_VERSION
 pushd "$baseDir" # get into git directory - elsewise we will not be able to get version info
-	# get version
-	head=`git reflog --decorate -1 --no-color`
-	version=`echo ${head} | sed -re 's/^.*tag: ([0-9a-z\.\-]+).*$/\1/'`
+	if [[ ${version} == "" ]]; then
+		version=$(git describe --tag --always)
+	fi
 popd
 
-if [[ "$head" == "$version" ]]; then
-	# ...if not, use commit hash
-	version=`echo ${head} | sed -re 's/^([0-9a-f]+).*$/\1/g'`
-fi
 
 echo "current version: $version"
 if [[ ${version} == "" ]]; then
-	echo "cant find tag OR commit hash. are you sure we're having a .git directory here?"
+	echo "cant find version. are you sure we're having a .git directory here?"
 	exit 2
 fi
 
-### version removed from zip filename until we figure out how to tell travis ###
-
-zipname="${modname}_$version"
+zipname="${modname}-$version"
 if [[ ${platform} == "Linux" ]]; then
 	tar -czf "$baseDir/release/${zipname}.tar.gz" -C "${baseDir}/release" ${modname}
+	(cd ${baseDir}/release; zip -r ${zipname}.zip ${modname})
 else
 	# check zipper
 	if [[ ! -f ${zip_path} ]]; then

@@ -9,6 +9,7 @@ before_script:
 - wget http://gruppe-adler.de/api/travis/sqf_validator.py
 - sed -i -e 's/addons//g' sqf_validator.py
 - mv sqf_validator.py tools/
+- export RAW_VERSION=$(git describe --always --tag)
 script:
 - python3 tools/sqf_validator.py
 - tools/build.sh
@@ -22,7 +23,7 @@ deploy:
   provider: releases
   api_key:
     secure: zKmRWJBDGlgJJoizaAIA2Rj5oEiuIrux2gydUKzrjjc2uqIy1GvLGhqc/oZNEQWWFLT2OeGj2wOVRaIj9WXOqdgRqOLYO73v3iawI2h8R38iWqwshJj4MRHZBevwb7YMQS83swDuhoaX0OIPAGZFBdyBfqlUEUiyH4QfcBaSCKtF/2gjqKg7PxDZr98Dde55snj8YylxWah6mnGRQaZlDyu3pb+dGOl2gLPMfhMWDTXb3saXjeb+OLp5i+BK+mTXLBobno4cZ5dzqPeJvRokJYqIhBAvqZviANee6bo8D73T+RpXEJ7HxKSL7m8Tzaq/6J78vybHOKwzMXn3irEtmUpqqkzgQWmRLwoS1PuTSbmbuptfUKMJqQFJkuhB+8GiA9LDb5hrmp3XOySJVILW3Rlq0NyL1ZkCkPxxLCAXxf+CxMiPJ+FexKmQJFQNEbuoSVOIGjPZUaBLVdsaLaLFauRTXe+3Ppxs0DCNl+tcakEOUaRTQ4JK5gNgl5ERWqgujDzI4UFlNHeG4fg6Wkr9k0dd4ZvyB6ZCZVnyUd7edFsDqDm8jbIg79FsI7UJ3f0v14oAUdLfWZb71M1i/vPsKrEJMq5+Oprtb4vL1WIE3ISImYWPQdrzzAcppmTmqQVbilj9NX4M1ApNp28fRuRvZfgHKRlJ+FrR5UcOv1Hr3pk=
-  file: release/@gruppe_adler_mod.tar.gz
+  file: release/@gruppe_adler_mod-$RAW_VERSION.zip
   skip_cleanup: true
   on:
     tags: true
