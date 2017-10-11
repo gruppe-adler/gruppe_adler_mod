@@ -2,7 +2,8 @@ language: python
 python:
 - '3.4'
 before_install:
-  - chmod +x tools/build.sh
+- chmod +x tools/build.sh
+- openssl aes-256-cbc -K $encrypted_8482a8797171_key -iv $encrypted_8482a8797171_iv -in github_deploy_key.enc -out github_deploy_key -d
 before_script:
 - sudo apt-get install realpath
 - mkdir -p tools
@@ -13,12 +14,15 @@ before_script:
 script:
 - python3 tools/sqf_validator.py
 - tools/build.sh
-notifications:
-  slack: gruppe-adler:WUbRswFJEqy55XKuLhtXTlOf
-  template:
-  - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
-  - 'Commit Title : %{commit_subject}'
-  - 'Commit details : %{commit_message}'
+env:
+  global:
+    - secure: "jvJQcuyiu2OxKn7AgTmVNPfrSxWqFbDkz4sVbjLhFQzH2xcr7JvsofRicoFlBA+imbsM0Yf81i0h4UjGEaJnZmCRG/z7aWU6LrtKN+MSm6xmUeGLK05nVggZPWH3dRcd3eO7tW7AHutTjyzU0/81XAeCId+jSattjlBh+mmSTYswSpD2mJq7Rql2ySKgbViWGm7I3UBN1FdQYaHgzscQtT1PaL4GVzjHUr7vZOCKBvmyMq1rWTxg0jcGmQ9LcO5W+V6gqqcTmtqVBexoECegLvA3xgFmOHezmKES4j9ieMY/YKcE023prORcrETptLWYd886nA9dCWX1UsEtReE/85d5UYsrgyUGRF7dllpx99kv1X6Zgv9zXtJoOclUaihJqxHsu2AvAul8UaB0mSXucOyLnEH4SafWj7DL9H9Imo+XDmPWi3DxSfrY5ZhcN8A2BLqMuMZQCIuLsua6jN5US84Zhn8JIOLQTqiDdqW7AxQJmXbBDCqlGrF/+xyOZpc4OQPdQPzZzLzNCi4qJC6adOz8H1c0Do/YbudQi5N1lYiFqmHDxyILSOLnv/X2rJTOenGdGWMQI4l2EA+gYWQ/TL/F6Sdv99eTkxIFAvyJ6ebBvHwPkErt6xKfODoq3XlDMgCfVra+OyAam89vwsVkSFzHl7q7Fp7LHPSdO0YHHKI="
+after_success:
+  - |
+
+       $(npm bin)/set-up-ssh --key "$encrypted_8482a8797171_key" \
+                             --iv "$encrypted_8482a8797171_iv" \
+                             --path-encrypted-key "tools/github_deploy_key.enc"
 deploy:
   provider: releases
   api_key:
