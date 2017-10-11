@@ -38,7 +38,7 @@ private _onTimeOut = {
                 grad_versionCheck_versionMismatches pushBack [_key,_value,_clientVersion];
             };
         } else {
-            if !(_key in _whitelist) then {
+            if !((toLower _key) in _whitelist) then {
                 grad_versionCheck_missingAddonsClient pushBack _key;
             };
         };
