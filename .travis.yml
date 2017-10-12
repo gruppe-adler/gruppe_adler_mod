@@ -3,7 +3,7 @@ python:
 - '3.4'
 before_install:
 - chmod +x tools/build.sh
-- openssl aes-256-cbc -K $encrypted_9201dc2cf0f4_key -iv $encrypted_9201dc2cf0f4_iv -in github_deploy_key.enc -out github_deploy_key -d
+- openssl aes-256-cbc -K $encrypted_9201dc2cf0f4_key -iv $encrypted_9201dc2cf0f4_iv -in tools/github_deploy_key.enc -out github_deploy_key -d
 before_script:
 - sudo apt-get install realpath
 - mkdir -p tools
@@ -26,7 +26,7 @@ after_success:
 deploy:
   provider: releases
   api_key:
-    secure: zKmRWJBDGlgJJoizaAIA2Rj5oEiuIrux2gydUKzrjjc2uqIy1GvLGhqc/oZNEQWWFLT2OeGj2wOVRaIj9WXOqdgRqOLYO73v3iawI2h8R38iWqwshJj4MRHZBevwb7YMQS83swDuhoaX0OIPAGZFBdyBfqlUEUiyH4QfcBaSCKtF/2gjqKg7PxDZr98Dde55snj8YylxWah6mnGRQaZlDyu3pb+dGOl2gLPMfhMWDTXb3saXjeb+OLp5i+BK+mTXLBobno4cZ5dzqPeJvRokJYqIhBAvqZviANee6bo8D73T+RpXEJ7HxKSL7m8Tzaq/6J78vybHOKwzMXn3irEtmUpqqkzgQWmRLwoS1PuTSbmbuptfUKMJqQFJkuhB+8GiA9LDb5hrmp3XOySJVILW3Rlq0NyL1ZkCkPxxLCAXxf+CxMiPJ+FexKmQJFQNEbuoSVOIGjPZUaBLVdsaLaLFauRTXe+3Ppxs0DCNl+tcakEOUaRTQ4JK5gNgl5ERWqgujDzI4UFlNHeG4fg6Wkr9k0dd4ZvyB6ZCZVnyUd7edFsDqDm8jbIg79FsI7UJ3f0v14oAUdLfWZb71M1i/vPsKrEJMq5+Oprtb4vL1WIE3ISImYWPQdrzzAcppmTmqQVbilj9NX4M1ApNp28fRuRvZfgHKRlJ+FrR5UcOv1Hr3pk=
+    secure: "zKmRWJBDGlgJJoizaAIA2Rj5oEiuIrux2gydUKzrjjc2uqIy1GvLGhqc/oZNEQWWFLT2OeGj2wOVRaIj9WXOqdgRqOLYO73v3iawI2h8R38iWqwshJj4MRHZBevwb7YMQS83swDuhoaX0OIPAGZFBdyBfqlUEUiyH4QfcBaSCKtF/2gjqKg7PxDZr98Dde55snj8YylxWah6mnGRQaZlDyu3pb+dGOl2gLPMfhMWDTXb3saXjeb+OLp5i+BK+mTXLBobno4cZ5dzqPeJvRokJYqIhBAvqZviANee6bo8D73T+RpXEJ7HxKSL7m8Tzaq/6J78vybHOKwzMXn3irEtmUpqqkzgQWmRLwoS1PuTSbmbuptfUKMJqQFJkuhB+8GiA9LDb5hrmp3XOySJVILW3Rlq0NyL1ZkCkPxxLCAXxf+CxMiPJ+FexKmQJFQNEbuoSVOIGjPZUaBLVdsaLaLFauRTXe+3Ppxs0DCNl+tcakEOUaRTQ4JK5gNgl5ERWqgujDzI4UFlNHeG4fg6Wkr9k0dd4ZvyB6ZCZVnyUd7edFsDqDm8jbIg79FsI7UJ3f0v14oAUdLfWZb71M1i/vPsKrEJMq5+Oprtb4vL1WIE3ISImYWPQdrzzAcppmTmqQVbilj9NX4M1ApNp28fRuRvZfgHKRlJ+FrR5UcOv1Hr3pk="
   file: release/@gruppe_adler_mod-$RAW_VERSION.zip
   skip_cleanup: true
   on:
