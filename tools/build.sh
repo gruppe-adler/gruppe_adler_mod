@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ### CONFIG ###
-zip_path=zip
+zip_path="zip.exe"
 modname="@gruppe_adler_mod"
 pboprefix="grad_"
 
@@ -104,17 +104,17 @@ if [[ ${platform} == "Linux" ]]; then
 	tar -czf "$baseDir/release/${zipname}.tar.gz" -C "${baseDir}/release" ${modname}
 	(cd ${baseDir}/release; zip -r ${zipname}.zip ${modname})
 else
-	# check zipper
-	if [[ ! -f ${zip_path} ]]; then
-		zip_path="${toolsDir}/zip.exe"
-	fi
-
-	if [[ ! -f ${zip_path} ]]; then
-		echo "warning: zip.exe not found, will not zip mod release!"
-		exit 1
-	fi
-
 	pushd "${baseDir}/release"
-		"${zip_path}" -r "$baseDir/release/${zipname}" "${modname}"
+		# check zipper
+		if [ ! -e "${zip_path}" ]; then
+			zip_path="${toolsDir}/zip.exe"
+		fi
+
+		if [ ! -e "${zip_path}" ]; then
+			echo "warning: zip.exe not found, will not zip mod release!"
+			exit 1
+		fi
+
+		"${zip_path}" -r "$baseDir/release/${zipname}.zip" "${modname}"
 	popd
 fi
