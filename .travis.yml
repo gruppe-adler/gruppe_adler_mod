@@ -11,6 +11,7 @@ before_script:
 - sed -i -e 's/addons//g' sqf_validator.py
 - mv sqf_validator.py tools/
 - export RAW_VERSION=$(git describe --always --tag)
+- export DEPLOY_KEY=`cat tools/github_deploy_key`
 script:
 - python3 tools/sqf_validator.py
 - tools/build.sh
@@ -26,7 +27,7 @@ after_success:
 deploy:
   provider: releases
   api_key:
-    secure: tools/github_deploy_key
+    secure: $DEPLOY_KEY
   file: release/@gruppe_adler_mod-$RAW_VERSION.zip
   skip_cleanup: true
   on:
