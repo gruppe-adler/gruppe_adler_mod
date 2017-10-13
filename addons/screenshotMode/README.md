@@ -1,7 +1,7 @@
 ### screenshotMode
-Erlaubt durch einen Tastendruck STHUD, das Vanilla HUD, die ACE Stamina Bar und die ACE Nametags auszublenden. Bei erneutem Druck wird das ganze wieder auf den vorherigen Stand zurück gesetzt.
+Adds a keybind to hide all UI elements for prettier screenshots. Has no default binding. Check *Controls* >> *Configure Addons* >> *Gruppe Adler*.
 
-![](http://i.imgur.com/TYuHyP8.png)
+<img src="http://i.imgur.com/TYuHyP8.png" width="512" />
 
 #### Maintainer(s)
 * derZade

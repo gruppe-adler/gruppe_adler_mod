@@ -1,7 +1,7 @@
 ### rebreatherOnLand
 This little addon adds three *Oxygen Tank* vests to the game that look cool for high altitude parachuting.
 
-![](http://i.imgur.com/sqRzJfK.png)
+<img src="http://i.imgur.com/sqRzJfK.png" width="512" />
 
 #### Maintainer(s)
 * McDiod

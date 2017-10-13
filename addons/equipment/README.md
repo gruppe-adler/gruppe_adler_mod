@@ -1,5 +1,10 @@
 ### equipment
-Component for personal equipment except weapons. Currently only adds four black backpacks.
+Adds personal equipment.
+
+* black kitbag
+* black kitbag medic
+* black kitbag light
+* black kitbag light medic
 
 #### Maintainer(s)
 * Synch
