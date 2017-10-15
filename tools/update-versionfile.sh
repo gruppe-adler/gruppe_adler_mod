@@ -24,10 +24,10 @@ fi
 
 echo "we're on version $major.$minor.$patch, build $build (commit $commit ). updating versionfile…"
 
-sed -ie "s/define MAJOR.*/define MAJOR $major/" ${versionfile}
-sed -ie "s/define MINOR.*/define MINOR $minor/" ${versionfile}
-sed -ie "s/define PATCHLVL.*/define PATCHLVL $patch/" ${versionfile}
-sed -ie "s/define BUILD.*/define BUILD $build/" ${versionfile}
-sed -ie "s/define COMMIT.*/define COMMIT $commit/" ${versionfile}
+sed -i -e "s/define MAJOR.*/define MAJOR $major/" ${versionfile}
+sed -i -e "s/define MINOR.*/define MINOR $minor/" ${versionfile}
+sed -i -e "s/define PATCHLVL.*/define PATCHLVL $patch/" ${versionfile}
+sed -i -e "s/define BUILD.*/define BUILD $build/" ${versionfile}
+sed -i -e "s/define COMMIT.*/define COMMIT $commit/" ${versionfile}
 
 echo "…done :)"
