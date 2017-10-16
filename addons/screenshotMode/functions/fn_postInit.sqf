@@ -1,2 +1,14 @@
-//add keybind
-['Gruppe Adler', 'GRAD_screenshotMode_toggle', 'Toggle Screenshot Mode', {[] call GRAD_screenshotMode_fnc_toggle;}, ''] call CBA_fnc_addKeybind;
+#include "script_component.hpp"
+
+GVAR(active) = false;
+
+[
+    'Gruppe Adler',
+    'GRAD_screenshotMode_toggle',
+    'Toggle Screenshot Mode',
+    {
+        GVAR(active) = !GVAR(active);
+        [!GVAR(active)] call FUNC(toggleAll);
+    },
+    ''
+] call CBA_fnc_addKeybind;
