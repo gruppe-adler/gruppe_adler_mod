@@ -3,5 +3,11 @@ Adds a keybind to hide all UI elements for prettier screenshots. Has no default 
 
 <img src="http://i.imgur.com/TYuHyP8.png" width="512" />
 
+#### Mod support
+
+* TFAR >= 1.0 voice volume indicator icon
+* ST HUD
+* ACE: name tags, stamina bar
+
 #### Maintainer(s)
 * derZade
