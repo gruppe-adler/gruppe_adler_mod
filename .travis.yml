@@ -33,8 +33,6 @@ after_success:
                              --path-encrypted-key "tools/adler_deploy_key.enc"
 deploy:
   provider: releases
-  api_key:
-    secure: $DEPLOY_KEY
   file: release/@gruppe_adler_mod-$RAW_VERSION.zip
   skip_cleanup: true
   on:
