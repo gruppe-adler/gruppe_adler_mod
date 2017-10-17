@@ -3,26 +3,27 @@ language: python
 python:
 - '3.4'
 
+addons:
+  apt:
+    packages: 
+    - realpath
+
 before_install:
-- chmod +x tools/build.sh
-- openssl aes-256-cbc -K $encrypted_9f3e17429bd4_key -iv $encrypted_9f3e17429bd4_iv -in tools/adler_deploy_key.enc -out tools/adler_deploy_key -d
+- openssl aes-256-cbc -K "$encrypted_9f3e17429bd4_key" -iv "$encrypted_9f3e17429bd4_iv" -in tools/adler_deploy_key.enc -out tools/adler_deploy_key -d
+
+install: true
 
 before_script:
-- sudo apt-get install realpath
 - mkdir -p tools
 - wget http://gruppe-adler.de/api/travis/sqf_validator.py
 - sed -i -e 's/addons//g' sqf_validator.py
 - mv sqf_validator.py tools/
 - export RAW_VERSION=$(git describe --always --tag)
-- export DEPLOY_KEY=`cat tools/github_deploy_key`
+- export DEPLOY_KEY=`cat tools/adler_deploy_key`
 
 script:
 - python3 tools/sqf_validator.py
 - tools/build.sh
-
-env:
-  global:
-    - secure: "rQecm5qIAQU4lCNSoE0Bdzu6zksNb39AsQDChk6hPWMhnfCU6qyGkIreHNOIqFvHECgPLy4x5X49mocz3UQWLz7VF/snzr/sf4kNiCruLrdJ3Hz4gt1agmY/zi3Z2k2+A7nxm8sTopXidwYR+4K+LWD2yRRMs4ce5JETxxBjsSgCGuEOON2FC1+3s7zwY2AHaicZuPgvhrGEPfU+U16K2G0cch76M/YWKsuw8VPHuF5aBprtT5NQiMGyagQGam+5N9b+cfpB3+JE4TAq8VoocI70/RLstOTFzH8+BBBZzfUCtyhBA6z/QnxAvHoklNWHnzw5bPnoyPNLFvtsXe+R5eO75MTyk4uAHgUwTWATKuTVdi67irg6vq+MGg3WFlGpGpDm6Me4r+khKqBYYZlRCvQv1ymI8hhYAD/QeE3tPXhptkiButNIV1E+8e9vc2T9RKqy9h0u/9l6B6Zs5nbjMzsnfmOtXCJrtqCyfoDs0cEkFX3MKkAaRsXFMNEB0Hb71xkuTrAUc4ONELKHfPZc3gdyeheuygkVWCtoNvwpnDqf3VrfqrAw6R8ofAuUGzJXhn1N8RP2aKmBj5IffERXla6cYpK6pE4lt2AocoLwNibVigdM20VXvtkZL9tB3uVd/cg5rjPwwh33werTFNNA1ZJwsrFV0O6Vvicffc5MI38="
 
 after_success:
   - |
@@ -38,3 +39,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+
+env:
+  global:
+    - secure: "rQecm5qIAQU4lCNSoE0Bdzu6zksNb39AsQDChk6hPWMhnfCU6qyGkIreHNOIqFvHECgPLy4x5X49mocz3UQWLz7VF/snzr/sf4kNiCruLrdJ3Hz4gt1agmY/zi3Z2k2+A7nxm8sTopXidwYR+4K+LWD2yRRMs4ce5JETxxBjsSgCGuEOON2FC1+3s7zwY2AHaicZuPgvhrGEPfU+U16K2G0cch76M/YWKsuw8VPHuF5aBprtT5NQiMGyagQGam+5N9b+cfpB3+JE4TAq8VoocI70/RLstOTFzH8+BBBZzfUCtyhBA6z/QnxAvHoklNWHnzw5bPnoyPNLFvtsXe+R5eO75MTyk4uAHgUwTWATKuTVdi67irg6vq+MGg3WFlGpGpDm6Me4r+khKqBYYZlRCvQv1ymI8hhYAD/QeE3tPXhptkiButNIV1E+8e9vc2T9RKqy9h0u/9l6B6Zs5nbjMzsnfmOtXCJrtqCyfoDs0cEkFX3MKkAaRsXFMNEB0Hb71xkuTrAUc4ONELKHfPZc3gdyeheuygkVWCtoNvwpnDqf3VrfqrAw6R8ofAuUGzJXhn1N8RP2aKmBj5IffERXla6cYpK6pE4lt2AocoLwNibVigdM20VXvtkZL9tB3uVd/cg5rjPwwh33werTFNNA1ZJwsrFV0O6Vvicffc5MI38="
