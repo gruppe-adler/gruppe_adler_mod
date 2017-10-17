@@ -1,15 +1,18 @@
-private _aceEnabled = !(isNull (uiNamespace getVariable ["ace_advanced_fatigue_staminaBarContainer", controlNull]));
+#include "script_component.hpp"
+
+private _staminaBar = uiNamespace getVariable ["ace_advanced_fatigue_staminaBarContainer", controlNull];
+private _aceEnabled = !(isNull _staminaBar);
 private _newState = param [0, true];
 
 if (!_aceEnabled) exitWith {};
 
 if (_newState) then {
-    (uiNamespace getVariable "ace_advanced_fatigue_staminaBarContainer") ctrlShow GVAR(staminaBarContainer);
+    _staminaBar ctrlShow GVAR(staminaBarContainer);
     ace_nametags_showplayernames = GVAR(playerNames);
 } else {
-    GVAR(staminaBarContainer) = ctrlShown (uiNamespace getVariable "ace_advanced_fatigue_staminaBarContainer");
+    GVAR(staminaBarContainer) = ctrlShown _staminaBar;
     GVAR(playerNames) = ace_nametags_showplayernames;
 
-    (uiNamespace getVariable "ace_advanced_fatigue_staminaBarContainer") ctrlShow false;
+    _staminaBar ctrlShow false;
     ace_nametags_showplayernames = 0;
 };

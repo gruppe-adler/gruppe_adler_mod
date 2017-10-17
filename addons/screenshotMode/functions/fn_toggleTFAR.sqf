@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 private _tfarEnabled = !(isNil "TFAR_VolumeHudTransparency");
 private _newState = param [0, true];
 
