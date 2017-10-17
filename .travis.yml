@@ -1,9 +1,12 @@
 language: python
+
 python:
 - '3.4'
+
 before_install:
 - chmod +x tools/build.sh
-- openssl aes-256-cbc -K $encrypted_9201dc2cf0f4_key -iv $encrypted_9201dc2cf0f4_iv -in tools/github_deploy_key.enc -out tools/github_deploy_key -d
+- openssl aes-256-cbc -K $encrypted_9f3e17429bd4_key -iv $encrypted_9f3e17429bd4_iv -in tools/adler_deploy_key.enc -out tools/adler_deploy_key -d
+
 before_script:
 - sudo apt-get install realpath
 - mkdir -p tools
@@ -12,18 +15,21 @@ before_script:
 - mv sqf_validator.py tools/
 - export RAW_VERSION=$(git describe --always --tag)
 - export DEPLOY_KEY=`cat tools/github_deploy_key`
+
 script:
 - python3 tools/sqf_validator.py
 - tools/build.sh
+
 env:
   global:
-    - secure: "jvJQcuyiu2OxKn7AgTmVNPfrSxWqFbDkz4sVbjLhFQzH2xcr7JvsofRicoFlBA+imbsM0Yf81i0h4UjGEaJnZmCRG/z7aWU6LrtKN+MSm6xmUeGLK05nVggZPWH3dRcd3eO7tW7AHutTjyzU0/81XAeCId+jSattjlBh+mmSTYswSpD2mJq7Rql2ySKgbViWGm7I3UBN1FdQYaHgzscQtT1PaL4GVzjHUr7vZOCKBvmyMq1rWTxg0jcGmQ9LcO5W+V6gqqcTmtqVBexoECegLvA3xgFmOHezmKES4j9ieMY/YKcE023prORcrETptLWYd886nA9dCWX1UsEtReE/85d5UYsrgyUGRF7dllpx99kv1X6Zgv9zXtJoOclUaihJqxHsu2AvAul8UaB0mSXucOyLnEH4SafWj7DL9H9Imo+XDmPWi3DxSfrY5ZhcN8A2BLqMuMZQCIuLsua6jN5US84Zhn8JIOLQTqiDdqW7AxQJmXbBDCqlGrF/+xyOZpc4OQPdQPzZzLzNCi4qJC6adOz8H1c0Do/YbudQi5N1lYiFqmHDxyILSOLnv/X2rJTOenGdGWMQI4l2EA+gYWQ/TL/F6Sdv99eTkxIFAvyJ6ebBvHwPkErt6xKfODoq3XlDMgCfVra+OyAam89vwsVkSFzHl7q7Fp7LHPSdO0YHHKI="
+    - secure: "rQecm5qIAQU4lCNSoE0Bdzu6zksNb39AsQDChk6hPWMhnfCU6qyGkIreHNOIqFvHECgPLy4x5X49mocz3UQWLz7VF/snzr/sf4kNiCruLrdJ3Hz4gt1agmY/zi3Z2k2+A7nxm8sTopXidwYR+4K+LWD2yRRMs4ce5JETxxBjsSgCGuEOON2FC1+3s7zwY2AHaicZuPgvhrGEPfU+U16K2G0cch76M/YWKsuw8VPHuF5aBprtT5NQiMGyagQGam+5N9b+cfpB3+JE4TAq8VoocI70/RLstOTFzH8+BBBZzfUCtyhBA6z/QnxAvHoklNWHnzw5bPnoyPNLFvtsXe+R5eO75MTyk4uAHgUwTWATKuTVdi67irg6vq+MGg3WFlGpGpDm6Me4r+khKqBYYZlRCvQv1ymI8hhYAD/QeE3tPXhptkiButNIV1E+8e9vc2T9RKqy9h0u/9l6B6Zs5nbjMzsnfmOtXCJrtqCyfoDs0cEkFX3MKkAaRsXFMNEB0Hb71xkuTrAUc4ONELKHfPZc3gdyeheuygkVWCtoNvwpnDqf3VrfqrAw6R8ofAuUGzJXhn1N8RP2aKmBj5IffERXla6cYpK6pE4lt2AocoLwNibVigdM20VXvtkZL9tB3uVd/cg5rjPwwh33werTFNNA1ZJwsrFV0O6Vvicffc5MI38="
+
 after_success:
   - |
 
-       $(npm bin)/set-up-ssh --key "$encrypted_9201dc2cf0f4_key" \
-                             --iv "$encrypted_9201dc2cf0f4_iv" \
-                             --path-encrypted-key "tools/github_deploy_key.enc"
+       $(npm bin)/set-up-ssh --key "$encrypted_9f3e17429bd4_key" \
+                             --iv "$encrypted_9f3e17429bd4_iv" \
+                             --path-encrypted-key "tools/adler_deploy_key.enc"
 deploy:
   provider: releases
   api_key:
