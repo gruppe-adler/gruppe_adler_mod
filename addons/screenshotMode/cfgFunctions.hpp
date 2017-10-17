@@ -3,7 +3,11 @@ class CfgFunctions {
 		class misc
 		{
 			file = "x\grad\addons\screenshotMode\functions";
-			class toggle {};
+			class toggleAll {};
+			class toggleACENametags {};
+			class toggleSTHud {};
+			class toggleTFAR {};
+			class toggleVanillaHUD {};
 			class postInit {};
 		};
 	};
