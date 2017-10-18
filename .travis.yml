@@ -2,7 +2,7 @@ language: python
 python:
 - '3.4'
 before_install:
-  - chmod +x tools/build.sh
+- chmod +x tools/build.sh
 before_script:
 - sudo apt-get install realpath
 - mkdir -p tools
@@ -22,8 +22,9 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: zKmRWJBDGlgJJoizaAIA2Rj5oEiuIrux2gydUKzrjjc2uqIy1GvLGhqc/oZNEQWWFLT2OeGj2wOVRaIj9WXOqdgRqOLYO73v3iawI2h8R38iWqwshJj4MRHZBevwb7YMQS83swDuhoaX0OIPAGZFBdyBfqlUEUiyH4QfcBaSCKtF/2gjqKg7PxDZr98Dde55snj8YylxWah6mnGRQaZlDyu3pb+dGOl2gLPMfhMWDTXb3saXjeb+OLp5i+BK+mTXLBobno4cZ5dzqPeJvRokJYqIhBAvqZviANee6bo8D73T+RpXEJ7HxKSL7m8Tzaq/6J78vybHOKwzMXn3irEtmUpqqkzgQWmRLwoS1PuTSbmbuptfUKMJqQFJkuhB+8GiA9LDb5hrmp3XOySJVILW3Rlq0NyL1ZkCkPxxLCAXxf+CxMiPJ+FexKmQJFQNEbuoSVOIGjPZUaBLVdsaLaLFauRTXe+3Ppxs0DCNl+tcakEOUaRTQ4JK5gNgl5ERWqgujDzI4UFlNHeG4fg6Wkr9k0dd4ZvyB6ZCZVnyUd7edFsDqDm8jbIg79FsI7UJ3f0v14oAUdLfWZb71M1i/vPsKrEJMq5+Oprtb4vL1WIE3ISImYWPQdrzzAcppmTmqQVbilj9NX4M1ApNp28fRuRvZfgHKRlJ+FrR5UcOv1Hr3pk=
+    secure: O7V4jaO95Jls8fbvfd/uAb11PWrYlnyiCCnki8a+aB1BJfVPxAhAY1xh+uQRUDY2YEGK4fPDTdDs6KPNyaekXCNtFV4d+zShEvaD9EZPYtLuHHFk/nUG8yZx9rJdqrWEHL2QGxFC8O2jmTPzfF9W0mGZctRx1U86ca/rHyYKTUHZMInWLv9TAxd9zynLUJ6eZprTMwW9LacdMBeQwHke0aJXRnPn9Z7768xwLBQm0c1XDGdbDVeOswZZ2ID3QeoTWPLneZk24UsQFzLRKeR9Bq4sAWPU9ATpGW9kvABgXKyC/ftK60Vm7dqgb8ckXR7H5E0D+lMAEUDt0KxkoyKdQA5Gijz21K9s9/945P2FAAvR9WDGpnzc89XyAhnT6KshEY67RVyLroSa9zbVq7zLtq7jGK7JeL0xLwzraTkhx3Tbxxikd4g4fphZV/09PTMjQ26KGBnMx+60Yg9Hwj6yTB78QGmytEhVjfn4GfzraBDwaVkLoMRlvxDlE2l/heKno/Hmg5Etiywcng5u2j5bHRpitat3bHapWGblk9H1Cky3qO4LVPRvnZ6HjIggw+B26hq/XCP8p8f+B2cufORHfZWLHAObzQmd4lWbqow42VRyTb1NZ5QAQ5Mj7GeHZQlorCfp9am9O7XMwsTSqVsR/GKr1WWbGtNjbR6UXu6l4k0=
   file: release/@gruppe_adler_mod-$RAW_VERSION.zip
   skip_cleanup: true
+  overwrite: true
   on:
     tags: true
