@@ -1,43 +1,29 @@
 language: python
-
 python:
 - '3.4'
-
-addons:
-  apt:
-    packages: 
-    - realpath
-
 before_install:
-- openssl aes-256-cbc -K "$encrypted_9f3e17429bd4_key" -iv "$encrypted_9f3e17429bd4_iv" -in tools/adler_deploy_key.enc -out tools/adler_deploy_key -d
-
-install: true
-
+  - chmod +x tools/build.sh
 before_script:
+- sudo apt-get install realpath
 - mkdir -p tools
 - wget http://gruppe-adler.de/api/travis/sqf_validator.py
 - sed -i -e 's/addons//g' sqf_validator.py
 - mv sqf_validator.py tools/
 - export RAW_VERSION=$(git describe --always --tag)
-- export DEPLOY_KEY=`cat tools/adler_deploy_key`
-
 script:
 - python3 tools/sqf_validator.py
 - tools/build.sh
-
-after_success:
-  - |
-
-       $(npm bin)/set-up-ssh --key "$encrypted_9f3e17429bd4_key" \
-                             --iv "$encrypted_9f3e17429bd4_iv" \
-                             --path-encrypted-key "tools/adler_deploy_key.enc"
+notifications:
+  slack: gruppe-adler:WUbRswFJEqy55XKuLhtXTlOf
+  template:
+  - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+  - 'Commit Title : %{commit_subject}'
+  - 'Commit details : %{commit_message}'
 deploy:
   provider: releases
+  api_key:
+    secure: zKmRWJBDGlgJJoizaAIA2Rj5oEiuIrux2gydUKzrjjc2uqIy1GvLGhqc/oZNEQWWFLT2OeGj2wOVRaIj9WXOqdgRqOLYO73v3iawI2h8R38iWqwshJj4MRHZBevwb7YMQS83swDuhoaX0OIPAGZFBdyBfqlUEUiyH4QfcBaSCKtF/2gjqKg7PxDZr98Dde55snj8YylxWah6mnGRQaZlDyu3pb+dGOl2gLPMfhMWDTXb3saXjeb+OLp5i+BK+mTXLBobno4cZ5dzqPeJvRokJYqIhBAvqZviANee6bo8D73T+RpXEJ7HxKSL7m8Tzaq/6J78vybHOKwzMXn3irEtmUpqqkzgQWmRLwoS1PuTSbmbuptfUKMJqQFJkuhB+8GiA9LDb5hrmp3XOySJVILW3Rlq0NyL1ZkCkPxxLCAXxf+CxMiPJ+FexKmQJFQNEbuoSVOIGjPZUaBLVdsaLaLFauRTXe+3Ppxs0DCNl+tcakEOUaRTQ4JK5gNgl5ERWqgujDzI4UFlNHeG4fg6Wkr9k0dd4ZvyB6ZCZVnyUd7edFsDqDm8jbIg79FsI7UJ3f0v14oAUdLfWZb71M1i/vPsKrEJMq5+Oprtb4vL1WIE3ISImYWPQdrzzAcppmTmqQVbilj9NX4M1ApNp28fRuRvZfgHKRlJ+FrR5UcOv1Hr3pk=
   file: release/@gruppe_adler_mod-$RAW_VERSION.zip
   skip_cleanup: true
   on:
     tags: true
-
-env:
-  global:
-    - secure: "rQecm5qIAQU4lCNSoE0Bdzu6zksNb39AsQDChk6hPWMhnfCU6qyGkIreHNOIqFvHECgPLy4x5X49mocz3UQWLz7VF/snzr/sf4kNiCruLrdJ3Hz4gt1agmY/zi3Z2k2+A7nxm8sTopXidwYR+4K+LWD2yRRMs4ce5JETxxBjsSgCGuEOON2FC1+3s7zwY2AHaicZuPgvhrGEPfU+U16K2G0cch76M/YWKsuw8VPHuF5aBprtT5NQiMGyagQGam+5N9b+cfpB3+JE4TAq8VoocI70/RLstOTFzH8+BBBZzfUCtyhBA6z/QnxAvHoklNWHnzw5bPnoyPNLFvtsXe+R5eO75MTyk4uAHgUwTWATKuTVdi67irg6vq+MGg3WFlGpGpDm6Me4r+khKqBYYZlRCvQv1ymI8hhYAD/QeE3tPXhptkiButNIV1E+8e9vc2T9RKqy9h0u/9l6B6Zs5nbjMzsnfmOtXCJrtqCyfoDs0cEkFX3MKkAaRsXFMNEB0Hb71xkuTrAUc4ONELKHfPZc3gdyeheuygkVWCtoNvwpnDqf3VrfqrAw6R8ofAuUGzJXhn1N8RP2aKmBj5IffERXla6cYpK6pE4lt2AocoLwNibVigdM20VXvtkZL9tB3uVd/cg5rjPwwh33werTFNNA1ZJwsrFV0O6Vvicffc5MI38="
