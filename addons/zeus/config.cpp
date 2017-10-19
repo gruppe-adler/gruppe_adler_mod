@@ -7,11 +7,23 @@ class CfgPatches {
 		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
 		requiredAddons[] = {"grad_main"};
-		units[] = {};
+		units[] = {
+			QGVAR(moduleSupplyDrop)
+		};
 		weapons[] = {};
 		VERSION_CONFIG;
         authors[] = {"chris5790"};
 	};
 };
 
+class CfgFactionClasses {
+	class GVAR(Grad) {
+		displayName = "Gruppe Adler";
+		priority = 2;
+		side = 7;
+	}
+}
+
+#include "UI.hpp"
+#include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"

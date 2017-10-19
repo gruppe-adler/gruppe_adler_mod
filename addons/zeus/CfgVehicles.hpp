@@ -5,9 +5,9 @@ class CfgVehicles {
 		author = "$STR_grad_Author";
 	};
 
-	class GVAR(moduleSupplyDrop): ace_zeus_moduleBase {
+	class GVAR(moduleSupplyDrop): GVAR(moduleBase) {
 		curatorCanAttach = 1;
-		category = QUOTE(Curator);
+		category = QGVAR(Grad);
 		displayName = "Supply Drop";
 		function = QFUNC(moduleSupplyDrop);
 	};
