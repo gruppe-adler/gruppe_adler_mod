@@ -17,4 +17,3 @@ class CfgPatches {
 };
 
 #include "cfgAmmo.hpp"
-#include "cfgMagazines.hpp"
