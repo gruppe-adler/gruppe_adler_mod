@@ -9,7 +9,7 @@ for [{_i=0},{_i<(count _cfgPatches)-1},{_i=_i+1}] do {
     _addonName = configName _addonClass;
     if (_addonName find "A3" != 0) then {
         _vNo = [_addonClass] call grad_versionCheck_fnc_getVersionNo;
-        [grad_versionCheck_versions,_addonName,_vNo] call CBA_fnc_hashSet;
+        [grad_versionCheck_versions,toLower _addonName, _vNo] call CBA_fnc_hashSet;
     };
 };
 

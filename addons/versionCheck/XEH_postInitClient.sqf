@@ -25,28 +25,28 @@ private _onTimeOut = {
     _kickOnMissingClient = "grad_versionCheck_setting_kickOnMissingClient" call CBA_settings_fnc_get;
     _kickOnMissingServer = "grad_versionCheck_setting_kickOnMissingServer" call CBA_settings_fnc_get;
 
-    grad_versionCheck_missingAddonsClient = [];
-    grad_versionCheck_missingAddonsServer = [];
-    grad_versionCheck_versionMismatches = [];
+    private _serverAddons = [grad_versionCheck_versions_server] call CBA_fnc_hashKeys;
+    private _clientAddons = [grad_versionCheck_versions] call CBA_fnc_hashKeys;
 
-    [grad_versionCheck_versions_server,{
-        if ([grad_versionCheck_versions,_key] call CBA_fnc_hashHasKey) then {
-            _clientVersion = [grad_versionCheck_versions,_key] call CBA_fnc_hashGet;
-            [grad_versionCheck_versions,_key] call CBA_fnc_hashRem;
+    grad_versionCheck_missingAddonsServer =
+        _clientAddons
+        - _serverAddons
+        - _whitelist;
 
-            if (_clientVersion != _value) then {
-                grad_versionCheck_versionMismatches pushBack [_key,_value,_clientVersion];
-            };
-        } else {
-            if !((toLower _key) in _whitelist) then {
-                grad_versionCheck_missingAddonsClient pushBack _key;
-            };
-        };
-    }] call CBA_fnc_hashEachPair;
+    grad_versionCheck_missingAddonsClient =
+        _serverAddons
+        - _clientAddons
+        - _whitelist;
 
-    [grad_versionCheck_versions,{
-        grad_versionCheck_missingAddonsServer pushBack _key;
-    }] call CBA_fnc_hashEachPair;
+    grad_versionCheck_versionMismatches = (((_serverAddons arrayIntersect _clientAddons)
+        apply {
+            private _clientVersion = [grad_versionCheck_versions, _x] call CBA_fnc_hashGet;
+            private _serverVersion = [grad_versionCheck_versions_server, _x] call CBA_fnc_hashGet;
+            [_x, _serverVersion, _clientVersion];
+        })
+        select {
+            (_x select 1) != (_x select 2)
+        });
 
     _kick = switch (true) do {
         case (_kickOnMismatch && count grad_versionCheck_versionMismatches > 0): {true};
