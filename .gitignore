@@ -1,4 +1,5 @@
 release/
+.idea/
 
 # Windows image file caches
 Thumbs.db

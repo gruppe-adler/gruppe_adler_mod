@@ -9,6 +9,7 @@ pboprefix="grad_"
 toolsDir=$(realpath "$(pwd)/$(dirname $0)")
 baseDir=`dirname "${toolsDir}"`
 platform=`uname`
+module="$1"
 
 
 if [[ ${platform} == "Linux" ]]; then
@@ -65,25 +66,30 @@ pack_directory() {
 	done
 }
 
-#format readme
-readmeFile="${releaseDir}/README.md"
+if [[ $module != "" ]]; then
+    echo "building only $module"
+    build_pbo $module
+else
 
-sed -i '4d' "${readmeFile}"
-sed -i '7,$d' "${readmeFile}"
-sed -i '$a ***\n***' "${readmeFile}"
-sed -i '$a ## Components' "${readmeFile}"
-sed -i '$a These components are part of Gruppe Adler Mod.' "${readmeFile}"
-pack_directory "$releaseDir/addons"
+    #format readme
+    readmeFile="${releaseDir}/README.md"
 
-sed -i '$a ***\n***' "${readmeFile}"
-sed -i '$a ## Optional Components' "${readmeFile}"
-sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the addons *directory*.' "${readmeFile}"
-pack_directory "$releaseDir/optionals"
+    sed -i '4d' "${readmeFile}"
+    sed -i '7,$d' "${readmeFile}"
+    sed -i '$a ***\n***' "${readmeFile}"
+    sed -i '$a ## Components' "${readmeFile}"
+    sed -i '$a These components are part of Gruppe Adler Mod.' "${readmeFile}"
+    pack_directory "$releaseDir/addons"
 
-npm install -g markdown-pdf
-markdown-pdf "${readmeFile}"
-rm "${readmeFile}"
+    sed -i '$a ***\n***' "${readmeFile}"
+    sed -i '$a ## Optional Components' "${readmeFile}"
+    sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the addons *directory*.' "${readmeFile}"
+    pack_directory "$releaseDir/optionals"
 
+    npm install -g markdown-pdf
+    markdown-pdf "${readmeFile}"
+    rm "${readmeFile}"
+fi
 
 version=$RAW_VERSION
 pushd "$baseDir" # get into git directory - elsewise we will not be able to get version info
