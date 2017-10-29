@@ -1,18 +1,14 @@
 class CfgAmmo {
-	class F_40mm_White;
-	class GRAD_F_40mm_white: F_40mm_white {
-		intensity = 3000000;
-	};
+    class FlareBase;
+    class F_40mm_White: FlareBase {
+        intensity = 1500000;
+    };
+    class F_40mm_Yellow: F_40mm_White {};
+    class F_40mm_Red: F_40mm_White {};
+    class F_40mm_Green: F_40mm_White {};
 
-	class GRAD_F_40mm_red: GRAD_F_40mm_white {
-		lightColor[] = {0.5,0.25,0.25,0};
-	};
-
-	class GRAD_F_40mm_yellow: GRAD_F_40mm_white {
-		lightColor[] = {0.5,0.5,0.25,0};
-	};
-
-	class GRAD_F_40mm_green: GRAD_F_40mm_white {
-		lightColor[] = {0.25,0.5,0.25,0};
-	};
+    class FlareCore;
+    class Flare_82mm_AMOS_White: FlareCore {
+        intensity = 4000000;
+    };
 };
