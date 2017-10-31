@@ -35,7 +35,7 @@ if ([] call grad_adminMessages_fnc_isAdminOrZeus) then {
         _receiveConditionParams = [_lbData];
         {getPlayerUID player == (_this select 0)}
     };
-    [profileName,_message,_receiveCondition,_receiveConditionParams] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
+    [profileName,getPlayerUID player,_message,_receiveCondition,_receiveConditionParams] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
 } else {
-    [profileName,_message] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
+    [profileName,getPlayerUID player,_message] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
 };

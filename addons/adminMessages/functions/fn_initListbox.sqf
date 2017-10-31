@@ -27,7 +27,7 @@ private _fnc_addEntry = {
 
 
 //LATEST CONVERSATIONS =========================================================
-if (!isNil "grad_adminMessages_latestConvos") then {
+if (!isNil "grad_adminMessages_latestConvos" && {count grad_adminMessages_latestConvos > 0}) then {
     ["STR_grad_ADMINMESSAGES_LATESTCONVOS"] call _fnc_addHeadline;
     {
         _x call _fnc_addEntry;
