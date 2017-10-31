@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 
-params ["_sender","_message"];
+params ["_sender","_message",["_receiveCondition",{[] call grad_adminMessages_fnc_isAdminOrZeus}],["_receiveConditionParams",[]]];
 
-if (!hasInterface) exitWith {};
-if (!serverCommandAvailable "#kick" && isNull (getAssignedCuratorlogic player)) exitWith {};
+if !(hasInterface) exitWith {};
+if !(_receiveConditionParams call _receiveCondition) exitWith {};
 if (profileName == _sender) exitWith {};
 
 
