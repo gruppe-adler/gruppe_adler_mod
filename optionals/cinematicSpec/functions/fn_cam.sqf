@@ -2,23 +2,20 @@
 
 private _aceCam = [] call FUNC(getACESpectatorCam);
 BIS_DEBUG_CAM_LASTPOS = getPos _aceCam;
-BIS_DEBUG_CAM_LASTDIR = getDir _aceCam;
+BIS_DEBUG_CAM_VECTORDIR = vectorDir _aceCam;
+BIS_DEBUG_CAM_VECTORUP = vectorUp _aceCam;
 [false] call ACE_spectator_fnc_setSpectator;
 
-[] call BIS_fnc_cameraOld; // will set BIS_DEBUG_CAM
-
-private _bisCam = missionNamespace getVariable ["BIS_DEBUG_CAM", objNull];
-_bisCam camCommand "INERTIA ON";
-_bisCam setPos BIS_DEBUG_CAM_LASTPOS;
-_bisCam setDir BIS_DEBUG_CAM_LASTDIR;
+[
+BIS_DEBUG_CAM_LASTPOS,
+BIS_DEBUG_CAM_VECTORDIR,
+BIS_DEBUG_CAM_VECTORUP
+] call GRAD_cinematicSpec_fnc_cameraOld; // will set BIS_DEBUG_CAM
 
 [
     {
         private _bisCam = missionNamespace getVariable ["BIS_DEBUG_CAM", objNull];
         private _end = isNull _bisCam;
-        if (!_end) then {
-            BIS_DEBUG_CAM_LASTDIR = getDir _bisCam;
-        };
         _end
     },
     {
@@ -26,7 +23,8 @@ _bisCam setDir BIS_DEBUG_CAM_LASTDIR;
         [true] call ACE_spectator_fnc_setSpectator;
         private _aceCam = [] call FUNC(getACESpectatorCam);
         _aceCam setPos BIS_DEBUG_CAM_LASTPOS;
-        _aceCam setDir BIS_DEBUG_CAM_LASTDIR;
+        _aceCam setVectorDir BIS_DEBUG_CAM_VECTORDIR;
+        _aceCam setVectorUp BIS_DEBUG_CAM_VECTORUP;
 
         // this should not be necessary actually. someone else mustve gone wrong before.
         [{_this cameraEffect ["INTERNAL", "BACK"]; }, _aceCam, 0] call CBA_fnc_waitAndExecute;
