@@ -83,7 +83,7 @@ else
 
     sed -i '$a ***\n***' "${readmeFile}"
     sed -i '$a ## Optional Components' "${readmeFile}"
-    sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the addons *directory*.' "${readmeFile}"
+    sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the *addons* directory.' "${readmeFile}"
     pack_directory "$releaseDir/optionals"
 
     npm install -g markdown-pdf
