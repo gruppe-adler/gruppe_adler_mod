@@ -19,7 +19,7 @@
     250ml should take 60 seconds to fill. 250/60 = 4.166.
     Basic medical is 10x (will take 6 seconds for 250ml)
  */
-#define IV_CHANGE_PER_SECOND         ([41.66, 8.332] select (GVAR(level) >= 2))
+#define IV_CHANGE_PER_SECOND         ([41.66, 8.332] select (ace_medical_level >= 2))
 
 params ["_unit", "_syncValues"];
 
