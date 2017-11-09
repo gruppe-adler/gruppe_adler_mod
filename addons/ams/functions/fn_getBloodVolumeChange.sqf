@@ -19,16 +19,16 @@
     250ml should take 60 seconds to fill. 250/60 = 4.166.
     Basic medical is 10x (will take 6 seconds for 250ml)
  */
-#define IV_CHANGE_PER_SECOND         ([41.66, 8.332] select (GVAR(level) >= 2))
+#define IV_CHANGE_PER_SECOND         ([41.66, 8.332] select (ace_medical_level >= 2))
 
 params ["_unit", "_syncValues"];
 
-private _bloodVolume = _unit getVariable [QGVAR(bloodVolume), 100];
-private _bloodVolumeChange = -([_unit] call FUNC(getBloodLoss));
+private _bloodVolume = _unit getVariable ["ace_medical_bloodVolume", 100];
+private _bloodVolumeChange = -([_unit] call ace_medical_fnc_getBloodLoss);
 
-if (!isNil {_unit getVariable QGVAR(ivBags)}) then {
+if (!isNil {_unit getVariable "ace_medical_ivBags"}) then {
     if (_bloodVolume < 100) then {
-        private _bloodBags = _unit getVariable [QGVAR(ivBags), []];
+        private _bloodBags = _unit getVariable ["ace_medical_ivBags", []];
         _bloodBags = _bloodBags apply {
             _x params ["_bagVolumeRemaining"];
             private _bagChange = IV_CHANGE_PER_SECOND min _bagVolumeRemaining; // absolute value of the change in miliLiters
@@ -42,12 +42,12 @@ if (!isNil {_unit getVariable QGVAR(ivBags)}) then {
         };
         _bloodBags = _bloodBags - [[]]; // remove empty bags
         if (_bloodBags isEqualTo []) then {
-            _unit setVariable [QGVAR(ivBags), nil, true]; // no bags left - clear variable (always globaly sync this)
+            _unit setVariable ["ace_medical_ivBags", nil, true]; // no bags left - clear variable (always globaly sync this)
         } else {
-            _unit setVariable [QGVAR(ivBags), _bloodBags, _syncValues];
+            _unit setVariable ["ace_medical_ivBags", _bloodBags, _syncValues];
         };
     } else {
-        _unit setVariable [QGVAR(ivBags), nil, true]; // blood volume = 100% - clear variable (always globaly sync this)
+        _unit setVariable ["ace_medical_ivBags", nil, true]; // blood volume = 100% - clear variable (always globaly sync this)
     };
 };
 
