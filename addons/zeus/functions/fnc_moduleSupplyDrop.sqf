@@ -12,7 +12,6 @@
 */
 #include "script_component.hpp"
 
-
 params ["_logic", "_units", "_activated"];
 
 if !(_activated && {local _logic}) exitWith {};
@@ -61,9 +60,9 @@ GVAR(supplyBox) = _box;
             GVAR(supplyBox),
             {
                 params ["_success", "_box", "_positionAsl"];
+                GVAR(supplyBox) = nil;
                 if(!_success) exitWith {
                     GVAR(supplyPlaneType) = nil;
-                    GVAR(supplyBox) = nil;
                 };
                 if(isNil {_box} || {isNull _box}) exitWith {};
 
@@ -86,12 +85,17 @@ GVAR(supplyBox) = _box;
                     0,
                     "FLY"
                 ];
+                GVAR(supplyPlaneType) = nil;
+
+                _plane setVariable [QGVAR(box), _box, true];
 
                 _plane flyInHeight 400;
                 _plane setPos (_plane modelToWorld [0,0,400]);
                 _plane setVehicleAmmo 0;
                 _plane setDir (_plane getRelDir GVAR(supplyBox));
                 createVehicleCrew _plane;
+                (group (driver _plane)) setCombatMode "BLUE";
+                (group (driver _plane)) setBehaviour "CARELESS";
 
                 // Create track marker for plane
                 private _marker = createMarkerLocal [str _plane, position _plane];
@@ -123,60 +127,70 @@ GVAR(supplyBox) = _box;
                         (_positionAsl select 2)
                     ], 0];
                 _lowerWaypoint setWaypointType "MOVE";
-                _lowerWaypoint setWaypointCompletionRadius 20;
+                _lowerWaypoint setWaypointCompletionRadius 40;
                 _lowerWaypoint setWaypointStatements ["true", "
                     (vehicle this) flyInHeight 150;
                 "];
 
                 private _dropWaypoint = _group addWaypoint [_positionAsl, 0];
                 _dropWaypoint setWaypointType "MOVE";
-                _dropWaypoint setWaypointCompletionRadius 20;
+                _dropWaypoint setWaypointCompletionRadius 40;
 
                 GVAR(dropWaypointSucceeded) = {
-                    if(isNull GVAR(supplyBox)) exitWith {
-                        GVAR(dropWaypointSucceeded) = nil;
-                    };
+                    GVAR(dropWaypointSucceeded) = nil;
+                    private _supplyBox = (vehicle _this) getVariable [QGVAR(box), objNull];
 
                     [objNull, "Abwurf erfolgreich"] call BIS_fnc_showCuratorFeedbackMessage;
 
-                    private _currentPosition = getPosASL (vehicle _this);
                     private _exitWaypoint = (group _this) addWaypoint [[0,0,0], 0];
                     _exitWaypoint setWaypointType "MOVE";
+                    _exitWaypoint setWaypointCompletionRadius 500;
                     (vehicle _this) flyInHeight 1000;
 
                     GVAR(exitWaypointSucceeded) = {
-                        deleteVehicle (vehicle _this);
-                        GVAR(supplyPlaneType) = nil;
-                        GVAR(dropWaypointSucceeded) = nil;
                         GVAR(exitWaypointSucceeded) = nil;
+
+                        private _crew = crew (vehicle _this);
+                        deleteVehicle (vehicle _this);
+
+                        {
+                            deleteVehicle _x;
+                        } forEach _crew;
                     };
 
                     _exitWaypoint setWaypointStatements ["true", QUOTE(this call GVAR(exitWaypointSucceeded))];
 
+                    private _bbr = boundingBoxReal (vehicle _this);
+                    private _p1 = _bbr select 0;
+                    private _p2 = _bbr select 1;
+                    private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
+                    private _dropPos = (vehicle _this) modelToWorld [_maxWidth + 10 ,0,0];
+
                     private _light = "Chemlight_blue" createVehicle [0,0,0];
-                    private _para = createVehicle ["B_Parachute_02_F", [0,0,0], [], 0, "FLY"];
-                    _para setPosASL _currentPosition;
-                    GVAR(supplyBox) attachTo [_para, [0,0,0]];
+                    private _para = createVehicle ["B_Parachute_02_F", [0,0,0], [], 0, "NONE"];
+                    _para setPosASL _dropPos;
+                    _supplyBox attachTo [_para, [0,0,0]];
                     _light attachTo [_para, [0,0,0]];
 
                     [
-                        {(getPosATL GVAR(supplyBox)) select 2 < 1.5},
+                        {(getPosATL (_this select 0)) select 2 < 1.5},
                         {
-                            detach GVAR(supplyBox);
-                            if(local GVAR(supplyBox)) then {
-                                GVAR(supplyBox) allowDamage true;
+                            params ["_box"];
+
+                            detach _box;
+                            if(local _box) then {
+                                _box allowDamage true;
                             } else {
-                                [GVAR(supplyBox), true] remoteExecCall ["allowDamage", GVAR(supplyBox)];
+                                [_box, true] remoteExecCall ["allowDamage", _box];
                             };
 
-                            "SmokeShellBlue" createVehicle (position GVAR(supplyBox));
-                            GVAR(supplyBox) = nil;
-                        }
+                            "SmokeShellBlue" createVehicle (position _box);
+                        },
+                        [_supplyBox]
                     ] call CBA_fnc_waitUntilAndExecute;
                 };
 
-                _dropWaypoint setWaypointStatements ["true", QUOTE(ARR_3([{_this call GVAR(dropWaypointSucceeded)}, this, 0.3]) call CBA_fnc_waitAndExecute)];
-
+                _dropWaypoint setWaypointStatements ["true", QUOTE(this call GVAR(dropWaypointSucceeded))];
             },
             "Ziel auswählen"
         ] call ace_zeus_fnc_getModuleDestination;
