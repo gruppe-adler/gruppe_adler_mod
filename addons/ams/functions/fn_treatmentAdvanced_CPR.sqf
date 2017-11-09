@@ -18,9 +18,9 @@
 
 params ["_caller", "_target", "_selectionName", "_className", "_items"];
 
-if (alive _target && {(_target getVariable [QGVAR(inCardiacArrest), false] || _target getVariable [QGVAR(inReviveState), false])}) then {
-    [_target, "activity_view", LSTRING(Activity_cpr), [[_caller, false, true] call EFUNC(common,getName)]] call FUNC(addToLog);
-	
+if (alive _target && {(_target getVariable ["ace_medical_inCardiacArrest", false] || _target getVariable ["ace_medical_inReviveState", false])}) then {
+    [_target, "activity_view", "STR_ace_medical_Activity_cpr", [[_caller, false, true] call ace_common_fnc_getName]] call ace_medical_fnc_addToLog;
+
     if (local _target) then {
         ["wil_ace_cpr_fnc_treatmentAdvanced_CPRLocal", [_caller, _target]] call CBA_fnc_localEvent;
     } else {
