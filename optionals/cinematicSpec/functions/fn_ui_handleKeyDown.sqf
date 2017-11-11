@@ -2,7 +2,6 @@
 #include "\A3\ui_f\hpp\defineDIKCodes.inc"
 
 private _key = param [1, 0];
-INFO_1("KeyDown, key %1", _key);
 
 private _keybind = ["Gruppe Adler", QGVAR(toggle)] call CBA_fnc_getKeybind;
 if (isNil "_keybind") exitWith {};
@@ -27,6 +26,7 @@ if (_mode != 0) exitWith { // #define MODE_FREE   0
     false
 };
 
+INFO("switching to BIS_DEBUG_CAM...");
 [] call FUNC(cam);
 
 true

@@ -13,9 +13,11 @@ BIS_DEBUG_CAM_VECTORUP = vectorUp _aceCam;
 // [false] call ACE_spectator_fnc_setSpectator;
 
 private _disableACESpectator = {
-    [{ !isNull MAIN_DISPLAY },{ [false] call ace_spectator_fnc_ui }] call CBA_fnc_waitUntilAndExecute;
+    [false] call ace_spectator_fnc_ui;
+    [false] call ace_spectator_fnc_cam;
 };
 
+INFO("hack to get ACE spectator out of the way");
 call _disableACESpectator;
 
 [
@@ -26,12 +28,10 @@ call _disableACESpectator;
 
 [
     {
-        private _bisCam = missionNamespace getVariable ["BIS_DEBUG_CAM", objNull];
-        private _end = isNull _bisCam;
-        _end
+       isNil "BIS_DEBUG_CAM";
     },
     {
-        INFO("returning to ACE cam...");
+        INFO("BIS_DEBUG_CAM is nil, returning to ACE cam...");
         [false] call ACE_spectator_fnc_setSpectator; // be sure to properly reset spec mode
         [
             {
