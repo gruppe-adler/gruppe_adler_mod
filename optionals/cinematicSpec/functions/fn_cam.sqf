@@ -12,13 +12,16 @@ BIS_DEBUG_CAM_VECTORUP = vectorUp _aceCam;
 //
 // [false] call ACE_spectator_fnc_setSpectator;
 
-private _disableACESpectator = {
-    [false] call ace_spectator_fnc_ui;
-    [false] call ace_spectator_fnc_cam;
-};
+//private _disableACESpectator = {
+//    [false] call ace_spectator_fnc_ui;
+//    [false] call ace_spectator_fnc_cam;
+//};
+//
+//INFO("hack to get ACE spectator out of the way");
+// call _disableACESpectator;
 
-INFO("hack to get ACE spectator out of the way");
-call _disableACESpectator;
+// ^ but this is wrong alöso, because it leaves ace spec in an inconsistent state, which WILL lead to errors
+[false] call ACE_spectator_fnc_setSpectator;
 
 [
     BIS_DEBUG_CAM_LASTPOS,
@@ -28,25 +31,22 @@ call _disableACESpectator;
 
 [
     {
-       isNil "BIS_DEBUG_CAM";
+       isNil QUOTE(BIS_DEBUG_CAM);
     },
     {
         INFO("BIS_DEBUG_CAM is nil, returning to ACE cam...");
-        [false] call ACE_spectator_fnc_setSpectator; // be sure to properly reset spec mode
+        [true] call ACE_spectator_fnc_setSpectator;
+        private _aceCam = ACE_spectator_camera;
+        _aceCam setPos BIS_DEBUG_CAM_LASTPOS;
+        _aceCam setVectorDir BIS_DEBUG_CAM_VECTORDIR;
+        _aceCam setVectorUp BIS_DEBUG_CAM_VECTORUP;
+
+        // this should not be necessary actually. something else mustve gone wrong before. :/
         [
             {
-                [true] call ACE_spectator_fnc_setSpectator;
-                private _aceCam = ACE_spectator_camera;
-                _aceCam setPos BIS_DEBUG_CAM_LASTPOS;
-                _aceCam setVectorDir BIS_DEBUG_CAM_VECTORDIR;
-                _aceCam setVectorUp BIS_DEBUG_CAM_VECTORUP;
-
-                // this should not be necessary actually. someone else mustve gone wrong before. :/
-                [   {
-                        _this cameraEffect ["INTERNAL", "BACK"];
-                    },
-                    _aceCam
-                ] call CBA_fnc_waitAndExecute;
-            }] call CBA_fnc_waitAndExecute;
+                _this cameraEffect ["INTERNAL", "BACK"];
+            },
+            _aceCam
+        ] call CBA_fnc_waitAndExecute;
     }
 ] call CBA_fnc_waitUntilAndExecute;
