@@ -4,7 +4,7 @@
 private _key = param [1, 0];
 INFO_1("KeyDown, key %1", _key);
 
-private _keybind = ["Gruppe Adler",QGVAR(toggle)] call CBA_fnc_getKeybind;
+private _keybind = ["Gruppe Adler", QGVAR(toggle)] call CBA_fnc_getKeybind;
 if (isNil "_keybind") exitWith {};
 private _keycode = _keybind select 5 select 0;
 
@@ -13,8 +13,9 @@ if (_key != _keycode) exitWith {
     false
 };
 
-if (!([] call FUNC(isAceSpectator))) exitWith {
-        false
+if (!ace_spectator_isSet) exitWith {
+    INFO("not allowed to switch to cinematicSpec: We're not in ACE spectator mode");
+    false
 };
 
 private _cameraAttributes = [] call ace_spectator_fnc_getCameraAttributes;

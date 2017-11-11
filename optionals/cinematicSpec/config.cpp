@@ -17,10 +17,7 @@ class CfgPatches {
 #include "cfgFunctions.hpp"
 
 class ACE_spectator_display {
-	onKeyDown = "_this call GRAD_cinematicSpec_fnc_chainHandlers";
-};
-class ACE_spectator_interface {
-	onKeyDown = "_this call GRAD_cinematicSpec_fnc_chainHandlers";
+	onKeyDown = "_this call GRAD_cinematicSpec_fnc_keyDown";
 };
 
 class Extended_PreInit_EventHandlers {

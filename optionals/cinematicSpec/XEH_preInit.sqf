@@ -7,7 +7,10 @@ SCRIPT(XEH_preInit);
 
 GVAR(ace_setSpectator) = ace_spectator_fnc_setSpectator;
 
-ace_spectator_fnc_setSpectator = {
-    BIS_DEBUG_CAM = objNull; //whatever happens, if someone sets or unset ace spec let's be safe and go there (or leave our cam)
-    _this call GVAR(ace_setSpectator);
-}
+[
+    "ace_spectatorSet",
+    {
+        INFO_1("caught ace_spectatorSet, setting BIS cam %1 to null", BIS_DEBUG_CAM);
+        BIS_DEBUG_CAM = objNull;
+    }
+] call CBA_fnc_addEventHandler;
