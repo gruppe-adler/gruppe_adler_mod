@@ -24,8 +24,8 @@ if !(_box isKindOf "ReammoBox_F") exitWith {
     [objNull, "Das Abwurfobjekt muss eine Ammobox sein"] call BIS_fnc_showCuratorFeedbackMessage;
 };
 
-if(!isNil QGVAR(supplyBox)) exitWith {
-    [objNull, "Es ist gerade ein Abwurf aktiv"] call BIS_fnc_showCuratorFeedbackMessage;
+if(_box getVariable [QGVAR(supplyDropInProgress), false]) exitWith {
+    [objNull, "Es ist gerade ein Abwurf mit dieser Box aktiv"] call BIS_fnc_showCuratorFeedbackMessage;
 };
 
 if(!createDialog QGVAR(moduleSupplyDrop)) exitWith {};
@@ -65,6 +65,7 @@ GVAR(supplyBox) = _box;
                     GVAR(supplyPlaneType) = nil;
                 };
                 if(isNil {_box} || {isNull _box}) exitWith {};
+                _box setVariable [QGVAR(supplyDropInProgress), true, true];
 
                 [objNull, "Abwurf wird gestartet"] call BIS_fnc_showCuratorFeedbackMessage;
 
@@ -127,14 +128,14 @@ GVAR(supplyBox) = _box;
                         (_positionAsl select 2)
                     ], 0];
                 _lowerWaypoint setWaypointType "MOVE";
-                _lowerWaypoint setWaypointCompletionRadius 40;
+                _lowerWaypoint setWaypointCompletionRadius 80;
                 _lowerWaypoint setWaypointStatements ["true", "
                     (vehicle this) flyInHeight 150;
                 "];
 
                 private _dropWaypoint = _group addWaypoint [_positionAsl, 0];
                 _dropWaypoint setWaypointType "MOVE";
-                _dropWaypoint setWaypointCompletionRadius 40;
+                _dropWaypoint setWaypointCompletionRadius 80;
 
                 GVAR(dropWaypointSucceeded) = {
                     GVAR(dropWaypointSucceeded) = nil;
@@ -177,6 +178,7 @@ GVAR(supplyBox) = _box;
                         {
                             params ["_box"];
 
+                            _box setVariable [QGVAR(supplyDropInProgress), nil, true];
                             detach _box;
                             if(local _box) then {
                                 _box allowDamage true;
