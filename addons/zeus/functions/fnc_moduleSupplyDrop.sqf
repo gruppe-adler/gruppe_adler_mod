@@ -136,63 +136,7 @@ GVAR(supplyBox) = _box;
                 private _dropWaypoint = _group addWaypoint [_positionAsl, 0];
                 _dropWaypoint setWaypointType "MOVE";
                 _dropWaypoint setWaypointCompletionRadius 80;
-
-                GVAR(dropWaypointSucceeded) = {
-                    GVAR(dropWaypointSucceeded) = nil;
-                    private _supplyBox = (vehicle _this) getVariable [QGVAR(box), objNull];
-
-                    [objNull, "Abwurf erfolgreich"] call BIS_fnc_showCuratorFeedbackMessage;
-
-                    private _exitWaypoint = (group _this) addWaypoint [[0,0,0], 0];
-                    _exitWaypoint setWaypointType "MOVE";
-                    _exitWaypoint setWaypointCompletionRadius 500;
-                    (vehicle _this) flyInHeight 1000;
-
-                    GVAR(exitWaypointSucceeded) = {
-                        GVAR(exitWaypointSucceeded) = nil;
-
-                        private _crew = crew (vehicle _this);
-                        deleteVehicle (vehicle _this);
-
-                        {
-                            deleteVehicle _x;
-                        } forEach _crew;
-                    };
-
-                    _exitWaypoint setWaypointStatements ["true", QUOTE(this call GVAR(exitWaypointSucceeded))];
-
-                    private _bbr = boundingBoxReal (vehicle _this);
-                    private _p1 = _bbr select 0;
-                    private _p2 = _bbr select 1;
-                    private _maxWidth = abs ((_p2 select 0) - (_p1 select 0));
-                    private _dropPos = (vehicle _this) modelToWorld [_maxWidth + 10 ,0,0];
-
-                    private _light = "Chemlight_blue" createVehicle [0,0,0];
-                    private _para = createVehicle ["B_Parachute_02_F", [0,0,0], [], 0, "NONE"];
-                    _para setPosASL _dropPos;
-                    _supplyBox attachTo [_para, [0,0,0]];
-                    _light attachTo [_para, [0,0,0]];
-
-                    [
-                        {(getPosATL (_this select 0)) select 2 < 1.5},
-                        {
-                            params ["_box"];
-
-                            _box setVariable [QGVAR(supplyDropInProgress), nil, true];
-                            detach _box;
-                            if(local _box) then {
-                                _box allowDamage true;
-                            } else {
-                                [_box, true] remoteExecCall ["allowDamage", _box];
-                            };
-
-                            "SmokeShellBlue" createVehicle (position _box);
-                        },
-                        [_supplyBox]
-                    ] call CBA_fnc_waitUntilAndExecute;
-                };
-
-                _dropWaypoint setWaypointStatements ["true", QUOTE(this call GVAR(dropWaypointSucceeded))];
+                _dropWaypoint setWaypointStatements ["true", QUOTE(this call FUNC(moduleSupplyDropSuccess))];
             },
             "Ziel auswählen"
         ] call ace_zeus_fnc_getModuleDestination;
