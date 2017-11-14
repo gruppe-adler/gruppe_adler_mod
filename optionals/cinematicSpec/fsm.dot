@@ -1,0 +1,30 @@
+digraph finite_state_machine {
+	size="6"
+	node [
+		shape = circle,
+		color = yellow,
+		style = filled
+	];
+	"pCam\n-o" [ color = lightgreen ]; "aSpec\n-o" [ color = red ];
+	"pCam\n+o" [ color = lightgreen ];
+	"oSpec\n+o" [ color = lightblue ];
+	
+	"aSpec\n+o" [ color = orange ];
+	
+	
+	"pCam\n-o" -> "aSpec\n-o" [ label = "true ace_setSpectator" ];
+	"pCam\n-o" -> "pCam\n+o" [ label = "allow_cameraOld" ];
+	
+	"pCam\n+o" -> "aSpec\n+o" [ label = "true ace_setSpectator" ];
+	"pCam\n+o" -> "pCam\n-o" [ label = "disallow_cameraOld" ];
+	
+	"aSpec\n+o" -> "oSpec\n+o" [ label = "use hotkey" ];
+	"aSpec\n+o" -> "aSpec\n-o" [ label = "disallow_cameraOld" ];
+	"aSpec\n+o" -> "pCam\n+o" [ label = "false ace_setSpectator" ];
+	
+	"aSpec\n-o" -> "aSpec\n+o" [ label = "allow_cameraOld" ];
+	"aSpec\n-o" -> "pCam\n-o" [ label = "false ace_setSpectator" ];
+	
+	"oSpec\n+o" -> "aSpec\n-o" [ label = "disallow_cameraOld" ];
+	"oSpec\n+o" -> "aSpec\n+o" [ label = "right click" ];	
+}
