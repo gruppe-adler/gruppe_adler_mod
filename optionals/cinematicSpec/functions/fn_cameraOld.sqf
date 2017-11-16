@@ -195,5 +195,6 @@ _map_mousebuttonclick = ((finddisplay 12) displayctrl 51) ctrladdeventhandler ["
 	(finddisplay 46) displayremoveeventhandler ["keydown",_keyDown];
 	(finddisplay 46) displayremoveeventhandler ["MouseButtonDblClick",_mousebuttonclick_focus];
 	((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["mousebuttonclick",_map_mousebuttonclick];
+	((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["Draw",_mapIconEH];
 
 };
