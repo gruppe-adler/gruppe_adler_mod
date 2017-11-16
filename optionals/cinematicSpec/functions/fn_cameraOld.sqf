@@ -44,6 +44,7 @@ GRAD_CINEMACAM setVectorUp _vectorUp;
 
 
 _mapIconEH = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", '
+	if (isNil "GRAD_CINEMACAM" || {isNull GRAD_CINEMACAM}) exitWith { ((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["Draw",_this]; };
     (_this select 0) drawIcon [
         gettext (configfile >> "RscDisplayCamera" >> "iconCamera"),
         [0,1,1,1],
