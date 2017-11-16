@@ -7,9 +7,9 @@ BIS_DEBUG_CAM_VECTORUP = vectorUp _aceCam;
 [false] call ACE_spectator_fnc_setSpectator;
 
 [
-BIS_DEBUG_CAM_LASTPOS,
-BIS_DEBUG_CAM_VECTORDIR,
-BIS_DEBUG_CAM_VECTORUP
+    BIS_DEBUG_CAM_LASTPOS,
+    BIS_DEBUG_CAM_VECTORDIR,
+    BIS_DEBUG_CAM_VECTORUP
 ] call GRAD_cinematicSpec_fnc_cameraOld; // will set BIS_DEBUG_CAM
 
 [
