@@ -1,5 +1,5 @@
 //--- Classic camera script, enhanced by Karel Moricky, 2010/03/19
-// ripped + modified by nomisum for gruppe adler 2017
+// ripped + modified by nomisum + fusselwurm for gruppe adler 2017
 
 private ["_pX", "_pY", "_pZ"];
 
@@ -9,19 +9,19 @@ _pX = _pos select 0;
 _pY = _pos select 1;
 _pZ = _pos select 2;
 
-if (!isNil "BIS_DEBUG_CAM") exitwith {};
+if (!isNil "GRAD_CINEMACAM") exitwith {};
 
 //--- Is FLIR available
-if (isnil "BIS_DEBUG_CAM_ISFLIR") then {
-	BIS_DEBUG_CAM_ISFLIR = isclass (configfile >> "cfgpatches" >> "A3_Data_F");
+if (isnil "GRAD_CINEMACAM_ISFLIR") then {
+	GRAD_CINEMACAM_ISFLIR = isclass (configfile >> "cfgpatches" >> "A3_Data_F");
 };
 
-BIS_DEBUG_CAM_MAP = false;
-BIS_DEBUG_CAM_VISION = 0;
-BIS_DEBUG_CAM_FOCUS = 0;
-BIS_DEBUG_CAM_COLOR = ppEffectCreate ["colorCorrections", 1600];
-if (isnil "BIS_DEBUG_CAM_PPEFFECTS") then {
-	BIS_DEBUG_CAM_PPEFFECTS = [
+GRAD_CINEMACAM_MAP = false;
+GRAD_CINEMACAM_VISION = 0;
+GRAD_CINEMACAM_FOCUS = 0;
+GRAD_CINEMACAM_COLOR = ppEffectCreate ["colorCorrections", 1600];
+if (isnil "GRAD_CINEMACAM_PPEFFECTS") then {
+	GRAD_CINEMACAM_PPEFFECTS = [
 		[1, 1, -0.01, [1.0, 0.6, 0.0, 0.005], [1.0, 0.96, 0.66, 0.55], [0.95, 0.95, 0.95, 0.0]],
 		[1, 1.02, -0.005, [0.0, 0.0, 0.0, 0.0], [1, 0.8, 0.6, 0.65],  [0.199, 0.587, 0.114, 0.0]],
 		[1, 1.15, 0, [0.0, 0.0, 0.0, 0.0], [0.5, 0.8, 1, 0.5],  [0.199, 0.587, 0.114, 0.0]],
@@ -34,21 +34,29 @@ if (typename _this != typename objnull) then {_this = cameraon};
 
 private ["_local"];
 _local = "camera" camCreate [_pX, _pY, _pZ];
-BIS_DEBUG_CAM = _local;
+GRAD_CINEMACAM = _local;
 _local camCommand "MANUAL ON";
 _local camCommand "INERTIA ON";
 _local cameraEffect ["INTERNAL", "BACK"];
 showCinemaBorder false;
-BIS_DEBUG_CAM setVectorDir _vectorDir;
-BIS_DEBUG_CAM setVectorUp _vectorUp;
+GRAD_CINEMACAM setVectorDir _vectorDir;
+GRAD_CINEMACAM setVectorUp _vectorUp;
 
 
-//--- Marker
-BIS_DEBUG_CAM_MARKER = createmarkerlocal ["BIS_DEBUG_CAM_MARKER",_pos];
-BIS_DEBUG_CAM_MARKER setmarkertypelocal "mil_start";
-BIS_DEBUG_CAM_MARKER setmarkercolorlocal "colorpink";
-BIS_DEBUG_CAM_MARKER setmarkersizelocal [.75,.75];
-BIS_DEBUG_CAM_MARKER setmarkertextlocal "BIS_DEBUG_CAM";
+_mapIconEH = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", '
+	if (isNil "GRAD_CINEMACAM" || {isNull GRAD_CINEMACAM}) exitWith { ((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["Draw",_this]; };
+    (_this select 0) drawIcon [
+        gettext (configfile >> "RscDisplayCamera" >> "iconCamera"),
+        [0,1,1,1],
+		position GRAD_CINEMACAM,
+		32,
+		32,
+		direction GRAD_CINEMACAM,
+		"",
+		1
+    ];
+
+'];
 
 
 //--- Key Down
@@ -57,9 +65,9 @@ _keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
 	_ctrl = _this select 3;
 
 	if (_key in (actionkeys 'nightvision')) then {
-		BIS_DEBUG_CAM_VISION = BIS_DEBUG_CAM_VISION + 1;
-		if (BIS_DEBUG_CAM_ISFLIR) then {
-					_vision = BIS_DEBUG_CAM_VISION % 4;
+		GRAD_CINEMACAM_VISION = GRAD_CINEMACAM_VISION + 1;
+		if (GRAD_CINEMACAM_ISFLIR) then {
+					_vision = GRAD_CINEMACAM_VISION % 4;
 			switch (_vision) do {
 				case 0: {
 					camusenvg false;
@@ -79,7 +87,7 @@ _keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
 				};
 			};
 		} else {
-			_vision = BIS_DEBUG_CAM_VISION % 2;
+			_vision = GRAD_CINEMACAM_VISION % 2;
 			switch (_vision) do {
 				case 0: {
 					camusenvg false;
@@ -92,15 +100,13 @@ _keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
 	};
 
 	if (_key in (actionkeys 'showmap')) then {
-		if (BIS_DEBUG_CAM_MAP) then {
+		if (GRAD_CINEMACAM_MAP) then {
 			openmap [false,false];
-			BIS_DEBUG_CAM_MAP = false;
+			GRAD_CINEMACAM_MAP = false;
 		} else {
 			openmap [true,true];
-			BIS_DEBUG_CAM_MAP = true;
-			BIS_DEBUG_CAM_MARKER setmarkerposlocal position BIS_DEBUG_CAM;
-			BIS_DEBUG_CAM_MARKER setmarkerdirlocal direction BIS_DEBUG_CAM;
-			mapanimadd [0,0.1,position BIS_DEBUG_CAM];
+			GRAD_CINEMACAM_MAP = true;
+			mapanimadd [0,0.1,position GRAD_CINEMACAM];
 			mapanimcommit;
 		};
 	};
@@ -113,19 +119,19 @@ _keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
 			copytoclipboard str _worldpos;
 		};
 	};
-	if (_key == 83 && !isnil 'BIS_DEBUG_CAM_LASTPOS') then {
-		BIS_DEBUG_CAM setpos BIS_DEBUG_CAM_LASTPOS;
+	if (_key == 83 && !isnil 'GRAD_CINEMACAM_LASTPOS') then {
+		GRAD_CINEMACAM setpos GRAD_CINEMACAM_LASTPOS;
 	};
 
 	if (_key == 41) then {
-		BIS_DEBUG_CAM_COLOR ppeffectenable false;
+		GRAD_CINEMACAM_COLOR ppeffectenable false;
 	};
 	if (_key >= 2 && _key <= 11) then {
 		_id = _key - 2;
-		if (_id < count BIS_DEBUG_CAM_PPEFFECTS) then {
-			BIS_DEBUG_CAM_COLOR ppEffectAdjust (BIS_DEBUG_CAM_PPEFFECTS select _id);
-			BIS_DEBUG_CAM_COLOR ppEffectCommit 0;
-			BIS_DEBUG_CAM_COLOR ppeffectenable true;
+		if (_id < count GRAD_CINEMACAM_PPEFFECTS) then {
+			GRAD_CINEMACAM_COLOR ppEffectAdjust (GRAD_CINEMACAM_PPEFFECTS select _id);
+			GRAD_CINEMACAM_COLOR ppEffectCommit 0;
+			GRAD_CINEMACAM_COLOR ppeffectenable true;
 		};
 	};
 "];
@@ -133,13 +139,13 @@ _keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
 //--- focus on someone
 _mousebuttonclick_focus = (finddisplay 46) displayaddeventhandler ["MouseButtonDblClick","
 	_n = _this select 0;
-	BIS_DEBUG_CAM_FOCUS = BIS_DEBUG_CAM_FOCUS + _n/10;
-	if (_n > 0 && BIS_DEBUG_CAM_FOCUS < 0) then {BIS_DEBUG_CAM_FOCUS = 0};
-	if (BIS_DEBUG_CAM_FOCUS < 0) then {BIS_DEBUG_CAM_FOCUS = -1};
-	BIS_DEBUG_CAM camcommand 'manual off';
-	BIS_DEBUG_CAM campreparefocus [BIS_DEBUG_CAM_FOCUS,1];
-	BIS_DEBUG_CAM camcommitprepared 0;
-	BIS_DEBUG_CAM camcommand 'manual on';
+	GRAD_CINEMACAM_FOCUS = GRAD_CINEMACAM_FOCUS + _n/10;
+	if (_n > 0 && GRAD_CINEMACAM_FOCUS < 0) then {GRAD_CINEMACAM_FOCUS = 0};
+	if (GRAD_CINEMACAM_FOCUS < 0) then {GRAD_CINEMACAM_FOCUS = -1};
+	GRAD_CINEMACAM camcommand 'manual off';
+	GRAD_CINEMACAM campreparefocus [GRAD_CINEMACAM_FOCUS,1];
+	GRAD_CINEMACAM camcommitprepared 0;
+	GRAD_CINEMACAM camcommand 'manual on';
 "];
 
 
@@ -154,8 +160,7 @@ _map_mousebuttonclick = ((finddisplay 12) displayctrl 51) ctrladdeventhandler ["
 			_veh = vehicle player;
 			_veh setpos [_worldpos select 0,_worldpos select 1,position _veh select 2];
 		} else {
-			BIS_DEBUG_CAM setpos [_worldpos select 0,_worldpos select 1,position BIS_DEBUG_CAM select 2];
-			BIS_DEBUG_CAM_MARKER setmarkerposlocal _worldpos;
+			GRAD_CINEMACAM setpos [_worldpos select 0,_worldpos select 1,position GRAD_CINEMACAM select 2];
 		};
 	};
 "];
@@ -164,37 +169,33 @@ _map_mousebuttonclick = ((finddisplay 12) displayctrl 51) ctrladdeventhandler ["
 
 
 //Wait until destroy is forced or camera auto-destroyed.
-[_local,_keyDown,_mousebuttonclick_focus,_map_mousebuttonclick] spawn {
-	private ["_local","_keyDown","_mousebuttonclick_focus","_map_mousebuttonclick","_lastpos", "_lastVectorUp", "_lastVectorDir"];
+[_local,_keyDown,_mousebuttonclick_focus,_map_mousebuttonclick, _mapIconEH] spawn {
+	private ["_lastpos", "_lastVectorUp", "_lastVectorDir"];
 
-	_local = _this select 0;
-	_keyDown = _this select 1;
-	_mousebuttonclick_focus = _this select 2;
-	_map_mousebuttonclick = _this select 3;
+	params ["_local", "_keyDown", "_mousebuttonclick_focus", "_map_mousebuttonclick", "_mapIconEH"];
 
 	waituntil {
-		if (!isnull BIS_DEBUG_CAM) then {
-				_lastpos = position BIS_DEBUG_CAM; 
-				_lastVectorUp = vectorUp BIS_DEBUG_CAM;
-				_lastVectorDir = vectorDir BIS_DEBUG_CAM;
+		if (!isnull GRAD_CINEMACAM) then {
+				_lastpos = position GRAD_CINEMACAM; 
+				_lastVectorUp = vectorUp GRAD_CINEMACAM;
+				_lastVectorDir = vectorDir GRAD_CINEMACAM;
 			};
-		isNull BIS_DEBUG_CAM
+		isNull GRAD_CINEMACAM
 	};
 
 	player cameraEffect ["TERMINATE", "BACK"];
-	deletemarkerlocal BIS_DEBUG_CAM_MARKER;
-	BIS_DEBUG_CAM = nil;
-	BIS_DEBUG_CAM_MAP = nil;
-	BIS_DEBUG_CAM_MARKER = nil;
-	BIS_DEBUG_CAM_VISION = nil;
+	GRAD_CINEMACAM = nil;
+	GRAD_CINEMACAM_MAP = nil;
+	GRAD_CINEMACAM_VISION = nil;
 	camDestroy _local;
-	BIS_DEBUG_CAM_LASTPOS = _lastpos;
-	BIS_DEBUG_CAM_VECTORUP = _lastVectorUp;
-	BIS_DEBUG_CAM_VECTORDIR = _lastVectorDir;
+	GRAD_CINEMACAM_LASTPOS = _lastpos;
+	GRAD_CINEMACAM_VECTORUP = _lastVectorUp;
+	GRAD_CINEMACAM_VECTORDIR = _lastVectorDir;
 
-	ppeffectdestroy BIS_DEBUG_CAM_COLOR;
+	ppeffectdestroy GRAD_CINEMACAM_COLOR;
 	(finddisplay 46) displayremoveeventhandler ["keydown",_keyDown];
 	(finddisplay 46) displayremoveeventhandler ["MouseButtonDblClick",_mousebuttonclick_focus];
 	((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["mousebuttonclick",_map_mousebuttonclick];
+	((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["Draw",_mapIconEH];
 
 };
