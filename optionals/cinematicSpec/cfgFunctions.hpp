@@ -6,6 +6,8 @@ class CfgFunctions {
 			class cam {};
 			class cameraOld {};
 			class chainHandlers {};
+			class api_cancelCinematicSpec;
+			class api_declareCinematicSpecAware;
 			class watchEGSpectator {
 			    postInit = 1;
 			};

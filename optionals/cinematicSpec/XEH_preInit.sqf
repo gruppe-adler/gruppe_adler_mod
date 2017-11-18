@@ -10,3 +10,6 @@ SCRIPT(XEH_preInit);
     "",
     ""
 ] call CBA_fnc_addKeybind;
+
+GVAR(registered) = false;
+GVAR(warned) = false;
