@@ -3,4 +3,10 @@
 
 SCRIPT(XEH_preInit);
 
-["Gruppe Adler",QGVAR(toggle),"Enter Cinematic Spectator",{true},""] call CBA_fnc_addKeybind;
+[
+    "Gruppe Adler",
+    QGVAR(toggle),
+    "Enter Cinematic Spectator",
+    "",
+    ""
+] call CBA_fnc_addKeybind;

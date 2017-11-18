@@ -1,10 +1,35 @@
 #include "script_component.hpp"
 
-private _aceCam = [] call FUNC(getACESpectatorCam);
-GRAD_CINEMACAM_LASTPOS = getPos _aceCam;
-GRAD_CINEMACAM_VECTORDIR = vectorDir _aceCam;
-GRAD_CINEMACAM_VECTORUP = vectorUp _aceCam;
-[false] call ACE_spectator_fnc_setSpectator;
+private _spectatorType = param [0, ""];
+private _specCam = objNull;
+switch (_spectatorType) do {
+    case "ace": {
+        _specCam = ACE_spectator_camera;
+    };
+    case "eg": {
+        _specCam = ["GetCamera"] call BIS_fnc_EGSpectator;
+    };
+    default {
+        throw "invalid parameter";
+   };
+};
+
+GRAD_CINEMACAM_LASTPOS = getPos _specCam;
+GRAD_CINEMACAM_VECTORDIR = vectorDir _specCam;
+GRAD_CINEMACAM_VECTORUP = vectorUp _specCam;
+
+
+switch (_spectatorType) do {
+    case "ace": {
+        [false] call ACE_spectator_fnc_setSpectator;
+    };
+    case "eg": {
+	    ["Terminate"] call BIS_fnc_EGSpectator;
+    };
+    default {
+        throw "invalid parameter";
+   };
+};
 
 [
     GRAD_CINEMACAM_LASTPOS,
@@ -19,14 +44,29 @@ GRAD_CINEMACAM_VECTORUP = vectorUp _aceCam;
         _end
     },
     {
-        INFO("returning to ACE cam...");
-        [true] call ACE_spectator_fnc_setSpectator;
-        private _aceCam = [] call FUNC(getACESpectatorCam);
-        _aceCam setPos GRAD_CINEMACAM_LASTPOS;
-        _aceCam setVectorDir GRAD_CINEMACAM_VECTORDIR;
-        _aceCam setVectorUp GRAD_CINEMACAM_VECTORUP;
+        private _spectatorType = param [0, ""];
+        private _specCam = objNull;
+        INFO_1("returning to %1 spectator...", _spectatorType);
+        switch (_spectatorType) do {
+            case "ace": {
+                [true] call ACE_spectator_fnc_setSpectator;
+                _specCam = ACE_spectator_camera;
+            };
+            case "eg": {
+                ["Initialize", [player]] call BIS_fnc_EGSpectator;
+                _specCam = ["GetCamera"] call BIS_fnc_EGSpectator;
+            };
+            default {
+                throw "invalid parameter";
+           };
+        };
 
-        // this should not be necessary actually. someone else mustve gone wrong before.
-        [{_this cameraEffect ["INTERNAL", "BACK"]; }, _aceCam, 0] call CBA_fnc_waitAndExecute;
-    }
+        _specCam setPos GRAD_CINEMACAM_LASTPOS;
+        _specCam setVectorDir GRAD_CINEMACAM_VECTORDIR;
+        _specCam setVectorUp GRAD_CINEMACAM_VECTORUP;
+
+        // for some reason, I do need to do this for both EG and ACE spec
+        [{_this cameraEffect ["INTERNAL", "BACK"]; }, _specCam, 0] call CBA_fnc_waitAndExecute;
+    },
+    [_spectatorType]
 ] call CBA_fnc_waitUntilAndExecute;

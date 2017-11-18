@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-#include "\A3\ui_f\hpp\defineDIKCodes.inc"
 
 private _key = param [1, 0];
 
@@ -12,7 +11,7 @@ if (_key != _keycode) exitWith {
     false
 };
 
-if (!([] call FUNC(isAceSpectator))) exitWith {
+if (!ace_spectator_isSet) exitWith {
         false
 };
 
@@ -25,6 +24,6 @@ if (_mode != 0) exitWith { // #define MODE_FREE   0
     false
 };
 
-[] call FUNC(cam);
+["ace"] call FUNC(cam);
 
 true

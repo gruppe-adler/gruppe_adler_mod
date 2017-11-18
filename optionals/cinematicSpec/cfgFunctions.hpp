@@ -6,9 +6,11 @@ class CfgFunctions {
 			class cam {};
 			class cameraOld {};
 			class chainHandlers {};
-			class getACESpectatorCam {};
-			class isACESpectator {};
-			class ui_handleKeyDown {};
+			class watchEGSpectator {
+			    postInit = 1;
+			};
+			class ui_ace_handleKeyDown {};
+			class ui_eg_handleKeyDown {};
 		};
 	};
 };
