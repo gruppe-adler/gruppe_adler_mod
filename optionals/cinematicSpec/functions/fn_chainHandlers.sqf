@@ -7,7 +7,7 @@ if (!isNil "ACE_spectator_fnc_ui_handleKeyDown") then {
     _result = ["onKeyDown", _this] call ACE_spectator_fnc_handleInterface;
 };};
 
-if (_this call FUNC(ui_handleKeyDown)) then {
+if (_this call FUNC(ui_ace_handleKeyDown)) then {
     _result = true;
 };
 
