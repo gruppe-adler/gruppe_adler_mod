@@ -56,4 +56,4 @@ _light attachTo [_para, [0,0,0]];
         },
         _this
     ] call CBA_fnc_waitUntilAndExecute;
-},[_supplyBox],3] call CBA_fnc_waitAndExecute;
+}, [_supplyBox], 3] call CBA_fnc_waitAndExecute;

@@ -12,6 +12,8 @@
 */
 #include "script_component.hpp"
 
+if(!local _this) exitWith {};
+
 private _crew = crew (vehicle _this);
 deleteVehicle (vehicle _this);
 
