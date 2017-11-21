@@ -104,11 +104,11 @@ GVAR(supplyBox) = _box;
                 _plane setVehicleAmmo 0;
 
                 _plane flyInHeight 400;
-                private _velocity = velocity  _vehicle;
+                private _velocity = velocityModelSpace _vehicle;
                 _plane setPos (_plane modelToWorld [0,0,400]);
                 _plane setDir (_plane getRelDir GVAR(supplyBox));
 
-                _plane setVelocity _velocity;
+                _plane setVelocityModelSpace _velocity;
 
                 createVehicleCrew _plane;
                 (group (driver _plane)) setCombatMode "BLUE";
