@@ -94,7 +94,7 @@ GVAR(supplyBox) = _box;
                     params ["_plane"];
                     if(!local _plane) exitWith {};
 
-                    private _box = getVariable [QGVAR(box), objnull];
+                    private _box = _plane getVariable [QGVAR(box), objnull];
                     if(isNull _box) exitWith {};
                     _box setVariable [QGVAR(supplyDropInProgress), nil, true];
                 }];
