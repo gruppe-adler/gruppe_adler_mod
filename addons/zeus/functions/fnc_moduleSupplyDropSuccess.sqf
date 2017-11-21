@@ -13,6 +13,7 @@
 #include "script_component.hpp"
 
 private _supplyBox = (vehicle _this) getVariable [QGVAR(box), objNull];
+if !(local _supplyBox) exitWith {};
 
 [objNull, "Abwurf erfolgreich"] call BIS_fnc_showCuratorFeedbackMessage;
 
@@ -35,20 +36,24 @@ _para setPosASL _dropPos;
 _supplyBox attachTo [_para, [0,0,0]];
 _light attachTo [_para, [0,0,0]];
 
-[
-    {(getPosATL (_this select 0)) select 2 < 1.5},
-    {
-        params ["_box"];
+[{
+    [
+        {(getPosATL (_this select 0)) select 2 < 1.5},
+        {
+            params ["_box"];
 
-        _box setVariable [QGVAR(supplyDropInProgress), nil, true];
-        detach _box;
-        if(local _box) then {
-            _box allowDamage true;
-        } else {
-            [_box, true] remoteExecCall ["allowDamage", _box];
-        };
+            INFO_1("moduleSupplyDropSuccess L49, _box: %1",_box);
 
-        "SmokeShellBlue" createVehicle (position _box);
-    },
-    [_supplyBox]
-] call CBA_fnc_waitUntilAndExecute;
+            _box setVariable [QGVAR(supplyDropInProgress), nil, true];
+            detach _box;
+            if(local _box) then {
+                _box allowDamage true;
+            } else {
+                [_box, true] remoteExecCall ["allowDamage", _box];
+            };
+
+            "SmokeShellBlue" createVehicle (position _box);
+        },
+        _this
+    ] call CBA_fnc_waitUntilAndExecute;
+},[_supplyBox],3] call CBA_fnc_waitAndExecute;
