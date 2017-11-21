@@ -65,6 +65,10 @@ GVAR(supplyBox) = _box;
                     GVAR(supplyPlaneType) = nil;
                 };
                 if(isNil {_box} || {isNull _box}) exitWith {};
+                if(_box getVariable [QGVAR(supplyDropInProgress), false]) exitWith {
+                    [objNull, "Es ist gerade ein Abwurf mit dieser Box aktiv"] call BIS_fnc_showCuratorFeedbackMessage;
+                };
+
                 _box setVariable [QGVAR(supplyDropInProgress), true, true];
 
                 [objNull, "Abwurf wird gestartet"] call BIS_fnc_showCuratorFeedbackMessage;
@@ -86,14 +90,26 @@ GVAR(supplyBox) = _box;
                     0,
                     "FLY"
                 ];
+                _plane addMPEventHandler ["MPKilled", {
+                    params ["_plane"];
+                    if(!local _plane) exitWith {};
+
+                    private _box = getVariable [QGVAR(box), objnull];
+                    if(isNull _box) exitWith {};
+                    _box setVariable [QGVAR(supplyDropInProgress), nil, true];
+                }];
                 GVAR(supplyPlaneType) = nil;
 
                 _plane setVariable [QGVAR(box), _box, true];
+                _plane setVehicleAmmo 0;
 
                 _plane flyInHeight 400;
+                private _velocity = velocity  _vehicle;
                 _plane setPos (_plane modelToWorld [0,0,400]);
-                _plane setVehicleAmmo 0;
                 _plane setDir (_plane getRelDir GVAR(supplyBox));
+
+                _plane setVelocity _velocity;
+
                 createVehicleCrew _plane;
                 (group (driver _plane)) setCombatMode "BLUE";
                 (group (driver _plane)) setBehaviour "CARELESS";
