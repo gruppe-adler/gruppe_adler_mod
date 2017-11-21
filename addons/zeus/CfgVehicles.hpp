@@ -5,10 +5,12 @@ class CfgVehicles {
 		author = "$STR_grad_Author";
 	};
 
+	/*
 	class GVAR(moduleSupplyDrop): GVAR(moduleBase) {
 		curatorCanAttach = 1;
 		category = QGVAR(Grad);
 		displayName = "Supply Drop";
 		function = QFUNC(moduleSupplyDrop);
 	};
+	*/
 };

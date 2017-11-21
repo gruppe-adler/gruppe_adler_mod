@@ -27,3 +27,9 @@ class CfgFactionClasses {
 #include "UI.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
+
+class RscDisplayCurator {
+    class Controls {
+        class Watermark {};
+    };
+};
