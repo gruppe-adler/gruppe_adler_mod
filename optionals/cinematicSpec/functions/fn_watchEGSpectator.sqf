@@ -2,18 +2,18 @@
 
 [
     {
-        (!isNull findDisplay IDD_RSCDISPLAYEGSPECTATOR)
+        !isNull(["GetDisplay"] call BIS_fnc_EGSpectator);
     },
     {
         INFO("EG spec active, adding keydown handler...");
-        (findDisplay IDD_RSCDISPLAYEGSPECTATOR) displayAddEventHandler ["KeyDown", {
+        (["GetDisplay"] call BIS_fnc_EGSpectator) displayAddEventHandler ["KeyDown", {
             INFO("why hello! keydown in EG spec...");
             _this call FUNC(ui_eg_handleKeyDown);
         }];
 
         [
             {
-                (isNull findDisplay IDD_RSCDISPLAYEGSPECTATOR)
+                isNull (["GetDisplay"] call BIS_fnc_EGSpectator)
             },
             {
                 INFO("eg spectator seems to have finished. setting up watch...");
