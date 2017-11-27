@@ -1,4 +1,4 @@
-#define MAXTIME 60
+#define MAXTIME 45
 #define MINTIME 15
 
 params ["_caller", "_target", "_selectionName", "_className", "_items"];
