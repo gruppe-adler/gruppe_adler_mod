@@ -21,8 +21,8 @@ class CfgFactionClasses {
 		displayName = "Gruppe Adler";
 		priority = 2;
 		side = 7;
-	}
-}
+	};
+};
 
 #include "UI.hpp"
 #include "CfgEventHandlers.hpp"
