@@ -9,9 +9,5 @@
             <English>https://www.gruppe-adler.de/international/</English>
             <German>https://www.gruppe-adler.de/</German>
         </Key>
-        <Key ID="STR_grad_Main_Component">
-            <English>Gruppe Adler Mod - Main Component</English>
-            <German>Gruppe Adler Mod - Main Component</German>
-        </Key>
     </Package>
 </Project>
