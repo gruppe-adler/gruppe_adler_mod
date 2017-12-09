@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         author = "$STR_grad_Author";
-        name = CSTRING(component);
+        name = QUOTE(ADDON);
         url = "$STR_grad_URL";
         units[] = {};
         weapons[] = {};

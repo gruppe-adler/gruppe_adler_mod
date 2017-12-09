@@ -4,7 +4,7 @@ class CfgPatches
 {
 	class ADDON {
 		author = "$STR_grad_Author";
-		name = CSTRING(component);
+		name = QUOTE(ADDON);
 		url = "$STR_grad_URL";
 		requiredVersion = 0.1;
 		requiredAddons[] = {"grad_main","ace_medical"};
