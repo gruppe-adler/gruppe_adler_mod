@@ -6,7 +6,6 @@ private _dialogTextArray = [];
 if (count grad_versionCheck_versionMismatches > 0) then {
     _dialogTopicArray = _dialogTextArray select (_dialogTextArray pushBack ["Version mismatches:"]);
 
-
     {
         _x params ["_addon","_serverVersion","_clientVersion"];
         _dialogTopicArray pushBack (format ["- %1, loaded: %2, required: %3",_addon,_clientVersion,_serverVersion]);
