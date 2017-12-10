@@ -27,7 +27,7 @@ onEachFrame {
                 _ctrlServerList = findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS;
 
                 ([_ctrlServerList lbText 0,_ctrlServerList lbData 0]) call {
-                    params ["_serverName","_serverData"];
+                    params [["_serverName",""],["_serverData",""]];
 
                     if (diag_tickTime > (grad_ui_directConnectStartTime + GRAD_UI_DIRECTCONNECTTIMEOUT)) then {
                         ERROR("direct connect timed out");
