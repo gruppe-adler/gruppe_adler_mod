@@ -17,3 +17,4 @@ class CfgPatches {
 };
 
 #include "cfgFunctions.hpp"
+#include "dialog\directConnect.hpp"
