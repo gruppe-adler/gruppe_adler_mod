@@ -6,6 +6,8 @@
 params [["_password",""]];
 
 grad_ui_directConnectPassword = _password;
+profileNamespace setVariable ["grad_ui_directConnectPassword",_password];
+saveProfileNamespace;
 
 onEachFrame {
     grad_ui_directConnectStartTime = diag_tickTime;

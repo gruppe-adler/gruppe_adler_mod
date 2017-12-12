@@ -8,4 +8,4 @@ if (_password == "" || !_lastConnectSuccessful) exitWith {
     (findDisplay IDD_MAIN) createDisplay "grad_RscDisplayDirectConnectPassword";
 };
 
-[_password] call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\fn_connectToServer.sqf';
+[_password] call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_connectToServer.sqf';

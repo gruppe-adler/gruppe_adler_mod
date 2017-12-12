@@ -1,9 +1,11 @@
 class CfgFunctions {
 	class grad_ui {
-		class misc {
-			file = "x\grad\addons\ui\functions";
+		class directConnect {
+			file = "x\grad\addons\ui\functions\directConnect";
 			class connectToServer {};
 			class onButtonConnect {};
+			class onButtonPasswordOK {};
+			class onLoadRscDisplayDirectConnectPassword {};
 		};
 	};
 };

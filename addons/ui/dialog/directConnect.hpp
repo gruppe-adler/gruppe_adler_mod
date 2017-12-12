@@ -24,7 +24,7 @@ class RscDisplayMain {
 			w = "10 * 	(pixelW * pixelGrid * 2)";
 			h = "2 * 	(pixelH * pixelGrid * 2)";
 
-            action = "call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\fn_onButtonConnect.sqf'";
+            action = "call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onButtonConnect.sqf'";
 
 			class Attributes {
 				align="center";
@@ -47,6 +47,8 @@ class grad_RscDisplayDirectConnectPassword {
     idd = -1;
 	movingEnable=0;
 	enableDisplay=1;
+    /*onLoad = "_this call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onLoadRscDisplayDirectConnectPassword.sqf'";*/
+    onLoad = "_this call (uiNamespace getVariable 'grad_ui_fnc_onLoadRscDisplayDirectConnectPassword')";
 
 	class ControlsBackground {
 		class Vignette: RscVignette {
@@ -97,33 +99,44 @@ class grad_RscDisplayDirectConnectPassword {
 
 	class Controls {
 		class Title: RscTitle {
-			colorBackground[]={0,0,0,0};
-			style=0;
-			idc=1000;
+			colorBackground[] = {0,0,0,0};
+			style = 0;
+			idc = 1000;
 			text = "CONNECT TO GRUPPE ADLER";
             x = GRAD_DIRECTCONNECT_TOTALX;
 			y = GRAD_DIRECTCONNECT_TOTALY;
             w = GRAD_DIRECTCONNECT_TOTALW;
-			h = GRAD_DIRECTCONNECT_TITLEH;
+			h = GRAD_DIRECTCONNECT_ELEMENTH;
 		};
 
-        /*class Text: RscText {
-            idc=1008;
-            text="ENTER PASSWORD";
-            x="0 * (((safezoneW / safezoneH) min 1.2) / 40)";
-            y="0 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-            w="8 * (((safezoneW / safezoneH) min 1.2) / 40)";
-            h="1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+        class Text: RscText {
+            idc = GRAD_DIRECTCONNECT_IDC_PASSWORDTEXT;
+            text = "Looks like you are connecting for the first time. Please enter the password.";
+            x = GRAD_DIRECTCONNECT_CONTENTX;
+            y = GRAD_DIRECTCONNECT_MAINY + GRAD_DIRECTCONNECT_PADDINGY;
+            w = GRAD_DIRECTCONNECT_CONTENTW;
+            h = GRAD_DIRECTONNECT_TEXTBOXH;
             colorBackground[]={0,0,0,0};
         };
 
+        class PasswordText: RscText {
+            idc = -1;
+            text = "PASSWORD";
+            x = GRAD_DIRECTCONNECT_CONTENTX;
+            y = GRAD_DIRECTCONNECT_MAINY + GRAD_DIRECTCONNECT_PADDINGY + GRAD_DIRECTONNECT_TEXTBOXH + GRAD_DIRECTCONNECT_PADDINGY;
+            w = GRAD_DIRECTCONNECT_XSCALE * 5;
+            h = GRAD_DIRECTCONNECT_ELEMENTH;
+            colorBackground[] = {0,0,0,0};
+        };
+
         class PasswordBox: RscEdit {
-            idc = 1009;
-            x="0 * (((safezoneW / safezoneH) min 1.2) / 40)";
-            y="1.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-            w="8 * (((safezoneW / safezoneH) min 1.2) / 40)";
-            h="1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-        };*/
+            idc = GRAD_DIRECTCONNECT_IDC_PASSWORD;
+
+            x = GRAD_DIRECTCONNECT_CONTENTX + GRAD_DIRECTCONNECT_XSCALE * 5.5;
+            y = GRAD_DIRECTCONNECT_MAINY + GRAD_DIRECTCONNECT_PADDINGY + GRAD_DIRECTONNECT_TEXTBOXH + GRAD_DIRECTCONNECT_PADDINGY;
+            w = GRAD_DIRECTCONNECT_CONTENTW - GRAD_DIRECTCONNECT_XSCALE * 5.5;
+            h = GRAD_DIRECTCONNECT_ELEMENTH;
+        };
 
 		class ButtonCancel: RscButtonMenuCancel {
 			x = GRAD_DIRECTCONNECT_TOTALX;
@@ -132,11 +145,19 @@ class grad_RscDisplayDirectConnectPassword {
 			h = GRAD_DIRECTCONNECT_ELEMENTH;
 		};
 
-		class ButtonOK: RscButtonMenuOK {
+		class ButtonOK: RscButtonMenu {
 			x = GRAD_DIRECTCONNECT_BUTTONOKX;
 			y = GRAD_DIRECTCONNECT_BUTTONY;
 			w = GRAD_DIRECTCONNECT_BUTTONW;
 			h = GRAD_DIRECTCONNECT_ELEMENTH;
+
+            text = "OK";
+            style = 16;
+            shortcuts[] = {28,156};
+
+            /*action = "_this call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onButtonPasswordOK.sqf'";*/
+            /*action = "_this call (uiNamespace getVariable 'grad_ui_fnc_onButtonPasswordOK')";*/
+            onButtonClick = "_this call (uiNamespace getVariable 'grad_ui_fnc_onButtonPasswordOK')";
 		};
 	};
 };
