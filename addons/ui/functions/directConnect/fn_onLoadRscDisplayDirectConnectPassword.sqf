@@ -11,7 +11,7 @@ private _lastConnectSuccessful = profileNamespace getVariable ["grad_ui_directCo
 
 if (_password != "") then {
     _passwordCtrl ctrlSetText _password;
-    _textCtrl ctrlSetText "Looks like your last connection attempt didn't work. Please check your password.";
+    _textCtrl ctrlSetText (localize "STR_GRAD_UI_DIRECTCONNECTPASSWORDTEXTFAIL");
 } else {
-    _textCtrl ctrlSetText "Looks like you are connecting for the first time. Please enter the password.";
+    _textCtrl ctrlSetText (localize "STR_GRAD_UI_DIRECTCONNECTPASSWORDTEXTFIRST");
 };
