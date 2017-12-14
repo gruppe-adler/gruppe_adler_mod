@@ -16,3 +16,4 @@ class CfgPatches {
 
 #include "cfgEventHandlers.hpp"
 #include "cfgFunctions.hpp"
+#include "ui\dialog.hpp"

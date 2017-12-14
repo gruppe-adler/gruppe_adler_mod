@@ -21,43 +21,21 @@ private _onTimeOut = {
     _whitelist = toLower ace_common_checkPBOsWhitelist;
     _whitelist = _whitelist splitString "[,""']";
 
-    _kickOnMismatch = "grad_versionCheck_setting_kickOnVersionMismatch" call CBA_settings_fnc_get;
-    _kickOnMissingClient = "grad_versionCheck_setting_kickOnMissingClient" call CBA_settings_fnc_get;
-    _kickOnMissingServer = "grad_versionCheck_setting_kickOnMissingServer" call CBA_settings_fnc_get;
-
     private _serverAddons = [grad_versionCheck_versions_server] call CBA_fnc_hashKeys;
     private _clientAddons = [grad_versionCheck_versions] call CBA_fnc_hashKeys;
 
-    grad_versionCheck_missingAddonsServer =
-        _clientAddons
-        - _serverAddons
-        - _whitelist;
+    grad_versionCheck_missingAddonsServer = _clientAddons - _serverAddons - _whitelist;
+    grad_versionCheck_missingAddonsClient = _serverAddons - _clientAddons - _whitelist;
 
-    grad_versionCheck_missingAddonsClient =
-        _serverAddons
-        - _clientAddons
-        - _whitelist;
-
-    grad_versionCheck_versionMismatches = (((_serverAddons arrayIntersect _clientAddons)
-        apply {
+    grad_versionCheck_versionMismatches = (((_serverAddons arrayIntersect _clientAddons) apply {
             private _clientVersion = [grad_versionCheck_versions, _x] call CBA_fnc_hashGet;
             private _serverVersion = [grad_versionCheck_versions_server, _x] call CBA_fnc_hashGet;
             [_x, _serverVersion, _clientVersion];
-        })
-        select {
-            (_x select 1) != (_x select 2)
-        });
-
-    _kick = switch (true) do {
-        case (_kickOnMismatch && count grad_versionCheck_versionMismatches > 0): {true};
-        case (_kickOnMissingClient && count grad_versionCheck_missingAddonsClient > 0): {true};
-        case (_kickOnMissingServer && count grad_versionCheck_missingAddonsServer > 0): {true};
-        default {false};
-    };
+    }) select {
+        (_x select 1) != (_x select 2)
+    });
 
     [] call grad_versionCheck_fnc_logResult;
 
-    if (_kick) then {
-        [{endMission "END1"},[],3] call CBA_fnc_waitAndExecute;
-    };
+    [] call grad_versionCheck_fnc_openDialog;    
 },[],60,_onTimeOut] call CBA_fnc_waitUntilAndExecute;
