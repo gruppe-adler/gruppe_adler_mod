@@ -37,6 +37,11 @@ switch (_spectatorType) do {
     GRAD_CINEMACAM_VECTORUP
 ] call GRAD_cinematicSpec_fnc_cameraOld; // will set GRAD_CINEMACAM
 
+if (!GVAR(registered) && !GVAR(warned)) then {
+    systemChat "WARNING: cinematicSpec enabled in a scenario that has NOT declared compatibility. This scenario may break for you if/when it tries to end your spectator mode while you are still in cinematicSpec! See README for details.";
+    GVAR(warned) = true;
+};
+
 [
     {
         private _bisCam = missionNamespace getVariable ["GRAD_CINEMACAM", objNull];
