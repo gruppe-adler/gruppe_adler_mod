@@ -9,7 +9,8 @@ Right click to return to previous spec mode.
 
 #### caveat
 
-**Users**: If a scenario is *not* designed with this component in mind, it will *not* be able to pull you from spectator mode while you're in cinematicSpec.
+**Users**: If a scenario is *not* designed with this component in mind, it will *not* be able to pull you from spectator mode while you're in cinematicSpec. 
+The component will warn you about this on entering cinematicSpec.
 If unsure, *do not* use this in a scenario where respawn exists.
 
 **Scenario designers:** to disable spectator mode, call `grad_cinematicSpec_fnc_cancelCinematicSpec` with a callback. Example:
@@ -20,7 +21,7 @@ If unsure, *do not* use this in a scenario where respawn exists.
 }] call grad_cinematicSpec_fnc_api_cancelCinematicSpec;
 ```
 
-Also, at mission start, please call `grad_cinematicSpec_fnc_api_declareCinematicSpecAware`
+If you have ensured compatibility as shown above, call `grad_cinematicSpec_fnc_api_declareCinematicSpecAware` on all clients on mission start to disable the incompatibility warning.
 
 
 #### Maintainer(s)
