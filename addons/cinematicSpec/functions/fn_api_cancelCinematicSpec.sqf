@@ -10,8 +10,10 @@
 
 #include "script_component.hpp"
 
-private _callback = param [0, {}];
-private _callbackArgs = param [1, []];
+params [
+    ["_callback", {}],
+    ["_callbackArgs", []]
+];
 
 if (isNil QUOTE(GRAD_CINEMACAM)) exitWith {
     _callbackArgs call _callback;
@@ -25,13 +27,9 @@ GRAD_CINEMACAM = objNull;
         isNil QUOTE(GRAD_CINEMACAM)
     },
     {
-        [
-            param [0],
-            param [1],
-            1 // if we dont wait a bit, there are weird ace spec UI errors -.-
-        ] call CBA_fnc_waitAndExecute;
+        _this call CBA_fnc_waitAndExecute;
     },
-    [_callback, _callbackArgs]
+    [_callback, _callbackArgs, 1]
 ] call CBA_fnc_waitUntilAndExecute;
 
 "async"
