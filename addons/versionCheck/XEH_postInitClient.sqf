@@ -35,7 +35,9 @@ private _onTimeOut = {
         (_x select 1) != (_x select 2)
     });
 
-    [] call grad_versionCheck_fnc_logResult;
+    if (count grad_versionCheck_versionMismatches > 0 || count grad_versionCheck_missingAddonsClient > 0 || count grad_versionCheck_missingAddonsServer > 0) then {
+        [] call grad_versionCheck_fnc_logResult;
+        [] call grad_versionCheck_fnc_openDialog;
+    };
 
-    [] call grad_versionCheck_fnc_openDialog;    
 },[],60,_onTimeOut] call CBA_fnc_waitUntilAndExecute;
