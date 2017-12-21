@@ -15,7 +15,7 @@ class RscDisplayMain {
         class grad_directConnectLogo: RscPictureKeepAspectAllowPixelSplit {
             text = "\x\grad\addons\ui\dialog\logo_128.paa";
 
-            x = "safezoneX + safezoneW - 51.2 * 2 * (pixelW * pixelGrid * 2)";
+            x = GRAD_DIRECTCONNECT_LOGOX;
             y = "safezoneY + 2.15 * (pixelH * pixelGrid * 2)";
             w = "2.00 * (pixelH * pixelGrid * 2)";
             h = "1.70 * (pixelH * pixelGrid * 2)";
@@ -29,7 +29,7 @@ class RscDisplayMain {
             size="1.25 * (pixelH * pixelGrid * 2)";
             text = "$STR_GRAD_UI_DIRECTCONNECTBUTTON";
 
-            x = "safezoneX + safezoneW - 50 * 2 * (pixelW * pixelGrid * 2)";
+            x = GRAD_DIRECTCONNECT_X;
             y = "safezoneY + 2 * (pixelH * pixelGrid * 2)";
             w = "9 * (pixelW * pixelGrid * 2)";
             h = "2 * (pixelH * pixelGrid * 2)";
