@@ -9,18 +9,18 @@ _pX = _pos select 0;
 _pY = _pos select 1;
 _pZ = _pos select 2;
 
-if (!isNil "GRAD_CINEMACAM") exitwith {};
+if (!isNil "GRAD_CINEMACAM") exitWith {};
 
 //--- Is FLIR available
-if (isnil "GRAD_CINEMACAM_ISFLIR") then {
-	GRAD_CINEMACAM_ISFLIR = isclass (configfile >> "cfgpatches" >> "A3_Data_F");
+if (isNil "GRAD_CINEMACAM_ISFLIR") then {
+	GRAD_CINEMACAM_ISFLIR = isClass (configFile >> "cfgpatches" >> "A3_Data_F");
 };
 
 GRAD_CINEMACAM_MAP = false;
 GRAD_CINEMACAM_VISION = 0;
 GRAD_CINEMACAM_FOCUS = 0;
 GRAD_CINEMACAM_COLOR = ppEffectCreate ["colorCorrections", 1600];
-if (isnil "GRAD_CINEMACAM_PPEFFECTS") then {
+if (isNil "GRAD_CINEMACAM_PPEFFECTS") then {
 	GRAD_CINEMACAM_PPEFFECTS = [
 		[1, 1, -0.01, [1.0, 0.6, 0.0, 0.005], [1.0, 0.96, 0.66, 0.55], [0.95, 0.95, 0.95, 0.0]],
 		[1, 1.02, -0.005, [0.0, 0.0, 0.0, 0.0], [1, 0.8, 0.6, 0.65],  [0.199, 0.587, 0.114, 0.0]],
@@ -30,7 +30,7 @@ if (isnil "GRAD_CINEMACAM_PPEFFECTS") then {
 };
 
 //--- Undefined
-if (typename _this != typename objnull) then {_this = cameraon};
+if (typeName _this != typeName objNull) then {_this = cameraOn};
 
 private ["_local"];
 _local = "camera" camCreate [_pX, _pY, _pZ];
@@ -60,7 +60,7 @@ _mapIconEH = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", '
 
 
 //--- Key Down
-_keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
+_keyDown = (findDisplay 46) displayAddEventHandler ["keydown","
 	_key = _this select 1;
 	_ctrl = _this select 3;
 
@@ -137,7 +137,7 @@ _keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
 "];
 
 //--- focus on someone
-_mousebuttonclick_focus = (finddisplay 46) displayaddeventhandler ["MouseButtonDblClick","
+_mousebuttonclick_focus = (findDisplay 46) displayAddEventHandler ["MouseButtonDblClick","
 	_n = _this select 0;
 	GRAD_CINEMACAM_FOCUS = GRAD_CINEMACAM_FOCUS + _n/10;
 	if (_n > 0 && GRAD_CINEMACAM_FOCUS < 0) then {GRAD_CINEMACAM_FOCUS = 0};
@@ -149,7 +149,7 @@ _mousebuttonclick_focus = (finddisplay 46) displayaddeventhandler ["MouseButtonD
 "];
 
 
-_map_mousebuttonclick = ((finddisplay 12) displayctrl 51) ctrladdeventhandler ["mousebuttonclick","
+_map_mousebuttonclick = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["mousebuttonclick","
 	_button = _this select 1;
 	_ctrl = _this select 5;
 	if (_button == 0) then {
@@ -174,8 +174,8 @@ _map_mousebuttonclick = ((finddisplay 12) displayctrl 51) ctrladdeventhandler ["
 
 	params ["_local", "_keyDown", "_mousebuttonclick_focus", "_map_mousebuttonclick", "_mapIconEH"];
 
-	waituntil {
-		if (!isnull GRAD_CINEMACAM) then {
+	waitUntil {
+		if (!isNull GRAD_CINEMACAM) then {
 				_lastpos = position GRAD_CINEMACAM; 
 				_lastVectorUp = vectorUp GRAD_CINEMACAM;
 				_lastVectorDir = vectorDir GRAD_CINEMACAM;
@@ -192,10 +192,10 @@ _map_mousebuttonclick = ((finddisplay 12) displayctrl 51) ctrladdeventhandler ["
 	GRAD_CINEMACAM_VECTORUP = _lastVectorUp;
 	GRAD_CINEMACAM_VECTORDIR = _lastVectorDir;
 
-	ppeffectdestroy GRAD_CINEMACAM_COLOR;
-	(finddisplay 46) displayremoveeventhandler ["keydown",_keyDown];
-	(finddisplay 46) displayremoveeventhandler ["MouseButtonDblClick",_mousebuttonclick_focus];
-	((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["mousebuttonclick",_map_mousebuttonclick];
-	((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["Draw",_mapIconEH];
+	ppEffectDestroy GRAD_CINEMACAM_COLOR;
+	(findDisplay 46) displayRemoveEventHandler ["keydown",_keyDown];
+	(findDisplay 46) displayRemoveEventHandler ["MouseButtonDblClick",_mousebuttonclick_focus];
+	((findDisplay 12) displayCtrl 51) ctrlRemoveEventHandler ["mousebuttonclick",_map_mousebuttonclick];
+	((findDisplay 12) displayCtrl 51) ctrlRemoveEventHandler ["Draw",_mapIconEH];
 
 };
