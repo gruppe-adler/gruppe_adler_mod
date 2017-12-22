@@ -1,15 +1,4 @@
 force niarms_magSwitch = true;
-TFAR_default_radioVolume = 7;
-TFAR_volumeModifier_forceSpeech = false;
-TFAR_intercomVolume = 0.3;
-TFAR_pluginTimeout = 4;
-TFAR_tangentReleaseDelay = 0;
-TFAR_PosUpdateMode = 0.1;
-TFAR_ShowVolumeHUD = false;
-TFAR_VolumeHudTransparency = 0;
-TFAR_oldVolumeHint = false;
-TFAR_showTransmittingHint = true;
-TFAR_showChannelChangedHint = true;
 force TF_terrain_interception_coefficient = 7;
 force TFAR_fullDuplex = true;
 force TFAR_enableIntercom = true;
