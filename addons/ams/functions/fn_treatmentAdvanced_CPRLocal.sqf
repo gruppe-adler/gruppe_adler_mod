@@ -23,14 +23,9 @@ if (_target getVariable ["ace_medical_inReviveState", false]) then {
     };
 };
 
-if (ace_medical_level > 1 && {(random 1) >= 0.6}  &&  (_target getVariable ["ace_medical_bloodvolume", 100] > 60)) then {
-    _target setVariable ["ace_medical_inCardiacArrest", nil,true];
-    _target setVariable ["ace_medical_heartRate", 40,true];
-    _target setVariable ["ace_medical_inReviveState", false, true];
-    _target setVariable ["ace_medical_isUnconscious", false, true];
-    _target setVariable ["ace_medical_heartRate", 40, true];
-    _target setVariable ["ace_medical_bloodPressure", [50,70], true];
-	_target setVariable ["ace_medical_addedToUnitLoop", false, true];
+if (ace_medical_level > 1 && {(random 1) >= 0.6} && {(_target getVariable ["ace_medical_bloodvolume", 100] > 60)}) then {
+    _target setVariable ["ace_medical_inReviveState", false];
+    _target setVariable ["ace_medical_heartRate", 20 + random(12)];
 };
 
 [_target, "activity", "STR_ace_medical_Activity_CPR", [[_caller, false, true] call ace_common_fnc_getName]] call ace_medical_fnc_addToLog;
