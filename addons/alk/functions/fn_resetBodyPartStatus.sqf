@@ -11,3 +11,4 @@ private _status = _target getVariable ["ace_medical_bodyPartStatus",[0,0,0,0,0,0
 } count _bodyParts;
 
 _target setVariable ["ace_medical_bodyPartStatus",_status,true];
+[_target] call ace_medical_fnc_handleDamage_advancedSetDamage;
