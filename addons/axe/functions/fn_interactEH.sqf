@@ -10,13 +10,9 @@ params ["_interactionType"];
 //Ignore self-interaction menu or mounted vehicle interaction
 if ((_interactionType != 0) || {(vehicle ACE_player) != ACE_player}) exitWith {};
 
-diag_log ["INTERACT EH 23"];
-
 //for performance only do stuff it they have a wirecutter item
 //(if they somehow get one durring keydown they'll just have to reopen)
 if (!("grad_axe" in (items ace_player))) exitWith {};
-
-diag_log ["INTERACT EH 29"];
 
 [{
     params ["_args", "_pfID"];
@@ -41,12 +37,7 @@ diag_log ["INTERACT EH 29"];
             private _fncCondition = {
                 params ["_helper", "_player", "_attachedTree"];
 
-                diag_log ["FNC_CONDITION"];
-
                 if (!([_player, _attachedTree, ["isNotSwimming"]] call ace_common_fnc_canInteractWith)) exitWith {false};
-
-                diag_log ["FNC_CONDITION","CANINTERACT"];
-                diag_log ["FNC_CONDITION",!isNull _attachedTree,damage _attachedTree];
 
                 ((!isNull _attachedTree) && {(damage _attachedTree) < 1} && {("grad_axe" in (items _player))} && {
                     //Custom LOS check for tree
@@ -64,8 +55,6 @@ diag_log ["INTERACT EH 29"];
                     [_helper, 0, [],_action] call ace_interact_menu_fnc_addActionToObject;
                     _helper setPosASL ((getPosASL _x) vectorAdd [0,0,1.25]);
                     _addedHelpers pushBack _helper;
-
-                    diag_log ["CREATED HELPER",_x,getPos _x,_helper,getPos _helper];
                 };
                 nil
             } count (nearestTerrainObjects [ace_player, ["TREE","SMALL TREE","BUSH"], 15]);
