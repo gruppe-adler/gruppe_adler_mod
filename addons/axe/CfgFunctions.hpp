@@ -4,6 +4,7 @@ class CfgFunctions {
             file = "x\grad\addons\axe\functions";
 
             class cutDownTree {};
+            class findTrunk {};
             class interactEH {};
         };
     };
