@@ -10,10 +10,13 @@ params ["_unit", "_treeObject"];
 
 if (_unit != ACE_player) exitWith {};
 
-private _timeToCut = if ([_unit] call ace_common_fnc_isEngineer) then {7.5} else {11};
+private _boundingBoxTree = boundingBox _treeObject;
+private _treeSize = (_boundingBoxTree select 0) distance (_boundingBoxTree select 1);
+private _specialistFactor = [1,0.80] select ([_unit] call ace_common_fnc_isEngineer);
+private _timeToCut = (_treeSize * _specialistFactor) min 40 max 5;
 
 if !(_unit call ace_common_fnc_isSwimming) then {
-    [_unit, "AinvPknlMstpSnonWnonDr_medic5", 0] call ace_common_fnc_doAnimation;
+    [_unit, "Acts_Executioner_Forehand", 0] call ace_common_fnc_doAnimation;
 };
 
 private _onCompletion = {
@@ -45,4 +48,4 @@ private _progressCheck = {
 
 [_timeToCut, [_treeObject,0,_unit], _onCompletion, _onFail, localize "STR_GRAD_AXE_CUTTING_TREE", _progressCheck, ["isNotSwimming"]] call ace_common_fnc_progressBar;
 
-["ace_wireCuttingStarted", [_unit, _treeObject]] call CBA_fnc_globalEvent;
+["grad_treeChoppingStarted", [_unit, _treeObject]] call CBA_fnc_globalEvent;
