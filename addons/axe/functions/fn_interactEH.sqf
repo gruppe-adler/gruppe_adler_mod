@@ -50,10 +50,10 @@ if (!("grad_axe" in (items ace_player))) exitWith {};
             {
                 if (!(_x in _treesHelped)) then {
                     _treesHelped pushBack _x;
-                    private _helper = "ACE_LogicDummy" createVehicleLocal (getpos _x);
+                    private _helper = "ACE_LogicDummy" createVehicleLocal (getPos _x);
                     private _action = ["grad_axe_cutDownTree",localize "STR_GRAD_AXE_CUT_TREE","x\grad\addons\axe\ui\action_axe_ca.paa", _fncStatement, _fncCondition, {}, _x, {[0,0,0]}, 5.5, [false, false, false, false, true]] call ace_interact_menu_fnc_createAction;
                     [_helper, 0, [],_action] call ace_interact_menu_fnc_addActionToObject;
-                    _helper setPosASL ((getPosASL _x) vectorAdd [0,0,1.25]);
+                    _helper setPosASL ([_x] call grad_axe_fnc_findTrunk);
                     _addedHelpers pushBack _helper;
                 };
                 nil
