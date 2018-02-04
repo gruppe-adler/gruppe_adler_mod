@@ -1,6 +1,21 @@
 class RscText;
 class RscButtonMenu;
 class RscListbox;
+class RscCheckBox;
+class RscControlsGroup;
+class RscControlsGroupNoScrollbars;
+
+class RscDisplayAttributes {
+    class Controls {
+        class Background;
+        class Title;
+        class Content: RscControlsGroup {
+            class controls;
+        };
+        class ButtonOK;
+        class ButtonCancel;
+    };
+};
 
 class GVAR(moduleSupplyDrop) {
     idd = 3646235;
@@ -51,5 +66,59 @@ class GVAR(moduleSupplyDrop) {
         	w = 0.0626562 * safezoneW;
         	h = 0.0252408 * safezoneH;
         };
+    };
+};
+
+class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
+    onLoad = QUOTE([ARR_3('onLoad', _this, QUOTE(QGVAR(RscModuleDiagnostics)))] call ace_zeus_fnc_zeusAttributes);
+    onUnload = QUOTE([ARR_3('onUnload', _this, QUOTE(QGVAR(RscModuleDiagnostics)))] call ace_zeus_fnc_zeusAttributes);
+    class Controls: Controls {
+        class Background: Background {};
+        class Title: Title {};
+        class Content: Content {
+            class Controls {
+                class globalSetSkill: RscControlsGroupNoScrollbars {
+                    onSetFocus = QUOTE(_this call FUNC(ui_moduleDiagnostics));
+                    idc = 27000;
+                    x = 0;
+                    y = 0;
+                    w = W_PART(26);
+                    h = H_PART(6.5);
+                    class controls {
+                        class Title1: RscText {
+                            idc = -1;
+                            /* text = CSTRING(ASD); */
+                            text = "Player FPS";
+                            /* toolTip = CSTRING(ASD); */
+                            toolTip = "Show player FPS";
+                            x = 0;
+                            y = 0;
+                            w = W_PART(10);
+                            h = H_PART(1);
+                            colorBackground[] = {0,0,0,0.5};
+                        };
+                        class PlayerFPS: RscCheckBox {
+                            idc = 27001;
+                            x = W_PART(10.1);
+                            y = 0;
+                            w = W_PART(1);
+                            h = H_PART(1);
+                        };
+                        class Title2: Title1 {
+                            idc = -1;
+                            text = "Object locality";
+                            tooltip = "Show owner of objects and units.";
+                            y = H_PART(1.1);
+                        };
+                        class ObjectLocality: PlayerFPS {
+                            idc = 27002;
+                            y = H_PART(1.1);
+                        };
+                    };
+                };
+            };
+        };
+        class ButtonOK: ButtonOK {};
+        class ButtonCancel: ButtonCancel {};
     };
 };

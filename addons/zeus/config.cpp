@@ -8,7 +8,8 @@ class CfgPatches {
 		requiredVersion = 1.0;
 		requiredAddons[] = {"grad_main"};
 		units[] = {
-			QGVAR(moduleSupplyDrop)
+			QGVAR(moduleSupplyDrop),
+			QGVAR(moduleDiagnostics)
 		};
 		weapons[] = {};
 		VERSION_CONFIG;

@@ -18,4 +18,13 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
+if (hasInterface) then {
+    GVAR(DiagnosticsSettings) = [false,false];
+};
+
+if (isServer) then {
+    GVAR(usersPlayerFPS) = [];
+    GVAR(usersObjectLocality) = [];
+};
+
 ADDON = true;
