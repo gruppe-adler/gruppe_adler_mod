@@ -1,4 +1,5 @@
 PREP(moduleDiagnosticsGetOwnerName);
+PREP(moduleDiagnosticsHandleDisconnect);
 PREP(moduleDiagnosticsOnConfirm);
 PREP(moduleDiagnosticsRender);
 PREP(moduleDiagnosticsServerToggle);

@@ -25,3 +25,4 @@ if (isServer) then {
 QGVAR(usersPlayerFPS) addPublicVariableEventhandler FUNC(moduleDiagnosticsUpdateFPS);
 [QGVAR(moduleDiagnosticsServerToggle),FUNC(moduleDiagnosticsServerToggle)] call CBA_fnc_addEventHandler;
 if (count (missionNamespace getVariable [QGVAR(usersPlayerFPS),[]]) > 0) then {[] call FUNC(moduleDiagnosticsUpdateFPS)};
+if (isServer) then {addMissionEventHandler ["HandleDisconnect",FUNC(moduleDiagnosticsHandleDisconnect)]};
