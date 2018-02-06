@@ -1,3 +1,4 @@
+PREP(moduleDiagnosticsGetAIStatus);
 PREP(moduleDiagnosticsGetMedicalStatus);
 PREP(moduleDiagnosticsGetOwnerName);
 PREP(moduleDiagnosticsHandleDisconnect);

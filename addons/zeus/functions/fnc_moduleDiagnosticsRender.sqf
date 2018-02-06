@@ -15,7 +15,7 @@ addMissionEventHandler ["Draw3D", {
     };
 
 
-    GVAR(DiagnosticsSettings) params ["_playerFPS","_medicalStatus","_objectLocality"];
+    GVAR(DiagnosticsSettings) params ["_playerFPS","_medicalStatus","_objectLocality","_aiStatus"];
     {
         _unitTextArray = [];
 
@@ -29,11 +29,13 @@ addMissionEventHandler ["Draw3D", {
                     _unitTextArray append _status;
                 };
             };
-        };
-
-
-        if (_objectLocality && !isPlayer _x) then {
-            _unitTextArray append [format ["Owner: %1",(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
+        } else {
+            if (_objectLocality) then {
+                _unitTextArray append [format ["Owner: %1",(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
+            };
+            if (_aiStatus) then {
+                _unitTextArray append ([_x] call FUNC(moduleDiagnosticsGetAIStatus));
+            };
         };
 
         _unitText = _unitTextArray joinString " • ";

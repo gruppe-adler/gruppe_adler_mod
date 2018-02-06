@@ -124,6 +124,16 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                             idc = 27003;
                             y = H_PART(2.2);
                         };
+                        class Title4: Title1 {
+                            idc = -1;
+                            text = "AI status";
+                            tooltip = "Show combat mode, fleeing, etc.";
+                            y = H_PART(3.3);
+                        };
+                        class AIStatus: PlayerFPS {
+                            idc = 27004;
+                            y = H_PART(3.3);
+                        };
                     };
                 };
             };
