@@ -7,9 +7,9 @@ GVAR(updateFPSRunning) = true;
     params ["_args","_handle"];
     if (count GVAR(usersPlayerFPS) == 0) exitWith {
         GVAR(updateFPSRunning) = false;
-        player setVariable [QGVAR(playerFPS),nil,true];
+        [player,QGVAR(playerFPS),nil] call CBA_fnc_setVarNet;
         [_handle] call CBA_fnc_removePerFrameHandler;
     };
 
-    player setVariable [QGVAR(playerFPS),round diag_fps,true];
+    [player,QGVAR(playerFPS),round diag_fps] call CBA_fnc_setVarNet;
 },2,[]] call CBA_fnc_addPerFrameHandler;

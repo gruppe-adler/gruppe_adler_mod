@@ -15,10 +15,8 @@ GVAR(updateObjectLocalityRunning) = true;
     };
 
     {
-        _x setVariable [QGVAR(ownerName),[groupOwner _x] call FUNC(moduleDiagnosticsGetOwnerName),true];
+        [_x,QGVAR(ownerName),[groupOwner _x] call FUNC(moduleDiagnosticsGetOwnerName)] call CBA_fnc_setVarNet;
         nil
     } count _nonPlayerGroups;
-
-
 
 },10,[]] call CBA_fnc_addPerFrameHandler;
