@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
-params [["_playerFPS",false],["_objectLocality",false]];
+params [["_playerFPS",false],["_medicalStatus",false],["_objectLocality",false]];
 
 
-if !(GVAR(DiagnosticsSettings) isEqualTo _this) then {[] call FUNC(moduleDiagnosticsRender)};
-GVAR(DiagnosticsSettings) params ["_oldPlayerFPS","_oldObjectLocality"];
+if ({_x} count GVAR(DiagnosticsSettings) > 0) then {[] call FUNC(moduleDiagnosticsRender)};
+GVAR(DiagnosticsSettings) params ["_oldPlayerFPS","_oldMedicalStatus","_oldObjectLocality"];
 GVAR(DiagnosticsSettings) = +_this;
 
 

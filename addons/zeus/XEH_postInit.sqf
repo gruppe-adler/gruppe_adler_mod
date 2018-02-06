@@ -25,4 +25,14 @@ if (isServer) then {
 QGVAR(usersPlayerFPS) addPublicVariableEventhandler FUNC(moduleDiagnosticsUpdateFPS);
 [QGVAR(moduleDiagnosticsServerToggle),FUNC(moduleDiagnosticsServerToggle)] call CBA_fnc_addEventHandler;
 if (count (missionNamespace getVariable [QGVAR(usersPlayerFPS),[]]) > 0) then {[] call FUNC(moduleDiagnosticsUpdateFPS)};
-if (isServer) then {addMissionEventHandler ["HandleDisconnect",FUNC(moduleDiagnosticsHandleDisconnect)]};
+
+if (isServer) then {
+    addMissionEventHandler ["HandleDisconnect",FUNC(moduleDiagnosticsHandleDisconnect)];
+
+    ["ace_unconscious",{
+        params ["_unit","_unconsc"];
+        if (isPlayer _unit ) then {
+            (_unit) setVariable [QGVAR(downSince),if (_unconsc) then {CBA_missionTime} else {nil},true];
+        };
+    }] call CBA_fnc_addEventHandler;
+};

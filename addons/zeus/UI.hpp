@@ -106,13 +106,23 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                         };
                         class Title2: Title1 {
                             idc = -1;
-                            text = "Object locality";
-                            tooltip = "Show owner of objects and units.";
+                            text = "Player medical status";
+                            tooltip = "Show medical status of players.";
                             y = H_PART(1.1);
                         };
-                        class ObjectLocality: PlayerFPS {
+                        class MedicalStatus: PlayerFPS {
                             idc = 27002;
                             y = H_PART(1.1);
+                        };
+                        class Title3: Title1 {
+                            idc = -1;
+                            text = "Object locality";
+                            tooltip = "Show owner of objects and units.";
+                            y = H_PART(2.2);
+                        };
+                        class ObjectLocality: PlayerFPS {
+                            idc = 27003;
+                            y = H_PART(2.2);
                         };
                     };
                 };
