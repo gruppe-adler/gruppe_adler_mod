@@ -5,12 +5,12 @@ params [["_unit",objNull]];
 
 //dead
 if (!alive _x) exitWith {
-    "dead"
+    ["dead"]
 };
 
 
 //other states need blood volume
-private _bloodVolume = round (_unit getVariable ["ace_medical_bloodVolume",100]);
+private _bloodVolume = format ["%1% blood",round (_unit getVariable ["ace_medical_bloodVolume",100])];
 
 
 //unconscious
@@ -21,7 +21,8 @@ if (_status > 0) exitWith {
     } else {
         format ["%1s",(CBA_missionTime -_status)]
     };
-    format ["down for %1 • %2% blood",_downTime,_bloodVolume];
+
+    [format ["down for %1",_downTime],_bloodVolume]
 };
 
 
@@ -34,9 +35,9 @@ private _injuredBodyParts = [];
 } forEach (_unit getVariable ["ace_medical_bodyPartStatus",[0,0,0,0,0,0]]);
 
 if (count _injuredBodyParts > 0) exitWith {
-    format ["%1 injured • %2% blood",_injuredBodyParts joinString ", ",_bloodVolume]
+    [format ["%1 injured",_injuredBodyParts joinString ", "],_bloodVolume]
 };
 
 
 
-""
+[]

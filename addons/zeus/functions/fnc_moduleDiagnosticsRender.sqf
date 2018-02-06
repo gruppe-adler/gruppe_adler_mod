@@ -25,8 +25,8 @@ addMissionEventHandler ["Draw3D", {
             };
             if (_medicalStatus) then {
                 _status = [_x] call FUNC(moduleDiagnosticsGetMedicalStatus);
-                if (_status != "") then {
-                    _unitTextArray append [_status];
+                if (count _status > 0) then {
+                    _unitTextArray append _status;
                 };
             };
         };
