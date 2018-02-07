@@ -6,7 +6,7 @@ GVAR(moduleDiagnosticsRenderRunning) = true;
 addMissionEventHandler ["Draw3D", {
 
     if (isNull (getAssignedCuratorLogic player)) then {
-        GVAR(DiagnosticsSettings) = [false,false,false];
+        GVAR(DiagnosticsSettings) = [false,false,false,false];
     };
 
     if (({_x} count GVAR(DiagnosticsSettings)) == 0) exitWith {
@@ -30,7 +30,7 @@ addMissionEventHandler ["Draw3D", {
                 };
             };
         } else {
-            if (_objectLocality) then {
+            if (_objectLocality && {_x == leader group _x}) then {
                 _unitTextArray append [format ["Owner: %1",(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
             };
             if (_aiStatus) then {
@@ -39,7 +39,7 @@ addMissionEventHandler ["Draw3D", {
         };
 
         _unitText = _unitTextArray joinString " • ";
-        drawIcon3D ["",[1,1,1,0.5],getPos _x,1,2,0,_unitText,1,0.03,"RobotoCondensed","center"];
+        drawIcon3D ["",[1,1,1,0.5],getPos _x,1,2,0,_unitText,2,0.03,"RobotoCondensed","center"];
 
         nil
     } count (allUnits select {_x distance2D curatorCamera < 1000});

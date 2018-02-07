@@ -16,6 +16,8 @@ _control ctrlRemoveAllEventHandlers "setFocus";
 
 (_display displayCtrl 27001) cbSetChecked (GVAR(DiagnosticsSettings) select 0);
 (_display displayCtrl 27002) cbSetChecked (GVAR(DiagnosticsSettings) select 1);
+(_display displayCtrl 27003) cbSetChecked (GVAR(DiagnosticsSettings) select 2);
+(_display displayCtrl 27004) cbSetChecked (GVAR(DiagnosticsSettings) select 3);
 
 private _fnc_onUnload = {
     private _logic = GETMVAR(BIS_fnc_initCuratorAttributes_target,objnull);
@@ -30,8 +32,10 @@ private _fnc_onConfirm = {
     if (isNull _display) exitWith {};
 
     _settings = [
-        cbChecked (_display displayCtrl 27001), // player fps
-        cbChecked (_display displayCtrl 27002) // object locality
+        cbChecked (_display displayCtrl 27001),
+        cbChecked (_display displayCtrl 27002),
+        cbChecked (_display displayCtrl 27003),
+        cbChecked (_display displayCtrl 27004)
     ];
 
     _settings call FUNC(moduleDiagnosticsOnConfirm);
