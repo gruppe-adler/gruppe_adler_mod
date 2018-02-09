@@ -6,7 +6,7 @@ GVAR(moduleDiagnosticsRenderRunning) = true;
 addMissionEventHandler ["Draw3D", {
 
     if (isNull (getAssignedCuratorLogic player)) then {
-        GVAR(DiagnosticsSettings) = [false,false,false,false];
+        GVAR(DiagnosticsSettings) = [false,false,false,false,false];
     };
 
     if (({_x} count GVAR(DiagnosticsSettings)) == 0) exitWith {
@@ -15,7 +15,7 @@ addMissionEventHandler ["Draw3D", {
     };
 
 
-    GVAR(DiagnosticsSettings) params ["_playerFPS","_medicalStatus","_objectLocality","_aiStatus"];
+    GVAR(DiagnosticsSettings) params ["_playerFPS","_medicalStatus","_objectLocality","_aiStatus","_summaryWindow"];
     {
         _unitTextArray = [];
 

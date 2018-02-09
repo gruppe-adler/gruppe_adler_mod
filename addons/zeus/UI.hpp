@@ -4,7 +4,6 @@ class RscListbox;
 class RscCheckBox;
 class RscControlsGroup;
 class RscControlsGroupNoScrollbars;
-
 class RscDisplayAttributes {
     class Controls {
         class Background;
@@ -17,6 +16,8 @@ class RscDisplayAttributes {
     };
 };
 
+
+//supply drop ==================================================================
 class GVAR(moduleSupplyDrop) {
     idd = 3646235;
     movingEnable = true;
@@ -69,6 +70,8 @@ class GVAR(moduleSupplyDrop) {
     };
 };
 
+
+//diagnostics ==================================================================
 class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
     onLoad = QUOTE([ARR_3('onLoad', _this, QUOTE(QGVAR(RscModuleDiagnostics)))] call ace_zeus_fnc_zeusAttributes);
     onUnload = QUOTE([ARR_3('onUnload', _this, QUOTE(QGVAR(RscModuleDiagnostics)))] call ace_zeus_fnc_zeusAttributes);
@@ -134,11 +137,44 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                             idc = 27004;
                             y = H_PART(3.3);
                         };
+                        class Title5: Title1 {
+                            idc = -1;
+                            text = "Summary window";
+                            tooltip = "Show summary window.";
+                            y = H_PART(4.4);
+                        };
+                        class SummaryWindow: PlayerFPS {
+                            idc = 27005;
+                            y = H_PART(4.4);
+                        };
                     };
                 };
             };
         };
         class ButtonOK: ButtonOK {};
         class ButtonCancel: ButtonCancel {};
+    };
+};
+
+
+class RscDisplayCurator {
+    class Controls {
+
+        //remove watermark
+        class Watermark {};
+
+        //summary window for diagnostics module
+        class GVAR(RscSummaryWindow): RscText {
+            idc = 95440;
+            onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrl),_this select 0)]; (_this select 0) ctrlShow (GVAR(DiagnosticsSettings) select 4));
+            onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrl),nil)]);
+            shadow = 2;
+            colorShadow[] = {0,0,0,1};
+            x = "safezoneX + 12.5 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            y = "(1.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY)) + (safezoneH - 2 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)) - (5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25))";
+            w = "safezoneW - 25 * (((safezoneW / safezoneH) min 1.2) / 40)";
+            h = "5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+            colorBackground[] = {0.100000, 0.100000, 0.100000, 0.500000};
+        };
     };
 };

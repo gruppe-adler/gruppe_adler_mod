@@ -9,7 +9,7 @@ PREP(moduleDiagnosticsUpdateFPS);
 PREP(moduleDiagnosticsUpdateObjectLocality);
 
 PREP(ui_moduleDiagnostics);
-
+PREP(ui_moduleDiagnosticsActivateSummaryWindow);
 
 PREP(moduleSupplyDrop);
 PREP(moduleSupplyDropExit);

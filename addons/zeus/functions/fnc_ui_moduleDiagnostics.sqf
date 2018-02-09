@@ -18,6 +18,7 @@ _control ctrlRemoveAllEventHandlers "setFocus";
 (_display displayCtrl 27002) cbSetChecked (GVAR(DiagnosticsSettings) select 1);
 (_display displayCtrl 27003) cbSetChecked (GVAR(DiagnosticsSettings) select 2);
 (_display displayCtrl 27004) cbSetChecked (GVAR(DiagnosticsSettings) select 3);
+(_display displayCtrl 27005) cbSetChecked (GVAR(DiagnosticsSettings) select 4);
 
 private _fnc_onUnload = {
     private _logic = GETMVAR(BIS_fnc_initCuratorAttributes_target,objnull);
@@ -35,7 +36,8 @@ private _fnc_onConfirm = {
         cbChecked (_display displayCtrl 27001),
         cbChecked (_display displayCtrl 27002),
         cbChecked (_display displayCtrl 27003),
-        cbChecked (_display displayCtrl 27004)
+        cbChecked (_display displayCtrl 27004),
+        cbChecked (_display displayCtrl 27005)
     ];
 
     _settings call FUNC(moduleDiagnosticsOnConfirm);
