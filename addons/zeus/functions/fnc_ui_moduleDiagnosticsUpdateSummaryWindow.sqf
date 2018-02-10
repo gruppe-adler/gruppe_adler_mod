@@ -115,14 +115,14 @@ switch (_updatePartID) do {
 
             nil
         } count _allAI;
-        {_ownerArray pushBack [_x,_ownerCountArray select _forEachIndex]} forEach _ownerNameArray;
-        _ownerArray sort true;
+        {_ownerArray pushBack [_ownerCountArray select _forEachIndex,_x]} forEach _ownerNameArray;
+        _ownerArray sort false;
 
         // update owner 1
         if (count _ownerArray > 0) then {
             _ownerData = _ownerArray select 0;
-            (_summaryWindowCtrlGrp controlsGroupCtrl 95030) ctrlSetStructuredText parseText format ["on %1",(_ownerData select 0)];
-            (_summaryWindowCtrlGrp controlsGroupCtrl 96030) ctrlSetStructuredText parseText str (_ownerData select 1);
+            (_summaryWindowCtrlGrp controlsGroupCtrl 95030) ctrlSetStructuredText parseText format ["on %1",(_ownerData select 1)];
+            (_summaryWindowCtrlGrp controlsGroupCtrl 96030) ctrlSetStructuredText parseText str (_ownerData select 0);
         } else {
             (_summaryWindowCtrlGrp controlsGroupCtrl 95030) ctrlSetStructuredText parseText "";
             (_summaryWindowCtrlGrp controlsGroupCtrl 96030) ctrlSetStructuredText parseText "";
@@ -131,8 +131,8 @@ switch (_updatePartID) do {
         // update owner 2
         if (count _ownerArray > 1) then {
             _ownerData = _ownerArray select 1;
-            (_summaryWindowCtrlGrp controlsGroupCtrl 95031) ctrlSetStructuredText parseText format ["on %1",(_ownerData select 0)];
-            (_summaryWindowCtrlGrp controlsGroupCtrl 96031) ctrlSetStructuredText parseText str (_ownerData select 1);
+            (_summaryWindowCtrlGrp controlsGroupCtrl 95031) ctrlSetStructuredText parseText format ["on %1",(_ownerData select 1)];
+            (_summaryWindowCtrlGrp controlsGroupCtrl 96031) ctrlSetStructuredText parseText str (_ownerData select 0);
         } else {
             (_summaryWindowCtrlGrp controlsGroupCtrl 95031) ctrlSetStructuredText parseText "";
             (_summaryWindowCtrlGrp controlsGroupCtrl 96031) ctrlSetStructuredText parseText "";
@@ -141,8 +141,8 @@ switch (_updatePartID) do {
         // update owner 3
         if (count _ownerArray > 2) then {
             _ownerData = _ownerArray select 2;
-            (_summaryWindowCtrlGrp controlsGroupCtrl 95032) ctrlSetStructuredText parseText format ["on %1",(_ownerData select 0)];
-            (_summaryWindowCtrlGrp controlsGroupCtrl 96032) ctrlSetStructuredText parseText str (_ownerData select 1);
+            (_summaryWindowCtrlGrp controlsGroupCtrl 95032) ctrlSetStructuredText parseText format ["on %1",(_ownerData select 1)];
+            (_summaryWindowCtrlGrp controlsGroupCtrl 96032) ctrlSetStructuredText parseText str (_ownerData select 0);
         } else {
             (_summaryWindowCtrlGrp controlsGroupCtrl 95032) ctrlSetStructuredText parseText "";
             (_summaryWindowCtrlGrp controlsGroupCtrl 96032) ctrlSetStructuredText parseText "";

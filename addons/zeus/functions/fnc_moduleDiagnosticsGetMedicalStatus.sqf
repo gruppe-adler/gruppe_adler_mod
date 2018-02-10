@@ -12,9 +12,9 @@ private _status = [];
 
 
 //unconscious
-private _status = _x getVariable [QGVAR(downSince),-1];
-if (_status > 0) then {
-    _downTime = CBA_missionTime - _status;
+private _downSince = _x getVariable [QGVAR(downSince),-1];
+if (_downSince > 0) then {
+    _downTime = CBA_missionTime - _downSince;
     _downTimeText = format ([["%1s",_downTime],["%1min",round (_downTime/60)]] select {_downTime > 60});
     _status pushBack (format ["down for %1",_downTimeText]);
 };
