@@ -4,9 +4,11 @@ params [["_playerFPS",false],["_medicalStatus",false],["_objectLocality",false],
 
 
 //compare to previous settings
-if ({_x} count GVAR(DiagnosticsSettings) > 0) then {[] call FUNC(moduleDiagnosticsRender)};
 GVAR(DiagnosticsSettings) params ["_oldPlayerFPS","_oldMedicalStatus","_oldObjectLocality","_oldAiStatus","_oldSummaryWindow"];
 GVAR(DiagnosticsSettings) = +_this;
+
+
+if ({_x} count GVAR(DiagnosticsSettings) > 0) then {[] call FUNC(moduleDiagnosticsRender)};
 
 
 //update users

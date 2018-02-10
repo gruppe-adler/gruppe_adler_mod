@@ -21,7 +21,7 @@ addMissionEventHandler ["Draw3D", {
 
         if (isPlayer _x) then {
             if (_playerFPS) then {
-                _unitTextArray append [format ["FPS: %1",_x getVariable [QGVAR(playerFPS),0]]];
+                _unitTextArray append [format ["%1 FPS",_x getVariable [QGVAR(playerFPS),0]]];
             };
             if (_medicalStatus) then {
                 _status = [_x] call FUNC(moduleDiagnosticsGetMedicalStatus);
@@ -31,7 +31,7 @@ addMissionEventHandler ["Draw3D", {
             };
         } else {
             if (_objectLocality && {_x == leader group _x}) then {
-                _unitTextArray append [format ["Owner: %1",(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
+                _unitTextArray append [format ["on %1",(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
             };
             if (_aiStatus) then {
                 _unitTextArray append ([_x] call FUNC(moduleDiagnosticsGetAIStatus));

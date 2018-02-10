@@ -75,7 +75,7 @@ switch (_updatePartID) do {
     // column 3 ================================================================
     case (2): {
         _allAI = allUnits - _allPlayers;
-        _aiGroupsNumber = {{isPlayer _x} count (units _x) == 0} count allGroups;
+        _aiGroupsNumber = {count (units _x) > 0 && {{isPlayer _x} count (units _x) == 0}} count allGroups;
         _aiUnitsNumber = {!isPlayer _x} count _allAI;
 
         //update AI units number
@@ -116,7 +116,7 @@ switch (_updatePartID) do {
             nil
         } count _allAI;
         {_ownerArray pushBack [_x,_ownerCountArray select _forEachIndex]} forEach _ownerNameArray;
-        _ownerArray sort false;
+        _ownerArray sort true;
 
         // update owner 1
         if (count _ownerArray > 0) then {
