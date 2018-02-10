@@ -28,7 +28,7 @@ switch (_updatePartID) do {
                 _playersCounted = _playersCounted + 1;
             };
         } forEach _allPlayers;
-        _avgFPS = _totalFPS / _playersCounted;
+        _avgFPS = _totalFPS / (_playersCounted max 1);
 
         // update players number
         (_summaryWindowCtrlGrp controlsGroupCtrl 96000) ctrlSetStructuredText parseText str _playersNumber;

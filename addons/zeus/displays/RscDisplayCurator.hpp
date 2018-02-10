@@ -1,7 +1,7 @@
 //summary window settings
 #define SUMMARYWINDOW_H             (H_PART(5))
 #define COLUMNS_NUMBER              4
-#define COLUMN_W                    W_PART(8)
+#define COLUMN_W                    W_PART(7)
 #define ROWS_NUMBER                 3
 #define ROW_H                       H_PART(1)
 #define PADDING_X                   W_PART(3.0)
