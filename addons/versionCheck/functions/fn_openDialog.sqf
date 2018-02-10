@@ -20,7 +20,9 @@ _textCtrl ctrlCommit 0;
 private _kickOnMismatch = "grad_versionCheck_setting_kickOnVersionMismatch" call CBA_settings_fnc_get;
 private _kickOnMissingClient = "grad_versionCheck_setting_kickOnMissingClient" call CBA_settings_fnc_get;
 private _kickOnMissingServer = "grad_versionCheck_setting_kickOnMissingServer" call CBA_settings_fnc_get;
+private _dontKickAdmin = "grad_versionCheck_setting_dontKickAdmin" call CBA_settings_fnc_get;
 private _kick = switch (true) do {
+    case (_dontKickAdmin && serverCommandAvailable "#kick"): {false};
     case (_kickOnMismatch && count grad_versionCheck_versionMismatches > 0): {true};
     case (_kickOnMissingClient && count grad_versionCheck_missingAddonsClient > 0): {true};
     case (_kickOnMissingServer && count grad_versionCheck_missingAddonsServer > 0): {true};
