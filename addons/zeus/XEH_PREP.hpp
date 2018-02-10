@@ -10,6 +10,7 @@ PREP(moduleDiagnosticsUpdateObjectLocality);
 
 PREP(ui_moduleDiagnostics);
 PREP(ui_moduleDiagnosticsActivateSummaryWindow);
+PREP(ui_moduleDiagnosticsUpdateSummaryWindow);
 
 PREP(moduleSupplyDrop);
 PREP(moduleSupplyDropExit);

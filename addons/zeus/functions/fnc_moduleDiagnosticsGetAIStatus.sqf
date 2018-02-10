@@ -7,9 +7,9 @@ private _grp = group _unit;
 
 if (_unit == leader _grp) then {
     _aiStatus append [combatMode _grp,behaviour leader _grp];
-    if !(currentWaypoint _grp > count (waypoints _grp)) then {
-        _aiStatus pushBack (waypointSpeed [_grp,currentWaypoint _grp]);
-    };
+    _waypointSpeed = waypointSpeed [_grp,currentWaypoint _grp];
+    if (_waypointSpeed != "") then {_aiStatus pushBack _waypointSpeed};
+
 };
 
 if (fleeing _unit) then {

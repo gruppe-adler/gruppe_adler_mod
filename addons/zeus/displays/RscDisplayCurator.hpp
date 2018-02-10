@@ -5,7 +5,7 @@
 #define ROWS_NUMBER                 3
 #define ROW_H                       H_PART(1)
 #define PADDING_X                   W_PART(3.0)
-#define PADDING_Y                   H_PART(0.5)
+#define PADDING_Y                   H_PART(1)
 
 //summary window dependent dimensions
 #define SUMMARYWINDOW_W             (safeZoneW - W_PART(25))
@@ -25,8 +25,8 @@ class RscDisplayCurator {
         class GVAR(SummaryWindow): RscControlsGroupNoScrollbars {
             idc = -1;
 
-            onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrl),_this select 0)]; (_this select 0) ctrlShow (GVAR(DiagnosticsSettings) select 4));
-            onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrl),nil)]);
+            onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrlGrp),_this select 0)]; (_this select 0) ctrlShow (GVAR(DiagnosticsSettings) select 4));
+            onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrlGrp),nil)]);
 
             x = SUMMARYWINDOW_X;
             y = SUMMARYWINDOW_Y;
@@ -48,8 +48,7 @@ class RscDisplayCurator {
                 //column 0 =====================================================
                 class content_0_0: RscStructuredText {
                     idc = 95000;
-                    text = "Content Name";
-
+                    text = "Players";
                     x = COLUMN_X(0);
                     y = ROW_Y(0);
                     w = COLUMN_W;
@@ -59,7 +58,7 @@ class RscDisplayCurator {
 
                 class content_value_0_0: content_0_0 {
                     idc = 96000;
-                    text = "1000";
+                    text = "";
                     class Attributes: Attributes {
                         align = "right";
                     };
@@ -67,6 +66,7 @@ class RscDisplayCurator {
 
                 class content_0_1: content_0_0 {
                     idc = 95001;
+                    text = "Avg. FPS";
                     x = COLUMN_X(0);
                     y = ROW_Y(1);
                 };
@@ -77,7 +77,7 @@ class RscDisplayCurator {
                     y = ROW_Y(1);
                 };
 
-                class content_0_2: content_0_0 {
+                /* class content_0_2: content_0_0 {
                     idc = 95002;
                     x = COLUMN_X(0);
                     y = ROW_Y(2);
@@ -87,11 +87,12 @@ class RscDisplayCurator {
                     idc = 96002;
                     x = COLUMN_X(0);
                     y = ROW_Y(2);
-                };
+                }; */
 
                 //column 1 =====================================================
                 class content_1_0: content_0_0 {
                     idc = 95010;
+                    text = "Conscious";
                     x = COLUMN_X(1);
                     y = ROW_Y(0);
                 };
@@ -104,6 +105,7 @@ class RscDisplayCurator {
 
                 class content_1_1: content_0_0 {
                     idc = 95011;
+                    text = "Unconscious";
                     x = COLUMN_X(1);
                     y = ROW_Y(1);
                 };
@@ -116,6 +118,7 @@ class RscDisplayCurator {
 
                 class content_1_2: content_0_0 {
                     idc = 95012;
+                    text = "Injured";
                     x = COLUMN_X(1);
                     y = ROW_Y(2);
                 };
@@ -129,6 +132,7 @@ class RscDisplayCurator {
                 //column 2 =====================================================
                 class content_2_0: content_0_0 {
                     idc = 95020;
+                    text = "AI units";
                     x = COLUMN_X(2);
                     y = ROW_Y(0);
                 };
@@ -141,6 +145,7 @@ class RscDisplayCurator {
 
                 class content_2_1: content_0_0 {
                     idc = 95021;
+                    text = "AI groups";
                     x = COLUMN_X(2);
                     y = ROW_Y(1);
                 };
@@ -151,7 +156,7 @@ class RscDisplayCurator {
                     y = ROW_Y(1);
                 };
 
-                class content_2_2: content_0_0 {
+                /* class content_2_2: content_0_0 {
                     idc = 95022;
                     x = COLUMN_X(2);
                     y = ROW_Y(2);
@@ -161,11 +166,12 @@ class RscDisplayCurator {
                     idc = 96022;
                     x = COLUMN_X(2);
                     y = ROW_Y(2);
-                };
+                }; */
 
                 //column 3 =====================================================
                 class content_3_0: content_0_0 {
                     idc = 95030;
+                    text = "";
                     x = COLUMN_X(3);
                     y = ROW_Y(0);
                 };
@@ -178,6 +184,7 @@ class RscDisplayCurator {
 
                 class content_3_1: content_0_0 {
                     idc = 95031;
+                    text = "";
                     x = COLUMN_X(3);
                     y = ROW_Y(1);
                 };
@@ -190,6 +197,7 @@ class RscDisplayCurator {
 
                 class content_3_2: content_0_0 {
                     idc = 95032;
+                    text = "";
                     x = COLUMN_X(3);
                     y = ROW_Y(2);
                 };

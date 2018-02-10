@@ -28,5 +28,5 @@ if (
 //toggle summary window
 if !(_summaryWindow isEqualTo _oldSummaryWindow) then {
     [_summaryWindow] call FUNC(ui_moduleDiagnosticsActivateSummaryWindow);
-    (uiNamespace getVariable [QGVAR(summaryWindowCtrl),controlNull]) ctrlShow _summaryWindow;
+    (uiNamespace getVariable [QGVAR(summaryWindowCtrlGrp),controlNull]) ctrlShow _summaryWindow;
 };
