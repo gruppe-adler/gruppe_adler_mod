@@ -6,7 +6,7 @@ class CfgPatches {
 		name = QUOTE(ADDON);
 		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
-		requiredAddons[] = {"grad_main"};
+		requiredAddons[] = {"grad_main","ace_zeus"};
 		units[] = {
 			QGVAR(moduleSupplyDrop),
 			QGVAR(moduleDiagnostics)

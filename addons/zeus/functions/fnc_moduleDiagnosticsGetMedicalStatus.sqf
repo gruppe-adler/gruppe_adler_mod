@@ -15,7 +15,7 @@ private _status = [];
 private _downSince = _unit getVariable [QGVAR(downSince),-1];
 if (_downSince > 0) then {
     _downTime = CBA_missionTime - _downSince;
-    _downTimeText = format ([["%1s",_downTime],["%1min",round (_downTime/60)]] select {_downTime > 60});
+    _downTimeText = format ([["%1s",round _downTime],["%1min",round (_downTime/60)]] select (_downTime > 60));
     _status pushBack (format ["%1 %2",localize LSTRING(downFor),_downTimeText]);
 };
 
