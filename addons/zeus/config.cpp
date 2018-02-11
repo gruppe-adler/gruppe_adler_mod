@@ -8,11 +8,15 @@ class CfgPatches {
 		requiredVersion = 1.0;
 		requiredAddons[] = {"grad_main"};
 		units[] = {
-			QGVAR(moduleSupplyDrop)
+			QGVAR(moduleSupplyDrop),
+			QGVAR(moduleDiagnostics)
 		};
 		weapons[] = {};
 		VERSION_CONFIG;
-        authors[] = {"chris5790"};
+        authors[] = {
+			"chris5790",
+			"McDiod"
+		};
 	};
 };
 
@@ -27,9 +31,3 @@ class CfgFactionClasses {
 #include "UI.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
-
-class RscDisplayCurator {
-    class Controls {
-        class Watermark {};
-    };
-};

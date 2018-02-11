@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="Gruppe Adler Mod">
+    <Package name="zeus">
+        <Container name="moduleDiagnostics">
+            <Key ID="STR_GRAD_ZEUS_moduleDiagnosticsName">
+                <German>Monitoring</German>
+                <Original>Monitoring</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_players">
+                <German>Spieler</German>
+                <Original>Players</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_avgFPS">
+                <German>Durschn. FPS</German>
+                <Original>Avg. FPS</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_serverFPS">
+                <German>Server FPS</German>
+                <Original>Server FPS</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_conscious">
+                <German>Bei Bewusstsein</German>
+                <Original>Conscious</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_unconscious">
+                <German>Bewusstlos</German>
+                <Original>Unconscious</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_injured">
+                <German>Verletzt</German>
+                <Original>Injured</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_aiUnits">
+                <German>KI Einheiten</German>
+                <Original>AI units</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_aiGroups">
+                <German>KI Gruppen</German>
+                <Original>AI groups</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_optionPlayerFPS">
+                <German>Spieler FPS</German>
+                <Original>Player FPS</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_optionPlayerMedicalStatus">
+                <German>Spieler Gesundheitszustand</German>
+                <Original>Player medical status</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_optionObjectLocality">
+                <German>Objektlokalität</German>
+                <Original>Object locality</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_optionAIStatus">
+                <German>KI Status</German>
+                <Original>AI status</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_optionSummaryWindow">
+                <German>Übersichtsfenster</German>
+                <Original>Summary window</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_fleeing">
+                <German>flüchtet</German>
+                <Original>fleeing</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_suppressed">
+                <German>unterdrückt</German>
+                <Original>suppressed</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_downFor">
+                <German>bew. seit</German>
+                <Original>down for</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_injuredBodyPart">
+                <German>verletzt</German>
+                <Original>injured</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_head">
+                <German>Kopf</German>
+                <Original>head</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_body">
+                <German>Torso</German>
+                <Original>body</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_leftArm">
+                <German>l. Arm</German>
+                <Original>left arm</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_rightArm">
+                <German>r. Arm</German>
+                <Original>right arm</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_leftLeg">
+                <German>l. Bein</German>
+                <Original>left leg</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_rightLeg">
+                <German>r. Bein</German>
+                <Original>right leg</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_onOwner">
+                <German>auf</German>
+                <Original>on</Original>
+            </Key>
+        </Container>
+    </Package>
+</Project>
