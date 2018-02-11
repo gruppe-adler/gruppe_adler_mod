@@ -4,7 +4,7 @@ params [["_unit",objNull]];
 
 
 //dead
-if (!alive _x) exitWith {
+if (!alive _unit) exitWith {
     ["dead"]
 };
 
@@ -12,7 +12,7 @@ private _status = [];
 
 
 //unconscious
-private _downSince = _x getVariable [QGVAR(downSince),-1];
+private _downSince = _unit getVariable [QGVAR(downSince),-1];
 if (_downSince > 0) then {
     _downTime = CBA_missionTime - _downSince;
     _downTimeText = format ([["%1s",_downTime],["%1min",round (_downTime/60)]] select {_downTime > 60});
