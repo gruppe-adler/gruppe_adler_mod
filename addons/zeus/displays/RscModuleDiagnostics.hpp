@@ -16,10 +16,8 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                     class controls {
                         class Title1: RscText {
                             idc = -1;
-                            /* text = CSTRING(ASD); */
-                            text = "Player FPS";
-                            /* toolTip = CSTRING(ASD); */
-                            toolTip = "Show player FPS";
+                            text = CSTRING(optionPlayerFPS);
+                            toolTip = "";
                             x = 0;
                             y = 0;
                             w = W_PART(10);
@@ -35,8 +33,7 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                         };
                         class Title2: Title1 {
                             idc = -1;
-                            text = "Player medical status";
-                            tooltip = "Show medical status of players.";
+                            text = CSTRING(optionPlayerMedicalStatus);
                             y = H_PART(1.1);
                         };
                         class MedicalStatus: PlayerFPS {
@@ -45,8 +42,7 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                         };
                         class Title3: Title1 {
                             idc = -1;
-                            text = "Object locality";
-                            tooltip = "Show owner of objects and units.";
+                            text = CSTRING(optionObjectLocality);
                             y = H_PART(2.2);
                         };
                         class ObjectLocality: PlayerFPS {
@@ -55,8 +51,7 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                         };
                         class Title4: Title1 {
                             idc = -1;
-                            text = "AI status";
-                            tooltip = "Show combat mode, fleeing, etc.";
+                            text = CSTRING(optionAIStatus);
                             y = H_PART(3.3);
                         };
                         class AIStatus: PlayerFPS {
@@ -65,8 +60,7 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                         };
                         class Title5: Title1 {
                             idc = -1;
-                            text = "Summary window";
-                            tooltip = "Show summary window.";
+                            text = CSTRING(optionSummaryWindow);
                             y = H_PART(4.4);
                         };
                         class SummaryWindow: PlayerFPS {

@@ -31,7 +31,7 @@ addMissionEventHandler ["Draw3D", {
             };
         } else {
             if (_objectLocality && {_x == leader group _x}) then {
-                _unitTextArray append [format ["on %1",(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
+                _unitTextArray append [format ["%1 %2",localize LSTRING(onOwner),(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
             };
             if (_aiStatus) then {
                 _unitTextArray append ([_x] call FUNC(moduleDiagnosticsGetAIStatus));

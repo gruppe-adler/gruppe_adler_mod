@@ -13,7 +13,10 @@ class CfgPatches {
 		};
 		weapons[] = {};
 		VERSION_CONFIG;
-        authors[] = {"chris5790"};
+        authors[] = {
+			"chris5790",
+			"McDiod"
+		};
 	};
 };
 

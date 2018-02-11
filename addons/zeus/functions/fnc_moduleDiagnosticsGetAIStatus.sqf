@@ -13,12 +13,12 @@ if (_unit == leader _grp) then {
 };
 
 if (fleeing _unit) then {
-    _aiStatus pushBack "fleeing";
+    _aiStatus pushBack localize LSTRING(fleeing);
 };
 
 private _suppression = getSuppression _unit;
 if (_suppression > 0) then {
-    _aiStatus pushBack format ["%1%2 suppressed",round (_suppression * 100),"%"];
+    _aiStatus pushBack format ["%1%2 %3",round (_suppression * 100),"%",localize LSTRING(suppressed)];
 };
 
 _aiStatus

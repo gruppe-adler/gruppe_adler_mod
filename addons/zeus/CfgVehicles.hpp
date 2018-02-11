@@ -15,7 +15,7 @@ class CfgVehicles {
 	class GVAR(moduleDiagnostics): GVAR(moduleBase) {
 		curatorCanAttach = 1;
 		category = QGVAR(Grad);
-		displayName = "Diagnostics";
+		displayName = CSTRING(moduleDiagnosticsName);
 		curatorInfoType = QGVAR(RscModuleDiagnostics);
 	};
 };

@@ -48,7 +48,7 @@ class RscDisplayCurator {
                 //column 0 =====================================================
                 class content_0_0: RscStructuredText {
                     idc = 95000;
-                    text = "Players";
+                    text = CSTRING(players);
                     x = COLUMN_X(0);
                     y = ROW_Y(0);
                     w = COLUMN_W;
@@ -66,7 +66,7 @@ class RscDisplayCurator {
 
                 class content_0_1: content_0_0 {
                     idc = 95001;
-                    text = "Avg. FPS";
+                    text = CSTRING(avgFPS);
                     x = COLUMN_X(0);
                     y = ROW_Y(1);
                 };
@@ -92,7 +92,7 @@ class RscDisplayCurator {
                 //column 1 =====================================================
                 class content_1_0: content_0_0 {
                     idc = 95010;
-                    text = "Conscious";
+                    text = CSTRING(conscious);
                     x = COLUMN_X(1);
                     y = ROW_Y(0);
                 };
@@ -105,7 +105,7 @@ class RscDisplayCurator {
 
                 class content_1_1: content_0_0 {
                     idc = 95011;
-                    text = "Unconscious";
+                    text = CSTRING(unconscious);
                     x = COLUMN_X(1);
                     y = ROW_Y(1);
                 };
@@ -118,7 +118,7 @@ class RscDisplayCurator {
 
                 class content_1_2: content_0_0 {
                     idc = 95012;
-                    text = "Injured";
+                    text = CSTRING(injured);
                     x = COLUMN_X(1);
                     y = ROW_Y(2);
                 };
@@ -132,7 +132,7 @@ class RscDisplayCurator {
                 //column 2 =====================================================
                 class content_2_0: content_0_0 {
                     idc = 95020;
-                    text = "AI units";
+                    text = CSTRING(aiUnits);
                     x = COLUMN_X(2);
                     y = ROW_Y(0);
                 };
@@ -145,7 +145,7 @@ class RscDisplayCurator {
 
                 class content_2_1: content_0_0 {
                     idc = 95021;
-                    text = "AI groups";
+                    text = CSTRING(aiGroups);
                     x = COLUMN_X(2);
                     y = ROW_Y(1);
                 };
