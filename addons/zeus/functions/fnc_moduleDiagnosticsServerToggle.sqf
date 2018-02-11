@@ -18,7 +18,7 @@ private _fnc_modePlayerFPS = {
     [GVAR(usersPlayerFPS)] call _fnc_addUser;
 
     publicVariable QGVAR(usersPlayerFPS);
-    if (hasInterface) then {[] call FUNC(moduleDiagnosticsUpdateFPS)};
+    [] call FUNC(moduleDiagnosticsUpdateFPS);
 };
 
 private _fnc_modeObjectLocality = {

@@ -19,6 +19,7 @@ switch (_updatePartID) do {
     // column 0 ================================================================
     case (0): {
         _playersNumber = count _allPlayers;
+        _serverFPS = missionNamespace getVariable [QGVAR(serverFPS),-1];
         _totalFPS = 0;
         _playersCounted = 0;
         {
@@ -35,11 +36,19 @@ switch (_updatePartID) do {
 
         // update average fps
         _textColor = switch (true) do {
-            case (_avgFPS < 23): {COLOR_RED};
-            case (_avgFPS < 30): {COLOR_YELLOW};
+            case (_avgFPS < 25): {COLOR_RED};
+            case (_avgFPS < 35): {COLOR_YELLOW};
             default {COLOR_WHITE};
         };
         (_summaryWindowCtrlGrp controlsGroupCtrl 96001) ctrlSetStructuredText parseText format ["<t color='%1'>%2</t>",_textColor,_avgFPS];
+
+        // update server fps
+        _textColor = switch (true) do {
+            case (_serverFPS < 20): {COLOR_RED};
+            case (_serverFPS < 35): {COLOR_YELLOW};
+            default {COLOR_WHITE};
+        };
+        (_summaryWindowCtrlGrp controlsGroupCtrl 96002) ctrlSetStructuredText parseText format ["<t color='%1'>%2</t>",_textColor,_serverFPS];
     };
 
 

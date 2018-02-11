@@ -77,8 +77,9 @@ class RscDisplayCurator {
                     y = ROW_Y(1);
                 };
 
-                /* class content_0_2: content_0_0 {
+                class content_0_2: content_0_0 {
                     idc = 95002;
+                    text = CSTRING(serverFPS);
                     x = COLUMN_X(0);
                     y = ROW_Y(2);
                 };
@@ -87,7 +88,7 @@ class RscDisplayCurator {
                     idc = 96002;
                     x = COLUMN_X(0);
                     y = ROW_Y(2);
-                }; */
+                };
 
                 //column 1 =====================================================
                 class content_1_0: content_0_0 {

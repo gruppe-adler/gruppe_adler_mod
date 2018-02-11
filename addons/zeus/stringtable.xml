@@ -14,6 +14,10 @@
                 <German>Durschn. FPS</German>
                 <Original>Avg. FPS</Original>
             </Key>
+            <Key ID="STR_GRAD_ZEUS_serverFPS">
+                <German>Server FPS</German>
+                <Original>Server FPS</Original>
+            </Key>
             <Key ID="STR_GRAD_ZEUS_conscious">
                 <German>Bei Bewusstsein</German>
                 <Original>Conscious</Original>
