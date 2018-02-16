@@ -9,7 +9,7 @@ Gruppe Adler Mod is a collection of Gruppe Adler original addons, that add new f
 
 ### Releasing
 
-Versioning is handled by `addons\main\script_mod.hpp`. Increase *MAJOR*, *MINOR* and/or *PATCHLVL* defines before every release. Create a matching GitHub tag.
+Versioning is handled by `addons\main\script_mod.hpp`, which is automatically updated by our build script. Deployment is handled by Travis CI upon creation of a new GitHub release tag.
 
 ### Building
 
