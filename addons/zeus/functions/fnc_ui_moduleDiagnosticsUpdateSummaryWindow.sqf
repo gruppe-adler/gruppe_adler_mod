@@ -57,7 +57,7 @@ switch (_updatePartID) do {
         _playersNumber = count _allPlayers;
         _unconsciousNumber = {_x getVariable ["ACE_isUnconscious",false]} count _allPlayers;
         _unconsciousRatio = _unconsciousNumber/(_playersNumber max 1);
-        _injuredNumber = {count (_x getVariable ["ace_medical_openWounds",0]) > 0} count _allPlayers;
+        _injuredNumber = {count (_x getVariable ["ace_medical_openWounds",[]]) > 0} count _allPlayers;
         _injuredRatio = _injuredNumber/(_playersNumber max 1);
 
         // update conscious number
