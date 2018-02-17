@@ -50,6 +50,18 @@
                 <German>%1 verschoben nach %2.</German>
                 <Original>%1 moved to %2.</Original>
             </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutError1">
+                <German>Fehler: Einheit auswählen.</German>
+                <Original>Error: Select a unit.</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutError2">
+                <German>Fehler: GRAD-Loadout nicht installiert.</German>
+                <Original>Error: GRAD-Loadout not installed.</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutConfirm">
+                <German>%1s Loadout neu geladen.</German>
+                <Original>Loadout reloaded for %1.</Original>
+            </Key>
             <Key ID="STR_GRAD_ZEUS_players">
                 <German>Spieler</German>
                 <Original>Players</Original>
