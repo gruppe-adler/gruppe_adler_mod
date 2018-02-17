@@ -2,6 +2,7 @@ class RscText;
 class RscButtonMenu;
 class RscListbox;
 class RscCheckBox;
+class RscCombo;
 class RscControlsGroup;
 class RscControlsGroupNoScrollbars;
 

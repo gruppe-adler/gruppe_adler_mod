@@ -39,4 +39,11 @@ class CfgVehicles {
 		displayName = CSTRING(moduleSetLoadoutsName);
 		function = QFUNC(moduleSetLoadouts);
 	};
+
+	class GVAR(moduleMoveRespawn): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleMoveRespawnName);
+		curatorInfoType = QGVAR(RscModuleMoveRespawn);
+	};
 };

@@ -11,6 +11,9 @@ PREP(ui_moduleDiagnostics);
 PREP(ui_moduleDiagnosticsActivateSummaryWindow);
 PREP(ui_moduleDiagnosticsUpdateSummaryWindow);
 
+PREP(moduleMoveRespawnOnConfirm);
+PREP(ui_moduleMoveRespawn);
+
 PREP(moduleReloadLoadout);
 
 PREP(moduleSetLoadouts);

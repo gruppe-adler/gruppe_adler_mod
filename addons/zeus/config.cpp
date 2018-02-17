@@ -12,7 +12,8 @@ class CfgPatches {
 			QGVAR(moduleDiagnostics),
 			QGVAR(moduleToggleBFT),
 			QGVAR(moduleReloadLoadout),
-			QGVAR(moduleSetLoadouts)
+			QGVAR(moduleSetLoadouts),
+			QGVAR(moduleMoveRespawn)
 		};
 		weapons[] = {};
 		VERSION_CONFIG;
