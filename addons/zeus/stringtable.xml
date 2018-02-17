@@ -6,6 +6,34 @@
                 <German>Monitoring</German>
                 <Original>Monitoring</Original>
             </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTName">
+                <German>BFT umschalten</German>
+                <Original>Toggle BFT</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutName">
+                <German>Loadout neu laden</German>
+                <Original>Reload Loadout</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsName">
+                <German>Faktionsloadouts festlegen</German>
+                <Original>Set Faction Loadouts</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTError1">
+                <German>Nicht-leeres Objekt auswählen</German>
+                <Original>Select non-empty object</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResult">
+                <German>BFT für Gruppe %1.</German>
+                <Original>Group BFT %1.</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOn">
+                <German>eingeschaltet</German>
+                <Original>toggled on</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOff">
+                <German>ausgeschaltet</German>
+                <Original>toggled off</Original>
+            </Key>
             <Key ID="STR_GRAD_ZEUS_players">
                 <German>Spieler</German>
                 <Original>Players</Original>

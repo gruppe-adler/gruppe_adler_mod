@@ -18,4 +18,25 @@ class CfgVehicles {
 		displayName = CSTRING(moduleDiagnosticsName);
 		curatorInfoType = QGVAR(RscModuleDiagnostics);
 	};
+
+	class GVAR(moduleToggleBFT): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleToggleBFTName);
+		function = QFUNC(moduleToggleBFT);
+	};
+
+	class GVAR(moduleReloadLoadout): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleReloadLoadoutName);
+		function = QFUNC(moduleReloadLoadout);
+	};
+
+	class GVAR(moduleSetLoadouts): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleSetLoadoutsName);
+		function = QFUNC(moduleSetLoadouts);
+	};
 };
