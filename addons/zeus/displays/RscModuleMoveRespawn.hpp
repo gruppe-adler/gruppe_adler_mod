@@ -14,7 +14,7 @@ class GVAR(RscModuleMoveRespawn): RscDisplayAttributes {
                     w = W_PART(26);
                     h = H_PART(1.5);
                     class controls {
-                        class ToggleNvgTitle: Title {
+                        class MoveRespawnTitle: Title {
                             idc = -1;
                             text = CSTRING(moduleMoveRespawnSide);
                             toolTip = "";
@@ -23,7 +23,7 @@ class GVAR(RscModuleMoveRespawn): RscDisplayAttributes {
                             w = W_PART(7);
                             colorBackground[] = {0,0,0,0.5};
                         };
-                        class ToggleNvgCombo: RscCombo {
+                        class MoveRespawnCombo: RscCombo {
                             idc = 92100;
                             x = H_PART(6);
                             y = H_PART(0);

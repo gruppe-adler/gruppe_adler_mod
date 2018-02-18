@@ -1,3 +1,6 @@
+PREP(moduleBlacklistHeadlessOnConfirm);
+PREP(ui_moduleBlacklistHeadless);
+
 PREP(moduleDiagnosticsGetAIStatus);
 PREP(moduleDiagnosticsGetMedicalStatus);
 PREP(moduleDiagnosticsGetOwnerName);

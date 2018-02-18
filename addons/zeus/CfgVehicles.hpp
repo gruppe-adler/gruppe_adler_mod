@@ -46,4 +46,11 @@ class CfgVehicles {
 		displayName = CSTRING(moduleMoveRespawnName);
 		curatorInfoType = QGVAR(RscModuleMoveRespawn);
 	};
+
+	class GVAR(moduleBlacklistHeadless): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleBlacklistHeadlessName);
+		curatorInfoType = QGVAR(RscModuleBlacklistHeadless);
+	};
 };

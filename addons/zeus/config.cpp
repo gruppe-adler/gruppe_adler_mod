@@ -13,7 +13,8 @@ class CfgPatches {
 			QGVAR(moduleToggleBFT),
 			QGVAR(moduleReloadLoadout),
 			QGVAR(moduleSetLoadouts),
-			QGVAR(moduleMoveRespawn)
+			QGVAR(moduleMoveRespawn),
+			QGVAR(moduleBlacklistHeadless)
 		};
 		weapons[] = {};
 		VERSION_CONFIG;
