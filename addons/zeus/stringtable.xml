@@ -1,6 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="Gruppe Adler Mod">
     <Package name="zeus">
+        <Container name="common">
+            <Key ID="STR_GRAD_ZEUS_side">
+                <German>Seite</German>
+                <Original>Side</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_faction">
+                <German>Faktion</German>
+                <Original>Faction</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_loadouts">
+                <German>Loadouts</German>
+                <Original>Loadouts</Original>
+            </Key>
+        </Container>
         <Container name="moduleDiagnostics">
             <Key ID="STR_GRAD_ZEUS_moduleDiagnosticsName">
                 <German>Monitoring</German>
@@ -148,15 +162,27 @@
                 <German>Faktionsloadouts festlegen</German>
                 <Original>Set Faction Loadouts</Original>
             </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsReapply">
+                <German>Loadouts neu anwenden</German>
+                <Original>Reapply Loadouts</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsSet">
+                <German>Loadouts festgelegt</German>
+                <Original>Loadouts set</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsReapplied">
+                <German>und neu angewendet</German>
+                <Original>and reapplied</Original>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsError1">
+                <German>Fehler: Keine Loadouts gefunden oder GRAD-Loadout nicht installiert.</German>
+                <Original>Error: No loadouts found or GRAD-Loadout not installed.</Original>
+            </Key>
         </Container>
         <Container name="moduleMoveRespawn">
             <Key ID="STR_GRAD_ZEUS_moduleMoveRespawnName">
                 <German>Respawnposition verschieben</German>
                 <Original>Move Respawn Position</Original>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleMoveRespawnSide">
-                <German>Seite</German>
-                <Original>Side</Original>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleMoveRespawnError1">
                 <German>Fehler: %1 existiert nicht.</German>

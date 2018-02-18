@@ -19,7 +19,8 @@ PREP(ui_moduleMoveRespawn);
 
 PREP(moduleReloadLoadout);
 
-PREP(moduleSetLoadouts);
+PREP(moduleSetLoadoutsOnConfirm);
+PREP(ui_moduleSetLoadouts);
 
 PREP(moduleSupplyDrop);
 PREP(moduleSupplyDropExit);

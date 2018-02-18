@@ -20,8 +20,8 @@ private _combo = _display displayCtrl 92100;
 } forEach [
     ["BLUFOR", 0],
     ["OPFOR", 1],
-    ["INDEP", 2],
-    ["CIV", 3]
+    ["INDEPENDENT", 2],
+    ["CIVILIAN", 3]
 ];
 _combo lbSetCurSel 0;
 

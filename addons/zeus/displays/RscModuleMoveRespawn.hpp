@@ -16,7 +16,7 @@ class GVAR(RscModuleMoveRespawn): RscDisplayAttributes {
                     class controls {
                         class MoveRespawnTitle: Title {
                             idc = -1;
-                            text = CSTRING(moduleMoveRespawnSide);
+                            text = CSTRING(side);
                             toolTip = "";
                             x = H_PART(0);
                             y = H_PART(0);
