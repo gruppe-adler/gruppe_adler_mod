@@ -16,7 +16,7 @@ if (!("grad_axe" in (items ace_player))) exitWith {};
 
 [{
     params ["_args", "_pfID"];
-    _args params ["_setPosition", "_addedHelpers", "_treesHelped"];
+    _args params ["_setPosition", "_addedHelpers", "_treesHelped", "_helperQueue"];
 
     if (!ace_interact_menu_keydown) then {
         {deleteVehicle _x; nil} count _addedHelpers;
@@ -50,16 +50,23 @@ if (!("grad_axe" in (items ace_player))) exitWith {};
             {
                 if (!(_x in _treesHelped)) then {
                     _treesHelped pushBack _x;
-                    private _helper = "ACE_LogicDummy" createVehicleLocal (getPos _x);
+                    private _helper = "ACE_LogicDummy" createVehicleLocal [0,0,0];
                     private _action = ["grad_axe_cutDownTree",localize "STR_GRAD_AXE_CUT_TREE","x\grad\addons\axe\ui\action_axe_ca.paa", _fncStatement, _fncCondition, {}, _x, {[0,0,0]}, 5.5, [false, false, false, false, true]] call ace_interact_menu_fnc_createAction;
                     [_helper, 0, [],_action] call ace_interact_menu_fnc_addActionToObject;
-                    _helper setPosASL ([_x] call grad_axe_fnc_findTrunk);
                     _addedHelpers pushBack _helper;
+                    _helperQueue pushBack [_helper,_x];
                 };
                 nil
             } count (nearestTerrainObjects [ace_player, ["TREE","SMALL TREE","BUSH"], 15]);
 
+            [{
+                params ["_helperQueue","_PFHID"];
+                if (count _helperQueue == 0) exitWith {[_PFHID] call CBA_fnc_removePerFrameHandler};
+                (_helperQueue deleteAt 0) params ["_helper","_tree"];
+                _helper setPosASL ([_tree] call grad_axe_fnc_findTrunk);
+            },0.2,_helperQueue] call CBA_fnc_addPerFrameHandler;
+
             _args set [0, (getPosASL ace_player)];
         };
     };
-}, 0.1, [((getPosASL ace_player) vectorAdd [-100,0,0]), [], []]] call CBA_fnc_addPerFrameHandler;
+}, 0.1, [((getPosASL ace_player) vectorAdd [-100,0,0]),[],[],[]]] call CBA_fnc_addPerFrameHandler;
