@@ -44,7 +44,7 @@ if (count _injuredBodyParts > 0) then {
 //blood
 private _bloodVolume = _unit getVariable ["ace_medical_bloodVolume",100];
 if (_bloodVolume < 100) then {
-    _status pushBack (format ["%1% blood",round _bloodVolume]);
+    _status pushBack (format ["%1%2 blood",round _bloodVolume,"%"]);
 };
 
 

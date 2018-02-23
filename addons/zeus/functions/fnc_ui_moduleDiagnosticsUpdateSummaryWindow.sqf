@@ -40,7 +40,7 @@ switch (_updatePartID) do {
             case (_avgFPS < 35): {COLOR_YELLOW};
             default {COLOR_WHITE};
         };
-        (_summaryWindowCtrlGrp controlsGroupCtrl 96001) ctrlSetStructuredText parseText format ["<t color='%1'>%2</t>",_textColor,_avgFPS];
+        (_summaryWindowCtrlGrp controlsGroupCtrl 96001) ctrlSetStructuredText parseText format ["<t color='%1'>%2</t>",_textColor,round _avgFPS];
 
         // update server fps
         _textColor = switch (true) do {
