@@ -1,0 +1,26 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+     <Package name="axe">
+        <Key ID="STR_GRAD_AXE_AXENAME">
+            <Original>Axe</Original>
+            <English>Axe</English>
+            <German>Axt</German>
+        </Key>
+        <Key ID="STR_GRAD_AXE_AXEDESCRIPTION">
+            <Original>An axe to chop down trees and bushes.</Original>
+            <English>An axe to chop down trees and bushes.</English>
+            <German>Eine Axt um Bäume und Büsche zu fällen.</German>
+        </Key>
+        <Key ID="STR_GRAD_AXE_CUT_TREE">
+            <Original>Chop</Original>
+            <English>Chop</English>
+            <German>Fällen</German>
+        </Key>
+        <Key ID="STR_GRAD_AXE_CUTTING_TREE">
+            <Original>Chopping...</Original>
+            <English>Chopping...</English>
+            <German>Fällen...</German>
+        </Key>
+    </Package>
+</Project>
