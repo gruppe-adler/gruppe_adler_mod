@@ -4,11 +4,13 @@
 
 #include "script_component.hpp"
 
+scopeName "main";
+
 params [["_tree",objNull]];
 
 
 private _searchPos = getPos _tree;
-_searchPos set [2,(_searchPos select 2) min 1.2];
+_searchPos set [2,(_searchPos select 2) min 0.8];
 _searchPos = AGLtoASL _searchPos;
 
 
@@ -26,16 +28,39 @@ if (count _offset > 0) exitWith {
 
 
 // manually find trunk positionASL
+// next search directions are based on current directions +- searchInterval
+// searchInterval is halved each iteration
+private _searchDirections = [[0,90,180,270],[45,135,225,315]];
+private _searchInterval = 45;
+private _trunkFound = false;
 private _trunkPos = _searchPos;
-private _intersections = [];
-for [{_i=0},{_i<=360},{_i=_i+5}] do {
-    _endPos = _searchPos getPos [3,_i];
-    _endPos set [2,_searchPos select 2];
-    _lineIntersections = lineIntersectsSurfaces [_searchPos,_endPos];
-    _intersections append (_lineIntersections select {_x select 3 == _tree});
-};
-if (count _intersections == 0) exitWith {_trunkPos};
-_trunkPos = (_intersections select (floor ((count _intersections)/2))) select 0;
+{
+    _iteration = _forEachIndex;
+    {
+        _endPos = _searchPos getPos [3,_x];
+        _endPos set [2,_searchPos select 2];
+
+        _lineIntersections = (lineIntersectsSurfaces [_searchPos,_endPos]) select {_x select 3 == _tree};
+        if (count _lineIntersections > 0) then {
+            _trunkPos = _lineIntersections select 0 select 0;
+            _trunkFound = true;
+            breakTo "main";
+        };
+    } forEach _x;
+
+    if (_iteration > 3) exitWith {};
+
+    _searchInterval = _searchInterval / 2;
+    _nextDirections = _searchDirections select (_searchDirections pushBack []);
+    {
+        _nextDirections pushBack (_x + _searchInterval);
+        _nextDirections pushBack (_x - _searchInterval);
+        nil
+    } count (_searchDirections select (_iteration + 1));
+} forEach _searchDirections;
+
+if (!_trunkFound) exitWith {_trunkPos};
+
 
 
 // normalize and cache offset
