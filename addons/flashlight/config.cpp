@@ -28,12 +28,11 @@ class asdg_FrontSideRail: asdg_SlotInfo {
 class CfgWeapons {
     
     class ItemCore;
-    class acc_flashlight;
 
     class InventoryItem_Base_F;
     class InventoryFlashLightItem_Base_F;
 
-    class acc_flashlight: acc_flashlight
+    class acc_flashlight
         {
             author = "nomisum";
             _generalMacro = "acc_flashlight";
