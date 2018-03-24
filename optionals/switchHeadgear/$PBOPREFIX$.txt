@@ -1,0 +1,6 @@
+///<'switchHeadgear.pbo' properties via Mikero's dos tools, dll version 6.68>///
+pboprefix=x\grad\addons\switchHeadgear
+
+//Pbo Type is: Arma Addon without prefix (pboname assumed)
+//Sha: '4F16A1EB87CC0A053D90F5D0E18A87A695008B2D'
+//////</properties>//////
