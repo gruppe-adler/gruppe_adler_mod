@@ -4,7 +4,7 @@ _loadout = getUnitLoadout player;
 _helmet = (_loadout select 6);
 _headgear = player getVariable ["GRAD_switchHeadgear", Nil];
 _str = "";
-if ((isNil "_headgear" && (isNil "_helmet")) exitWith {};
+if (isNil "_headgear" && (isNil "_helmet")) exitWith {};
 switch (true) do {
     case (isNil "_headgear") : {
         player setVariable ["GRAD_switchHeadgear", _helmet];
