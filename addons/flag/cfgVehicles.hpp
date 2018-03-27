@@ -1,7 +1,7 @@
 class CfgVehicles
 {
     class Flag_White_F;
-    class QGAVR(gruppeAdlerWhite): Flag_White_F
+    class GVAR(gruppeAdlerWhite): Flag_White_F
     {
         author="$STR_grad_Author";
 
@@ -10,7 +10,7 @@ class CfgVehicles
         displayName=CSTRING(gruppeAdlerWhite_display);
         class EventHandlers
         {
-            init=QUOTE((_this select 0) setFlagTexture QPATHTOF(data\gruppeAdlerWhite.paa));
+            init=QUOTE((_this select 0) setFlagTexture QUOTE(QPATHTOF(data\gruppeAdlerWhite.paa)));
         };
     };
 };
