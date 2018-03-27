@@ -1,7 +1,7 @@
-### Flashlight
+### Switch Headgear
 
-Increases brightness, changes light color and sharpens cone of acc_flashlight.
+Enables the player to switch between two headgears.
 
 #### Maintainer(s)
 
-* nomisum
+* Salbei
