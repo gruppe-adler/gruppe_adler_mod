@@ -6,7 +6,7 @@ class CfgVehicles
         author="$STR_grad_Author";
 
         editorPreview="\A3\EditorPreviews_F\Data\CfgVehicles\Flag_White_F.jpg";
-        _generalMacro=QGAVR(gruppeAdlerWhite);
+        _generalMacro=QGVAR(gruppeAdlerWhite);
         displayName=CSTRING(gruppeAdlerWhite_display);
         class EventHandlers
         {
