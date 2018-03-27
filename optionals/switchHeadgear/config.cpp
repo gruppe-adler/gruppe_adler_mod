@@ -11,7 +11,7 @@ class CfgPatches {
 		weapons[] = {};
         VERSION_CONFIG;
         authors[] = {
-			"salbei <salbei@gruppe-adler.com>"
+			"salbei <salbei@gruppe-adler.de>"
 		};
 	};
 };
