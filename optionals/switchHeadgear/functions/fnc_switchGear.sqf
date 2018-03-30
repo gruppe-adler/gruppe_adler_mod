@@ -1,5 +1,4 @@
 params ["",["_unit",objNull]];
-if !(hasInterface) exitWith {};
 
 _loadout = getUnitLoadout _unit;
 _helmet = (_loadout select 6);
