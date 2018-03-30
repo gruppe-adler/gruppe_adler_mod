@@ -6,8 +6,9 @@ class CfgVehicles {
                 class Grad_switchHeadgear {
                     displayName = "Switch Headgear";
                     icon = "";
-                    statement = QUOTE([] call FUNC(switchGear));
-                    condition = QUOTE();
+                    statement = QUOTE(_this call FUNC(switchGear));
+                    condition = QUOTE(true);
+                    exceptions[] = {"isNotHandcuffed","isNotSurrendering", "isNotSwimming"};
                 };
             };
         };
