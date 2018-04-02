@@ -26,11 +26,17 @@ private _fnc_onConfirm = {
     params [["_ctrlButtonOK", controlNull, [controlNull]]];
 
     private _display = ctrlParent _ctrlButtonOK;
+    private _selectSideCombo = _display displayCtrl 84210;
     private _selectFactionCombo = _display displayCtrl 84211;
     private _selectLoadoutsCombo = _display displayCtrl 84212;
     private _reapplyCheckbox = _display displayCtrl 84213;
 
-    [_selectFactionCombo lbData (lbCurSel _selectFactionCombo),_selectLoadoutsCombo lbData (lbCurSel _selectLoadoutsCombo),cbChecked _reapplyCheckbox] call FUNC(moduleSetLoadoutsOnConfirm);
+    [
+        [EAST,WEST,INDEPENDENT,CIVILIAN] select (_selectSideCombo lbValue (lbCurSel _selectSideCombo)),
+        _selectFactionCombo lbData (lbCurSel _selectFactionCombo),
+        _selectLoadoutsCombo lbData (lbCurSel _selectLoadoutsCombo),
+        cbChecked _reapplyCheckbox
+    ] call FUNC(moduleSetLoadoutsOnConfirm);
     false
 };
 
@@ -46,7 +52,9 @@ if (count _loadouts == 0) exitWith {
     closeDialog 2;
 };
 {
-    _selectLoadoutsCombo lbAdd (configName _x);
+    _name = [_x,"displayName",(configName _x)] call BIS_fnc_returnConfigEntry;
+    _selectLoadoutsCombo lbSetData [_selectLoadoutsCombo lbAdd _name,configName _x];
+
     nil
 } count _loadouts;
 _selectLoadoutsCombo lbSetCurSel 0;
@@ -85,15 +93,19 @@ _selectSideCombo ctrlAddEventHandler ["LBSelChanged",{
         if (_classSideID == _sideID && {_classDisplayName != ""}) then {
             _curFactionID = _selectFactionCombo lbAdd _classDisplayName;
             _selectFactionCombo lbSetData [_curFactionID,_factionClass];
-            if (_factionClass == _unitFaction) then {
-                _factionID = _curFactionID;
-            };
         };
         nil
     } count ("true" configClasses (configfile >> "CfgFactionClasses"));
 
-    _selectFactionCombo lbSetCurSel _factionID;
     lbSort _selectFactionCombo;
+
+
+    for [{_i=0},{_i < lbSize _selectFactionCombo},{_i=_i+1}] do {
+        if (_selectFactionCombo lbData _i == _unitFaction) exitWith {
+            _factionID = _i
+        };
+    };
+    _selectFactionCombo lbSetCurSel _factionID;
 }];
 
 
@@ -106,3 +118,8 @@ if (_unitSideID < 0 || _unitSideID > 3) then {
 } else {
     _selectSideCombo lbSetCurSel _unitSideID;
 };
+
+
+// default value for reapply --> true ==========================================
+private _reapplyCheckbox = _display displayCtrl 84213;
+_reapplyCheckbox cbSetChecked true;
