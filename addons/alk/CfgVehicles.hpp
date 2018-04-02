@@ -8,7 +8,7 @@ class CfgVehicles
 			#include "ACE_Actions.hpp"
 		};
 	};
-	
+
     class Item_Base_F;
 	class GRAD_alkItem: Item_Base_F {
         scope = 2;
@@ -19,4 +19,11 @@ class CfgVehicles
             MACRO_ADDITEM(GRAD_ALK,1);
         };
     };
+
+	class ACE_medicalSupplyCrate;
+	class ACE_medicalSupplyCrate_advanced: ACE_medicalSupplyCrate {
+		class TransportItems {
+			MACRO_ADDITEM(GRAD_ALK,2);
+		};
+	};
 };
