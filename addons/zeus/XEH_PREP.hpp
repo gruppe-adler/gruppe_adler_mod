@@ -1,3 +1,6 @@
+PREP(moduleAddPlayersToZeus);
+PREP(moduleAddPlayersToZeusServer);
+
 PREP(moduleBlacklistHeadlessOnConfirm);
 PREP(ui_moduleBlacklistHeadless);
 

@@ -138,6 +138,10 @@
                 <German>ausgeschaltet</German>
                 <Original>toggled off</Original>
             </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleAddPlayersToZeusName">
+                <German>Spieler zu Zeus hinzufügen</German>
+                <Original>Add players to Zeus</Original>
+            </Key>
         </Container>
         <Container name="moduleReloadLoadout">
             <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutName">

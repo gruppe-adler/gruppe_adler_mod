@@ -14,7 +14,8 @@ class CfgPatches {
 			QGVAR(moduleReloadLoadout),
 			QGVAR(moduleSetLoadouts),
 			QGVAR(moduleMoveRespawn),
-			QGVAR(moduleBlacklistHeadless)
+			QGVAR(moduleBlacklistHeadless),
+			QGVAR(moduleAddPlayersToZeus)
 		};
 		weapons[] = {};
 		VERSION_CONFIG;

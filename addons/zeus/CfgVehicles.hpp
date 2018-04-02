@@ -53,4 +53,11 @@ class CfgVehicles {
 		displayName = CSTRING(moduleBlacklistHeadlessName);
 		curatorInfoType = QGVAR(RscModuleBlacklistHeadless);
 	};
+
+	class GVAR(moduleAddPlayersToZeus): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleAddPlayersToZeusName);
+		function = QFUNC(moduleAddPlayersToZeus);
+	};
 };
