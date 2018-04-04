@@ -1,10 +1,10 @@
 #define PREFIX GRAD
 #define MAINPREFIX x
 
-#define MAJOR 2
-#define MINOR 8
+#define MAJOR 0
+#define MINOR 0
 #define PATCHLVL 0
-#define COMMIT bdb8eb8
+#define COMMIT empty
 
 #define VERSION MAJOR.MINOR.PATCHLVL
 #define VERSION_AR MAJOR,MINOR,PATCHLVL
