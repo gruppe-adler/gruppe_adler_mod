@@ -1,29 +1,18 @@
+#include "script_component.hpp"
 params ["",["_unit",objNull]];
 
-_helmet = headgear _unit;
-_headgear = _unit getVariable [QGVAR(switchHeadgear), Nil];
-_str = "";
-if (isNil "_headgear" && (isNil "_helmet")) exitWith {};
+private _currentHeadgear = headgear _unit;
+private _newHeadgear = _unit getVariable [QGVAR(switchHeadgear), ""];
 
-switch (true) do {
-    case (isNil "_headgear") : {
-        _unit setVariable [QGVAR(switchHeadgear), _helmet];
-        _newHelmet = "";
-        _str = "Helmet stored";
-    };
-    case (isNil "_helmet") : {
-        _unit setVariable [QGVAR(switchHeadgear), Nil];
-        _newHelmet = _headgear;
-        _str = "Helmet equipped";
-    };
-    default : {
-        _unit setVariable [QGVAR(switchHeadgear), _helmet];
-        _newHelmet = _headgear;
-        _headgearName = getText (configfile >> "CfgWeapons" >> _helmet >> "displayName");
-        _helmetName = getText (configfile >> "CfgWeapons" >> _headgear >> "displayName");
-        _str = format ["Helmet: %1 equipped, %2 stored",_headgearName, _helmetName];
-    };
+_unit setVariable [QGVAR(switchHeadgear), _currentHeadgear, true];
+removeHeadgear _unit;
+_unit addHeadgear _newHeadgear;
+
+private _msg = "";
+if (_currentHeadgear != "") then {
+    _msg = _msg + " " + format[localize LSTRING(helmetStored), getText (configfile >> "CfgWeapons" >> _currentHeadgear >> "displayName")];
 };
-
-_unit addHeadgear _newHelmet;
-hint _str;
+if (_newHeadgear != "") then {
+    _msg = _msg + " " + format[localize LSTRING(helmetRestored), getText (configfile >> "CfgWeapons" >> _newHeadgear >> "displayName")];
+};
+hint _msg;
