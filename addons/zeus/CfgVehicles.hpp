@@ -18,4 +18,46 @@ class CfgVehicles {
 		displayName = CSTRING(moduleDiagnosticsName);
 		curatorInfoType = QGVAR(RscModuleDiagnostics);
 	};
+
+	class GVAR(moduleToggleBFT): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleToggleBFTName);
+		function = QFUNC(moduleToggleBFT);
+	};
+
+	class GVAR(moduleReloadLoadout): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleReloadLoadoutName);
+		function = QFUNC(moduleReloadLoadout);
+	};
+
+	class GVAR(moduleSetLoadouts): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleSetLoadoutsName);
+		curatorInfoType = QGVAR(RscModuleSetLoadouts);
+	};
+
+	class GVAR(moduleMoveRespawn): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleMoveRespawnName);
+		curatorInfoType = QGVAR(RscModuleMoveRespawn);
+	};
+
+	class GVAR(moduleBlacklistHeadless): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleBlacklistHeadlessName);
+		curatorInfoType = QGVAR(RscModuleBlacklistHeadless);
+	};
+
+	class GVAR(moduleAddPlayersToZeus): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleAddPlayersToZeusName);
+		function = QFUNC(moduleAddPlayersToZeus);
+	};
 };

@@ -9,7 +9,13 @@ class CfgPatches {
 		requiredAddons[] = {"grad_main","ace_zeus"};
 		units[] = {
 			QGVAR(moduleSupplyDrop),
-			QGVAR(moduleDiagnostics)
+			QGVAR(moduleDiagnostics),
+			QGVAR(moduleToggleBFT),
+			QGVAR(moduleReloadLoadout),
+			QGVAR(moduleSetLoadouts),
+			QGVAR(moduleMoveRespawn),
+			QGVAR(moduleBlacklistHeadless),
+			QGVAR(moduleAddPlayersToZeus)
 		};
 		weapons[] = {};
 		VERSION_CONFIG;

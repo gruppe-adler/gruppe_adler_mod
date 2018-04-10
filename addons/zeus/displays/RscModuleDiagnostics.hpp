@@ -6,7 +6,7 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
         class Title: Title {};
         class Content: Content {
             class Controls {
-                class globalSetSkill: RscControlsGroupNoScrollbars {
+                class diagnostics: RscControlsGroupNoScrollbars {
                     onSetFocus = QUOTE(_this call FUNC(ui_moduleDiagnostics));
                     idc = 27000;
                     x = 0;
