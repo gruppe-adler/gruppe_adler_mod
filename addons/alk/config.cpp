@@ -8,8 +8,8 @@ class CfgPatches
 		url = "$STR_grad_URL";
 		requiredVersion = 0.1;
 		requiredAddons[] = {"grad_main","ace_medical"};
-		units[] = {};
-		weapons[] = {};
+		units[] = {"GRAD_alkItem"};
+		weapons[] = {"GRAD_ALK"};
 		VERSION_CONFIG;
         authors[] = {"DerZade [A]"};
 	};
