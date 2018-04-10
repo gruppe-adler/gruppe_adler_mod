@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+    <Package name="switchHeadgear">
+        <Key ID="STR_grad_switchHeadgear_settingEnable_displayName">
+            <English>Kopfbedeckungen tauschen aktiviert</English>
+            <German>Switch headgear activated</German>
+        </Key>
+        <Key ID="STR_grad_switchHeadgear_helmetStored">
+            <English>Helmet %1 stored.</English>
+            <German>Helm %1 verstaut.</German>
+        </Key>
+        <Key ID="STR_grad_switchHeadgear_helmetRestored">
+            <English>Helmet %1 equipped.</English>
+            <German>Helm %1 aufgesetzt.</German>
+        </Key>
+    </Package>
+</Project>
