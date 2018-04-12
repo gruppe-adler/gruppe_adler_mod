@@ -22,6 +22,7 @@ if !(_unit call ace_common_fnc_isSwimming) then {
 private _onCompletion = {
     (_this select 0) params ["_treeObject", "", "_unit"];
     _treeObject setdamage 1;
+    [_treeObject] call FUNC(checkCutDown);
     if !(_unit call ace_common_fnc_isSwimming) then {
         [_unit, "AmovPknlMstpSrasWrflDnon", 1] call ace_common_fnc_doAnimation;
     };
@@ -39,7 +40,7 @@ private _progressCheck = {
     _args params ["_treeObject", "_lastSoundEffectTime", "_unit"];
 
     if (_passedTime > (_lastSoundEffectTime + SOUND_CLIP_TIME_SPACEING)) then {
-        playSound3D ["x\grad\addons\axe\sound\chop.ogg", objNull, false, (getPosASL _unit), 3, 1, 10];
+        playSound3D ["x\grad\addons\axe\sound\chop.ogg", objNull, false, (getPosASL _unit), 1, 1, 80];
         _args set [1, _passedTime];
     };
 
