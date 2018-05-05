@@ -27,7 +27,9 @@ class RscDisplayMain {
             colorBackground2[]={1,1,1,1};
             style="0x02 + 0xC0";
             size="1.25 * (pixelH * pixelGrid * 2)";
-            text = "$STR_GRAD_UI_DIRECTCONNECTBUTTON";
+
+            text = "ERROR SETTING TEXT";
+            onLoad = "_this call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onLoadButtonConnect.sqf'";
 
             x = GRAD_DIRECTCONNECT_X;
             y = "safezoneY + 2 * (pixelH * pixelGrid * 2)";

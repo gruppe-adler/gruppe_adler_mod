@@ -3,8 +3,8 @@
     <Package name="Mission One">
         <Container name="Some Words">
             <Key ID="STR_GRAD_UI_DIRECTCONNECTBUTTON">
-                <Original>CONNECT (2302)</Original>
-                <German>VERBINDEN (2302)</German>
+                <Original>CONNECT (%1)</Original>
+                <German>VERBINDEN (%1)</German>
             </Key>
             <Key ID="STR_GRAD_UI_DIRECTCONNECTPASSWORDWINDOWTITLE">
                 <Original>CONNECT TO GRUPPE ADLER</Original>
