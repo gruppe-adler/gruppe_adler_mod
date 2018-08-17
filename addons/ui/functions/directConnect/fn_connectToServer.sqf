@@ -9,6 +9,8 @@ grad_ui_directConnectPassword = _password;
 profileNamespace setVariable ["grad_ui_directConnectPassword",_password];
 saveProfileNamespace;
 
+grad_ui_directConnectPort = [configFile >> "GRAD_CfgConnectButton","port",2302] call (uiNamespace getVariable "BIS_fnc_returnConfigEntry");
+
 onEachFrame {
     grad_ui_directConnectStartTime = diag_tickTime;
 
@@ -22,7 +24,7 @@ onEachFrame {
         onEachFrame {
             _ctrlServerAddress = findDisplay IDD_IP_ADDRESS displayCtrl 2300;
             _ctrlServerAddress controlsGroupCtrl IDC_IP_ADDRESS ctrlSetText "arma.gruppe-adler.de";
-            _ctrlServerAddress controlsGroupCtrl IDC_IP_PORT ctrlSetText "2302";
+            _ctrlServerAddress controlsGroupCtrl IDC_IP_PORT ctrlSetText str grad_ui_directConnectPort;
             ctrlActivate (_ctrlServerAddress controlsGroupCtrl IDC_OK);
 
             onEachFrame {
@@ -38,7 +40,7 @@ onEachFrame {
                         onEachFrame {};
                     };
 
-                    if (_serverData isEqualTo "138.201.30.246:2302") then {
+                    if (_serverData isEqualTo format ["138.201.30.246:%1",grad_ui_directConnectPort]) then {
                         findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS lbSetCurSel 0;
 
                         onEachFrame {

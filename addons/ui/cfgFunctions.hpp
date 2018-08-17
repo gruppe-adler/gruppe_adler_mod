@@ -5,6 +5,7 @@ class CfgFunctions {
 			class connectToServer {};
 			class onButtonConnect {};
 			class onButtonPasswordOK {};
+			class onLoadButtonConnect {};
 			class onLoadRscDisplayDirectConnectPassword {};
 		};
 	};
