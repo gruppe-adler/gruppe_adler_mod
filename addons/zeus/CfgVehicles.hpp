@@ -5,6 +5,13 @@ class CfgVehicles {
 		author = "$STR_grad_Author";
 	};
 
+	class GVAR(moduleChairCircle): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = "Chair Circle";
+		function = QFUNC(moduleChairCircle);
+	};
+
 	class GVAR(moduleSupplyDrop): GVAR(moduleBase) {
 		curatorCanAttach = 1;
 		category = QGVAR(Grad);
