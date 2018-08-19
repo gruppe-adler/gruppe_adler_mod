@@ -4,7 +4,7 @@ class CfgUnitInsignia
 	{
 		displayName = "Germany"; // Name displayed in Arsenal
 		author = "Synch"; // Author displayed in Arsenal
-		texture = "gx\grad\addons\equipment\data\insignia\de_v2.paa"; // Image path
+		texture = "x\grad\addons\equipment\data\insignia\de_v2.paa"; // Image path
 		textureVehicle = ""; // Does nothing currently, reserved for future use
 	};
 	
