@@ -13,7 +13,7 @@ class RscPictureKeepAspectAllowPixelSplit;
 class RscDisplayMain {
     class Controls {
         class GVAR(directConnectLogo): RscPictureKeepAspectAllowPixelSplit {
-            text = "\x\grad\addons\ui\dialog\logo_128.paa";
+            text = QPATHTOF(dialog\logo_128.paa);
 
             x = DIRECTCONNECT_LOGOX;
             y = "safezoneY + 2.15 * (pixelH * pixelGrid * 2)";
@@ -29,14 +29,14 @@ class RscDisplayMain {
             size="1.25 * (pixelH * pixelGrid * 2)";
 
             text = "ERROR SETTING TEXT";
-            onLoad = "_this call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onLoadButtonConnect.sqf'";
+            onLoad = QUOTE(_this call (uiNamespace getVariable QQFUNC(onLoadButtonConnect)));
 
             x = DIRECTCONNECT_X;
             y = "safezoneY + 2 * (pixelH * pixelGrid * 2)";
             w = "9 * (pixelW * pixelGrid * 2)";
             h = "2 * (pixelH * pixelGrid * 2)";
 
-            action = "call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onButtonConnect.sqf'";
+            action = QUOTE(call (uiNamespace getVariable QQFUNC(onButtonConnect)));
 
             class Attributes {
                 align="center";
@@ -60,7 +60,7 @@ class GVAR(RscDisplayDirectConnectPassword) {
     idd = -1;
     movingEnable=0;
     enableDisplay=1;
-    onLoad = "_this call (uiNamespace getVariable 'grad_ui_fnc_onLoadRscDisplayDirectConnectPassword')";
+    onLoad = QUOTE(_this call (uiNamespace getVariable QQFUNC(onLoadRscDisplayDirectConnectPassword)));
 
     class ControlsBackground {
         class Vignette: RscVignette {
@@ -168,7 +168,7 @@ class GVAR(RscDisplayDirectConnectPassword) {
             style = 16;
             shortcuts[] = {28,156};
 
-            onButtonClick = "_this call (uiNamespace getVariable 'grad_ui_fnc_onButtonPasswordOK')";
+            onButtonClick = QUOTE(_this call (uiNamespace getVariable QQFUNC(onButtonPasswordOK)));
         };
     };
 };
