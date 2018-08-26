@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 #include "\A3\Ui_f\hpp\defineResincl.inc"
 
-#define GRAD_UI_DIRECTCONNECTTIMEOUT        5
+#define UI_DIRECTCONNECTTIMEOUT        5
 
 params [["_password",""]];
 
@@ -33,7 +33,7 @@ onEachFrame {
                 ([_ctrlServerList lbText 0,_ctrlServerList lbData 0]) call {
                     params [["_serverName",""],["_serverData",""]];
 
-                    if (diag_tickTime > (GVAR(directConnectStartTime) + GRAD_UI_DIRECTCONNECTTIMEOUT)) then {
+                    if (diag_tickTime > (GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT)) then {
                         ERROR("direct connect timed out");
                         profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),true];
                         saveProfileNamespace;
@@ -47,7 +47,7 @@ onEachFrame {
                             ctrlActivate (findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_JOIN);
 
                             onEachFrame {
-                                if (diag_tickTime > GVAR(directConnectStartTime) + GRAD_UI_DIRECTCONNECTTIMEOUT) then {
+                                if (diag_tickTime > GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT) then {
                                     ERROR("direct connect timed out");
                                     profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),false];
                                     saveProfileNamespace;

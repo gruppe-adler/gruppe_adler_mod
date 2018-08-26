@@ -3,8 +3,8 @@
 
 params [["_display",displayNull]];
 
-private _passwordCtrl = _display displayCtrl GRAD_DIRECTCONNECT_IDC_PASSWORD;
-private _textCtrl = _display displayCtrl GRAD_DIRECTCONNECT_IDC_PASSWORDTEXT;
+private _passwordCtrl = _display displayCtrl DIRECTCONNECT_IDC_PASSWORD;
+private _textCtrl = _display displayCtrl DIRECTCONNECT_IDC_PASSWORDTEXT;
 
 private _password = profileNamespace getVariable [QGVAR(directConnectPassword),""];
 private _lastConnectSuccessful = profileNamespace getVariable [QGVAR(directConnectLastConnectSuccessful),false];
