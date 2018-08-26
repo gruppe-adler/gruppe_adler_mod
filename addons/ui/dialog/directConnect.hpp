@@ -12,7 +12,7 @@ class RscPictureKeepAspectAllowPixelSplit;
 
 class RscDisplayMain {
     class Controls {
-        class grad_directConnectLogo: RscPictureKeepAspectAllowPixelSplit {
+        class GVAR(directConnectLogo): RscPictureKeepAspectAllowPixelSplit {
             text = "\x\grad\addons\ui\dialog\logo_128.paa";
 
             x = GRAD_DIRECTCONNECT_LOGOX;
@@ -21,7 +21,7 @@ class RscDisplayMain {
             h = "1.70 * (pixelH * pixelGrid * 2)";
         };
 
-        class grad_directConnectButton: RscButtonMenu {
+        class GVAR(directConnectButton): RscButtonMenu {
             idc = 62300;
             colorBackground[]={0,0,0,0};
             colorBackground2[]={1,1,1,1};
@@ -56,7 +56,7 @@ class RscDisplayMain {
     };
 };
 
-class grad_RscDisplayDirectConnectPassword {
+class GVAR(RscDisplayDirectConnectPassword) {
     idd = -1;
     movingEnable=0;
     enableDisplay=1;

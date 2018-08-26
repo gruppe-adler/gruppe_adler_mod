@@ -8,4 +8,4 @@ private _password = ctrlText (_display displayCtrl GRAD_DIRECTCONNECT_IDC_PASSWO
 
 _display closeDisplay 1;
 
-[_password] call (uiNamespace getVariable "grad_ui_fnc_connectToServer");
+[_password] call (uiNamespace getVariable QFUNC(connectToServer));
