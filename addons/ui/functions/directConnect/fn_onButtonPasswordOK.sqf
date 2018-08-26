@@ -4,7 +4,7 @@
 params [["_buttonCtrl",controlNull]];
 
 private _display = ctrlParent _buttonCtrl;
-private _password = ctrlText (_display displayCtrl GRAD_DIRECTCONNECT_IDC_PASSWORD);
+private _password = ctrlText (_display displayCtrl DIRECTCONNECT_IDC_PASSWORD);
 
 _display closeDisplay 1;
 
