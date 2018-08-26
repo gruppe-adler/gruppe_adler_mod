@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-#include "\x\grad\addons\ui\dialog\directConnectDefines.hpp"
+#include "..\..\dialog\directConnectDefines.hpp"
 
 params [["_display",displayNull]];
 
