@@ -3,13 +3,15 @@
 
 #define UI_DIRECTCONNECTTIMEOUT        5
 
-params [["_password",""]];
+params [["_password",""], ["_port", [configFile >> QGVARMAIN(CfgConnectButton),"port",2302] call (uiNamespace getVariable "BIS_fnc_returnConfigEntry")]];
 
 GVAR(directConnectPassword) = _password;
 profileNamespace setVariable [QGVAR(directConnectPassword),_password];
 saveProfileNamespace;
 
-GVAR(directConnectPort) = [configFile >> QGVARMAIN(CfgConnectButton),"port",2302] call (uiNamespace getVariable "BIS_fnc_returnConfigEntry");
+INFO_1("Attempting direct connect to port %1", _port);
+
+GVAR(directConnectPort) = _port;
 
 onEachFrame {
     GVAR(directConnectStartTime) = diag_tickTime;
@@ -24,7 +26,10 @@ onEachFrame {
         onEachFrame {
             _ctrlServerAddress = findDisplay IDD_IP_ADDRESS displayCtrl 2300;
             _ctrlServerAddress controlsGroupCtrl IDC_IP_ADDRESS ctrlSetText "arma.gruppe-adler.de";
+
+            //does this even work? The input seems to always have "2302" as value
             _ctrlServerAddress controlsGroupCtrl IDC_IP_PORT ctrlSetText str GVAR(directConnectPort);
+
             ctrlActivate (_ctrlServerAddress controlsGroupCtrl IDC_OK);
 
             onEachFrame {
@@ -34,11 +39,13 @@ onEachFrame {
                     params [["_serverName",""],["_serverData",""]];
 
                     if (diag_tickTime > (GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT)) then {
-                        ERROR("direct connect timed out");
+                        ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
                         profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),true];
                         saveProfileNamespace;
                         onEachFrame {};
                     };
+
+                    INFO_1("Server Data: %1", _serverData);
 
                     if (_serverData isEqualTo format ["138.201.30.246:%1",GVAR(directConnectPort)]) then {
                         findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS lbSetCurSel 0;
@@ -48,7 +55,7 @@ onEachFrame {
 
                             onEachFrame {
                                 if (diag_tickTime > GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT) then {
-                                    ERROR("direct connect timed out");
+                                    ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
                                     profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),false];
                                     saveProfileNamespace;
                                     onEachFrame {};
@@ -62,7 +69,7 @@ onEachFrame {
                                 };
 
                                 if (getClientStateNumber >= 3) then {
-                                    INFO("direct connect successful");
+                                    INFO_1("direct connect on port %1 successful", GVAR(directConnectPort));
                                     profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),true];
                                     saveProfileNamespace;
 
