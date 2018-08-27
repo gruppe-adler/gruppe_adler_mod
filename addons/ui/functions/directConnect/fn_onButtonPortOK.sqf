@@ -9,4 +9,4 @@ private _port = ctrlText (_display displayCtrl DIRECTCONNECT_IDC_PASSWORD);
 
 _display closeDisplay 1;
 
-[_password, _port] call (uiNamespace getVariable QFUNC(connectToServer));
+[_password, parseNumber _port] call (uiNamespace getVariable QFUNC(connectToServer));
