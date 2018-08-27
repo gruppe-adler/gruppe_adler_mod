@@ -11,7 +11,8 @@ class CfgPatches {
 		weapons[] = {};
 		VERSION_CONFIG;
         authors[] = {
-			"McDiod"
+			"McDiod",
+      "DerZade"
 		};
 	};
 };

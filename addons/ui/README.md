@@ -8,3 +8,4 @@ https://github.com/gruppe-adler/grad_connectButtonPort
 #### Maintainer(s)
 
 * McDiod
+* DerZade
