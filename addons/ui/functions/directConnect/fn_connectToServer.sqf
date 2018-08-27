@@ -27,7 +27,6 @@ onEachFrame {
             _ctrlServerAddress = findDisplay IDD_IP_ADDRESS displayCtrl 2300;
             _ctrlServerAddress controlsGroupCtrl IDC_IP_ADDRESS ctrlSetText "arma.gruppe-adler.de";
 
-            //does this even work? The input seems to always have "2302" as value
             _ctrlServerAddress controlsGroupCtrl IDC_IP_PORT ctrlSetText str GVAR(directConnectPort);
 
             ctrlActivate (_ctrlServerAddress controlsGroupCtrl IDC_OK);
