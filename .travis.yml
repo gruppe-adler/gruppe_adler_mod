@@ -3,16 +3,16 @@ python:
 - '3.4'
 before_install:
 - chmod +x tools/build.sh
+- pip install sqflint  
 before_script:
 - sudo apt-get install realpath
 - mkdir -p tools
-- wget http://gruppe-adler.de/api/travis/sqf_validator.py
-- sed -i -e 's/addons//g' sqf_validator.py
-- mv sqf_validator.py tools/
 - export RAW_VERSION=$(git describe --always --tag)
 script:
-- python3 tools/sqf_validator.py
 - tools/build.sh
+- tools/preprocess.sh
+- for SQFFILE in `find . -iname '*.sqf'`; do sed -i -E 's/^#.*//g' "$SQFFILE"; done # remove hash comments, they confuse the hell out of sqflint
+- sqflint -d . -ee
 notifications:
   slack: gruppe-adler:WUbRswFJEqy55XKuLhtXTlOf
   template:
