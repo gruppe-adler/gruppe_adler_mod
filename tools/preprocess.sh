@@ -29,6 +29,7 @@ for INCLUDEFILE in $INCLUDINGFILES; do
     sed -i '/#include/s/\\/\//g' "$INCLUDEFILE"
     sed -i '/#include/s/\/x\/cba/x\/cba/' "$INCLUDEFILE"
     sed -i '/#include/s/\/z\/ace/z\/ace/' "$INCLUDEFILE"
+    sed -i '/#include/s/\/x\/grad\///' "$INCLUDEFILE"
 done    
 echo "INFO removing illegal double-hash from macro files…"
 for MACROFILE in `find . -iname '*.cpp' -or -iname '*.hpp' -or -iname '*.h'`; do sed -i -e 's/##//g' "$MACROFILE"; done
