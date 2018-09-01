@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+if [[ `command -v sqflint` == "" ]]; then
+    echo "cannot find sqflint :( aborting…"
+    exit 255
+fi
+
 THISDIR=`dirname $0`
 PROJECTDIR=${THISDIR}/..
 
