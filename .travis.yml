@@ -10,9 +10,7 @@ before_script:
 - export RAW_VERSION=$(git describe --always --tag)
 script:
 - tools/build.sh
-- tools/preprocess.sh
-- for SQFFILE in `find . -iname '*.sqf'`; do sed -i -E 's/^#.*//g' "$SQFFILE"; done # remove hash comments, they confuse the hell out of sqflint
-- sqflint -d . -ee
+- tools/lint.sh -d . -C /tmp
 notifications:
   slack: gruppe-adler:WUbRswFJEqy55XKuLhtXTlOf
   template:
