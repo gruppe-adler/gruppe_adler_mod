@@ -15,4 +15,4 @@ class CfgPatches {
 };
 
 #include "cfgVehicles.hpp"
-#include "cfgUnitInisgnia.hpp"
+#include "cfgUnitInsignia.hpp"
