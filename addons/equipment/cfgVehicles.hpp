@@ -19,29 +19,6 @@ enum {
 class CfgVehicles
 {
 	class B_Kitbag_rgr;
-	class rhsusf_assault_eagleaiii_ocp;
-
-	class ga_kitbag_lite_black: rhsusf_assault_eagleaiii_ocp
-	{
-		scope = 2;
-		author = "Synch";
-		displayName = "Eagle A-III (Black)";
-		hiddenSelectionsTextures[] =
-		{
-			"x\grad\addons\equipment\data\eagle\ga_eagle_black.paa"
-		};
-	};
-
-	class ga_kitbag_lite_black_medic: rhsusf_assault_eagleaiii_ocp
-	{
-		scope = 2;
-		author = "Synch";
-		displayName = "Eagle A-III (Black / Medic)";
-		hiddenSelectionsTextures[] =
-		{
-			"x\grad\addons\equipment\data\eagle\ga_eagle_black_medic.paa"
-		};
-	};
 
 	class ga_kitbag_black: B_Kitbag_rgr
 	{
@@ -58,7 +35,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		author = "Synch";
-		displayName = "Kitbag (Black / Medic)";
+		displayName = "Kitbag (Black, Medical)";
 		hiddenSelectionsTextures[] =
 		{
 			"x\grad\addons\equipment\data\kitbag\ga_kitbag_black_medic.paa"
