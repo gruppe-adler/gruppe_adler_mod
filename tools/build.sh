@@ -41,7 +41,7 @@ build_pbo() {
 	pbofilename="${pboprefix}${componentname}.pbo"
 	pbofilepath="${componentpath}/$pbofilename"
 
-	"${armakePath}" build -f -p "${1}" "$pbofilepath"
+	"${armakePath}" build -f -p "${1}" "$pbofilepath" || exit 2
 
 	if [[ ! -f "$pbofilepath" ]]; then
 		echo "failed"
