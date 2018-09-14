@@ -3,7 +3,7 @@
 
 #define UI_DIRECTCONNECTTIMEOUT        5
 
-params [["_password",""], ["_port", [configFile >> QGVARMAIN(CfgConnectButton),"port",2302] call (uiNamespace getVariable "BIS_fnc_returnConfigEntry")]];
+params [["_password",""],["_port",2302]];
 
 GVAR(directConnectPassword) = _password;
 profileNamespace setVariable [QGVAR(directConnectPassword),_password];
@@ -43,8 +43,6 @@ onEachFrame {
                         saveProfileNamespace;
                         onEachFrame {};
                     };
-
-                    INFO_1("Server Data: %1", _serverData);
 
                     if (_serverData isEqualTo format ["138.201.30.253:%1",GVAR(directConnectPort)]) then {
                         findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS lbSetCurSel 0;
