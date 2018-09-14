@@ -46,7 +46,7 @@ onEachFrame {
 
                     INFO_1("Server Data: %1", _serverData);
 
-                    if (_serverData isEqualTo format ["138.201.30.246:%1",GVAR(directConnectPort)]) then {
+                    if (_serverData isEqualTo format ["138.201.30.253:%1",GVAR(directConnectPort)]) then {
                         findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS lbSetCurSel 0;
 
                         onEachFrame {
