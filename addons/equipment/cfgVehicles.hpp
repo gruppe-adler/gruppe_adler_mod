@@ -46,46 +46,46 @@ class CfgVehicles
 		};
 	};
 	
-	class ga_messenger_coyote_medic: B_Messenger_Coyote_F
+	class ga_dlc_low_messenger_coyote_medic: B_Messenger_Coyote_F
 	{
 		scope = 2;
 		author = "Synch";
-		displayName = "Messenger Bag (Coyote, Medical)";
+		displayName = "Messenger Bag (Coyote, Medical) [LoW DLC]";
 		hiddenSelectionsTextures[] =
 		{
-			"x\grad\addons\equipment\data\messenger\ga_messenger_coyote_medic.paa"
+			"x\grad\addons\equipment\data\messenger\ga_dlc_low_messenger_coyote_medic.paa"
 		};
 	};
-	class ga_messenger_black_medic: B_Messenger_Black_F
+	class ga_dlc_low_messenger_black_medic: B_Messenger_Black_F
 	{
 		scope = 2;
 		author = "Synch";
-		displayName = "Messenger Bag (Black, Medical)";
+	displayName = "Messenger Bag (Black, Medical) [LoW DLC]";
 		hiddenSelectionsTextures[] =
 		{
-			"x\grad\addons\equipment\data\messenger\ga_messenger_black_medic.paa"
+			"x\grad\addons\equipment\data\messenger\ga_dlc_low_messenger_black_medic.paa"
 		};
 	};
-	class ga_messenger_olive_medic: B_Messenger_Olive_F
+	class ga_dlc_low_messenger_olive_medic: B_Messenger_Olive_F
 	{
 		scope = 2;
 		author = "Synch";
-		displayName = "Messenger Bag (Olive, Medical)";
+		displayName = "Messenger Bag (Olive, Medical) [LoW DLC]";
 		hiddenSelectionsTextures[] =
 		{
-			"x\grad\addons\equipment\data\messenger\ga_messenger_olive_medic.paa"
+			"x\grad\addons\equipment\data\messenger\ga_dlc_low_messenger_olive_medic.paa"
 		};
 	};
 	
 	
-	class ga_messenger_medic: B_Messenger_IDAP_F
+	class ga_dlc_low_messenger_medic: B_Messenger_IDAP_F
 	{
 		scope = 2;
 		author = "Synch";
-		displayName = "Messenger Bag (Medical)";
+		displayName = "Messenger Bag (Medical) [LoW DLC]";
 		hiddenSelectionsTextures[] =
 		{
-			"x\grad\addons\equipment\data\messenger\ga_messenger_medic.paa"
+			"x\grad\addons\equipment\data\messenger\ga_dlc_low_messenger_medic.paa"
 		};
 	};
 	
