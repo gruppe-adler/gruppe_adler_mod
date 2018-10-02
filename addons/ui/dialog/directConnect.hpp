@@ -12,16 +12,16 @@ class RscPictureKeepAspectAllowPixelSplit;
 
 class RscDisplayMain {
     class Controls {
-        class grad_directConnectLogo: RscPictureKeepAspectAllowPixelSplit {
-            text = "\x\grad\addons\ui\dialog\logo_128.paa";
+        class GVAR(directConnectLogo): RscPictureKeepAspectAllowPixelSplit {
+            text = QPATHTOF(dialog\logo_128.paa);
 
-            x = GRAD_DIRECTCONNECT_LOGOX;
+            x = DIRECTCONNECT_LOGOX;
             y = "safezoneY + 2.15 * (pixelH * pixelGrid * 2)";
             w = "2.00 * (pixelH * pixelGrid * 2)";
             h = "1.70 * (pixelH * pixelGrid * 2)";
         };
 
-        class grad_directConnectButton: RscButtonMenu {
+        class GVAR(directConnectButton): RscButtonMenu {
             idc = 62300;
             colorBackground[]={0,0,0,0};
             colorBackground2[]={1,1,1,1};
@@ -29,14 +29,15 @@ class RscDisplayMain {
             size="1.25 * (pixelH * pixelGrid * 2)";
 
             text = "ERROR SETTING TEXT";
-            onLoad = "_this call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onLoadButtonConnect.sqf'";
+            onLoad = QUOTE(_this call (uiNamespace getVariable QQFUNC(onLoadButtonConnect)));
 
-            x = GRAD_DIRECTCONNECT_X;
+            x = DIRECTCONNECT_X;
             y = "safezoneY + 2 * (pixelH * pixelGrid * 2)";
             w = "9 * (pixelW * pixelGrid * 2)";
             h = "2 * (pixelH * pixelGrid * 2)";
 
-            action = "call compile preprocessFileLineNumbers '\x\grad\addons\ui\functions\directConnect\fn_onButtonConnect.sqf'";
+            action = QUOTE(call (uiNamespace getVariable QQFUNC(onButtonConnect)));
+            onMouseButtonClick = QUOTE(_this call (uiNamespace getVariable QQFUNC(onButtonConnect_rightClick)));
 
             class Attributes {
                 align="center";
@@ -56,11 +57,11 @@ class RscDisplayMain {
     };
 };
 
-class grad_RscDisplayDirectConnectPassword {
+class GVAR(RscDisplayDirectConnectPassword) {
     idd = -1;
     movingEnable=0;
     enableDisplay=1;
-    onLoad = "_this call (uiNamespace getVariable 'grad_ui_fnc_onLoadRscDisplayDirectConnectPassword')";
+    onLoad = QUOTE(_this call (uiNamespace getVariable QQFUNC(onLoadRscDisplayDirectConnectPassword)));
 
     class ControlsBackground {
         class Vignette: RscVignette {
@@ -93,19 +94,19 @@ class grad_RscDisplayDirectConnectPassword {
                 "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
             };
             idc=1080;
-            x = GRAD_DIRECTCONNECT_TOTALX;
-            y = GRAD_DIRECTCONNECT_TOTALY;
-            w = GRAD_DIRECTCONNECT_TOTALW;
-            h = GRAD_DIRECTCONNECT_ELEMENTH;
+            x = DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_TOTALY;
+            w = DIRECTCONNECT_TOTALW;
+            h = DIRECTCONNECT_ELEMENTH;
         };
         class MainBackground: RscText
         {
             colorBackground[]={0,0,0,0.69999999};
             idc=1082;
-            x= GRAD_DIRECTCONNECT_TOTALX;
-            y = GRAD_DIRECTCONNECT_MAINY;
-            w = GRAD_DIRECTCONNECT_TOTALW;
-            h = GRAD_DIRECTCONNECT_MAINH;
+            x= DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_MAINY;
+            w = DIRECTCONNECT_TOTALW;
+            h = DIRECTCONNECT_MAINH;
         };
     };
 
@@ -114,61 +115,179 @@ class grad_RscDisplayDirectConnectPassword {
             colorBackground[] = {0,0,0,0};
             style = 0;
             idc = 1000;
-            text="$STR_GRAD_UI_DIRECTCONNECTPASSWORDWINDOWTITLE";
+            text= CSTRING(DIRECTCONNECTPASSWORDWINDOWTITLE);
 
-            x = GRAD_DIRECTCONNECT_TOTALX;
-            y = GRAD_DIRECTCONNECT_TOTALY;
-            w = GRAD_DIRECTCONNECT_TOTALW;
-            h = GRAD_DIRECTCONNECT_ELEMENTH;
+            x = DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_TOTALY;
+            w = DIRECTCONNECT_TOTALW;
+            h = DIRECTCONNECT_ELEMENTH;
         };
 
         class Text: RscText {
-            idc = GRAD_DIRECTCONNECT_IDC_PASSWORDTEXT;
+            idc = DIRECTCONNECT_IDC_PASSWORDTEXT;
             text = "";
-            x = GRAD_DIRECTCONNECT_CONTENTX;
-            y = GRAD_DIRECTCONNECT_MAINY + GRAD_DIRECTCONNECT_PADDINGY;
-            w = GRAD_DIRECTCONNECT_CONTENTW;
-            h = GRAD_DIRECTCONNECT_TEXTBOXH;
+            x = DIRECTCONNECT_CONTENTX;
+            y = DIRECTCONNECT_MAINY + DIRECTCONNECT_PADDINGY;
+            w = DIRECTCONNECT_CONTENTW;
+            h = DIRECTCONNECT_TEXTBOXH;
             colorBackground[]={0,0,0,0};
         };
 
         class PasswordText: RscText {
             idc = -1;
             text = "PASSWORD";
-            x = GRAD_DIRECTCONNECT_CONTENTX;
-            y = GRAD_DIRECTCONNECT_MAINY + GRAD_DIRECTCONNECT_PADDINGY + GRAD_DIRECTCONNECT_TEXTBOXH + GRAD_DIRECTCONNECT_PADDINGY;
-            w = GRAD_DIRECTCONNECT_XSCALE * 5;
-            h = GRAD_DIRECTCONNECT_ELEMENTH;
+            x = DIRECTCONNECT_CONTENTX;
+            y = DIRECTCONNECT_MAINY + DIRECTCONNECT_PADDINGY + DIRECTCONNECT_TEXTBOXH + DIRECTCONNECT_PADDINGY;
+            w = DIRECTCONNECT_XSCALE * 5;
+            h = DIRECTCONNECT_ELEMENTH;
             colorBackground[] = {0,0,0,0};
         };
 
         class PasswordBox: RscEdit {
-            idc = GRAD_DIRECTCONNECT_IDC_PASSWORD;
+            idc = DIRECTCONNECT_IDC_PASSWORD;
 
-            x = GRAD_DIRECTCONNECT_CONTENTX + GRAD_DIRECTCONNECT_XSCALE * 5.5;
-            y = GRAD_DIRECTCONNECT_MAINY + GRAD_DIRECTCONNECT_PADDINGY + GRAD_DIRECTCONNECT_TEXTBOXH + GRAD_DIRECTCONNECT_PADDINGY;
-            w = GRAD_DIRECTCONNECT_CONTENTW - GRAD_DIRECTCONNECT_XSCALE * 5.5;
-            h = GRAD_DIRECTCONNECT_ELEMENTH;
+            x = DIRECTCONNECT_CONTENTX + DIRECTCONNECT_XSCALE * 5.5;
+            y = DIRECTCONNECT_MAINY + DIRECTCONNECT_PADDINGY + DIRECTCONNECT_TEXTBOXH + DIRECTCONNECT_PADDINGY;
+            w = DIRECTCONNECT_CONTENTW - DIRECTCONNECT_XSCALE * 5.5;
+            h = DIRECTCONNECT_ELEMENTH;
         };
 
         class ButtonCancel: RscButtonMenuCancel {
-            x = GRAD_DIRECTCONNECT_TOTALX;
-            y = GRAD_DIRECTCONNECT_BUTTONY;
-            w = GRAD_DIRECTCONNECT_BUTTONW;
-            h = GRAD_DIRECTCONNECT_ELEMENTH;
+            x = DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_BUTTONY;
+            w = DIRECTCONNECT_BUTTONW;
+            h = DIRECTCONNECT_ELEMENTH;
         };
 
         class ButtonOK: RscButtonMenu {
-            x = GRAD_DIRECTCONNECT_BUTTONOKX;
-            y = GRAD_DIRECTCONNECT_BUTTONY;
-            w = GRAD_DIRECTCONNECT_BUTTONW;
-            h = GRAD_DIRECTCONNECT_ELEMENTH;
+            x = DIRECTCONNECT_BUTTONOKX;
+            y = DIRECTCONNECT_BUTTONY;
+            w = DIRECTCONNECT_BUTTONW;
+            h = DIRECTCONNECT_ELEMENTH;
 
             text = "OK";
             style = 16;
             shortcuts[] = {28,156};
 
-            onButtonClick = "_this call (uiNamespace getVariable 'grad_ui_fnc_onButtonPasswordOK')";
+            onButtonClick = QUOTE(_this call (uiNamespace getVariable QQFUNC(onButtonPasswordOK)));
+        };
+    };
+};
+
+
+class GVAR(RscDisplayDirectConnectPort) {
+    idd = -1;
+    movingEnable=0;
+    enableDisplay=1;
+    //onLoad = QUOTE(_this call (uiNamespace getVariable QQFUNC(onLoadRscDisplayDirectConnectPassword)));
+
+    class ControlsBackground {
+        class Vignette: RscVignette {
+            idc=114998;
+        };
+
+        class TileGroup: RscControlsGroupNoScrollbars {
+            idc=115099;
+            x="safezoneXAbs";
+            y="safezoneY";
+            w="safezoneWAbs";
+            h="safezoneH";
+
+            class Controls {
+                class Background: RscText {
+                    idc=114999;
+                    x=0;
+                    y=0;
+                    w="safezoneWAbs";
+                    h="safezoneH";
+                    colorBackground[]={0,0,0,0.5};
+                };
+            };
+        };
+        class RscTitleBackground: RscText {
+            colorBackground[]= {
+                "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])",
+                "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])",
+                "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])",
+                "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
+            };
+            idc=1080;
+            x = DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_TOTALY;
+            w = DIRECTCONNECT_TOTALW;
+            h = DIRECTCONNECT_ELEMENTH;
+        };
+        class MainBackground: RscText
+        {
+            colorBackground[]={0,0,0,0.69999999};
+            idc=1082;
+            x= DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_MAINY;
+            w = DIRECTCONNECT_TOTALW;
+            h = DIRECTCONNECT_MAINH;
+        };
+    };
+
+    class Controls {
+        class Title: RscTitle {
+            colorBackground[] = {0,0,0,0};
+            style = 0;
+            idc = 1000;
+            text= CSTRING(DIRECTCONNECTPASSWORDWINDOWTITLE);
+
+            x = DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_TOTALY;
+            w = DIRECTCONNECT_TOTALW;
+            h = DIRECTCONNECT_ELEMENTH;
+        };
+
+        class Text: RscText {
+            idc = DIRECTCONNECT_IDC_PASSWORDTEXT;
+            text = CSTRING(DIRECTCONNECTPORTTEXT);
+            x = DIRECTCONNECT_CONTENTX;
+            y = DIRECTCONNECT_MAINY + DIRECTCONNECT_PADDINGY;
+            w = DIRECTCONNECT_CONTENTW;
+            h = DIRECTCONNECT_TEXTBOXH;
+            colorBackground[]={0,0,0,0};
+        };
+
+        class PortText: RscText {
+            idc = -1;
+            text = "PORT";
+            x = DIRECTCONNECT_CONTENTX;
+            y = DIRECTCONNECT_MAINY + DIRECTCONNECT_PADDINGY + DIRECTCONNECT_TEXTBOXH + DIRECTCONNECT_PADDINGY;
+            w = DIRECTCONNECT_XSCALE * 5;
+            h = DIRECTCONNECT_ELEMENTH;
+            colorBackground[] = {0,0,0,0};
+        };
+
+        class PortBox: RscEdit {
+            idc = DIRECTCONNECT_IDC_PASSWORD;
+            text="2302";
+            x = DIRECTCONNECT_CONTENTX + DIRECTCONNECT_XSCALE * 5.5;
+            y = DIRECTCONNECT_MAINY + DIRECTCONNECT_PADDINGY + DIRECTCONNECT_TEXTBOXH + DIRECTCONNECT_PADDINGY;
+            w = DIRECTCONNECT_CONTENTW - DIRECTCONNECT_XSCALE * 5.5;
+            h = DIRECTCONNECT_ELEMENTH;
+        };
+
+        class ButtonCancel: RscButtonMenuCancel {
+            x = DIRECTCONNECT_TOTALX;
+            y = DIRECTCONNECT_BUTTONY;
+            w = DIRECTCONNECT_BUTTONW;
+            h = DIRECTCONNECT_ELEMENTH;
+        };
+
+        class ButtonOK: RscButtonMenu {
+            x = DIRECTCONNECT_BUTTONOKX;
+            y = DIRECTCONNECT_BUTTONY;
+            w = DIRECTCONNECT_BUTTONW;
+            h = DIRECTCONNECT_ELEMENTH;
+
+            text = "OK";
+            style = 16;
+            shortcuts[] = {28,156};
+
+            onButtonClick = QUOTE(_this call (uiNamespace getVariable QQFUNC(onButtonPortOK)));
         };
     };
 };

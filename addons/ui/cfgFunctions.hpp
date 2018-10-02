@@ -1,10 +1,12 @@
 class CfgFunctions {
-	class grad_ui {
+	class ADDON {
 		class directConnect {
-			file = "x\grad\addons\ui\functions\directConnect";
+			file = QPATHTOF(functions\directConnect);
 			class connectToServer {};
+      class onButtonConnect_rightClick {};
 			class onButtonConnect {};
 			class onButtonPasswordOK {};
+			class onButtonPortOK {};
 			class onLoadButtonConnect {};
 			class onLoadRscDisplayDirectConnectPassword {};
 		};
