@@ -48,6 +48,19 @@ class CfgUnitInsignia
 		textureVehicle = ""; // Does nothing currently, reserved for future use
 	};
 	
-	
+	class ga_insignia_medic_cross
+	{
+		displayName = "Red Cross"; // Name displayed in Arsenal
+		author = "Synch"; // Author displayed in Arsenal
+		texture = "\x\grad\addons\equipment\data\insignia\ga_insignia_medic_cross.paa"; // Image path
+		textureVehicle = ""; // Does nothing currently, reserved for future use
+	};
+	class ga_insignia_medic_crystal
+	{
+		displayName = "Red Crystal"; // Name displayed in Arsenal
+		author = "Synch"; // Author displayed in Arsenal
+		texture = "\x\grad\addons\equipment\data\insignia\ga_insignia_medic_crystal.paa"; // Image path
+		textureVehicle = ""; // Does nothing currently, reserved for future use
+	};
 	
 };
