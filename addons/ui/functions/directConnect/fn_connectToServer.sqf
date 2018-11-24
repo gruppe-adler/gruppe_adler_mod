@@ -3,14 +3,9 @@
 
 #define UI_DIRECTCONNECTTIMEOUT        5
 
-params [["_password",""],["_port",2302]];
-
-GVAR(directConnectPassword) = _password;
-profileNamespace setVariable [QGVAR(directConnectPassword),_password];
-saveProfileNamespace;
+params [["_port",2302]];
 
 INFO_1("Attempting direct connect to port %1", _port);
-
 GVAR(directConnectPort) = _port;
 
 onEachFrame {
@@ -39,8 +34,6 @@ onEachFrame {
 
                     if (diag_tickTime > (GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT)) then {
                         ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
-                        profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),true];
-                        saveProfileNamespace;
                         onEachFrame {};
                     };
 
@@ -53,23 +46,15 @@ onEachFrame {
                             onEachFrame {
                                 if (diag_tickTime > GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT) then {
                                     ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
-                                    profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),false];
-                                    saveProfileNamespace;
                                     onEachFrame {};
                                 };
 
                                 if (!isNull findDisplay IDD_PASSWORD) then {
-                                    private _ctrlPassword = findDisplay IDD_PASSWORD displayCtrl IDC_PASSWORD;
-                                    _ctrlPassword ctrlSetTextColor [0,0,0,0];
-                                    _ctrlPassword ctrlSetText GVAR(directConnectPassword);
                                     ctrlActivate (findDisplay IDD_PASSWORD displayCtrl IDC_OK);
                                 };
 
                                 if (getClientStateNumber >= 3) then {
                                     INFO_1("direct connect on port %1 successful", GVAR(directConnectPort));
-                                    profileNamespace setVariable [QGVAR(directConnectLastConnectSuccessful),true];
-                                    saveProfileNamespace;
-
                                     onEachFrame {};
                                 };
                             };
