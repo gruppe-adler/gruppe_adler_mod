@@ -7,7 +7,6 @@
     {
         INFO("EG spec active, adding keydown handler...");
         (["GetDisplay"] call BIS_fnc_EGSpectator) displayAddEventHandler ["KeyDown", {
-            INFO("why hello! keydown in EG spec...");
             _this call FUNC(ui_eg_handleKeyDown);
         }];
 
