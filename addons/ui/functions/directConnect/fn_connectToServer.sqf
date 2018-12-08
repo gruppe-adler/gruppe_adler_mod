@@ -29,37 +29,46 @@ onEachFrame {
             onEachFrame {
                 _ctrlServerList = findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS;
 
-                ([_ctrlServerList lbText 0,_ctrlServerList lbData 0]) call {
-                    params [["_serverName",""],["_serverData",""]];
+                _exit = for "_i" from 0 to ((lbSize _ctrlServerList) - 1) do {
+                    ([_ctrlServerList lbText _i,_ctrlServerList lbData _i]) call {
+                        params [["_serverName",""],["_serverData",""]];
 
-                    if (diag_tickTime > (GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT)) then {
-                        ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
-                        onEachFrame {};
-                    };
+                        if (diag_tickTime > (GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT)) exitWith {
+                            ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
+                            onEachFrame {};
+                            true
+                        };
 
-                    if (_serverData isEqualTo format ["138.201.30.228:%1",GVAR(directConnectPort)]) then {
-                        findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS lbSetCurSel 0;
-
-                        onEachFrame {
-                            ctrlActivate (findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_JOIN);
+                        if (_serverData isEqualTo format ["138.201.30.228:%1",GVAR(directConnectPort)]) exitWith {
+                            findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_SESSIONS lbSetCurSel 0;
 
                             onEachFrame {
-                                if (diag_tickTime > GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT) then {
-                                    ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
-                                    onEachFrame {};
-                                };
+                                ctrlActivate (findDisplay IDD_MULTIPLAYER displayCtrl IDC_MULTI_JOIN);
 
-                                if (!isNull findDisplay IDD_PASSWORD) then {
-                                    ctrlActivate (findDisplay IDD_PASSWORD displayCtrl IDC_OK);
-                                };
+                                onEachFrame {
+                                    if (diag_tickTime > GVAR(directConnectStartTime) + UI_DIRECTCONNECTTIMEOUT) then {
+                                        ERROR_1("direct connect on port %1 timed out", GVAR(directConnectPort));
+                                        onEachFrame {};
+                                    };
 
-                                if (getClientStateNumber >= 3) then {
-                                    INFO_1("direct connect on port %1 successful", GVAR(directConnectPort));
-                                    onEachFrame {};
+                                    if (!isNull findDisplay IDD_PASSWORD) then {
+                                        ctrlActivate (findDisplay IDD_PASSWORD displayCtrl IDC_OK);
+                                    };
+
+                                    if (getClientStateNumber >= 3) then {
+                                        INFO_1("direct connect on port %1 successful", GVAR(directConnectPort));
+                                        onEachFrame {};
+                                    };
                                 };
                             };
+
+                            true
                         };
+
+                        false
                     };
+
+                    if (_exit) exitWith {};
                 };
             };
         };
