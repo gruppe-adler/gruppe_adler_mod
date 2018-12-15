@@ -14,7 +14,7 @@ SCRIPT(XEH_preInit);
 [
     QGVAR(setting_maxTime),
     "SLIDER",
-    "Maximum chopping time (no matter how tall the tree)",
+    "Max. chopping time (no matter how tall the tree)",
     "GRAD Axe",
     [5,600,40,0],
     1
