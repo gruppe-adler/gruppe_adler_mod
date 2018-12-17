@@ -12,14 +12,14 @@ class RscListNBox;
 class RscButtonMenu;
 
 
-class GVAR(displayMarkers) {
+class GVAR(RscDisplayMarkers) {
     access = 0;
     idd = IDD_SAVEMARKERS;
     movingEnable = 0;
 
     class controlsBackground {
         class map: RscMapControl {
-            idc = -1;
+            idc = IDC_MAP;
 
             x = "safezoneXAbs";
             y = "safezoneY";
