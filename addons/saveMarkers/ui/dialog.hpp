@@ -17,6 +17,8 @@ class GVAR(RscDisplayMarkers) {
     idd = IDD_SAVEMARKERS;
     movingEnable = 0;
 
+    onUnload = QUOTE(_this call FUNC(onUnload));
+
     class controlsBackground {
         class map: RscMapControl {
             idc = IDC_MAP;
