@@ -10,6 +10,7 @@ class RscControlsGroupNoScrollbars;
 class RscEdit;
 class RscListNBox;
 class RscButtonMenu;
+class RscStructuredText;
 
 
 class GVAR(RscDisplayMarkers) {
@@ -32,11 +33,54 @@ class GVAR(RscDisplayMarkers) {
 
     class controls {
 
+        class helpDialog: RscControlsGroupNoScrollbars {
+            idc = IDC_HELP;
+
+            x = safezoneX + safezoneW - 13 * X_FACTOR;
+            y = safezoneY + 5 * Y_FACTOR;
+            w = 8 * X_FACTOR;
+            h = 22.2 * Y_FACTOR;
+
+            deletable = 0;
+            fade = 0;
+            shadow = 0;
+            style = 16;
+            type = 15;
+            moving = true;
+
+            class controls {
+                class mainBackground: RscText {
+                    idc = -1;
+
+                    x = 0;
+                    y = 0;
+                    w = 8 * X_FACTOR;
+                    h = 22.2 * Y_FACTOR;
+
+                    SizeEx = (Y_FACTOR * 1);
+                    colorBackground[] = {0,0,0,0.8};
+                };
+
+                class text: RscStructuredText {
+                    idc = IDC_HELP_TEXT;
+
+                    x = HELP_TEXT_PADDING_X;
+                    y = HELP_TEXT_PADDING_Y;
+                    w = 8 * X_FACTOR - 2 * HELP_TEXT_PADDING_X;
+                    h = 22.2 * Y_FACTOR - 2 * HELP_TEXT_PADDING_Y;
+
+                    sizeEx = 0.8 * Y_FACTOR;
+
+                    class Attributes;
+                };
+            };
+        };
+
         class markersDialog: RscControlsGroupNoScrollbars {
             idc = -1;
 
-            x = safezoneX + safezoneW - 25 * X_FACTOR;
-            y = 0.9 * Y_FACTOR + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2);
+            x = safezoneX + 5 * X_FACTOR;
+            y = safezoneY + 5 * Y_FACTOR;
             w = 20 * X_FACTOR;
             h = 22.2 * Y_FACTOR;
 

@@ -2,7 +2,7 @@
 #include "..\ui\defines.hpp"
 
 
-GVAR(selectedMarkers) = [] call FUNC(allMarkers);
+GVAR(selectedMarkers) = [];
 GVAR(previewMarkers) = [];
 
 private _display = (findDisplay 46) createDisplay QGVAR(RscDisplayMarkers);
@@ -15,14 +15,9 @@ _mapCtrl ctrlAddEventHandler ["Draw",FUNC(onDraw)];
 _mapCtrl ctrlMapAnimAdd [0,0.8,[worldSize/2,worldSize/2]];
 ctrlMapAnimCommit _mapCtrl;
 
-// select all event
-_mapCtrl ctrlAddEventHandler ["KeyDown",{
-    params ["","_key","","_ctrl"];
-    if (_ctrl && {_key == 30}) then {
-        GVAR(selectedMarkers) = [] call FUNC(allMarkers);
-        [] call FUNC(updateButtonSave);
-    };
-}];
+_mapCtrl ctrlAddEventHandler ["KeyDown",FUNC(onKeydownMap)];
+
+onMapSingleClick "true";
 
 // buttons =====================================================================
 private _ctrlButtonSave = _display displayCtrl IDC_BUTTONSAVE;
@@ -48,3 +43,19 @@ _ctrlSavesList ctrlAddEventHandler ["lbSelChanged",FUNC(onSavesListSelChanged)];
 private _ctrlEditName = _display displayCtrl IDC_EDITNAME;
 // execNextFrame here, because handler fires before backspace deletes a character
 _ctrlEditName ctrlAddEventHandler ["keyDown",{[FUNC(onEditNameChanged),_this] call CBA_fnc_execNextFrame}];
+
+// help ========================================================================
+private _ctrlHelp = _display displayCtrl IDC_HELP;
+_ctrlHelp ctrlShow false;
+_ctrlHelp ctrlShow true;
+
+// add this EH to help as well in case user clicks on help
+_ctrlHelp ctrlAddEventHandler ["KeyDown",FUNC(onKeydownMap)];
+
+private _ctrlHelpText = _display displayCtrl IDC_HELP_TEXT;
+[_ctrlHelpText] call FUNC(loadHelp);
+
+private _ctrlHelpPos = ctrlPosition _ctrlHelp;
+_ctrlHelpPos set [3,[1 * Y_FACTOR,22.2 * Y_FACTOR] select (missionNamespace getVariable [QGVAR(helpEnabled),false])];
+_ctrlHelp ctrlSetPosition _ctrlHelpPos;
+_ctrlHelp ctrlCommit -1;

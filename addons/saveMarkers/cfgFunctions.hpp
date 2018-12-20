@@ -9,12 +9,14 @@ class cfgFunctions {
             class getMarkerChannel {};
             class getMarkersInArea {};
             class loadDisplay {};
+            class loadHelp {};
             class loadMarkers {};
             class onButtonDelete {};
             class onButtonLoad {};
             class onButtonSave {};
             class onDraw {};
             class onEditNameChanged {};
+            class onKeydownMap {};
             class onMouseButtonDownMap {};
             class onMouseButtonUpMap {};
             class onSavesListSelChanged {};
@@ -22,6 +24,7 @@ class cfgFunctions {
             class saveMarkers {};
             class setButtonEnabled {};
             class setListSelected {};
+            class toggleHelp {};
             class updateButtonSave {};
             class updateSavesList {};
 		};

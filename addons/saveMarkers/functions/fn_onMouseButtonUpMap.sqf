@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-params ["_mapCtrl","_mouseButton","_mouseX","_mouseY","","_ctrlDown"];
+params ["_mapCtrl","_mouseButton","_mouseX","_mouseY","_shiftDown","_ctrlDown","_altDown"];
 
 // leftclick only
 if (_mouseButton != 0) exitWith {};
@@ -18,12 +18,16 @@ private _halfDeltaX = (_endMouseX - _startMouseX)/2;
 private _halfDeltaY = (_endMouseY - _startMouseY)/2;
 
 private _selectedArea = [[_startMouseX + _halfDeltaX,_startMouseY + _halfDeltaY],_halfDeltaX,_halfDeltaY,0,true];
-private _selectedMarkers = [_selectedArea] call FUNC(getMarkersInArea);
+private _selectedMarkers = [_selectedArea,_altDown || _shiftDown] call FUNC(getMarkersInArea);
 
-if (_ctrlDown) then {
-    GVAR(selectedMarkers) = GVAR(selectedMarkers) + _selectedMarkers;
+if (_shiftDown) then {
+    GVAR(selectedMarkers) = GVAR(selectedMarkers) - _selectedMarkers;
 } else {
-    GVAR(selectedMarkers) = _selectedMarkers;
+    if (_ctrlDown) then {
+        GVAR(selectedMarkers) = GVAR(selectedMarkers) + _selectedMarkers;
+    } else {
+        GVAR(selectedMarkers) = _selectedMarkers;
+    };
 };
 
 [] call FUNC(updateButtonSave);

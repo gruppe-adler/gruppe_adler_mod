@@ -20,7 +20,6 @@ private _saveMarkersData = profileNamespace getVariable [QGVAR(saveData),[]];
     _ctrlSavesList lnbSetValue [[_rowID,0],_forEachIndex];
 
     _textColor = [[0.50,0.50,0.50,1],[1,1,1,1]] select (_worldName == worldName);
-    diag_log ["_textColor",_textColor];
     {_ctrlSavesList lnbSetColor [[_rowID,_x],_textColor]} forEach [0,1];
 } forEach _saveMarkersData;
 

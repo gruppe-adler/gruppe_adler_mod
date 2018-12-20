@@ -4,3 +4,5 @@
 
 GVAR(selectedMarkers) = nil;
 GVAR(previewMarkers) = nil;
+
+onMapSingleClick "";
