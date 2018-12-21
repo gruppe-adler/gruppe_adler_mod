@@ -8,5 +8,9 @@ class CfgFunctions {
 			class onButtonPortOK {};
 			class onLoadButtonConnect {};
 		};
+        class help {
+			file = QPATHTOF(functions\help);
+            class addHelpRecord {};
+		};
 	};
 };
