@@ -16,4 +16,6 @@ private _saveMarkersData = profileNamespace getVariable QGVAR(saveData);
 
 [_saveName,_mapName,_markersData] call FUNC(loadMarkers);
 
+(format ["grad-saveMarkers: %1 just loaded his marker set %2.",profileName,_saveName]) remoteExec ["systemChat",0,false];
+
 _ctrlSavesList lnbSetCurSelRow -1;
