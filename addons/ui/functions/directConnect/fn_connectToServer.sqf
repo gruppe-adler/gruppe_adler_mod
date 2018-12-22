@@ -60,7 +60,7 @@ onEachFrame {
                                             onEachFrame {};
                                         };
 
-                                        ctrlActivate (findDisplay IDD_PASSWORD displayCtrl IDC_OK);
+                                        ctrlActivate (_display displayCtrl IDC_OK);
                                     };
 
                                     if (getClientStateNumber >= 3) then {
