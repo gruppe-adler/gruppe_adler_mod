@@ -14,5 +14,5 @@ Press <t color='%1'>[H]</t> to toggle help.<br/>
 <br/>
 <t color='%1'>[alt]</t> - Hold while selecting to enable selection of editor or script created markers.<br/>
 <br/>
-<t color='%1'>[shift]</t> - Hold while selecting remove markers from selection.<br/>
+<t color='%1'>[shift]</t> - Hold while selecting to remove markers from selection.<br/>
 </t>",HIGHLIGHT_COLOR];
