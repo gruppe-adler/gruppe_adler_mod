@@ -22,7 +22,7 @@ GVAR(previewMarkers) = [];
 
     private _markerID = format ["_USER_DEFINED #-1/%1/%2",_forEachIndex,_channel];
 
-    _marker = createMarkerLocal [_markerID,_pos];
+    private _marker = createMarkerLocal [_markerID,_pos];
     _marker setMarkerAlphaLocal _alpha;
     _marker setMarkerBrushLocal _brush;
     _marker setMarkerColorLocal _color;
