@@ -20,7 +20,7 @@ GVAR(previewMarkers) = [];
         "_channel"
     ];
 
-    _markerID = format ["_USER_DEFINED #-1/%1/%2",_forEachIndex,_channel];
+    private _markerID = format ["_USER_DEFINED #-1/%1/%2",_forEachIndex,_channel];
 
     _marker = createMarkerLocal [_markerID,_pos];
     _marker setMarkerAlphaLocal _alpha;
