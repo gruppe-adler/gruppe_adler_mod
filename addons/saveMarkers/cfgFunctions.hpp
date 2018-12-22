@@ -21,6 +21,7 @@ class cfgFunctions {
             class onMouseButtonUpMap {};
             class onSavesListSelChanged {};
             class onUnload {};
+            class openDialog {};
             class saveMarkers {};
             class setButtonEnabled {};
             class setListSelected {};
