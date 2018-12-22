@@ -16,7 +16,7 @@ private _saveMarkersData = profileNamespace getVariable [QGVAR(saveData),[]];
 {
     _x params [["_saveAs","ERROR: NO NAME"],["_worldName","ERROR: NO WORLDNAME"]];
 
-    _rowID = _ctrlSavesList lnbAddRow [_saveAs,_worldName];
+    private _rowID = _ctrlSavesList lnbAddRow [_saveAs,_worldName];
     _ctrlSavesList lnbSetValue [[_rowID,0],_forEachIndex];
 
     _textColor = [[0.50,0.50,0.50,1],[1,1,1,1]] select (_worldName == worldName);
