@@ -18,7 +18,7 @@ params ["_saveName","_mapName",["_markersData",[]]];
 
     _markerID = format ["_USER_DEFINED #-1%1%2/%3/%4",_saveName,_mapName,_forEachIndex,_channel];
 
-    _marker = createMarker [_markerID,_pos];
+    private _marker = createMarker [_markerID,_pos];
     _marker setMarkerAlpha _alpha;
     _marker setMarkerBrush _brush;
     _marker setMarkerColor _color;
