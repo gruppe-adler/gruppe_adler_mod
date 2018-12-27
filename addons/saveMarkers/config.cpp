@@ -10,7 +10,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;
-        authors[] = {"McDiod"};
+        	authors[] = {"McDiod"};
 	};
 };
 
