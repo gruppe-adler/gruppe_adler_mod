@@ -15,6 +15,7 @@ class CfgPatches
 	};
 };
 
+#include "cfgEventHandlers.hpp"
 #include "ACE_Treatments.hpp"
 #include "CfgFunctions.hpp"
 #include "CfgVehicles.hpp"

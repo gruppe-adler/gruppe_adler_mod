@@ -14,6 +14,7 @@ class CfgPatches {
 	};
 };
 
+#include "cfgEventHandlers.hpp"
 #include "cfgFunctions.hpp"
 
 class ACE_spectator_display {
@@ -21,10 +22,4 @@ class ACE_spectator_display {
 };
 class ACE_spectator_interface {
 	onKeyDown = "_this call GRAD_cinematicSpec_fnc_chainHandlers";
-};
-
-class Extended_PreInit_EventHandlers {
-    class ADDON {
-        clientInit = QUOTE(call COMPILE_FILE(XEH_preInit));
-    };
 };
