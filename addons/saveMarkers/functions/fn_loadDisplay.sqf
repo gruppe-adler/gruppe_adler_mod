@@ -7,6 +7,8 @@ GVAR(previewMarkers) = [];
 
 private _display = (findDisplay 46) createDisplay QGVAR(RscDisplayMarkers);
 
+_display displayAddEventHandler ["KeyDown",FUNC(onKeydownMap)];
+
 // map =========================================================================
 private _mapCtrl = _display displayCtrl IDC_MAP;
 _mapCtrl ctrlAddEventHandler ["MouseButtonDown",FUNC(onMouseButtonDownMap)];
@@ -14,8 +16,6 @@ _mapCtrl ctrlAddEventHandler ["MouseButtonUp",FUNC(onMouseButtonUpMap)];
 _mapCtrl ctrlAddEventHandler ["Draw",FUNC(onDraw)];
 _mapCtrl ctrlMapAnimAdd [0,0.8,[worldSize/2,worldSize/2]];
 ctrlMapAnimCommit _mapCtrl;
-
-_mapCtrl ctrlAddEventHandler ["KeyDown",FUNC(onKeydownMap)];
 
 onMapSingleClick "true";
 
@@ -41,16 +41,16 @@ _ctrlSavesList ctrlAddEventHandler ["lbSelChanged",FUNC(onSavesListSelChanged)];
 
 // edit name ===================================================================
 private _ctrlEditName = _display displayCtrl IDC_EDITNAME;
+
 // execNextFrame here, because handler fires before backspace deletes a character
 _ctrlEditName ctrlAddEventHandler ["keyDown",{[FUNC(onEditNameChanged),_this] call CBA_fnc_execNextFrame}];
+_ctrlEditName ctrlAddEventHandler ["setFocus",{(ctrlParent (_this select 0)) setVariable [QGVAR(editNameFocused),true]}];
+_ctrlEditName ctrlAddEventHandler ["killFocus",{(ctrlParent (_this select 0)) setVariable [QGVAR(editNameFocused),false]}];
 
 // help ========================================================================
 private _ctrlHelp = _display displayCtrl IDC_HELP;
 _ctrlHelp ctrlShow false;
 _ctrlHelp ctrlShow true;
-
-// add this EH to help as well in case user clicks on help
-_ctrlHelp ctrlAddEventHandler ["KeyDown",FUNC(onKeydownMap)];
 
 private _ctrlHelpText = _display displayCtrl IDC_HELP_TEXT;
 [_ctrlHelpText] call FUNC(loadHelp);
