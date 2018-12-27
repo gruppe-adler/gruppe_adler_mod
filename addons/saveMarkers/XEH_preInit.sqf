@@ -7,7 +7,7 @@
     "GRAD Save Markers",
     [
         [0,1,2],
-        ["never","first 5min of mission","always"],
+        ["never","first 10min of mission","always"],
         1
     ]
 ] call CBA_settings_fnc_init;

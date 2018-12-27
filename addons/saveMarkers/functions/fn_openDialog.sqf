@@ -3,7 +3,7 @@
 private _canOpen = switch (true) do {
     case (IS_ADMIN): {true};
     case (GVAR(setting_canBeOpened) == 2): {true};
-    case (GVAR(setting_canBeOpened) == 1 && {(missionNamespace getVariable ["CBA_missionTime",0]) < 300}): {true};
+    case (GVAR(setting_canBeOpened) == 1 && {(missionNamespace getVariable ["CBA_missionTime",0]) < 600}): {true};
     default {false};
 };
 
