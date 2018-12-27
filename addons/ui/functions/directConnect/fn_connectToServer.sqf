@@ -52,7 +52,15 @@ onEachFrame {
                                     };
 
                                     if (!isNull findDisplay IDD_PASSWORD) then {
-                                        ctrlActivate (findDisplay IDD_PASSWORD displayCtrl IDC_OK);
+                                        private _display = findDisplay IDD_PASSWORD;
+                                        private _passwordEditBoxCtrl = _display displayCtrl IDC_PASSWORD;
+
+                                        // no password saved by CBA --> abort here so user can enter password
+                                        if (!isNull _passwordEditBoxCtrl && {ctrlText _passwordEditBoxCtrl == ""}) exitWith {
+                                            onEachFrame {};
+                                        };
+
+                                        ctrlActivate (_display displayCtrl IDC_OK);
                                     };
 
                                     if (getClientStateNumber >= 3) then {
