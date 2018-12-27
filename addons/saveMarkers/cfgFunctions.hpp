@@ -11,6 +11,7 @@ class cfgFunctions {
             class loadDisplay {};
             class loadHelp {};
             class loadMarkers {};
+            class loadNotification {};
             class onButtonDelete {};
             class onButtonLoad {};
             class onButtonSave {};

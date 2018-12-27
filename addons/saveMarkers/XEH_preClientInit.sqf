@@ -14,3 +14,5 @@ You can open the Save Marker dialog with the chatcommand '#grad-saveMarkers', or
 ["grad-saveMarkers",{
     [] call FUNC(openDialog);
 },"all"] call CBA_fnc_registerChatCommand;
+
+[] call FUNC(loadNotification);
