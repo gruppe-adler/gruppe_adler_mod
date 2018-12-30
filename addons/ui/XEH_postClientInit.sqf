@@ -5,6 +5,8 @@ if (!hasInterface) exitWith {};
 player createDiarySubject [QGVAR(helpSubject),"Gruppe Adler"];
 
 private _helpRecords = missionNamespace getVariable [QGVAR(helpRecords),[]];
+_helpRecords sort true;
+
 {
     _x params ["_title","_text"];
 
