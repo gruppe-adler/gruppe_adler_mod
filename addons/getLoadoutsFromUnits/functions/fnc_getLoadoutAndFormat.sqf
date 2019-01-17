@@ -11,7 +11,7 @@ private _trippleTab = _tab + _tab + _tab;
 private _split = (typeOf _unit) splitString "_";
 _split deleteAt 0;
 private _type = _split joinString "_";
-_return = _return = _return + _breakline + _tab + _tab + format ["class %1 {", _type];
+_return = _return + _breakline + _tab + _tab + format ["class %1 {", _type];
 
 //Clothing
 _return = _return + _breakline + _trippleTab + format ["uniform = '%1'", [_loadout select 3] call FUNC(getClothes)];
