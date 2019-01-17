@@ -1,9 +1,13 @@
 #include "script_component.hpp"
-
-private _units = get3DENSelected "object";
+private _units = [];
 private _breakline = toString [13,10];
 private _structuredText = "class newFaction {";
 private _tab = "    ";
+
+{
+   if (_x isKindOf "CAManBase") then { _units pushBack _x; };
+}forEach get3DENSelected "object";
+
 
 _structuredText = _structuredText + _tab + "class Type {" + _breakline + "";
 

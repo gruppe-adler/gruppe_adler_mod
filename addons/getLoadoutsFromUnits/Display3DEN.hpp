@@ -5,7 +5,7 @@ class Display3DEN {
             items[] += {"GRAD_getLoadoutsFromUnits"};
           };
           class GRAD_getLoadoutsFromUnits {
-            text = "get Grad Loadout";
+            text = "Copy Grad-Loadout to Clipboard";
   					value = 0;
   					action = QUOTE([] call FUNC(createConfig););
           };
