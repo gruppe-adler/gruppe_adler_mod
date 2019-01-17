@@ -103,25 +103,25 @@ if (isNumber (configFile >> "CfgItems" >> typeOf _radio >> "tf_radio")) then {
 
 _return = _return + _breakline + format ["radio = '%1'", _radio];
 _return = _return + _breakline + format ["nvgoggles = '%1'", _loadout select 8 select 5];
-
+_return = _return + _breakline + "";
 //Items in Uniform
 if !(_loadout select 3 isEqualTo []) then {
    _return = _return + _breakline + "addItemsToUniform[] = {";
-   [_loadout select 3 select 1] call FUNC(getItems);
-   _return = _return + _breakline + "};";
+   _return = _return + _breakline + [_loadout select 3 select 1] call FUNC(getItems);
+   _return = _return + _breakline + "};" + _breakline + "";;
 };
 
 //Items in Vest
 if !(_loadout select 4 isEqualTo []) then {
    _return = _return + _breakline + "addItemsToVest[] = {";
-   [_loadout select 4 select 1] call FUNC(getItems);
-   _return = _return + _breakline + "};";
+   _return = _return + _breakline + [_loadout select 4 select 1] call FUNC(getItems);
+   _return = _return + _breakline + "};" + _breakline + "";
 };
 //Items in Backpack
 if !(_loadout select 5 isEqualTo []) then {
    _return = _return + _breakline + "addItemsToBackpack[] = {";
-   [_loadout select 5 select 1] call FUNC(getItems);
-   _return = _return + _breakline + "};";
+   _return = _return + _breakline + [_loadout select 5 select 1] call FUNC(getItems);
+   _return = _return + _breakline + "};" + _breakline + "";;
 };
 
 _return = _return + _breakline + "};";
