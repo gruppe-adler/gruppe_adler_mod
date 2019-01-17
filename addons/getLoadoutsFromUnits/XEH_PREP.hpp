@@ -1,0 +1,2 @@
+PREP(createConfig);
+PREP(getLoadoutAndFormat);
