@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
-params ["_units"];
-
+private _units = get3DENSelected "object";
 private _breakline = toString [13,10];
 private _structuredText = "class newFaction {";
 private _tab = "    ";
+
 _structuredText = _structuredText + _tab + "class Type {" + _breakline + "";
 
 {
