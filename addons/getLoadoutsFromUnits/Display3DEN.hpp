@@ -5,11 +5,13 @@ class Display3DEN {
   class ContextMenu: ctrlMenu {
     class Items {
       class Log {
-        items[] += {"GRAD_getLoadoutsFromUnits"};
+        items[] = {"LogPosition", "LogClasses", "GRAD_getLoadoutsFromUnits"};
       };
       class GRAD_getLoadoutsFromUnits {
         text = "Copy Grad-Loadout to Clipboard";
         action = QUOTE([] call FUNC(createConfig));
+        conditionShow = "selectedObject";
+        value = 0;
       };
     };
   };
