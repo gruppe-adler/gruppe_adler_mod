@@ -61,7 +61,7 @@ if (_weaponArray isEqualTo []) then {
    _return = _return + _breakline + _trippleTab + format ["secondaryWeaponMuzzle = '%1'", _muzzle];
    _return = _return + _breakline + _trippleTab + format ["secondaryWeaponUnderbarrel = '%1'", _underbarrel];
    _return = _return + _breakline + _trippleTab + format ["secondaryWeaponUnderbarrelMagazine = '%1'", _underBarrelAmmo];
-}
+};
 
 //Pistol
 _weaponArray = [_loadout select 2] call FUNC(getWeapon);
@@ -82,7 +82,7 @@ if (_weaponArray isEqualTo []) then {
    _return = _return + _breakline + _trippleTab + format ["handgunWeaponMuzzle = '%1'", _muzzle];
    _return = _return + _breakline + _trippleTab + format ["handgunWeaponUnderbarrel = '%1'", _underbarrel];
    _return = _return + _breakline + _trippleTab + format ["handgunWeaponUnderbarrelMagazine = '%1'", _underBarrelAmmo];
-}
+};
 
 //Basic Items (Binocular, NVG, Maps, etc.)
 _return = _return + _breakline + _trippleTab + if !(_loadout select 7 isEqualTo []) then {
