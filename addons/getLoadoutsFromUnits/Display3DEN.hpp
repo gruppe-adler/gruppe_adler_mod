@@ -1,5 +1,5 @@
+class ctrlMenu;
 class Display3DEN {
-    class ctrlMenu;
     class ContextMenu: ctrlMenu {
         class Items {
             class Log {
