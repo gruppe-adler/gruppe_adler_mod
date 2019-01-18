@@ -7,8 +7,7 @@ private _units = (get3DENSelected "object") select {_x isKindOf "CAManBase"};
 _structuredText pushBack (_tab + "class Type {");
 
 {
-   private _return = [_x, _tab] call FUNC(getLoadoutAndFormat);
-   _structuredText = _structuredText + _return;
+   _structuredText append ([_x, _tab] call FUNC(getLoadoutAndFormat));
 }forEach _units;
 
 _structuredText pushBack (_tab + "};");
