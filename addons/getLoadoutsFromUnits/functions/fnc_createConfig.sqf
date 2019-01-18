@@ -1,21 +1,17 @@
 #include "script_component.hpp"
-private _units = [];
-private _breakline = toString [13,10];
-private _structuredText = "class newFaction {";
+
+private _structuredText = ["class newFaction {"];
 private _tab = "    ";
+private _units = (get3DENSelected "object") select {_x isKindOf "CAManBase"};
+
+_structuredText pushBack (_tab + "class Type {");
 
 {
-   if (_x isKindOf "CAManBase") then { _units pushBack _x; };
-}forEach get3DENSelected "object";
-
-
-_structuredText = _structuredText + _breakline + _tab + "class Type {";
-
-{
-   private _return = [_x, _breakline, _tab] call FUNC(getLoadoutAndFormat);
-   _structuredText = _structuredText + _breakline + _return;
+   private _return = [_x, _tab] call FUNC(getLoadoutAndFormat);
+   _structuredText = _structuredText + _return;
 }forEach _units;
 
-_structuredText = _structuredText + _breakline + _tab + "};" + _breakline + "};";
+_structuredText pushBack (_tab + "};");
+_structuredText pushBack "};";
 
-copyToClipboard _structuredText;
+copyToClipboard _structuredText joinString (toString [13,10]);
