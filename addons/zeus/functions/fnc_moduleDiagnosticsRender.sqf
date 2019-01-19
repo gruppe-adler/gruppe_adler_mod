@@ -6,7 +6,7 @@ GVAR(moduleDiagnosticsRenderRunning) = true;
 addMissionEventHandler ["Draw3D", {
 
     if (isNull (getAssignedCuratorLogic player)) then {
-        GVAR(DiagnosticsSettings) = [false,false,false,false,false];
+        GVAR(DiagnosticsSettings) = [false,false,false,false,false,false];
     };
 
     if (({_x} count GVAR(DiagnosticsSettings)) == 0) exitWith {
@@ -15,27 +15,40 @@ addMissionEventHandler ["Draw3D", {
     };
 
 
-    GVAR(DiagnosticsSettings) params ["_playerFPS","_medicalStatus","_objectLocality","_aiStatus","_summaryWindow"];
+    GVAR(DiagnosticsSettings) params ["_playerFPS","_medicalStatus","_playerFreqs","_objectLocality","_aiStatus","_summaryWindow"];
     {
         _unitTextArray = [];
 
         if (isPlayer _x) then {
+
             if (_playerFPS) then {
                 _unitTextArray append [format ["%1 FPS",_x getVariable [QGVAR(playerFPS),0]]];
             };
+
             if (_medicalStatus) then {
                 _status = [_x] call FUNC(moduleDiagnosticsGetMedicalStatus);
                 if (count _status > 0) then {
                     _unitTextArray append _status;
                 };
             };
+
+            if (_playerFreqs) then {
+                _freqs = [_x] call FUNC(moduleDiagnosticsGetPlayerFreqs);
+                if (count _freqs > 0) then {
+                    _unitTextArray append _freqs;
+                };
+            };
+
         } else {
+
             if (_objectLocality && {_x == leader group _x}) then {
                 _unitTextArray append [format ["%1 %2",localize LSTRING(onOwner),(group _x) getVariable [QGVAR(ownerName),"UNKNOWN"]]];
             };
+
             if (_aiStatus) then {
                 _unitTextArray append ([_x] call FUNC(moduleDiagnosticsGetAIStatus));
             };
+
         };
 
         _unitText = _unitTextArray joinString " • ";
