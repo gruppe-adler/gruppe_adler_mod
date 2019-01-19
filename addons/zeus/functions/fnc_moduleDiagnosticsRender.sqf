@@ -39,8 +39,9 @@ addMissionEventHandler ["Draw3D", {
         };
 
         _unitText = _unitTextArray joinString " • ";
-        drawIcon3D ["",[1,1,1,0.5],getPos _x,1,2,0,_unitText,2,0.03,"RobotoCondensed","center"];
 
-        nil
-    } count (allUnits select {_x distance2D curatorCamera < 1000});
+        // get ASL pos and convert to AGL here so text follows unit up stairs and such
+        drawIcon3D ["",[1,1,1,0.5],ASLtoAGL getPosASL _x,1,2,0,_unitText,2,0.03,"RobotoCondensed","center"];
+
+    } forEach (allUnits select {_x distance2D curatorCamera < 1000});
 }];
