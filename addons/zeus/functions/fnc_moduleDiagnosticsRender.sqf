@@ -5,6 +5,17 @@ GVAR(moduleDiagnosticsRenderRunning) = true;
 
 addMissionEventHandler ["Draw3D", {
 
+    if (isNull curatorCamera) exitWith {};
+
+    // fix for arsenal breaking drawIcon3D
+    if (!isNull (uinamespace getvariable ["BIS_fnc_arsenal_cam",objnull])) exitWith {
+        GVAR(zeusInArsenal) = true;
+    };
+    if (missionNamespace getVariable [QGVAR(zeusInArsenal),false]) then {
+        cameraEffectEnableHUD true;
+        GVAR(zeusInArsenal) = false;
+    };
+
     if (isNull (getAssignedCuratorLogic player)) then {
         GVAR(DiagnosticsSettings) = [false,false,false,false,false,false];
     };
@@ -54,7 +65,9 @@ addMissionEventHandler ["Draw3D", {
         _unitText = _unitTextArray joinString " • ";
 
         // get ASL pos and convert to AGL here so text follows unit up stairs and such
-        drawIcon3D ["",[1,1,1,0.5],ASLtoAGL getPosASL _x,1,2,0,_unitText,2,0.03,"RobotoCondensed","center"];
+        if (_unitText != "") then {
+            drawIcon3D ["",[1,1,1,0.5],ASLtoAGL getPosASL _x,1,2,0,_unitText,2,0.03,"RobotoCondensed","center"];
+        };
 
     } forEach (allUnits select {_x distance2D curatorCamera < 1000});
 }];
