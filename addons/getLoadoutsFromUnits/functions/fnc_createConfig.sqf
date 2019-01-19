@@ -16,7 +16,7 @@ diag_log format ["Types: %1", _types];
 _structuredText pushBack (_tab + "class Type {");
 
 {
-   _structuredText append ([_x, (_types select _forEachIndex), _tab] call FUNC(getLoadoutAndFormat));
+    _structuredText append ([_x, (_types select _forEachIndex), _tab] call FUNC(getLoadoutAndFormat));
 }forEach _units;
 
 _structuredText pushBack (_tab + "};");
