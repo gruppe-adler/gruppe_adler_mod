@@ -10,9 +10,6 @@ private _units = ((get3DENSelected "object") select {_x isKindOf "CAManBase"}) s
     _index != -1
 };
 
-diag_log format ["Units: %1", _units];
-diag_log format ["Types: %1", _types];
-
 _structuredText pushBack (_tab + "class Type {");
 
 {
