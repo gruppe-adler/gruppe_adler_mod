@@ -7,10 +7,11 @@ private _count = count _items;
 if (_count > 0) then {
     private _quadrupleTab = _tab + _tab + _tab + _tab;
     {
-        if (count _x == 3) then {
-          _return pushBack (_quadrupleTab + format ["LIST_%1('%2')", (_x select 2 min 30), _x select 0]);
-        }else{
-          _return pushBack (_quadrupleTab + format ["LIST_%1('%2')", (_x select 1 min 30), _x select 0]);
+        private _amount = _x select ([1,2] select (count _x == 3));
+        while {_amount > 0} do {
+            private _added = _amount min 30;
+            _amount = _amount - _added;
+            _return pushBack (_quadrupleTab + format ["LIST_%1('%2')", _added, _x select 0]);
         };
     } forEach _items;
     _return = _return joinString ("," + toString[13,10]);
