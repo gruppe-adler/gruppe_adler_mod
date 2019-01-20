@@ -7,7 +7,7 @@ private _count = count _items;
 if (_count > 0) then {
     private _quadrupleTab = _tab + _tab + _tab + _tab;
     {
-        private _amount = _x select ([1,2] select (count _x == 3));
+        private _amount = _x select 1;
         while {_amount > 0} do {
             private _added = _amount min 30;
             _amount = _amount - _added;
