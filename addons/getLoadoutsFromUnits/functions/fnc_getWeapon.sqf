@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+
 params ["_weaponArray", "_name", "_tripleTab"];
 
 private _return = [];

@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 params ["_unit", "_type"];
 
 private _log = [];

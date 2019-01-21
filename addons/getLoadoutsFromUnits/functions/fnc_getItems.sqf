@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+
 params ["_items", "_tab"];
 
 private _return = [];
