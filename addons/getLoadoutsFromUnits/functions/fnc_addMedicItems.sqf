@@ -5,7 +5,7 @@ private _items = [];
 private _loadout = getUnitLoadout _unit;
 
 {
-   if (!((_loadout select _x) isEqualTo []) && !((_loadout select _x select 1) isEqualTo [])) then {
+   if (!((_loadout select _x) isEqualTo []) && {!((_loadout select _x select 1) isEqualTo [])}) then {
       _items append (_loadout select _x select 1);
    };
 }forEach [3,4,5];
@@ -20,7 +20,7 @@ private _loadout = getUnitLoadout _unit;
             _countOfSameItem = _countOfSameItem +1;
          };
       }forEach _items;
-      
+
       private _rest = _amount - _countOfSameItem;
       if (_rest > 0) then {
          for "_i" from 1 to _rest do {
