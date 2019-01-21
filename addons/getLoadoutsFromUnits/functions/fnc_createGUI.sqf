@@ -7,27 +7,4 @@ private _display = (findDisplay 46) createDisplay QGVAR(RscDisplayGetLoadoutsFro
 private _textCtrl = _display displayCtrl 1100;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 _return
