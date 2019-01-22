@@ -43,13 +43,13 @@ private _loadout = getUnitLoadout _unit;
       ],
       [],
       [
-       ["ACE_elasticBandage",10],
-       ["ACE_packingBandage",10],
-       ["ACE_quikclot",10],
-       ["ACE_tourniquet",8],
-       ["ACE_morphine",8],
-       ["ACE_epinephrine",8]
-       ]
+         ["ACE_elasticBandage",10],
+         ["ACE_packingBandage",10],
+         ["ACE_quikclot",10],
+         ["ACE_tourniquet",8],
+         ["ACE_morphine",8],
+         ["ACE_epinephrine",8]
+      ]
    ],
 
    //Squad Medic
@@ -95,11 +95,17 @@ if !(_log isEqualTo []) then {
    {
       private _index = -1;
       private _item = _x;
-      {
-         if (_x select 0 == _item) then {
-            _x set [1, (_x select 1) +1];
-         };
-      }forEach _items;
+      if (_items isEqualTo []) then {
+         _items pushBack [_item, 1];
+      }else{
+         {
+            if (_x select 0 == _item) then {
+               _x set [1, (_x select 1) +1];
+            }else{
+               _items pushBack [_item, 1];
+            };
+         }forEach _items;
+      };
    }forEach _log;
 
    {
