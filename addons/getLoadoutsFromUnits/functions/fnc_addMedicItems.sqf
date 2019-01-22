@@ -13,15 +13,10 @@ private _loadout = getUnitLoadout _unit;
 }forEach [3,4,5];
 
 {
-   private _countOfSameItem = 0;
    private _index = _forEachIndex;
    {
       _x params ["_newItem", "_amount"];
-      {
-         if ((_x select 0) == _newItem) then {
-            _countOfSameItem = _countOfSameItem +1;
-         };
-      }forEach _items;
+      private _countOfSameItem = {(_x select 0) == _newItem} count _items
 
       private _rest = _amount - _countOfSameItem;
       if (_rest > 0) then {
@@ -93,7 +88,6 @@ private _loadout = getUnitLoadout _unit;
 if !(_log isEqualTo []) then {
    private _items = [];
    {
-      private _index = -1;
       private _item = _x;
       if (_items isEqualTo []) then {
          _items pushBack [_item, 1];
