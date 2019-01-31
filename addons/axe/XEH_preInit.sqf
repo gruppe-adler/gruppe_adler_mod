@@ -1,6 +1,14 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
+ADDON = false;
+
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
+
+ADDON = true;
+
 
 [
     QGVAR(setting_timeFactor),
@@ -18,4 +26,12 @@ SCRIPT(XEH_preInit);
     "GRAD Axe",
     [5,600,40,0],
     1
+] call CBA_settings_fnc_init;
+
+[
+    QGVAR(allow_dragging),
+     "CHECKBOX",
+    "Allow dragging cut down tree",
+    "GRAD Axe",
+    true
 ] call CBA_settings_fnc_init;

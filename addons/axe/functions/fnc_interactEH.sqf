@@ -31,7 +31,7 @@ if (!("grad_axe" in (items ace_player))) exitWith {};
 
             private _fncStatement = {
                 params ["", "_player", "_attachedTree"];
-                [_player, _attachedTree] call grad_axe_fnc_cutDownTree;
+                [_player, _attachedTree] call FUNC(cutDownTree);
             };
 
             private _fncCondition = {
@@ -57,6 +57,7 @@ if (!("grad_axe" in (items ace_player))) exitWith {};
             } forEach (
                 (nearestTerrainObjects [ace_player, ["TREE","SMALL TREE","BUSH"], 15]) select {
                     !(_x in _treesHelped) &&
+                    {!(_x getVariable [QGVAR(chopped), false])} && 
                     {!isObjectHidden _x}
                 }
             );
@@ -65,7 +66,7 @@ if (!("grad_axe" in (items ace_player))) exitWith {};
                 params ["_helperQueue","_PFHID"];
                 if (count _helperQueue == 0) exitWith {[_PFHID] call CBA_fnc_removePerFrameHandler};
                 (_helperQueue deleteAt 0) params ["_helper","_tree"];
-                _helper setPosASL ([_tree] call grad_axe_fnc_findTrunk);
+                _helper setPosASL ([_tree] call FUNC(findTrunk));
             },0.1,_helperQueue] call CBA_fnc_addPerFrameHandler;
 
             _args set [0, (getPosASL ace_player)];

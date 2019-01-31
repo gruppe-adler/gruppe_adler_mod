@@ -5,3 +5,4 @@
 
 
 #define SOUND_CLIP_TIME_SPACEING    1.5
+#define SPECIALIST_FACTOR   [1,0.80]
