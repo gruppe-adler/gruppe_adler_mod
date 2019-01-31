@@ -47,16 +47,6 @@ _structuredText append ([
     "radio"
 ] apply {_doubleTab + _x + " = '';"});
 _structuredText pushBack (_tab + "};");
-
-/*
-private _addMedicStuff = [_units, _types] call FUNC(createGUI);
-if !(_addMedicStuff isEqualTo []) then {
-   {
-      [_x select 0, _x select 1] call FUNC(addMedicItems);
-   }forEach _addMedicStuff;
-};
-*/
-
 _structuredText pushBack (_tab + "class Type {");
 
 {
