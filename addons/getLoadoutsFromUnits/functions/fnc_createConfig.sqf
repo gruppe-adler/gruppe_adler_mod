@@ -45,7 +45,7 @@ _structuredText append ([
     "compass",
     "watch",
     "radio"
-] apply {_doubleTab + _x + " = '';"});
+] apply {_doubleTab + _x + " = """";"});
 _structuredText pushBack (_tab + "};");
 _structuredText pushBack (_tab + "class Type {");
 
