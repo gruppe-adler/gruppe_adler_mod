@@ -61,7 +61,7 @@ private _loadout = getUnitLoadout _unit;
           ["ACE_quikclot",20],
           ["ACE_tourniquet",15],
           ["ACE_morphine",20],
-          ["ACE_epinephrine",20],
+          ["ACE_epinephrine",20]
       ]
    ],
 
