@@ -4,7 +4,7 @@
 #define MAJOR 2
 #define MINOR 12
 #define PATCHLVL 1
-#define COMMIT dc7980b
+#define COMMIT 3d30a66
 
 #define VERSION MAJOR.MINOR.PATCHLVL
 #define VERSION_AR MAJOR,MINOR,PATCHLVL

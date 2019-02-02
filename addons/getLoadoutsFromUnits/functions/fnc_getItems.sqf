@@ -12,7 +12,7 @@ if (_count > 0) then {
         while {_amount > 0} do {
             private _added = _amount min 30;
             _amount = _amount - _added;
-            _return pushBack (_quadrupleTab + format ["LIST_%1('%2')", _added, _x select 0]);
+            _return pushBack (_quadrupleTab + format ["LIST_%1(""%2"")", _added, _x select 0]);
         };
     } forEach _items;
     _return = _return joinString ("," + toString[13,10]);
