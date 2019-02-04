@@ -16,7 +16,7 @@ private _loadout = getUnitLoadout _unit;
    private _index = _forEachIndex;
    {
       _x params ["_newItem", "_amount"];
-      private _countOfSameItem = {(_x select 0) == _newItem} count _items
+      private _countOfSameItem = {(_x select 0) == _newItem} count _items;
 
       private _rest = _amount - _countOfSameItem;
       if (_rest > 0) then {

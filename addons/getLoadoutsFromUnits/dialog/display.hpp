@@ -5,8 +5,8 @@ class RscButtonMenuOK;
 class RscButtonMenuCancel;
 
 class RscTitles {
-	class grad_getUnitsLoadoutsGui {
-		idd = 1609;
+	class GVAR(getUnitsLoadoutsGui) {
+		idd = 57834212;
 		enableSimulation = 1;
 		movingEnable = 0;
 		fadeIn=0;
@@ -32,9 +32,19 @@ class RscTitles {
 				w = 40 * GUI_GRID_W;
 				h = 25 * GUI_GRID_H;
 			};
+			class grad_configNameText: RscText
+			{
+				idc = 3456;
+				text = "Loadout Name:";
+				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
+				y = 9.5 * GUI_GRID_H + GUI_GRID_Y;
+				w = 30 * GUI_GRID_W;
+				h = 1 * GUI_GRID_H;
+				colorText[] = {-1,1,-1,1};
+			};
 			class grad_medicClassHalf: RscText
 			{
-				idc = 1001;
+				idc = 3457;
 				text = "";
 				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
 				y = 9.5 * GUI_GRID_H + GUI_GRID_Y;
@@ -44,7 +54,7 @@ class RscTitles {
 			};
 			class grad_medicClassCFR: RscText
 			{
-				idc = 1002;
+				idc = 3458;
 				text = "";
 				x = 4 * GUI_GRID_W + GUI_GRID_X;
 				y = 15 * GUI_GRID_H + GUI_GRID_Y;
@@ -54,7 +64,7 @@ class RscTitles {
 			};
 			class grad_medicSelectFull: RscListbox
 			{
-				idc = 1500;
+				idc = 3459;
 				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
 				y = 6 * GUI_GRID_H + GUI_GRID_Y;
 				w = 30 * GUI_GRID_W;
@@ -62,7 +72,7 @@ class RscTitles {
 			};
 			class grad_medicSelectHalf: RscListbox
 			{
-				idc = 1501;
+				idc = 3460;
 				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
 				y = 11 * GUI_GRID_H + GUI_GRID_Y;
 				w = 30 * GUI_GRID_W;
