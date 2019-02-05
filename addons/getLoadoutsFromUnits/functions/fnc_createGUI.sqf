@@ -3,7 +3,7 @@ params ["_units"];
 
 if(!createDialog QGVAR(getUnitsLoadoutsGui)) exitWith {};
 
-_types spawn {
+_units spawn {
     disableSerialization;
 
     //Setting up the dialog
