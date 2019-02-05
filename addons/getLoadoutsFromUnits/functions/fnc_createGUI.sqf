@@ -17,9 +17,7 @@ _units spawn {
     {
         private _listbox = _x;
         {
-            private _entry = _listbox lbAdd _x;
-            _listbox lbSetData [_entry, _x];
-            diag_log format ["Entry: %1, Data: %2", _entry, _x];
+            _listbox lbAdd str(_x);
         } forEach _this;
 
         lbSort _listbox;
