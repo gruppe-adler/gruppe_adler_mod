@@ -16,11 +16,14 @@ _units spawn {
 
     {
         private _listbox = _x;
+        diag_log format ["Listbox: %1", _listbox];
         {
-            _listbox lbAdd str(_x);
+            diag_log format ["X: %1", getText (configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")];
+            _listbox lbAdd getText (configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName");
         } forEach _this;
 
         lbSort _listbox;
+        diag_log format ["Listbox1: %1", _listbox];
     } forEach [_listbox1, _listbox2, _listbox3];
 
     //EH for pressing the OK Button
