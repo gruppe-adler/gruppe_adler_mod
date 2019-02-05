@@ -14,6 +14,7 @@ private _units = ((get3DENSelected "object") select {_x isKindOf "CAManBase"}) s
 
 [{
     //Wait until GUI is done
+    diag_log str(GVAR(loadoutInfo));
     !(isNil GVAR(loadoutInfo))
 },{
     //if GUI is canceled, stop
@@ -27,6 +28,8 @@ private _units = ((get3DENSelected "object") select {_x isKindOf "CAManBase"}) s
     {
         [_x select 0, _x select 1] call FUNC(addMedicItems);
     }forEach (GVAR(loadoutInfo) select 1);
+
+    diag_log format ["%1", GVAR(loadoutInfo)];
 
     _structuredText pushBack format ["class %1 {", (GVAR(loadoutInfo) select 0)];
     _structuredText pushBack (_tab + "class AllUnits {");

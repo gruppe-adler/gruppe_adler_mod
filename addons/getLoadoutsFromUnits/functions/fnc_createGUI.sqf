@@ -19,6 +19,7 @@ _types spawn {
         {
             private _entry = _listbox lbAdd _x;
             _listbox lbSetData [_entry, _x];
+            diag_log format ["Entry: %1, Data: %2", _entry, _x];
         } forEach _this;
 
         lbSort _listbox;
@@ -32,6 +33,7 @@ _types spawn {
         private _selection = ["", "", ""];
         {
             if((lbCurSel  _x) != -1) then {
+                diag_log format ["Index: %1, Control: %2, Selection: %3, Data: %4", _forEachIndex, _x, (lbCurSel _x), (_x lbData (lbCurSel _x))];
                 _selection set [_forEachIndex, (_x lbData (lbCurSel _x))];
             };
         }forEach [

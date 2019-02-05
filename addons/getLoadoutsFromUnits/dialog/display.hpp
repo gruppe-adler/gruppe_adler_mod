@@ -22,14 +22,43 @@ class RscDisplayAttributes {
     };
 };
 
+class grad_getUnitsLoadoutsGui_RscButton {
+	access = 0;
+	type = 1;
+	style = 0x01;
+	text = "";
+	colorText[] = {1,1,1,1};
+	colorDisabled[] = {1,1,1,0.1};
+	colorBackground[] = {0,0,0,0.8};
+	colorFocused[] = {1,1,1,0.5};
+	colorBackgroundActive[] = {1,1,1,0.8}; // hover
+	colorBackgroundDisabled[] = {0.3,0.3,0.3,1};
+	colorBackgroundFocused[] = {0,0,0,0.5};
+	colorShadow[] = {0,0,0,0};
+	colorBorder[] = {0,0,0,1};
+	soundEnter[] = {"\A3\ui_f\data\sound\RscButton\soundEnter", 0.09, 1};
+	soundPush[] = {"\A3\ui_f\data\sound\RscButton\soundPush", 0.09, 1};
+	soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick", 0.09, 1};
+	soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape", 0.09, 1};
+	animTextureDefault = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
+	animTextureNormal = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
+	animTextureDisabled = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
+	animTextureOver = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\over_ca.paa";
+	animTextureFocused = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\focus_ca.paa";
+	animTexturePressed = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\down_ca.paa";
+	shadow = 0;
+	font = "RobotoCondensed";
+	sizeEx = 0.04;
+	offsetX = 0.003;
+	offsetY = 0.003;
+	offsetPressedX = 0.002;
+	offsetPressedY = 0.002;
+	borderSize = 0;
+};
+
 class GVAR(getUnitsLoadoutsGui) {
 	idd = 57834212;
-	enableSimulation = 1;
-	movingEnable = 0;
-	fadeIn=0;
-	fadeOut=1;
-	duration = 10e10;
-	onLoad = "";
+	movingEnable = true
 	class ControlsBackground
 	{
 		class Background: RscText {
@@ -74,7 +103,7 @@ class GVAR(getUnitsLoadoutsGui) {
 			h = safeZoneH * 0.02;
 			text = "CFR Class:";
 		};
-		class CFRList: RscListbox {
+		class CFRList: grad_getUnitsLoadoutsGui_RscButton {
 			idc = 1500;
 			x = safeZoneX + safeZoneW * 0.31875;
 			y = safeZoneY + safeZoneH * 0.3925926;
@@ -88,7 +117,7 @@ class GVAR(getUnitsLoadoutsGui) {
 			h = safeZoneH * 0.02;
 			text = "SQL Class:";
 		};
-		class SQLList: RscListbox {
+		class SQLList: grad_getUnitsLoadoutsGui_RscButton {
 			idc = 1501;
 			x = safeZoneX + safeZoneW * 0.31875;
 			y = safeZoneY + safeZoneH * 0.48518519;
@@ -102,7 +131,7 @@ class GVAR(getUnitsLoadoutsGui) {
 			h = safeZoneH * 0.02;
 			text = "PTL Class:";
 		};
-		class PTLList: RscListbox {
+		class PTLList: grad_getUnitsLoadoutsGui_RscButton {
 			idc = 1502;
 			x = safeZoneX + safeZoneW * 0.31875;
 			y = safeZoneY + safeZoneH * 0.56851852;
