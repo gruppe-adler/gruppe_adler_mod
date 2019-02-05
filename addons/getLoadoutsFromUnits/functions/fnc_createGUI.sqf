@@ -18,7 +18,7 @@ _types spawn {
         private _listbox = _x;
         {
             private _entry = _listbox lbAdd _x;
-            _listbox lbSetData [_entry, _x];];
+            _listbox lbSetData [_entry, _x];
         } forEach _this;
 
         lbSort _listbox;
