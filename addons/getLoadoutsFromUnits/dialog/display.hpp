@@ -1,97 +1,129 @@
 class RscText;
 class RscButtonMenu;
 class RscListbox;
-class RscButtonMenuOK;
-class RscButtonMenuCancel;
+class RscCheckBox;
+class RscCombo;
+class RscControlsGroup;
+class RscControlsGroupNoScrollbars;
 
-class RscTitles {
-	class GVAR(getUnitsLoadoutsGui) {
-		idd = 57834212;
-		enableSimulation = 1;
-		movingEnable = 0;
-		fadeIn=0;
-		fadeOut=1;
-		duration = 10e10;
-		onLoad = "";
-		class controls {
-			class grad_medicClassFull: RscText
-			{
-				idc = 1000;
-				text = "";
-				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
-				y = 4.5 * GUI_GRID_H + GUI_GRID_Y;
-				w = 30 * GUI_GRID_W;
-				h = 1 * GUI_GRID_H;
-				colorText[] = {-1,1,-1,1};
-			};
-			class grad_medicBackground: RscButtonMenu
-			{
-				idc = 2400;
-				x = 0 * GUI_GRID_W + GUI_GRID_X;
-				y = 0 * GUI_GRID_H + GUI_GRID_Y;
-				w = 40 * GUI_GRID_W;
-				h = 25 * GUI_GRID_H;
-			};
-			class grad_configNameText: RscText
-			{
-				idc = 3456;
-				text = "Loadout Name:";
-				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
-				y = 9.5 * GUI_GRID_H + GUI_GRID_Y;
-				w = 30 * GUI_GRID_W;
-				h = 1 * GUI_GRID_H;
-				colorText[] = {-1,1,-1,1};
-			};
-			class grad_medicClassHalf: RscText
-			{
-				idc = 3457;
-				text = "";
-				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
-				y = 9.5 * GUI_GRID_H + GUI_GRID_Y;
-				w = 30 * GUI_GRID_W;
-				h = 1 * GUI_GRID_H;
-				colorText[] = {-1,1,-1,1};
-			};
-			class grad_medicClassCFR: RscText
-			{
-				idc = 3458;
-				text = "";
-				x = 4 * GUI_GRID_W + GUI_GRID_X;
-				y = 15 * GUI_GRID_H + GUI_GRID_Y;
-				w = 30 * GUI_GRID_W;
-				h = 1 * GUI_GRID_H;
-				colorText[] = {-1,1,-1,1};
-			};
-			class grad_medicSelectFull: RscListbox
-			{
-				idc = 3459;
-				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
-				y = 6 * GUI_GRID_H + GUI_GRID_Y;
-				w = 30 * GUI_GRID_W;
-				h = 2.5 * GUI_GRID_H;
-			};
-			class grad_medicSelectHalf: RscListbox
-			{
-				idc = 3460;
-				x = 3.5 * GUI_GRID_W + GUI_GRID_X;
-				y = 11 * GUI_GRID_H + GUI_GRID_Y;
-				w = 30 * GUI_GRID_W;
-				h = 2.5 * GUI_GRID_H;
-			};
-			class grad_medicButtonMenuOK: RscButtonMenuOK
-			{
-				x = 6.5 * GUI_GRID_W + GUI_GRID_X;
-				y = 20 * GUI_GRID_H + GUI_GRID_Y;
-				w = 4 * GUI_GRID_W;
-				h = 2.5 * GUI_GRID_H;
-			};
-			class grad_medicButtonMenuCancel: RscButtonMenuCancel
-			{
-				x = 20 * GUI_GRID_W + GUI_GRID_X;
-				y = 20 * GUI_GRID_H + GUI_GRID_Y;
-				w = 4 * GUI_GRID_W;
-				h = 2.5 * GUI_GRID_H;
-			};
+class RscStructuredText {
+    class Attributes;
+};
+
+class RscDisplayAttributes {
+    class Controls {
+        class Background;
+        class Title;
+        class Content: RscControlsGroup {
+            class controls;
+        };
+        class ButtonOK;
+        class ButtonCancel;
+    };
+};
+
+class GVAR(getUnitsLoadoutsGui) {
+	idd = 57834212;
+	enableSimulation = 1;
+	movingEnable = 0;
+	fadeIn=0;
+	fadeOut=1;
+	duration = 10e10;
+	onLoad = "";
+	class ControlsBackground
+	{
+		class Background: RscText {
+			x = safeZoneX + safeZoneW * 0.29375;
+			y = safeZoneY + safeZoneH * 0.22407408;
+			w = safeZoneW * 0.4125;
+			h = safeZoneH * 0.55;
+			colorBackground[] = {-1,-1,-1,0.4};
+		};
+	};
+	class Controls
+	{
+		class LoadoutNameText: RscText {
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.24814815;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02;
+			text = "Loadout Name:";
+		};
+		class LoadoutNameEdit
+		{
+			type = 2;
+			idc = 3456;
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.2962963;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02962963;
+			style = 0;
+			text = "NewFactionLoadout";
+			autocomplete = "";
+			colorBackground[] = {0.1098,0.0667,0.8392,1};
+			colorDisabled[] = {0.2,0.2,0.2,1};
+			colorSelection[] = {1,0,0,1};
+			colorText[] = {0.8902,0.9333,0.1608,1};
+			font = "PuristaMedium";
+			sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1);
+		};
+		class CFRText: RscText {
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.34444445;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02;
+			text = "CFR Class:";
+		};
+		class CFRList: RscListbox {
+			idc = 1500;
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.3925926;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02;
+		};
+		class SQLText: RscText {
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.44074075;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02;
+			text = "SQL Class:";
+		};
+		class SQLList: RscListbox {
+			idc = 1501;
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.48518519;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02;
+		};
+		class PTLText: RscText {
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.52407408;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02;
+			text = "PTL Class:";
+		};
+		class PTLList: RscListbox {
+			idc = 1502;
+			x = safeZoneX + safeZoneW * 0.31875;
+			y = safeZoneY + safeZoneH * 0.56851852;
+			w = safeZoneW * 0.3;
+			h = safeZoneH * 0.02;
+		};
+		class ConfirmButton: RscButtonMenu {
+			idc = 2400;
+			text = "OK";
+			x = safeZoneX + safeZoneW * 0.33125;
+			y = safeZoneY + safeZoneH * 0.65925926;
+			w = 0.0626562 * safezoneW;
+        	h = 0.0252408 * safezoneH;
+		};
+		class CancelButton: RscButtonMenu {
+			idc = 2401;
+			text = "Cancel";
+			x = safeZoneX + safeZoneW * 0.5;
+			y = safeZoneY + safeZoneH * 0.65925926;
+			w = 0.0626562 * safezoneW;
+        	h = 0.0252408 * safezoneH;
 		};
 	};
 };

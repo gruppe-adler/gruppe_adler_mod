@@ -7,7 +7,7 @@ _types spawn {
     disableSerialization;
 
     //Setting up the dialog
-    private _dialog = findDisplay 3646235;
+    private _dialog = findDisplay 57834212;
     private _listbox1 = _dialog displayCtrl 1500;
     private _listbox2 = _dialog displayCtrl 1501;
     private _listbox3 = _dialog displayCtrl 1502;
