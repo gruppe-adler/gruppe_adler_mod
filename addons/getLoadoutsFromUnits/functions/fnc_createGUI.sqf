@@ -17,10 +17,23 @@ _units spawn {
     {
         private _listbox = _x;
         diag_log format ["Listbox: %1", _listbox];
+        private _categoryIndex = 0;
         {
-            diag_log format ["X: %1", getText (configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")];
-            _listbox lbAdd getText (configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName");
+            private _config = configFile >> "CfgVehicles" >> (typeOf _x)
+            private _configName = configName _config;
+
+            private _displayName = [(_config >> "displayName"), "text", ""] call CBA_fnc_getConfigEntry;
+            if (_displayName == "") then {_displayName = _configName};
+
+            _listbox lbAdd _displayName;
+
+            private _data = str [_baseConfigName, _configName];
+            _listbox lbSetData [_categoryIndex, _data];
+
+            _categoryIndex = _categoryIndex + 1;
+
         } forEach _this;
+
 
         lbSort _listbox;
         diag_log format ["Listbox1: %1", _listbox];
