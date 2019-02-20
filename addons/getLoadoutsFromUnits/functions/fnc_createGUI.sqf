@@ -19,7 +19,7 @@ _units spawn {
         diag_log format ["Listbox: %1", _listbox];
         private _categoryIndex = 0;
         {
-            private _config = configFile >> "CfgVehicles" >> (typeOf _x)
+            private _config = configFile >> "CfgVehicles" >> (typeOf _x);
             private _configName = configName _config;
 
             private _displayName = [(_config >> "displayName"), "text", ""] call CBA_fnc_getConfigEntry;
@@ -27,7 +27,7 @@ _units spawn {
 
             _listbox lbAdd _displayName;
 
-            private _data = str [_baseConfigName, _configName];
+            private _data = str [(typeOf _x), _configName];
             _listbox lbSetData [_categoryIndex, _data];
 
             _categoryIndex = _categoryIndex + 1;
