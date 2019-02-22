@@ -11,7 +11,7 @@ class CfgPatches {
         weapons[] = {};
         VERSION_CONFIG;
         authors[] = {
-            "Fusselwurm <fusselwurm@gmail.com>"
+            "Willard"
         };
     };
 };
