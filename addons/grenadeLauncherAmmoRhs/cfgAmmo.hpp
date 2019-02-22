@@ -26,4 +26,12 @@ class CfgAmmo {
         simulation = "shotSmoke";
         deflectionSlowDown = 0.4;
     };
+
+    class rhs_g_vog25;
+    class rhs_g_vg40md_white: rhs_g_vog25
+    {
+        simulation = "shotSmoke";
+        deflecting = 30;
+        deflectionSlowDown = 0.4;
+    }
 };
