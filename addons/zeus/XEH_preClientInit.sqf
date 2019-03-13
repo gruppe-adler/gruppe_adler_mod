@@ -29,3 +29,33 @@ Place a container (like an ammo box) somewhere on the map. Fill it to your likin
 Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 
 [_title,_helpText] call EFUNC(ui,addHelpRecord);
+
+[
+    "TFAR_event_OnSWchannelSet",
+    {
+        params ["_unit", "", "_channel", "_additional"];
+
+        private _freq = [(call TFAR_fnc_activeSwRadio), _channel] call TFAR_fnc_getChannelFrequency;
+
+        if (_additional) then {
+            _unit setVariable [QGVAR(freqAdditionalSW), _freq];
+        }else{
+            _unit setVariable [QGVAR(freqSW), _freq];
+        };
+    }
+] call CBA_fnc_addEventHandler;
+
+[
+    "TFAR_event_OnLRchannelSet",
+    {
+        params ["_unit", "", "_channel", "_additional"];
+
+        private _freq = [(call TFAR_fnc_activeLRRadio), _channel] call TFAR_fnc_getChannelFrequency;
+
+        if (_additional) then {
+            _unit setVariable [QGVAR(freqAdditionalLR), _freq];
+        }else{
+            _unit setVariable [QGVAR(freqLR), _freq];
+        };
+    }
+] call CBA_fnc_addEventHandler;
