@@ -10,9 +10,9 @@ if (!isNil "_activeSWRadio") then {
     private _altFreq = [_activeSWRadio,(_activeSWRadio call TFAR_fnc_getAdditionalSwChannel) + 1] call TFAR_fnc_getChannelFrequency;
 
     if (_altFreq == "") then {
-        _freqs pushBack format ["SR %1 Hz",_mainFreq];
+        _freqs pushBack format ["SR %1 MHz",_mainFreq];
     } else {
-        _freqs pushBack format ["SR %1 Hz / %2 Hz",_mainFreq,_altFreq];
+        _freqs pushBack format ["SR %1 MHz / %2 MHz",_mainFreq,_altFreq];
     };
 };
 
@@ -22,9 +22,9 @@ if (!isNil "_activeLRRadio") then {
     private _altFreq = [_activeLRRadio,(_activeLRRadio call TFAR_fnc_getAdditionalLrChannel) + 1] call TFAR_fnc_getChannelFrequency;
 
     if (_altFreq == "") then {
-        _freqs pushBack format ["LR %1 Hz",_mainFreq];
+        _freqs pushBack format ["LR %1 MHz",_mainFreq];
     } else {
-        _freqs pushBack format ["LR %1 Hz / %2 Hz",_mainFreq,_altFreq];
+        _freqs pushBack format ["LR %1 MHz / %2 MHz",_mainFreq,_altFreq];
     };
 };
 
