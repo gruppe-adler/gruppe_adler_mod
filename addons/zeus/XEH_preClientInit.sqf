@@ -38,9 +38,9 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
         private _freq = [(call TFAR_fnc_activeSwRadio), _channel] call TFAR_fnc_getChannelFrequency;
 
         if (_additional) then {
-            _unit setVariable [QGVAR(freqAdditionalSW), _freq];
+            _unit setVariable [QGVAR(freqAdditionalSW), _freq, true];
         }else{
-            _unit setVariable [QGVAR(freqSW), _freq];
+            _unit setVariable [QGVAR(freqSW), _freq, true];
         };
     }
 ] call CBA_fnc_addEventHandler;
@@ -53,9 +53,9 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
         private _freq = [(call TFAR_fnc_activeLRRadio), _channel] call TFAR_fnc_getChannelFrequency;
 
         if (_additional) then {
-            _unit setVariable [QGVAR(freqAdditionalLR), _freq];
+            _unit setVariable [QGVAR(freqAdditionalLR), _freq, true];
         }else{
-            _unit setVariable [QGVAR(freqLR), _freq];
+            _unit setVariable [QGVAR(freqLR), _freq, true];
         };
     }
 ] call CBA_fnc_addEventHandler;
