@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 params ["_unit", "_log"];
 
 diag_log "UNIFORM BUG LOG: ";
