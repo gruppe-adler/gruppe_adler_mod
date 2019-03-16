@@ -2,6 +2,7 @@
 params ["_units"];
 
 if(!createDialog QGVAR(getUnitsLoadoutsGui)) exitWith {};
+// private _display = (findDisplay 313) createDisplay QGVAR(getUnitsLoadoutsGui);
 
 _units spawn {
     disableSerialization;
