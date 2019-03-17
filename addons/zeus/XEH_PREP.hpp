@@ -8,6 +8,7 @@ PREP(moduleDiagnosticsGetAIStatus);
 PREP(moduleDiagnosticsGetMedicalStatus);
 PREP(moduleDiagnosticsGetOwnerName);
 PREP(moduleDiagnosticsGetPlayerFreqs);
+PREP(moduleDiagnosticsGetPlayerFreqsAtStart);
 PREP(moduleDiagnosticsHandleDisconnect);
 PREP(moduleDiagnosticsOnConfirm);
 PREP(moduleDiagnosticsRender);

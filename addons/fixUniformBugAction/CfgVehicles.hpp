@@ -6,7 +6,7 @@ class CfgVehicles {
                 class GVAR(logUniformBug) {
                     displayName = "Log Unifrom Bug";
                     condition = "true";
-                    insertChildren = QUOTE([_target] call FUNC(logUnit));
+                    statement = QUOTE([_target] call FUNC(logUnit));
                     exceptions[] = {};
                     showDisabled = 0;
                     icon = "";

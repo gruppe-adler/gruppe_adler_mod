@@ -29,3 +29,83 @@ Place a container (like an ammo box) somewhere on the map. Fill it to your likin
 Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 
 [_title,_helpText] call EFUNC(ui,addHelpRecord);
+
+[
+    "TFAR_event_OnSWchannelSet",
+    {
+        params ["_unit", "_asd", "_channel", "_additional"];
+
+        private _frequency = [(call TFAR_fnc_activeSwRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
+        systemChat format ["Unit: %1, Channel: %2, Additional: %3, radio: %4, Freq: %5", _unit, _channel, _additional, _asd, _frequency];
+
+        if (_additional) then {
+
+            if !((_unit getVariable [QGVAR(channelAdditionalSW), 0]) isEqualTo 0 && {!(_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW),0]))}) exitWith {
+                _unit setVariable [QGVAR(channelAdditionalSW), nil, true];
+                _unit setVariable [QGVAR(freqAdditionalSW), nil, true];
+            };
+            _unit setVariable [QGVAR(channelAdditionalSW), _channel, true];
+            _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
+        }else{
+            _unit setVariable [QGVAR(channelSW), _channel, true];
+            _unit setVariable [QGVAR(freqSW), _frequency, true];
+        };
+    }
+] call CBA_fnc_addEventHandler;
+
+[
+    "TFAR_event_OnLRchannelSet",
+    {
+        params ["_unit", "", "_channel", "_additional"];
+
+        private _frequency = [(call TFAR_fnc_activeLRRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
+
+        if (_additional) then {
+
+            if (_channel isEqualTo -1) exitWith {
+                _unit setVariable [QGVAR(channelAdditionalLR), nil, true];
+                _unit setVariable [QGVAR(freqAdditionalLR), nil, true];
+            };
+
+            _unit setVariable [QGVAR(channelAdditionalLR), _channel, true];
+            _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
+        }else{
+            _unit setVariable [QGVAR(channelLR), _channel, true];
+            _unit setVariable [QGVAR(freqLR), _frequency, true];
+        };
+    }
+] call CBA_fnc_addEventHandler;
+
+[
+    "TFAR_event_OnFrequencyChanged",
+     {
+         params ["_unit", "_radio", "_channel", "", "_frequency"];
+
+         systemChat format ["Unit: %1, Channel: %2, Freq: %3", _unit, _channel, _frequency];
+         systemChat format ["Radio: %1, Backpack: %2, LRadio: %3", _radio, backpack _unit, (getunitLoadout _unit) select 9 select 2];
+
+         if (backpack _unit isEqualTo _radio) then {
+             if (_channel isEqualTo (_unit getVariable [QGVAR(channelLR), -1])) then {
+                 _unit setVariable [QGVAR(freqLR), _frequency, true];
+             }else{
+                if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalLR), -1])) then {
+                    _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
+                };
+             };
+         }else{
+             private _loadoutRadio = (getunitLoadout _unit) select 9 select 2;
+             if (isText (configFile >> "CfgWeapons" >> _loadoutRadio >> "tf_parent")) then {
+                 _loadoutRadio = getText (configFile >> "CfgWeapons" >> _loadoutRadio >> "tf_parent");
+             };
+             if (_loadoutRadio isEqualTo _radio) then {
+                 if (_channel isEqualTo (_unit getVariable [QGVAR(channelSW), -1])) then {
+                     _unit setVariable [QGVAR(freqSW), _frequency, true];
+                 }else{
+                    if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW), -1])) then {
+                        _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
+                    };
+                 };
+             };
+         };
+     }
+] call CBA_fnc_addEventHandler;

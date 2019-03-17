@@ -4,27 +4,23 @@ params [["_unit",objNull]];
 
 private _freqs = [];
 
-private _activeSWRadio = call TFAR_fnc_ActiveSwRadio;
-if (!isNil "_activeSWRadio") then {
-    private _mainFreq = [_activeSWRadio,(_activeSWRadio call TFAR_fnc_getSwChannel) + 1] call TFAR_fnc_getChannelFrequency;
-    private _altFreq = [_activeSWRadio,(_activeSWRadio call TFAR_fnc_getAdditionalSwChannel) + 1] call TFAR_fnc_getChannelFrequency;
-
-    if (_altFreq == "") then {
-        _freqs pushBack format ["SR %1 MHz",_mainFreq];
+private _swFreq = _unit getVariable [QGVAR(freqSW), 0];
+if (!(isNil "_swFreq") && {!(_swFreq isEqualTo 0)}) then {
+    private _swAdditionalFreq = _unit getVariable [QGVAR(freqAdditionalSW), 0];
+    if (!(isNil "_swAdditionalFreq") && {!(_swAdditionalFreq isEqualTo 0)}) then {
+        _freqs pushBack format ["SR %1 MHz / %2 MHz", _swFreq, _swAdditionalFreq];
     } else {
-        _freqs pushBack format ["SR %1 MHz / %2 MHz",_mainFreq,_altFreq];
+        _freqs pushBack format ["SR %1 MHz", _swFreq];
     };
 };
 
-private _activeLRRadio = call TFAR_fnc_activeLRRadio;
-if (!isNil "_activeLRRadio") then {
-    private _mainFreq = [_activeLRRadio,(_activeLRRadio call TFAR_fnc_getLrChannel) + 1] call TFAR_fnc_getChannelFrequency;
-    private _altFreq = [_activeLRRadio,(_activeLRRadio call TFAR_fnc_getAdditionalLrChannel) + 1] call TFAR_fnc_getChannelFrequency;
-
-    if (_altFreq == "") then {
-        _freqs pushBack format ["LR %1 MHz",_mainFreq];
+private _lrFreq = _unit getVariable [QGVAR(freqLR), 0];
+if (!(isNil "_lrFreq") && {!(_lrFreq isEqualTo 0)}) then {
+    private _lrAdditionalFreq = _unit getVariable [QGVAR(freqAdditionalLR), 0];
+    if (!(isNil "_lrAdditionalFreq") && {!(_lrAdditionalFreq isEqualTo 0)}) then {
+        _freqs pushBack format ["LR %1 MHz / %2 MHz", _lrFreq, _lrAdditionalFreq];
     } else {
-        _freqs pushBack format ["LR %1 MHz / %2 MHz",_mainFreq,_altFreq];
+        _freqs pushBack format ["LR %1 MHz", _lrFreq];
     };
 };
 
