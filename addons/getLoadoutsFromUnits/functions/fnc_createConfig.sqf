@@ -49,6 +49,11 @@ _structuredText pushBack (_tab + "class Type {");
 
 GVAR(variables) = [_units, _types];
 
+GVAR(variables) = [_units, _types];
+
 //Create Gui to get loadout name and medic equip
 [_units, _types] call FUNC(createGUI);
+<<<<<<< Updated upstream
 >>>>>>>
+=======
+>>>>>>> Stashed changes
