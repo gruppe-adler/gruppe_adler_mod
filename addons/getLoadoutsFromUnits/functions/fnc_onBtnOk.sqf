@@ -1,19 +1,34 @@
 #include "script_component.hpp"
+#include "..\IDCs.hpp"
 
-<<<<<<< Updated upstream
-private _structuredText = ["class newFaction {"];
+// called upon display load
+// PARAMS:
+// 	0: Display <DISPLAY>
+
+params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
+disableSerialization;
+
+private _display = ctrlParent _control;
+private _structuredText = [];
+
+diag_log "ONBTNOK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+
+GVAR(variables) params ["_units", "_types"];
+
 private _tab = "    ";
 private _doubleTab = _tab + _tab;
-=======
->>>>>>> Stashed changes
-private _types = [];
-private _units = ((get3DENSelected "object") select {_x isKindOf "CAManBase"}) select {
-    private _split = (typeOf _x) splitString "_";
-    _split deleteAt 0;
-    private _index = _types pushBackUnique (_split joinString "_");
-    _index != -1
-};
-<<<<<<< Updated upstream
+
+{
+    private _ctrlCombo = _display displayCtrl _x;
+
+    private _unit = (_ctrlCombo lbData (lbCurSel _ctrlCombo));
+    diag_log format ["_unit = %1", _unit];
+    if !(_unit isEqualTo "") then {
+        [_unit, _forEachIndex] call FUNC(addMedicItems);
+    };
+}forEach [IDC_CFR, IDC_SQL, IDC_PTL];
+
+_structuredText pushBack format ["class %1 {", (_display displayCtrl IDC_NAME)];
 _structuredText pushBack (_tab + "class AllUnits {");
 _structuredText append ([
     "uniform",
@@ -60,11 +75,6 @@ _structuredText pushBack (_tab + "class Type {");
 _structuredText pushBack (_tab + "};");
 _structuredText pushBack "};";
 
+GVAR(variables) = nil;
+
 copyToClipboard (_structuredText joinString (toString [13,10]));
-=======
-
-GVAR(variables) = [_units, _types];
-
-//Create Gui to get loadout name and medic equip
-[_units, _types] call FUNC(createGUI);
->>>>>>> Stashed changes
