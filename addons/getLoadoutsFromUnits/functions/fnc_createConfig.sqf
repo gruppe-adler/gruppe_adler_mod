@@ -1,5 +1,6 @@
 #include "script_component.hpp"
 
+<<<<<<<
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 private _structuredText = ["class newFaction {"];
@@ -9,6 +10,9 @@ private _doubleTab = _tab + _tab;
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+
+>>>>>>>
 private _types = [];
 private _units = ((get3DENSelected "object") select {_x isKindOf "CAManBase"}) select {
     private _split = (typeOf _x) splitString "_";
@@ -56,11 +60,19 @@ _structuredText append ([
 _structuredText pushBack (_tab + "};");
 _structuredText pushBack (_tab + "class Type {");
 
+<<<<<<<
 <<<<<<< Updated upstream
 {
     _structuredText append ([_x, (_types select _forEachIndex), _tab] call FUNC(getLoadoutAndFormat));
 }forEach _units;
+=======
+GVAR(variables) = [_units, _types];
 
+//Create Gui to get loadout name and medic equip
+[_units, _types] call FUNC(createGUI);
+>>>>>>>
+
+<<<<<<<
 _structuredText pushBack (_tab + "};");
 _structuredText pushBack "};";
 
@@ -77,3 +89,7 @@ GVAR(variables) = [_units, _types];
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+
+=======
+
+>>>>>>>

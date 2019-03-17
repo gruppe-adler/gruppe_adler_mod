@@ -48,3 +48,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+addons/getLoadoutsFromUnits/functions/fnc_createConfig\.sqf
+
+addons/getLoadoutsFromUnits/XEH_PREP\.hpp
