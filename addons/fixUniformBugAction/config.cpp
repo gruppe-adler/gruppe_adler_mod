@@ -16,10 +16,6 @@ class CfgPatches {
 	};
 };
 
-class Extended_PreInit_EventHandlers {
-    class ADDON {
-        init = QUOTE(call COMPILE_FILE(XEH_preInit));
-    };
-};
 
+#include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
