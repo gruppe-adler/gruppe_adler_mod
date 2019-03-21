@@ -1,4 +1,4 @@
-#include "IDCs.hpp"
+#include "../IDCs.hpp"
 
 #define GRID_W (pixelW * pixelGrid * 0.50)
 #define GRID_H (pixelH * pixelGrid * 0.50)
@@ -57,7 +57,7 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h=5 * GRID_H;
 			text="Loadout Settings";
 		};
-		
+
 
 		class NameText: ctrlStatic
 		{
