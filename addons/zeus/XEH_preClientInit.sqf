@@ -99,3 +99,29 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
          };
      }
 ] call CBA_fnc_addEventHandler;
+
+["loadout", {
+    //current units loadout changed, check radios
+    private _loadout = getUnitLoadout player;
+    if (((player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {!((_loadout select 9 select 2) isEqualTo "")})) then {
+        [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
+    };
+
+    if (!((player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {(_loadout select 9 select 2) isEqualTo ""}) then {
+        player setVariable [QGVAR(channelSW), nil, true];
+        player setVariable [QGVAR(freqSW), nil, true];
+        player setVariable [QGVAR(channelAdditionalSW), nil, true];
+        player setVariable [QGVAR(freqAdditionalSW), nil, true];
+    };
+
+    if (((player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {!((_loadout select 5 select 0) isEqualTo "")})) then {
+        [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
+    };
+
+    if (!((player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {(_loadout select 5 select 0) isEqualTo ""})) then {
+        player setVariable [QGVAR(channelLR), nil, true];
+        player setVariable [QGVAR(freqLR), nil, true];
+        player setVariable [QGVAR(channelAdditionalLR), nil, true];
+        player setVariable [QGVAR(freqAdditionalLR), nil, true];
+    };
+}, true] call CBA_fnc_addPlayerEventHandler;
