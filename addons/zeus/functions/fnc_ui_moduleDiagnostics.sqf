@@ -21,9 +21,6 @@ _control ctrlRemoveAllEventHandlers "setFocus";
 (_display displayCtrl 27005) cbSetChecked (GVAR(DiagnosticsSettings) select 4);
 (_display displayCtrl 27006) cbSetChecked (GVAR(DiagnosticsSettings) select 5);
 
-// DISABLE PLAYER FREQS UNTIL ISSUE IS FIXED (SEE GITHUB)
-(_display displayCtrl 27003) ctrlEnable false;
-
 private _fnc_onUnload = {
     private _logic = GETMVAR(BIS_fnc_initCuratorAttributes_target,objnull);
     if (isNull _logic) exitWith {};
