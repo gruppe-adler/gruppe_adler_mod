@@ -156,7 +156,7 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			y=0.5 + ( 120 * 0.5 - 2 * 5 - 1) * GRID_H;
 			w=30 * GRID_W;
 			h=5 * GRID_H;
-			onMouseButtonClick=QUOTE(_this call FUNC(onBtnOk));
+			onMouseButtonClick = QUOTE(_this call FUNC(onBtnOk));
 		};
 		class ButtonCancel: ctrlButtonCancel
 		{
