@@ -40,7 +40,7 @@ if (isServer) then {
 
 if (hasInterface) then {
     [
-        {!isNil (player getVariable ["grad_loadout_applicationCount", nil])},
+        {!isNil {player getVariable ["grad_loadout_applicationCount", nil]}},
         {
             [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
         },
