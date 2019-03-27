@@ -1,3 +1,3 @@
 if (didJIP) then {
-    [_unit] remoteExecCall [QFUNC(logJIPServer), 2];
+    [player] remoteExecCall [QFUNC(logJIPServer), 2];
 };
