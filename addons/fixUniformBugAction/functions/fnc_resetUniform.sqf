@@ -18,7 +18,7 @@ if ((_loadout select 3 select 0) isEqualTo "") then {
             private _uniformArray = (_loadout select 3);
             _uniformArray set [0, _uniform];
             _loadout set [3, _uniformArray];
-        };    
+        };
     };
 }else{
     player setUnitLoadout _loadout;

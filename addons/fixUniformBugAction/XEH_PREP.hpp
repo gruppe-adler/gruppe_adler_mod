@@ -1,3 +1,4 @@
+PREP(handleJIP);
 PREP(handleUnit);
 PREP(logJIPPlayer);
 PREP(logJIPServer);
