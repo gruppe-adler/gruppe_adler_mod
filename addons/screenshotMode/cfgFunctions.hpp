@@ -5,6 +5,7 @@ class CfgFunctions {
 			file = "x\grad\addons\screenshotMode\functions";
 			class toggleAll {};
 			class toggleACENametags {};
+			class toggleDuiHud {};
 			class toggleSTHud {};
 			class toggleTFAR {};
 			class toggleVanillaHUD {};
