@@ -1,0 +1,11 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+     <Package name="ABS">
+          <Key ID="STR_GRAD_ALK_ACTION_LEGS">
+               <Original>Apply ALK to legs</Original>
+               <English>Apply ALK to legs</English>
+               <German>ABK auf Beine anwenden</German>
+          </Key>
+     </Package>
+</Project>
