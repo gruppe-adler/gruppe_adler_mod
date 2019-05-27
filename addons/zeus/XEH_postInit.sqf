@@ -38,10 +38,9 @@ if (isServer) then {
     }] call CBA_fnc_addEventHandler;
 };
 
-
 if (hasInterface) then {
     [
-        {!isNil (player getVariable ["grad_loadout_applicationCount", nil])},
+        {!isNil {player getVariable ["grad_loadout_applicationCount", nil]}},
         {
             [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
         },
