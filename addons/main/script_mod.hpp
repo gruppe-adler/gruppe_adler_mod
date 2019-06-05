@@ -2,9 +2,9 @@
 #define MAINPREFIX x
 
 #define MAJOR 2
-#define MINOR 12
-#define PATCHLVL 1
-#define COMMIT 3d30a66
+#define MINOR 13
+#define PATCHLVL 3
+#define COMMIT 
 
 #define VERSION MAJOR.MINOR.PATCHLVL
 #define VERSION_AR MAJOR,MINOR,PATCHLVL
