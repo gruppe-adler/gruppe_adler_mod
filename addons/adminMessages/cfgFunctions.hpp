@@ -3,7 +3,6 @@ class CfgFunctions {
         class adminMessages {
             file = "x\grad\addons\adminMessages\functions";
 
-            class displayMessage {};
             class initListbox {};
             class isAdminOrZeus {};
             class onRecipientChanged {};
