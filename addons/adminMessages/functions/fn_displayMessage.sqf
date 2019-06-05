@@ -26,11 +26,12 @@ if (
     _ctrlText ctrlSetPosition [_origX,_origY - _textHeight,_origW,_textHeight];
     _ctrlText ctrlCommit 0;
 
-// display message in chat
-} else {
-    ga_adminMessages_channel radioChannelAdd [player];
-    ga_adminMessages_channel radioChannelSetCallsign format [localize "STR_grad_ADMINMESSAGES_CHANNEL",_info];
-
-    player customChat [ga_adminMessages_channel, _message];
-    ga_adminMessages_channel radioChannelRemove [player];
 };
+
+
+// add message to chat either way >> user can check chat history on map, if enabled
+ga_adminMessages_channel radioChannelAdd [player];
+ga_adminMessages_channel radioChannelSetCallsign format [localize "STR_grad_ADMINMESSAGES_CHANNEL",_info];
+
+player customChat [ga_adminMessages_channel, _message];
+ga_adminMessages_channel radioChannelRemove [player];
