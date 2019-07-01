@@ -4,9 +4,9 @@ params ["_items", "_tab"];
 
 private _return = [];
 private _count = count _items;
+private _quadrupleTab = _tab + _tab + _tab + _tab;
 
 if (_count > 0) then {
-    private _quadrupleTab = _tab + _tab + _tab + _tab;
     {
         private _amount = _x select 1;
         while {_amount > 0} do {

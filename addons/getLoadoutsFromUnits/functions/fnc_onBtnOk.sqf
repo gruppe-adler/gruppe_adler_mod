@@ -1,6 +1,7 @@
 #include "script_component.hpp"
 #include "..\IDCs.hpp"
 systemChat "Wörked";
+diag_log "BTN OKAY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
 // called upon display load
 // PARAMS:
 // 	0: Display <DISPLAY>
@@ -17,7 +18,6 @@ GVAR(units) params ["_units", "_types"];
 diag_log format ["Units: %1, Types: %2", _units, _types];
 {
     private _listbox = _display displayCtrl _x;
-    diag_log format ["ID: %1, Unit: %2", _forEachIndex, (_listbox lbData (lbCurSel _listbox)) select 0];
     [(_listbox lbData (lbCurSel _listbox)), _forEachIndex] call FUNC(addMedicItems);
 }forEach [IDC_CFR, IDC_SQL, IDC_PTL];
 
@@ -31,8 +31,9 @@ _structuredText pushBack format ["class %1 {", ctrlText (_display displayCtrl ID
 _structuredText pushBack (_tab + "class AllUnits {");
 _structuredText append ([
     "uniform",
-    "backpack",
     "vest",
+    "backpack",
+    "headgear",
     "primaryWeapon",
     "primaryWeaponMagazine",
     "primaryWeaponMuzzle",
@@ -54,7 +55,6 @@ _structuredText append ([
     "handgunWeaponPointer",
     "handgunWeaponUnderbarrel",
     "handgunWeaponUnderbarrelMagazine",
-    "headgear",
     "goggles",
     "nvgoggles",
     "binoculars",
