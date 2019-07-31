@@ -53,7 +53,7 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 [
     "TFAR_event_OnLRchannelSet",
     {
-        params ["_unit", "", "_channel", "_additional"];
+        params ["_unit", "", "", "_channel", "_additional"];
 
         private _frequency = [(call TFAR_fnc_activeLRRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
         if (_additional) then {
