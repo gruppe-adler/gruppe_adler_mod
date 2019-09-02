@@ -5,7 +5,7 @@ params ["_unit", "_type", "_tab"];
 private _return = [];
 private _loadout = getUnitLoadout _unit;
 
-if (_loadout isEqualTo []) exitWith {_result};
+if (_loadout isEqualTo []) exitWith {_return};
 private _tripleTab = _tab + _tab + _tab;
 
 _return pushBack (_tab + _tab + format ["class %1 {", _type]);

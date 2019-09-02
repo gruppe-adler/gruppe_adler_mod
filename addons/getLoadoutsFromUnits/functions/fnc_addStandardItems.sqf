@@ -2,28 +2,28 @@
 
 params ["_unit"];
 
-private _log = [];
-private _items = [];
 private _loadout = getUnitLoadout _unit;
 
-if (!((_loadout select 3) isEqualTo []) && {!((_loadout select 3 select 1) isEqualTo [])}) then {
-    _items = (_loadout select 3 select 1);
+if (isNil "_loadout" || {_loadout isEqualTo []}) exitWith {diag_log "GRAD_Mod getLoadouts from Unit: Loadout is Nil!"};
 
-    {
-        _x params ["_newItem", "_amount"];
-        private _rest = _amount - ({(_x select 0) == _newItem} count _items);
+if !((_loadout select 3) isEqualTo []) then {
+    private _items = (_loadout select 3);
 
-        if (_rest > 0) then {
-            for "_i" from 1 to _rest do {
-
-                if (_unit canAddItemToUniform _newItem) then {
-                    _unit addItemToUniform _newItem;
-                }else{
-                    _log pushBack _newItem;
-                };
-            };
-        };
-    }forEach [
-
+    _items set [1, 
+        [
+            ["ACE_MapTools", 1],
+            ["ACE_DefusalKit", 1],
+            ["ACE_CableTie", 2],
+            ["ACE_Flashlight_MX991", 1],
+            ["ACE_packingBandage", 4],
+            ["ACE_elasticBandage", 4],
+            ["ACE_quikclot", 4],
+            ["ACE_tourniquet", 4],
+            ["ACE_morphine", 2],
+            ["ACE_epinephrine", 2]
+        ]
     ];
+
+    _loadout set [3, _items];
+    _unit setUnitLoadout _loadout;
 };

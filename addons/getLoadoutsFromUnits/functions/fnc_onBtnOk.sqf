@@ -1,12 +1,11 @@
 #include "script_component.hpp"
 #include "..\IDCs.hpp"
-systemChat "Wörked";
-diag_log "BTN OKAY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+
 // called upon display load
 // PARAMS:
 // 	0: Display <DISPLAY>
 
-params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
+params ["_control"];
 disableSerialization;
 
 private _display = ctrlParent _control;
@@ -15,17 +14,28 @@ private _tab = "    ";
 private _doubleTab = _tab + _tab;
 
 GVAR(units) params ["_units", "_types"];
-diag_log format ["Units: %1, Types: %2", _units, _types];
-{
-    private _listbox = _display displayCtrl _x;
-    [(_listbox lbData (lbCurSel _listbox)), _forEachIndex] call FUNC(addMedicItems);
-}forEach [IDC_CFR, IDC_SQL, IDC_PTL];
 
 if (cbChecked (_display displayCtrl IDC_ITEMS)) then {
     {
-
+        [_x] call FUNC(addStandardItems);
     }forEach _units;
 };
+
+{
+    private _listbox = _display displayCtrl _x;
+
+    private _selectedUnit = (_listbox lbData (lbCurSel _listbox));
+    if !(_selectedUnit isEqualTo "") then {
+        private _splitt = ((parseSimpleArray _selectedUnit) select 0) splitString "_";
+        _splitt deleteAt 0;
+        private _joinedString = _splitt joinString "_";
+        private _find = _types find _joinedString;
+
+        if (_find > -1) then {
+            [_units select _find, _forEachIndex] call FUNC(addMedicItems);
+        };
+    };  
+}forEach [IDC_CFR, IDC_SQL, IDC_PTL];
 
 _structuredText pushBack format ["class %1 {", ctrlText (_display displayCtrl IDC_NAME)];
 _structuredText pushBack (_tab + "class AllUnits {");

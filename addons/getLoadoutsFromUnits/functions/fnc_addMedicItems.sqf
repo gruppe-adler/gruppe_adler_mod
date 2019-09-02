@@ -6,6 +6,8 @@ private _log = [];
 private _items = [];
 private _loadout = getUnitLoadout _unit;
 
+if (isNil "_loadout" || {_loadout isEqualTo []}) exitWith {diag_log "GRAD_Mod getLoadouts from Unit: Loadout is Nil!"};
+
 {
    if (!((_loadout select _x) isEqualTo []) && {!((_loadout select _x select 1) isEqualTo [])}) then {
       _items append (_loadout select _x select 1);
@@ -19,7 +21,7 @@ private _loadout = getUnitLoadout _unit;
         private _countOfSameItem = {(_x select 0) == _newItem} count _items;
 
         private _rest = _amount - _countOfSameItem;
-        diag_log format ["Rest: %1, Main: %2, Container: %3", _rest, !((_loadout select _index) isEqualTo []), !((_loadout select _index select 1) isEqualTo [])];
+
         if (_rest > 0 && {!((_loadout select _index) isEqualTo [])} && {!((_loadout select _index select 1) isEqualTo [])}) then {
             for "_i" from 1 to _rest do {
                 switch (_index) do {
@@ -121,8 +123,6 @@ if !(_log isEqualTo []) then {
             }forEach _logIitems;
         };
     }forEach _log;
-
-    diag_log format ["%1", _logIitems];
 
     {
         systemChat "GRAD_getLoadoutsFromUnits: Items could not be added to the Loadout. See RPT";
