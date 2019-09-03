@@ -1,3 +1,3 @@
 if (didJIP) then {
-    [player] remoteExecCall [QFUNC(logJIPServer), 2];
+    [player] remoteExecCall [QFUNC(checkUniformOnServer), 2];
 };

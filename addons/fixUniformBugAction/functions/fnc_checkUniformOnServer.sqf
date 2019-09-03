@@ -1,18 +1,16 @@
-params ["_initiator"];
 {
     [
         {
             params ["_unit"];
+            
             ((isNil (uniform _unit)) || {isNil (uniformContainer _unit)})
         },
         {
-            params ["_unit", "_initiator"];
+            params ["_unit"];
 
-
-            private _log = [format ["Initiator: %1", _initiator]];
-            [_log] remoteExecCall [QFUNC(logJIPPlayer), _this select 0];
+            [] remoteExecCall [QFUNC(resetUniform), _unit];
         },
-        [_unit, _initiator],
+        {_x},
         60,
         {}
     ] call CBA_fnc_waitUntilAndExecute;

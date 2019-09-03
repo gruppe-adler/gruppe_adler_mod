@@ -1,6 +1,3 @@
 PREP(handleJIP);
-PREP(handleUnit);
-PREP(logJIPPlayer);
-PREP(logJIPServer);
-PREP(logServer);
+PREP(checkUniformOnServer);
 PREP(resetUniform);
