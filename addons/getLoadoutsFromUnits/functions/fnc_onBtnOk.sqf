@@ -37,7 +37,13 @@ if (cbChecked (_display displayCtrl IDC_ITEMS)) then {
     };  
 }forEach [IDC_CFR, IDC_SQL, IDC_PTL];
 
-_structuredText pushBack format ["class %1 {", ctrlText (_display displayCtrl IDC_NAME)];
+private _name = ctrlText (_display displayCtrl IDC_NAME);
+private _bool = false;
+{
+    if (_x in _name) exitWith {_bool = true};
+}forEach [" ", "/", "\", "$"];
+
+_structuredText pushBack format ["class %1 {", ];
 _structuredText pushBack (_tab + "class AllUnits {");
 _structuredText append ([
     "uniform",

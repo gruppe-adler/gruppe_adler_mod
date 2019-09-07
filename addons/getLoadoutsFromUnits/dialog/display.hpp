@@ -24,25 +24,21 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 	onLoad=QUOTE(_this call FUNC(onLoad));
 	class controlsBackground
 	{
-		class BackgroundDisable: ctrlStaticBackgroundDisable
-		{
-		};
-		class BackgroundDisableTiles: ctrlStaticBackgroundDisableTiles
-		{
-		};
+		class BackgroundDisable: ctrlStaticBackgroundDisable {};
+		class BackgroundDisableTiles: ctrlStaticBackgroundDisableTiles {};
 		class Background: ctrlStaticBackground
 		{
-			x=X;
-			y=Y;
-			w=140 * GRID_W;
-			h=(120 - 5 - 10) * GRID_H;
+			x = X;
+			y = Y;
+			w = 140 * GRID_W;
+			h = (120 - 5 - 10) * GRID_H;
 		};
 		class BackgroundButtons: ctrlStaticFooter
 		{
-			x=((getResolution select 2) * 0.5 * pixelW) - (140 * 0.5) * GRID_W;
-			y=0.5 + (120 * 0.5 - 2 * 5 - 2) * GRID_H;
-			w= 140 * GRID_W;
-			h=(5 + 2) * GRID_H;
+			x = ((getResolution select 2) * 0.5 * pixelW) - (140 * 0.5) * GRID_W;
+			y = 0.5 + (120 * 0.5 - 2 * 5 - 2) * GRID_H;
+			w =  140 * GRID_W;
+			h = (5 + 2) * GRID_H;
 		};
 	};
 	class controls
@@ -51,119 +47,124 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 		class Title: ctrlStaticTitle
 		{
 			idc=24691;
-			x=((getResolution select 2) * 0.5 * pixelW) - (140 * 0.5) * GRID_W;
-			y=0.5 - ( 120 * 0.5 - 	5) * GRID_H;
-			w=140 * GRID_W;
-			h=5 * GRID_H;
-			text="Loadout Settings";
+			x = ((getResolution select 2) * 0.5 * pixelW) - (140 * 0.5) * GRID_W;
+			y = 0.5 - ( 120 * 0.5 - 	5) * GRID_H;
+			w = 140 * GRID_W;
+			h = 5 * GRID_H;
+			text = "Loadout Settings";
 		};
 
 
 		class NameText: ctrlStatic
 		{
-			x= X + GRID_W * 1;
-			y= Y + GRID_H * 7;
-			w= 34 * GRID_W;
-			h= 5 * GRID_H;
-			text="Name";
-			style=1;
+			x =  X + GRID_W * 1;
+			y =  Y + GRID_H * 7;
+			w =  34 * GRID_W;
+			h =  5 * GRID_H;
+			text = "Loadout Name";
+			style = 1;
 		};
 		class Name: ctrlEdit
 		{
-			x= X + GRID_W * 37;
-			y= Y + GRID_H * 7;
-			w= 102 * GRID_W;
-			h= 5 * GRID_H;
-			idc= IDC_NAME;
+			x =  X + GRID_W * 37;
+			y =  Y + GRID_H * 7;
+			w =  102 * GRID_W;
+			h =  5 * GRID_H;
+			idc = IDC_NAME;
+			toolTip = "Enter the name of the loadout";
 		};
 
 		class CfrText: ctrlStatic
 		{
-			x= X + GRID_W * 1;
-			y= Y + GRID_H * 19;
-			w= 34 * GRID_W;
-			h= 5 * GRID_H;
-			text="CFR Class";
-			style=1;
+			x =  X + GRID_W * 1;
+			y =  Y + GRID_H * 19;
+			w =  34 * GRID_W;
+			h =  5 * GRID_H;
+			text = "CFR Class";
+			style = 1;
 		};
 		class Cfr: ctrlCombo
 		{
-			x= X + GRID_W * 37;
-			y= Y + GRID_H * 19;
-			w= 102 * GRID_W;
-			h= 5 * GRID_H;
-			idc= IDC_CFR;
+			x =  X + GRID_W * 37;
+			y =  Y + GRID_H * 19;
+			w =  102 * GRID_W;
+			h =  5 * GRID_H;
+			idc = IDC_CFR;
+			toolTip = "Choose class for CFR Loadout";
 		};
 
 		class SqlText: ctrlStatic
 		{
-			x= X + GRID_W * 1;
-			y= Y + GRID_H * 25;
-			w= 34 * GRID_W;
-			h= 5 * GRID_H;
-			text="SQL Class";
-			style=1;
+			x =  X + GRID_W * 1;
+			y =  Y + GRID_H * 25;
+			w =  34 * GRID_W;
+			h =  5 * GRID_H;
+			text = "SQ Class";
+			style = 1;
 		};
 		class Sql: ctrlCombo
 		{
-			x= X + GRID_W * 37;
-			y= Y + GRID_H * 25;
-			w= 102 * GRID_W;
-			h= 5 * GRID_H;
-			idc= IDC_SQL;
+			x =  X + GRID_W * 37;
+			y =  Y + GRID_H * 25;
+			w =  102 * GRID_W;
+			h =  5 * GRID_H;
+			idc = IDC_SQL;
+			toolTip = "Choose class for Sqaud Medic Loadout";
 		};
 
 		class PtlText: ctrlStatic
 		{
-			x= X + GRID_W * 1;
-			y= Y + GRID_H * 31;
-			w= 34 * GRID_W;
-			h= 5 * GRID_H;
-			text="PTL Class";
-			style=1;
+			x =  X + GRID_W * 1;
+			y =  Y + GRID_H * 31;
+			w =  34 * GRID_W;
+			h =  5 * GRID_H;
+			text = "PT Class";
+			style = 1;
 		};
 		class Ptl: ctrlCombo
 		{
-			x= X + GRID_W * 37;
-			y= Y + GRID_H * 31;
-			w= 102 * GRID_W;
-			h= 5 * GRID_H;
-			idc= IDC_PTL;
+			x =  X + GRID_W * 37;
+			y =  Y + GRID_H * 31;
+			w =  102 * GRID_W;
+			h =  5 * GRID_H;
+			idc = IDC_PTL;
+			toolTip = "Choose class for Platon Medic Loadout";
 		};
 
 		class DefaultItemsText: ctrlStatic
 		{
-			x= X + GRID_W * 1;
-			y= Y + GRID_H * 43;
-			w= 34 * GRID_W;
-			h= 5 * GRID_H;
-			text="Default Items";
-			style=1;
+			x =  X + GRID_W * 1;
+			y =  Y + GRID_H * 43;
+			w =  34 * GRID_W;
+			h =  5 * GRID_H;
+			text = "Default Items";
+			style = 1;
 		};
 		class DefaultItems: ctrlCheckbox
 		{
-			x= X + GRID_W * 37;
-			y= Y + GRID_H * 43;
-			w= 5 * GRID_W;
-			h= 5 * GRID_H;
-			idc= IDC_ITEMS;
+			x =  X + GRID_W * 37;
+			y =  Y + GRID_H * 43;
+			w =  5 * GRID_W;
+			h =  5 * GRID_H;
+			idc = IDC_ITEMS;
+			toolTip = "Replaces the inventory of the Uniform with our default Items, e.g. Bandages, Map Tool, Flashlight, etc.";
 		};
 
 
 		class ButtonContinue: ctrlButtonOK
 		{
-			x=((getResolution select 2) * 0.5 * pixelW) + (140 * 0.5 - 55 - 2) * GRID_W;
-			y=0.5 + ( 120 * 0.5 - 2 * 5 - 1) * GRID_H;
-			w=30 * GRID_W;
-			h=5 * GRID_H;
+			x = ((getResolution select 2) * 0.5 * pixelW) + (140 * 0.5 - 55 - 2) * GRID_W;
+			y = 0.5 + ( 120 * 0.5 - 2 * 5 - 1) * GRID_H;
+			w = 30 * GRID_W;
+			h = 5 * GRID_H;
 			onButtonClick = QUOTE(_this call FUNC(onBtnOk));
 		};
 		class ButtonCancel: ctrlButtonCancel
 		{
-			x=((getResolution select 2) * 0.5 * pixelW) + (		140 * 0.5 - 25 - 1) * GRID_W;
-			y=0.5 + (120 * 0.5 - 2 * 5 - 1) * GRID_H;
-			w=25 * GRID_W;
-			h=5 * GRID_H;
+			x = ((getResolution select 2) * 0.5 * pixelW) + (140 * 0.5 - 25 - 1) * GRID_W;
+			y = 0.5 + (120 * 0.5 - 2 * 5 - 1) * GRID_H;
+			w = 25 * GRID_W;
+			h = 5 * GRID_H;
 		};
 	};
 };
