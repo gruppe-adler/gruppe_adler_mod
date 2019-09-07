@@ -39,9 +39,20 @@ if (cbChecked (_display displayCtrl IDC_ITEMS)) then {
 
 private _name = ctrlText (_display displayCtrl IDC_NAME);
 private _bool = false;
+private _character = "Space";
+
+if (_name isEqualTo "") then {_name = "FactionName";};
+
 {
-    if (_x in _name) exitWith {_bool = true};
+    if (_x in _name) exitWith {
+        _bool = true;
+        if (_forEachIndex > 0) then {
+            _character = _x;
+        };
+    };
 }forEach [" ", "/", "\", "$"];
+
+if (_bool) exitWith {systemChat format ["Wrong character in Loadout Name: %1", _character];};
 
 _structuredText pushBack format ["class %1 {", ];
 _structuredText pushBack (_tab + "class AllUnits {");
