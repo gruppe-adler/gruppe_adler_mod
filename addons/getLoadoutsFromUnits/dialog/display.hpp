@@ -63,15 +63,15 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "Loadout Name";
 			style = 1;
+			toolTip = "Enter the name of the loadout";
 		};
 		class Name: ctrlEdit
 		{
 			x =  X + GRID_W * 37;
 			y =  Y + GRID_H * 7;
-			w =  102 * GRID_W;
+			w =  70 * GRID_W;
 			h =  5 * GRID_H;
 			idc = IDC_NAME;
-			toolTip = "Enter the name of the loadout";
 		};
 
 		class CfrText: ctrlStatic
@@ -82,15 +82,15 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "CFR Class";
 			style = 1;
+			toolTip = "Choose class for CFR Loadout";
 		};
 		class Cfr: ctrlCombo
 		{
 			x =  X + GRID_W * 37;
 			y =  Y + GRID_H * 19;
-			w =  102 * GRID_W;
+			w =  70 * GRID_W;
 			h =  5 * GRID_H;
-			idc = IDC_CFR;
-			toolTip = "Choose class for CFR Loadout";
+			idc = IDC_CFR;			
 		};
 
 		class SqlText: ctrlStatic
@@ -101,15 +101,15 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "SQ Class";
 			style = 1;
+			toolTip = "Choose class for Sqaud Medic Loadout";
 		};
 		class Sql: ctrlCombo
 		{
 			x =  X + GRID_W * 37;
 			y =  Y + GRID_H * 25;
-			w =  102 * GRID_W;
+			w =  70 * GRID_W;
 			h =  5 * GRID_H;
 			idc = IDC_SQL;
-			toolTip = "Choose class for Sqaud Medic Loadout";
 		};
 
 		class PtlText: ctrlStatic
@@ -120,15 +120,15 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "PT Class";
 			style = 1;
+			toolTip = "Choose class for Platon Medic Loadout";
 		};
 		class Ptl: ctrlCombo
 		{
 			x =  X + GRID_W * 37;
 			y =  Y + GRID_H * 31;
-			w =  102 * GRID_W;
+			w =  70 * GRID_W;
 			h =  5 * GRID_H;
 			idc = IDC_PTL;
-			toolTip = "Choose class for Platon Medic Loadout";
 		};
 
 		class DefaultItemsText: ctrlStatic
@@ -139,6 +139,7 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "Default Items";
 			style = 1;
+			toolTip = "Replaces the inventory of the Uniform with our default Items, e.g. Bandages, Map Tool, Flashlight, etc.";
 		};
 		class DefaultItems: ctrlCheckbox
 		{
@@ -147,7 +148,6 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			w =  5 * GRID_W;
 			h =  5 * GRID_H;
 			idc = IDC_ITEMS;
-			toolTip = "Replaces the inventory of the Uniform with our default Items, e.g. Bandages, Map Tool, Flashlight, etc.";
 		};
 
 
