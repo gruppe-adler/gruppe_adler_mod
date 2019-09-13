@@ -10,7 +10,7 @@
 
             [] remoteExecCall [QFUNC(resetUniform), _unit];
         },
-        {_x},
+        [_x],
         60,
         {}
     ] call CBA_fnc_waitUntilAndExecute;
