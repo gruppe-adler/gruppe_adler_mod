@@ -6,7 +6,7 @@ private _log = [];
 private _items = [];
 private _loadout = getUnitLoadout _unit;
 
-if (isNil "_loadout" || {_loadout isEqualTo []}) exitWith {diag_log "GRAD_Mod getLoadouts from Unit: Loadout is Nil!"};
+if (isNil "_loadout" || {_loadout isEqualTo []}) exitWith {ERROR("Loadout is nil!")};
 
 {
    if (!((_loadout select _x) isEqualTo []) && {!((_loadout select _x select 1) isEqualTo [])}) then {
@@ -126,6 +126,6 @@ if !(_log isEqualTo []) then {
 
     {
         systemChat "GRAD_getLoadoutsFromUnits: Items could not be added to the Loadout. See RPT";
-        diag_log format ["GRAD_getLoadoutsFromUnits: Could not add Items: %1 of Amount: %2 to Unit: %3", _x select 0, _x select 1, _unit];
+        ERROR_3("Could not add items: %1 of amount: %2 to unit: %3", _x select 0, _x select 1, _unit);
     }forEach _logIitems;
 };

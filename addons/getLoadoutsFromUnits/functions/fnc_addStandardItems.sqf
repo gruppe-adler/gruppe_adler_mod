@@ -4,7 +4,7 @@ params ["_unit"];
 
 private _loadout = getUnitLoadout _unit;
 
-if (isNil "_loadout" || {_loadout isEqualTo []}) exitWith {diag_log "GRAD_Mod getLoadouts from Unit: Loadout is Nil!"};
+if (isNil "_loadout" || {_loadout isEqualTo []}) exitWith {ERROR("Loadout is nil!")};
 
 if !((_loadout select 3) isEqualTo []) then {
     private _items = (_loadout select 3);

@@ -82,7 +82,7 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "CFR Class";
 			style = 1;
-			toolTip = "Choose class for CFR Loadout";
+			toolTip = "Choose class for Combat First Responder loadout";
 		};
 		class Cfr: ctrlCombo
 		{
@@ -101,7 +101,7 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "SQ Class";
 			style = 1;
-			toolTip = "Choose class for Sqaud Medic Loadout";
+			toolTip = "Choose class for Squad Medic loadout";
 		};
 		class Sql: ctrlCombo
 		{
@@ -120,7 +120,7 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "PT Class";
 			style = 1;
-			toolTip = "Choose class for Platon Medic Loadout";
+			toolTip = "Choose class for Platoon Medic loadout";
 		};
 		class Ptl: ctrlCombo
 		{
@@ -139,7 +139,7 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			text = "Default Items";
 			style = 1;
-			toolTip = "Replaces the inventory of the Uniform with our default Items, e.g. Bandages, Map Tool, Flashlight, etc.";
+			toolTip = "Replaces the inventory of the uniform with our default items, e.g. bandages, map tools, flashlight, etc.";
 		};
 		class DefaultItems: ctrlCheckbox
 		{
