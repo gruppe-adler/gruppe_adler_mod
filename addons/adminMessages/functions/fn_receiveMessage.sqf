@@ -14,10 +14,6 @@ if (grad_adminMessages_latestConvos find [toUpper _sender,_UID] < 0) then {
 };
 if (count grad_adminMessages_latestConvos > 5) then {grad_adminMessages_latestConvos resize 5};
 
-ga_adminMessages_channel radioChannelAdd [player];
-ga_adminMessages_channel radioChannelSetCallsign format [localize "STR_grad_ADMINMESSAGES_RECEIVE_CHANNEL",_sender];
+[_sender,_message] call FUNC(displayMessage);
 
-player customChat [ga_adminMessages_channel, _message];
-player say2D "3DEN_notificationWarning";
-
-ga_adminMessages_channel radioChannelRemove [player];
+playSound "3DEN_notificationWarning";
