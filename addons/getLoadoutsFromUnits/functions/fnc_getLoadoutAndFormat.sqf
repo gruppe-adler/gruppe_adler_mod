@@ -11,10 +11,10 @@ private _tripleTab = _tab + _tab + _tab;
 _return pushBack (_tab + _tab + format ["class %1 {", _type]);
 
 //Clothing
-_return pushBack (_tripleTab + format ["uniform = '%1';", [_loadout select 3] call FUNC(getClothes)]);
-_return pushBack (_tripleTab + format ["vest = '%1';", [_loadout select 4] call FUNC(getClothes)]);
-_return pushBack (_tripleTab + format ["backpack = '%1';", [_loadout select 5] call FUNC(getClothes)]);
-_return pushBack (_tripleTab + format ["headgear = '%1';", _loadout select 6]);
+_return pushBack (_tripleTab + format ["uniform = ""%1"";", [_loadout select 3] call FUNC(getClothes)]);
+_return pushBack (_tripleTab + format ["vest = ""%1"";", [_loadout select 4] call FUNC(getClothes)]);
+_return pushBack (_tripleTab + format ["backpack = ""%1"";", [_loadout select 5] call FUNC(getClothes)]);
+_return pushBack (_tripleTab + format ["headgear = ""%1"";", _loadout select 6]);
 
 //Primary Weapon
 private _weaponArray = [_loadout select 0, "primary", _tripleTab] call FUNC(getWeapon);
@@ -30,24 +30,24 @@ _return = _return + _weaponArray;
 
 //Basic Items (Binocular, NVG, Maps, etc.)
 private _binocular = if !(_loadout select 8 isEqualTo []) then {
-    format ["binoculars = '%1';", _loadout select 8 select 0]
+    format ["binoculars = ""%1"";", _loadout select 8 select 0]
 } else {
-    "binoculars = '';"
+    "binoculars = """";"
 };
 _return pushBack (_tripleTab + _binocular);
 
-_return pushBack (_tripleTab + format ["map = '%1';", _loadout select 9 select 0]);
-_return pushBack (_tripleTab + format ["compass = '%1';", _loadout select 9 select 3]);
-_return pushBack (_tripleTab + format ["watch = '%1';", _loadout select 9 select 4]);
-_return pushBack (_tripleTab + format ["gps = '%1';", _loadout select 9 select 1]);
+_return pushBack (_tripleTab + format ["map = ""%1"";", _loadout select 9 select 0]);
+_return pushBack (_tripleTab + format ["compass = ""%1"";", _loadout select 9 select 3]);
+_return pushBack (_tripleTab + format ["watch = ""%1"";", _loadout select 9 select 4]);
+_return pushBack (_tripleTab + format ["gps = ""%1"";", _loadout select 9 select 1]);
 
 private _radio =  _loadout select 9 select 2;
 if (isText (configFile >> "CfgWeapons" >> _radio >> "tf_parent")) then {
     _radio = getText (configFile >> "CfgWeapons" >> _radio >> "tf_parent");
 };
 
-_return pushBack (_tripleTab + format ["radio = '%1';", _radio]);
-_return pushBack (_tripleTab + format ["nvgoggles = '%1';", _loadout select 9 select 5]);
+_return pushBack (_tripleTab + format ["radio = ""%1"";", _radio]);
+_return pushBack (_tripleTab + format ["nvgoggles = ""%1"";", _loadout select 9 select 5]);
 
 //Items in Uniform
 if (!(_loadout select 3 isEqualTo []) && {!(_loadout select 3 select 1 isEqualTo [])}) then {

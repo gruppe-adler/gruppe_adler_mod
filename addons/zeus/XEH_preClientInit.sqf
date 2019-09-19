@@ -29,3 +29,99 @@ Place a container (like an ammo box) somewhere on the map. Fill it to your likin
 Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 
 [_title,_helpText] call EFUNC(ui,addHelpRecord);
+
+[
+    "TFAR_event_OnSWchannelSet",
+    {
+        params ["_unit", "_radio", "_channel", "_additional"];
+
+        private _frequency = [(call TFAR_fnc_activeSwRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
+        if (_additional) then {
+            if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW), -1])) exitWith {
+                _unit setVariable [QGVAR(channelAdditionalSW), nil, true];
+                _unit setVariable [QGVAR(freqAdditionalSW), nil, true];
+            };
+            _unit setVariable [QGVAR(channelAdditionalSW), _channel, true];
+            _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
+        }else{
+            _unit setVariable [QGVAR(channelSW), _channel, true];
+            _unit setVariable [QGVAR(freqSW), _frequency, true];
+        };
+    }
+] call CBA_fnc_addEventHandler;
+
+[
+    "TFAR_event_OnLRchannelSet",
+    {
+        params ["_unit", "", "_channel", "_additional"];
+
+        private _frequency = [(call TFAR_fnc_activeLRRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
+        if (_additional) then {
+
+            if (_channel isEqualTo (_unit getVariable [QGVAR(freqAdditionalLR), -1])) exitWith {
+                _unit setVariable [QGVAR(channelAdditionalLR), nil, true];
+                _unit setVariable [QGVAR(freqAdditionalLR), nil, true];
+            };
+            _unit setVariable [QGVAR(channelAdditionalLR), _channel, true];
+            _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
+        }else{
+            _unit setVariable [QGVAR(channelLR), _channel, true];
+            _unit setVariable [QGVAR(freqLR), _frequency, true];
+        };
+    }
+] call CBA_fnc_addEventHandler;
+
+[
+    "TFAR_event_OnFrequencyChanged",
+     {
+         params ["_unit", "_radio", "_channel", "", "_frequency"];
+
+         private _backpackLR = call TFAR_fnc_activeLRRadio;
+         if (_backpackLR isEqualTo _radio) then {
+             if (_channel isEqualTo (_unit getVariable [QGVAR(channelLR), -1])) then {
+                 _unit setVariable [QGVAR(freqLR), _frequency, true];
+             }else{
+                if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalLR), -1])) then {
+                    _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
+                };
+             };
+         }else{
+             private _loadoutRadio = call TFAR_fnc_activeSwRadio;
+             if (_loadoutRadio isEqualTo _radio) then {
+                 if (_channel isEqualTo (_unit getVariable [QGVAR(channelSW), -1])) then {
+                     _unit setVariable [QGVAR(freqSW), _frequency, true];
+                 }else{
+                    if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW), -1])) then {
+                        _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
+                    };
+                 };
+             };
+         };
+     }
+] call CBA_fnc_addEventHandler;
+
+["loadout", {
+    //current units loadout changed, check radios
+    private _loadout = getUnitLoadout player;
+    if (((player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {!((_loadout select 9 select 2) isEqualTo "")}) then {
+        [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
+    };
+
+    if (!((player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {(_loadout select 9 select 2) isEqualTo ""}) then {
+        player setVariable [QGVAR(channelSW), nil, true];
+        player setVariable [QGVAR(freqSW), nil, true];
+        player setVariable [QGVAR(channelAdditionalSW), nil, true];
+        player setVariable [QGVAR(freqAdditionalSW), nil, true];
+    };
+
+    if (((player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {!((_loadout select 5 select 0) isEqualTo "")}) then {
+        [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
+    };
+
+    if (!((player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {(_loadout select 5 select 0) isEqualTo ""}) then {
+        player setVariable [QGVAR(channelLR), nil, true];
+        player setVariable [QGVAR(freqLR), nil, true];
+        player setVariable [QGVAR(channelAdditionalLR), nil, true];
+        player setVariable [QGVAR(freqAdditionalLR), nil, true];
+    };
+}, true] call CBA_fnc_addPlayerEventHandler;

@@ -42,30 +42,39 @@ class GVAR(RscModuleDiagnostics): RscDisplayAttributes {
                         };
                         class Title3: Title1 {
                             idc = -1;
-                            text = CSTRING(optionObjectLocality);
+                            text = CSTRING(optionPlayerFreqs);
                             y = H_PART(2.2);
                         };
-                        class ObjectLocality: PlayerFPS {
+                        class PlayerFreqs: PlayerFPS {
                             idc = 27003;
                             y = H_PART(2.2);
                         };
                         class Title4: Title1 {
                             idc = -1;
-                            text = CSTRING(optionAIStatus);
+                            text = CSTRING(optionObjectLocality);
                             y = H_PART(3.3);
                         };
-                        class AIStatus: PlayerFPS {
+                        class ObjectLocality: PlayerFPS {
                             idc = 27004;
                             y = H_PART(3.3);
                         };
                         class Title5: Title1 {
                             idc = -1;
-                            text = CSTRING(optionSummaryWindow);
+                            text = CSTRING(optionAIStatus);
                             y = H_PART(4.4);
                         };
-                        class SummaryWindow: PlayerFPS {
+                        class AIStatus: PlayerFPS {
                             idc = 27005;
                             y = H_PART(4.4);
+                        };
+                        class Title6: Title1 {
+                            idc = -1;
+                            text = CSTRING(optionSummaryWindow);
+                            y = H_PART(5.5);
+                        };
+                        class SummaryWindow: PlayerFPS {
+                            idc = 27006;
+                            y = H_PART(5.5);
                         };
                     };
                 };

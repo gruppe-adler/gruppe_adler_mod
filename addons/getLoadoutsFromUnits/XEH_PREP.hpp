@@ -1,7 +1,6 @@
 PREP(addMedicItems);
 PREP(addStandardItems);
 PREP(createConfig);
-PREP(createGUI);
 PREP(getClothes);
 PREP(getItems);
 PREP(getLoadoutAndFormat);

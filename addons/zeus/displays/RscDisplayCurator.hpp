@@ -25,7 +25,7 @@ class RscDisplayCurator {
         class GVAR(SummaryWindow): RscControlsGroupNoScrollbars {
             idc = -1;
 
-            onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrlGrp),_this select 0)]; (_this select 0) ctrlShow (GVAR(DiagnosticsSettings) select 4));
+            onLoad = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrlGrp),_this select 0)]; (_this select 0) ctrlShow (GVAR(DiagnosticsSettings) select 5));
             onUnload = QUOTE(uiNamespace setVariable [ARR_2(QQGVAR(summaryWindowCtrlGrp),nil)]);
 
             x = SUMMARYWINDOW_X;

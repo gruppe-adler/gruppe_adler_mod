@@ -15,3 +15,8 @@ if (_ctrl && {_key == 30}) exitWith {
     GVAR(selectedMarkers) = [_alt] call FUNC(allMarkers);
     [] call FUNC(updateButtonSave);
 };
+
+// close with map key
+if (_key in actionKeys "hideMap") exitWith {
+    _display closeDisplay 2;
+};

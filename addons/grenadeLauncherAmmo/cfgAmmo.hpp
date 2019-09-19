@@ -11,4 +11,11 @@ class CfgAmmo {
     class Flare_82mm_AMOS_White: FlareCore {
         intensity = 4000000;
     };
+
+    class SmokeShell;
+    class G_40mm_Smoke: SmokeShell
+    {
+        simulation = "shotSmoke";
+        deflectionSlowDown = 0.4;
+    };
 };

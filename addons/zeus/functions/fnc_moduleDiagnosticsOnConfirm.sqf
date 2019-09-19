@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
-params [["_playerFPS",false],["_medicalStatus",false],["_objectLocality",false],["_aiStatus",false],["_summaryWindow",false]];
+params [["_playerFPS",false],["_medicalStatus",false],["_playerFreqs",false],["_objectLocality",false],["_aiStatus",false],["_summaryWindow",false]];
 
 
 //compare to previous settings
-GVAR(DiagnosticsSettings) params ["_oldPlayerFPS","_oldMedicalStatus","_oldObjectLocality","_oldAiStatus","_oldSummaryWindow"];
+GVAR(DiagnosticsSettings) params ["_oldPlayerFPS","_oldMedicalStatus","_oldPlayerFreqs","_oldObjectLocality","_oldAiStatus","_oldSummaryWindow"];
 GVAR(DiagnosticsSettings) = +_this;
 
 
