@@ -33,6 +33,8 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 [
     "TFAR_event_OnSWchannelSet",
     {
+        if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
+
         params ["_unit", "_radio", "_channel", "_additional"];
 
         private _frequency = [(call TFAR_fnc_activeSwRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
@@ -53,6 +55,8 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 [
     "TFAR_event_OnLRchannelSet",
     {
+        if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
+
         params ["_unit", "", "", "_channel", "_additional"];
 
         private _frequency = [(call TFAR_fnc_activeLRRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
@@ -74,6 +78,8 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 [
     "TFAR_event_OnFrequencyChanged",
      {
+        if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
+
          params ["_unit", "_radio", "_channel", "", "_frequency"];
 
          private _backpackLR = call TFAR_fnc_activeLRRadio;
@@ -101,34 +107,36 @@ Drop this anywhere. Toggles Blue Force Tracking.<br/>";
 ] call CBA_fnc_addEventHandler;
 
 ["loadout", {
+    if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
+
     //current units loadout changed, check radios
-    private _loadout = getUnitLoadout player;
+    private _loadout = getUnitLoadout ace_player;
     if (_loadout isEqualTo []) exitWith {};
     private _linkedItems = _loadout select 9;
     if !(_linkedItems isEqualTo []) then {
-        if (((player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {!(( _linkedItems select 2) isEqualTo "")}) then {
+        if (((ace_player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {!(( _linkedItems select 2) isEqualTo "")}) then {
             [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
         };
 
-        if (!((player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {(_linkedItems select 2) isEqualTo ""}) then {
-            player setVariable [QGVAR(channelSW), nil, true];
-            player setVariable [QGVAR(freqSW), nil, true];
-            player setVariable [QGVAR(channelAdditionalSW), nil, true];
-            player setVariable [QGVAR(freqAdditionalSW), nil, true];
+        if (!((ace_player getVariable [QGVAR(channelSW), -1]) isEqualTo -1) && {(_linkedItems select 2) isEqualTo ""}) then {
+            ace_player setVariable [QGVAR(channelSW), nil, true];
+            ace_player setVariable [QGVAR(freqSW), nil, true];
+            ace_player setVariable [QGVAR(channelAdditionalSW), nil, true];
+            ace_player setVariable [QGVAR(freqAdditionalSW), nil, true];
         };
     };
 
     private _backpack = _loadout select 5;
     if !(_backpack isEqualTo []) then {
-        if (((player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {!((_backpack select 0) isEqualTo "")}) then {
+        if (((ace_player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {!((_backpack select 0) isEqualTo "")}) then {
             [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
         };
 
-        if (!((player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {(_backpack select 0) isEqualTo ""}) then {
-            player setVariable [QGVAR(channelLR), nil, true];
-            player setVariable [QGVAR(freqLR), nil, true];
-            player setVariable [QGVAR(channelAdditionalLR), nil, true];
-            player setVariable [QGVAR(freqAdditionalLR), nil, true];
+        if (!((ace_player getVariable [QGVAR(channelLR), -1]) isEqualTo -1) && {(_backpack select 0) isEqualTo ""}) then {
+            ace_player setVariable [QGVAR(channelLR), nil, true];
+            ace_player setVariable [QGVAR(freqLR), nil, true];
+            ace_player setVariable [QGVAR(channelAdditionalLR), nil, true];
+            ace_player setVariable [QGVAR(freqAdditionalLR), nil, true];
         };
     };
 }, true] call CBA_fnc_addPlayerEventHandler;
