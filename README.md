@@ -1,4 +1,4 @@
-**pre-release, non-functional**
+**pre-release**
 
 # grad-animalTransport
 
