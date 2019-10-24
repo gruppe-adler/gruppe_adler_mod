@@ -3,3 +3,9 @@
     scriptName "GRAD_animalTransport_loadAnimal";
     _this call GRAD_animalTransport_fnc_loadAnimal;
 }] call CBA_fnc_addEventHandler;
+
+
+["GRAD_animalTransport_unloadAnimals", {
+    scriptName "GRAD_animalTransport_unloadAnimals";
+    _this call GRAD_animalTransport_fnc_unloadAnimals;
+}] call CBA_fnc_addEventHandler;

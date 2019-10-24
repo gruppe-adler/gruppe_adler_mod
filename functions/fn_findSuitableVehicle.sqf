@@ -1,12 +1,19 @@
-params [
-    ["_animal", objNull]
-];
+//params [
+//    ["_animal", objNull]
+//];
+params ["_animal"];
 
-private _candidates = nearestObjects [getPos _animal, ["Car","Truck"], 10];
+if (isNull _animal) exitWith {
+    diag_log "aagh null animal!";
+    objNull
+};
 
-// get first vehicle with a suitable free "seat"
+// Truck_F
+private _candidates = nearestObjects [_animal, ["Car", "Truck_F", "B_G_Van_01_transport_F"], 10, false];
 
-private _foundIdx = _candidates findIf { [_x] call GRAD_animalTransport_fnc_findSuitableSeat };
+private _foundIdx = _candidates findIf {
+    ([_x] call GRAD_animalTransport_fnc_findSuitableSeat) != -1;
+};
 
 if (_foundIdx == -1) then {
     objNull

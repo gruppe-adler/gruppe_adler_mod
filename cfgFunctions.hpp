@@ -4,9 +4,17 @@
 
 class GRAD_animalTransport {
     class General {
-        file = MODULES_DIRECTORY\@grad\animalTransport\functions;
-        class RegisterInteract {
+        file = MODULES_DIRECTORY\grad-animalTransport\functions;
+        class findSuitableSeat {};
+        class findSuitableVehicle {};
+        class getCargoPositionOffset {};
+        class loadAnimal {};
+        class registerEventHandler {
             postInit = 1;
         };
+        class registerInteract {
+            postInit = 1;
+        };
+        class unloadAnimals {};
     };
 };
