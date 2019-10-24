@@ -1,2 +1,7 @@
+**pre-release, non-functional**
+
 # grad-animalTransport
- transport animals in Arma3
+
+Load goats, sheep, rabbits etc onto trucks
+
+depends on ACE
