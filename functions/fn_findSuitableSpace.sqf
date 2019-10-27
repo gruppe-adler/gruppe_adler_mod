@@ -13,7 +13,12 @@ private _positionConfigs = "true" configClasses(missionConfigFile >> "GRAD_anima
 
 /* {unit: object, role: string, cargoIndex: number, ...}[] */
 private _seats = fullCrew [_vehicle, "", true];
-private _occupiedSeats = _seats select { _x params ["_unit"]; !(isNull _unit) };
+private _occupiedSeats = _seats select {
+    _x params ["_unit"]; !(isNull _unit)
+} apply {
+    _x params ["", "", "_cargoIndex"];
+    _cargoIndex
+};
 
 // discard where people already sit
 // TODO does "select {}" work with a config, or do I need to map the _positionConfigs to an array of configs first?
