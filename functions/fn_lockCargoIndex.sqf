@@ -13,7 +13,6 @@ _allSeats findIf {
     _x params ["_unit", "_type", "_cargoIndex", "_turretPath", "_personTurret"];
 
     if (_cargoIndex == _lockCargoIndex) then {
-        diag_log format ["setting lock: cargoindex %1, turret %2 to %3", _cargoIndex, _turretPath, _newState];
         switch (toLower _type) do {
             case "cargo": {
                 _vehicle lockCargo [_cargoIndex, _newState];
@@ -25,9 +24,7 @@ _allSeats findIf {
                 diag_log "warning: unhandled cargo index";
             };
         };
-        diag_log "yarp";
     } else {
-        diag_log "narp";
          false
     }
 };

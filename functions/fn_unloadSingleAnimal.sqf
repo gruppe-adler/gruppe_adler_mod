@@ -10,7 +10,7 @@ if (isNull _vehicle) exitWith { diag_log "arrgh animal is already unattached"; }
 
 
 private _emptyHash = ([] call cba_fnc_hashCreate);
-private _positionConfigs = missionConfigFile >> "GRAD_animalTransport" >> "Vehicles" >> typeOf _vehicle >> _animalClass >> "Positions";
+private _positionConfigs = missionConfigFile >> "GRAD_animalTransport" >> "Vehicles" >> typeOf _vehicle >> typeof _animal >> "Positions";
 
 private _animals = _vehicle getVariable ["GRAD_animalTransport_animals", _emptyHash];
 
@@ -18,15 +18,16 @@ private _seatsOccupiedByOthers = [];
 private _seatsOccupiedByMe = [];
 
 [_animals, {
+    private _cargoIndices = ([_positionConfigs >> _key, "cargoIndices", []] call BIS_fnc_returnConfigEntry);
     if (_value != _animal) then {
-        _seatsOccupiedByOthers = _seatsOccupiedByOthers + ([_config, _key, []] call BIS_fnc_returnConfigEntry);
+        _seatsOccupiedByOthers = _seatsOccupiedByOthers + _cargoIndices;
         true
     } else {
         [_vehicle, _animal] call GRAD_animalTransport_fnc_unloadSingleAnimalDetach;
-        _seatsOccupiedByMe = ([_config, _key, []] call BIS_fnc_returnConfigEntry);
+        _seatsOccupiedByMe = _cargoIndices;
         false
     }
-}] call CBA_fnc_hashFilter;
+}] call CBA_fnc_hashFilter; /*remove the animal in question*/
 
 {
         [_vehicle, _x, false] call GRAD_animalTransport_fnc_lockCargoIndex;

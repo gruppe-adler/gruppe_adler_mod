@@ -2,6 +2,7 @@ class GRAD_animalTransport {
     class Vehicles {
         class B_G_Van_01_transport_F {
             unloadPoint[] = {0, -4, -0.6};
+            unloadActionPoint[] = {0, -3.5, -0.4};
             class Sheep_random_F {
                 // dimensions[] = {0.45, 1.3}; // width & length
                 class Positions {
