@@ -2,17 +2,28 @@ params [
     ["_vehicle", objNull],
     ["_animal", objNull]
 ];
+assert(!(isNull _vehicle));
+assert(!(isNull _animal));
+assert(local _vehicle);
 
-private _seat = [_vehicle] call GRAD_animalTransport_fnc_findSuitableSeat;
-if (_seat == -1) exitWith { /*halp*/ diag_log "loading failed, no open seat" };
+diag_log "loading";
 
-_vehicle lockCargo [_seat, true];
+private _space = [_vehicle, typeOf _animal] call GRAD_animalTransport_fnc_findSuitableSpace;
+if (_space == configNull) exitWith { /*halp*/ diag_log "loading failed, no open seat" };
 
-private _seatOffset = [_vehicle, _seat] call GRAD_animalTransport_fnc_getCargoPositionOffset;
-_animal attachTo [_vehicle, _seatOffset]; // are there _memPoints for vehicles?
+private _necessarySeats = [_space, "cargoIndices", []] call BIS_fnc_returnConfigEntry;
+{
+    [_vehicle, _x, true] call GRAD_animalTransport_fnc_lockCargoIndex;
+} forEach _necessarySeats;
 
-// alas, this is not network safe
-private _allAnimals = _vehicle getVariable ["GRAD_animalTransport_animals", []];
-_allAnimals set [_seat, _animal];
+diag_log "locked";
+
+private _seatOffset = [_space, "offset", [0, 0, 0]] call BIS_fnc_returnConfigEntry;
+_animal attachTo [_vehicle, _seatOffset];
+
+diag_log "attached";
+
+private _allAnimals = _vehicle getVariable ["GRAD_animalTransport_animals", ([] call cba_fnc_hashCreate)];
+[_allAnimals, configName _space, _animal] call cba_fnc_hashSet;
 
 _vehicle setVariable ["GRAD_animalTransport_animals", _allAnimals, true];

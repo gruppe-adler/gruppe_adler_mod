@@ -22,10 +22,27 @@ private _loadAction = [
     "", // icon
     {
         private _vehicle = [_target] call GRAD_animalTransport_fnc_findSuitableVehicle;
+        diag_log "try to load";
         ["GRAD_animalTransport_loadAnimal", [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
     },
     {
+        (isNull (attachedTo _target)) &&
         !(isNull ([_target] call GRAD_animalTransport_fnc_findSuitableVehicle))
+    }
+] call ace_interact_menu_fnc_createAction;
+
+
+private _unloadSingleAction = [
+    "GRAD_animalTransport_unloadSingleAction",
+    "unload from vehicle",
+    "", // icon
+    {
+        ["GRAD_animalTransport_unloadSingleAnimal", [_target], attachedTo _target] call CBA_fnc_targetEvent;
+    },
+    {
+        private _attachedTo = attachedTo _target;
+        if (isNull _attachedTo) exitWith {false};
+        [_attachedTo getVariable ["GRAD_animalTransport_animals", []]] call CBA_fnc_isHash
     }
 ] call ace_interact_menu_fnc_createAction;
 
@@ -40,7 +57,6 @@ private _loadAction = [
 } forEach ["Sheep_random_F", "Goat_random_F", "Alsatian_Random_F", "Fin_random_F"];
 
 
-
 private _unloadAction = [
     "GRAD_animalTransport_unloadAction",
     "unload animals",
@@ -49,7 +65,8 @@ private _unloadAction = [
         ["GRAD_animalTransport_unloadAnimals", [_target], _target] call CBA_fnc_targetEvent;
     },
     {
-        (_target getVariable ["GRAD_animalTransport_animals", []]) findIf { !(isNull _x) } != -1;
+        private _animals = (_target getVariable ["GRAD_animalTransport_animals", ([] call cba_fnc_hashCreate)]);
+        ([_animals] call cba_fnc_hashSize) > 0
     }
 ] call ace_interact_menu_fnc_createAction;
 
@@ -58,6 +75,17 @@ private _unloadAction = [
         _x,
         0,
         ["ACE_MainActions"],
+        _unloadAction,
+        true
+    ] call ace_interact_menu_fnc_addActionToClass
+} forEach ["Car"];
+
+// TODO removeme
+{
+    [
+        _x,
+        0,
+        ["ACE_MainActions", "GRAD_animalTransport_unloadAction"],
         _unloadAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass

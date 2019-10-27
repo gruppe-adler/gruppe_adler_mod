@@ -8,11 +8,14 @@ if (isNull _animal) exitWith {
     objNull
 };
 
-// Truck_F
-private _candidates = nearestObjects [_animal, ["Car", "Truck_F", "B_G_Van_01_transport_F"], 10, false];
+// configured vehicle classes
+_possibleVehicleClasses =  ("true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Vehicles"));
+_possibleVehicleClasses = _possibleVehicleClasses apply { configName _x};
+private _candidates = nearestObjects [_animal, _possibleVehicleClasses, 15, false];
 
+//FIXME
 private _foundIdx = _candidates findIf {
-    ([_x] call GRAD_animalTransport_fnc_findSuitableSeat) != -1;
+    !(isNull ([_x, typeOf _animal] call GRAD_animalTransport_fnc_findSuitableSpace));
 };
 
 if (_foundIdx == -1) then {

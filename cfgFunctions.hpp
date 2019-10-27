@@ -5,10 +5,10 @@
 class GRAD_animalTransport {
     class General {
         file = MODULES_DIRECTORY\grad-animalTransport\functions;
-        class findSuitableSeat {};
+        class findSuitableSpace {};
         class findSuitableVehicle {};
-        class getCargoPositionOffset {};
         class loadAnimal {};
+        class lockCargoIndex {};
         class registerEventHandler {
             postInit = 1;
         };
@@ -16,5 +16,7 @@ class GRAD_animalTransport {
             postInit = 1;
         };
         class unloadAnimals {};
+        class unloadSingleAnimal {};
+        class unloadSingleAnimalDetach {};
     };
 };
