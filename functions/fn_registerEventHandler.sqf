@@ -1,17 +1,10 @@
 
-["GRAD_animalTransport_loadAnimal", {
-    scriptName "GRAD_animalTransport_loadAnimal";
-    _this call GRAD_animalTransport_fnc_loadAnimal;
+["GRAD_animalTransport_vehicle_loadAnimal", {
+    scriptName "GRAD_animalTransport_vehicle_loadAnimal";
+    _this call GRAD_animalTransport_fnc_vehicle_loadAnimal;
 }] call CBA_fnc_addEventHandler;
 
-
-["GRAD_animalTransport_unloadAnimals", {
-    scriptName "GRAD_animalTransport_unloadAnimals";
-    _this call GRAD_animalTransport_fnc_unloadAnimals;
-}] call CBA_fnc_addEventHandler;
-
-
-["GRAD_animalTransport_unloadSingleAnimal", {
-    scriptName "GRAD_animalTransport_unloadSingleAnimal";
-    _this call GRAD_animalTransport_fnc_unloadSingleAnimal;
+["GRAD_animalTransport_vehicle_unloadAnimal", {
+    scriptName "GRAD_animalTransport_vehicle_unloadAnimal";
+    _this call GRAD_animalTransport_fnc_vehicle_unloadAnimal;
 }] call CBA_fnc_addEventHandler;

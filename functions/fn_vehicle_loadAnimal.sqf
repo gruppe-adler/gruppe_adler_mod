@@ -1,17 +1,18 @@
 params [
     ["_vehicle", objNull],
-    ["_animal", objNull]
+    ["_animal", objNull],
+    ["_spaceName", ""]
 ];
 assert(!(isNull _vehicle));
 assert(!(isNull _animal));
 assert(local _vehicle);
 
-private _space = [_vehicle, typeOf _animal] call GRAD_animalTransport_fnc_findSuitableSpace;
-if (_space == configNull) exitWith { /*halp*/ diag_log "loading failed, no open seat" };
+_space = [_vehicle, typeOf _animal, _spaceName] call GRAD_animalTransport_fnc_findSuitableSpace;
+if (_space == configNull) exitWith { /*halp*/ diag_log format["loading failed, no open seat %1", _spaceName] };
 
 private _necessarySeats = [_space, "cargoIndices", []] call BIS_fnc_returnConfigEntry;
 {
-    [_vehicle, _x, true] call GRAD_animalTransport_fnc_lockCargoIndex;
+    [_vehicle, _x, true] call GRAD_animalTransport_fnc_vehicle_lockCargoIndex;
 } forEach _necessarySeats;
 
 

@@ -4,8 +4,7 @@ class GRAD_animalTransport {
             unloadPoint[] = {0, -4, -0.6};
             unloadActionPoint[] = {0, -3.5, -0.4};
             class Sheep_random_F {
-                // dimensions[] = {0.45, 1.3}; // width & length
-                class Positions {
+                class Spaces {
                     class FrontOuterLeft {
                         offset[] = {-0.7, -1.4, -0.6};
                         cargoIndices[] = {2, 4};
@@ -45,8 +44,7 @@ class GRAD_animalTransport {
             unloadPoint[] = {0, -4, -0.2};
             unloadActionPoint[] = {0, -3.2, -0.1};
             class Sheep_random_F {
-                // dimensions[] = {0.45, 1.3}; // width & length
-                class Positions {
+                class Spaces {
                     class FrontLeft {
                         offset[] = {-0.50, -0.70, -0.20};
                         cargoIndices[] = {13, 3, 5};

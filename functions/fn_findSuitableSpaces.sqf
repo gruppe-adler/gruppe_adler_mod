@@ -1,10 +1,9 @@
 /**
- * returns configNull or suitable Space
+ * returns array of open Spaces
  */
 params [
     ["_vehicle", objNull],
-    ["_animalClass", ""],
-    ["_spaceName", ""]
+    ["_animalClass", ""]
 ];
 
 assert(_animalClass != "");
@@ -21,12 +20,6 @@ private _occupiedSeats = _seats select {
     _cargoIndex
 };
 
-if (_spaceName != "") then {
-    _spaces = _spaces select {
-        configName(_x) == _spaceName
-    }; // yes, that is one or zero spaces.
-};
-
 // discard where people already sit
 _spaces = _spaces select {
     private _necessarySeats = [_x, "cargoIndices", []] call BIS_fnc_returnConfigEntry;
@@ -35,13 +28,7 @@ _spaces = _spaces select {
 
 // discard places that animals already occupy
 private _occupiedSpaces = _vehicle getVariable ["GRAD_animalTransport_animals", ([]  call cba_fnc_hashCreate)];
-_spaces = _spaces select {
-    !([_occupiedSpaces, configName _x] call cba_fnc_hashHasKey);
-};
 
-// return first or null
-if (count _spaces > 0) then {
-    _spaces#0
-} else {
-    configNull
+_spaces select {
+    !([_occupiedSpaces, configName _x] call cba_fnc_hashHasKey);
 };
