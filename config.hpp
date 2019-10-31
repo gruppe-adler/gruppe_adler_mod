@@ -1,4 +1,23 @@
 class GRAD_animalTransport {
+    class Animals {
+        class Sheep_random_F {
+            stop = "Sheep_Stop";
+            default = "Sheep_Idle_Stop";
+            actionPoint[] = {0, 0.35, 0.65};
+        };
+        class Goat_random_F {
+            stop = "Goat_Stop";
+            default = "Goat_Idle_Stop";
+        };
+        class Alsatian_Random_F {
+            stop = "Dog_Stop";
+            default = "Dog_Idle_Stop";
+        };
+        class Fin_random_F {
+            stop = "Dog_Stop";
+            default = "Dog_Idle_Stop";
+        };
+    };
     class Vehicles {
         class B_G_Van_01_transport_F {
             unloadPoint[] = {0, -4, -0.6};

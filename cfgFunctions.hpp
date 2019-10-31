@@ -5,6 +5,7 @@
 class GRAD_animalTransport {
     class General {
         file = MODULES_DIRECTORY\grad-animalTransport\functions;
+        class controlAnimal {};
         class findSuitableSpace {};
         class findSuitableSpaces {};
         class findSuitableVehicle {};
@@ -12,6 +13,8 @@ class GRAD_animalTransport {
         class initVars {
             preInit = 1;
         };
+        class player_interactMenuClosed {};
+        class player_interactMenuOpened {};
         class player_registerInteract {
             postInit = 1;
         };

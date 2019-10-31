@@ -1,80 +1,82 @@
 if (!hasInterface) exitWith {};
 
-private _vehicleConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Vehicles");
-
-private _loadAction = [
-    "GRAD_animalTransport_loadAction",
-    "load on vehicle",
-    "", // icon
-    { // action
-        private _vehicle = [_target] call GRAD_animalTransport_fnc_findSuitableVehicle;
-        ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
-    },
-    { // condition
-        (isNull (attachedTo _target)) &&
-        !(isNull ([_target] call GRAD_animalTransport_fnc_findSuitableVehicle))
-    },
-    { // children
-        private _spaces = [_target] call GRAD_animalTransport_fnc_findSuitableVehicles;
-        ([_spaces] call CBA_fnc_hashKeys) apply {
-            private _vehicle = _x;
-            private _vehicleSpaces = [_spaces, _vehicle] call CBA_fnc_hashGet;
-            _vehicleAction = [
-                format ["GRAD_animalTransport_loadAction_%1", _forEachIndex], // TODO file bug at jrenslow's plugin: "select#0" confuses parser here
-                format ["load onto %1", _vehicle],
-                "",
-                {
-                    params ["_target", "", "_params"];
-                    _params params ["_vehicle"];
-
-                    ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
-                },
-                {true},
-                {[]},
-                [_vehicle]
-            ] call ace_interact_menu_fnc_createAction;
-            _spaceActions = _vehicleSpaces apply {
-                private _spaceName = configName _x;
-                [
-                    format ["GRAD_animalTransport_loadAction_%1_%2", _forEachIndex, _spaceName],
-                    _spaceName,
+private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Animals");
+{
+    private _interactPoint = ([_x, "actionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
+    private _loadAction = [
+        "GRAD_animalTransport_loadAction",
+        "load on vehicle",
+        "", // icon
+        { // action
+            private _vehicle = [_target] call GRAD_animalTransport_fnc_findSuitableVehicle;
+            ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
+        },
+        { // condition
+            (isNull (attachedTo _target)) &&
+            !(isNull ([_target] call GRAD_animalTransport_fnc_findSuitableVehicle))
+        },
+        { // children
+            private _spaces = [_target] call GRAD_animalTransport_fnc_findSuitableVehicles;
+            ([_spaces] call CBA_fnc_hashKeys) apply {
+                private _vehicle = _x;
+                private _vehicleSpaces = [_spaces, _vehicle] call CBA_fnc_hashGet;
+                _vehicleAction = [
+                    format ["GRAD_animalTransport_loadAction_%1", _forEachIndex], // TODO file bug at jrenslow's plugin: "select#0" confuses parser here
+                    format ["load onto %1", _vehicle],
                     "",
                     {
                         params ["_target", "", "_params"];
-                        _params params ["_vehicle", "_spaceName"];
-                        ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target, _spaceName], _vehicle] call CBA_fnc_targetEvent;
+                        _params params ["_vehicle"];
+
+                        ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
                     },
                     {true},
                     {[]},
-                    [_vehicle, _spaceName]
+                    [_vehicle]
                 ] call ace_interact_menu_fnc_createAction;
-            };
-            [
-                _vehicleAction,
-                _spaceActions apply {
+                _spaceActions = _vehicleSpaces apply {
+                    private _spaceName = configName _x;
                     [
-                        _x,
-                        [],
-                        _target
-                    ]
-                },
-                _target
-            ]
-        };
-    }
-] call ace_interact_menu_fnc_createAction;
-
-{
+                        format ["GRAD_animalTransport_loadAction_%1_%2", _forEachIndex, _spaceName],
+                        _spaceName,
+                        "",
+                        {
+                            params ["_target", "", "_params"];
+                            _params params ["_vehicle", "_spaceName"];
+                            ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target, _spaceName], _vehicle] call CBA_fnc_targetEvent;
+                        },
+                        {true},
+                        {[]},
+                        [_vehicle, _spaceName]
+                    ] call ace_interact_menu_fnc_createAction;
+                };
+                [
+                    _vehicleAction,
+                    _spaceActions apply {
+                        [
+                            _x,
+                            [],
+                            _target
+                        ]
+                    },
+                    _target
+                ]
+            };
+        },
+        [],
+        _interactPoint
+    ] call ace_interact_menu_fnc_createAction;
     [
-        _x,
+        configName _x,
         0,
         [],
         _loadAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass
-} forEach ["Sheep_random_F", "Goat_random_F", "Alsatian_Random_F", "Fin_random_F"];
+} forEach _animalConfigs;
 
 
+private _vehicleConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Vehicles");
 {
     private _unloadActionPoint = ([_x, "unloadActionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
     private _conditions = {
