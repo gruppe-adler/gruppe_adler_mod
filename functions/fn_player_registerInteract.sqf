@@ -3,6 +3,29 @@ if (!hasInterface) exitWith {};
 private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Animals");
 {
     private _interactPoint = ([_x, "actionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
+
+
+    // TODO when I make a mod of it: this belongs into the main config
+    private _mainAction = [
+        "ACE_MainActions",
+        "",
+        "",
+        {},
+        {true},
+        {[]},
+        [],
+        _interactPoint
+    ] call ace_interact_menu_fnc_createAction;
+    // ACE_MainActions
+
+    [
+        configName _x,
+        0,
+        [],
+        _mainAction,
+        true
+    ] call ace_interact_menu_fnc_addActionToClass;
+
     private _loadAction = [
         "GRAD_animalTransport_loadAction",
         "load on vehicle",
@@ -69,10 +92,11 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
     [
         configName _x,
         0,
-        [],
+        ["ACE_MainActions"],
         _loadAction,
         true
-    ] call ace_interact_menu_fnc_addActionToClass
+    ] call ace_interact_menu_fnc_addActionToClass;
+
 } forEach _animalConfigs;
 
 
@@ -125,5 +149,5 @@ private _vehicleConfigs = "true" configClasses(missionConfigFile >> "GRAD_animal
         [],
         _positionedUnloadAction,
         true
-    ] call ace_interact_menu_fnc_addActionToClass
+    ] call ace_interact_menu_fnc_addActionToClass;
 } forEach _vehicleConfigs;
