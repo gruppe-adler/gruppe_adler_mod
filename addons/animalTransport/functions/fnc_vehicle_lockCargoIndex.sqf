@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 params [
     ["_vehicle", objNull],
     ["_lockCargoIndex", -999],
@@ -20,7 +22,7 @@ _allSeats findIf {
                 _vehicle lockTurret [_turretPath, _newState];
             };
             default {
-                diag_log "warning: unhandled cargo index";
+                WARNING("warning: unhandled cargo index");
             };
         };
     } else {

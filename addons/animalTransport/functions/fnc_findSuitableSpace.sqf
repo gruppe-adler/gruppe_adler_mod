@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /**
  * returns configNull or suitable Space
  */
@@ -10,7 +12,12 @@ params [
 assert(_animalClass != "");
 assert(!(isNull _vehicle));
 
-private _spaces = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Vehicles" >> (typeOf _vehicle) >> _animalClass >> "Spaces");
+private _customVehicleConfig = [_vehicle] call FUNC(getCustomConfig);
+if (isNull _customVehicleConfig) exitWith {
+    configNull
+};
+
+private _spaces = "true" configClasses(_customVehicleConfig >> _animalClass >> "Spaces");
 
 /* {unit: object, role: string, cargoIndex: number, ...}[] */
 private _seats = fullCrew [_vehicle, "", true];
@@ -30,11 +37,11 @@ if (_spaceName != "") then {
 // discard where people already sit
 _spaces = _spaces select {
     private _necessarySeats = [_x, "cargoIndices", []] call BIS_fnc_returnConfigEntry;
-    count (_necessarySeats arrayIntersect _occupiedSeats) == 0
+    (count (_necessarySeats arrayIntersect _occupiedSeats)) == 0
 };
 
 // discard places that animals already occupy
-private _occupiedSpaces = _vehicle getVariable ["GRAD_animalTransport_animals", ([]  call cba_fnc_hashCreate)];
+private _occupiedSpaces = _vehicle getVariable [QGVAR(animals), ([]  call cba_fnc_hashCreate)];
 _spaces = _spaces select {
     !([_occupiedSpaces, configName _x] call cba_fnc_hashHasKey);
 };

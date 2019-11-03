@@ -1,8 +1,9 @@
+#include "script_component.hpp"
+
 if (!hasInterface) exitWith {};
 
-private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Animals");
 {
-    private _interactPoint = ([_x, "actionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
+    private _interactPoint = ([_x >> "GRAD_AnimalTransport", "actionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
 
     // TODO when I make a mod of it: this belongs into the main config
     private _mainAction = [
@@ -25,19 +26,19 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
     ] call ace_interact_menu_fnc_addActionToClass;
 
     private _loadAction = [
-        "GRAD_animalTransport_loadAction",
+        QGVAR(loadAction),
         "load on vehicle",
         "", // icon
         { // action
-            private _vehicle = [_target] call GRAD_animalTransport_fnc_findSuitableVehicle;
-            ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
+            private _vehicle = [_target] call FUNC(findSuitableVehicle);
+            [QGVAR(vehicle_loadAnimal), [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
         },
         { // condition
             (isNull (attachedTo _target)) &&
-            !(isNull ([_target] call GRAD_animalTransport_fnc_findSuitableVehicle))
+            !(isNull ([_target] call FUNC(findSuitableVehicle)))
         },
         { // children
-            private _spaces = [_target] call GRAD_animalTransport_fnc_findSuitableVehicles;
+            private _spaces = [_target] call FUNC(findSuitableVehicles);
             ([_spaces] call CBA_fnc_hashKeys) apply {
                 private _vehicle = _x;
                 private _vehicleSpaces = [_spaces, _vehicle] call CBA_fnc_hashGet;
@@ -49,7 +50,7 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
                         params ["_target", "", "_params"];
                         _params params ["_vehicle"];
 
-                        ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
+                        [QGVAR(vehicle_loadAnimal), [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
                     },
                     {true},
                     {[]},
@@ -64,7 +65,7 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
                         {
                             params ["_target", "", "_params"];
                             _params params ["_vehicle", "_spaceName"];
-                            ["GRAD_animalTransport_vehicle_loadAnimal", [_vehicle, _target, _spaceName], _vehicle] call CBA_fnc_targetEvent;
+                            [QGVAR(vehicle_loadAnimal), [_vehicle, _target, _spaceName], _vehicle] call CBA_fnc_targetEvent;
                         },
                         {true},
                         {[]},
@@ -95,25 +96,17 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
         true
     ] call ace_interact_menu_fnc_addActionToClass;
 
-//
-//    _sheep = (getPos player) nearestObject "Sheep_Random_F";
-//     [_sheep, true, [0,1,1], 90, false] call ace_dragging_fnc_setCarryable;
-//
-//  works for single animal, but I want it in Init XEH 
+} forEach ([] call FUNC(getSupportedAnimalConfigs));
 
-} forEach _animalConfigs;
-
-
-private _vehicleConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Vehicles");
 {
-    private _unloadActionPoint = ([_x, "unloadActionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
+    private _unloadActionPoint = ([_x >> "GRAD_AnimalTransport", "unloadActionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
     private _conditions = {
-        private _animals = (_target getVariable ["GRAD_animalTransport_animals", ([] call cba_fnc_hashCreate)]);
+        private _animals = (_target getVariable [QGVAR(animals), ([] call cba_fnc_hashCreate)]);
         ([_animals] call cba_fnc_hashSize) > 0
     };
     private _childActions = {
         params ["_target"];
-        private _animals = (_target getVariable ["GRAD_animalTransport_animals", ([] call cba_fnc_hashCreate)]);
+        private _animals = (_target getVariable [QGVAR(animals), ([] call cba_fnc_hashCreate)]);
         ([_animals] call CBA_fnc_hashKeys)
             apply {
                 private _animal = [_animals, _x] call CBA_fnc_hashGet;
@@ -123,7 +116,7 @@ private _vehicleConfigs = "true" configClasses(missionConfigFile >> "GRAD_animal
                     "", // icon
                     {
                         params ["", "_player", "_params"];
-                        ["GRAD_animalTransport_vehicle_unloadAnimal", _params, (attachedTo _params)] call CBA_fnc_targetEvent;
+                        [QGVAR(vehicle_unloadAnimal), _params, (attachedTo _params)] call CBA_fnc_targetEvent;
                     },
                     {true},
                     {},
@@ -134,10 +127,10 @@ private _vehicleConfigs = "true" configClasses(missionConfigFile >> "GRAD_animal
             };
     };
     private _action = {
-        [_target] call GRAD_animalTransport_fnc_player_unloadAnimals;
+        [_target] call FUNC(player)_unloadAnimals;
     };
     private _positionedUnloadAction = [
-        "GRAD_animalTransport_unloadAction",
+        QGVAR(unloadAction),
         "unload animals",
         "",
         _action,
@@ -154,4 +147,4 @@ private _vehicleConfigs = "true" configClasses(missionConfigFile >> "GRAD_animal
         _positionedUnloadAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass;
-} forEach _vehicleConfigs;
+} forEach ([] call FUNC(getSupportedCarConfigs));
