@@ -4,6 +4,8 @@ class GRAD_animalTransport {
             stop = "Sheep_Stop";
             default = "Sheep_Idle_Stop";
             actionPoint[] = {0, 0.35, 0.65};
+            carryPoint[] = {0,-0.5,0.5};
+            carryDir[] = {};
         };
         class Goat_random_F {
             stop = "Goat_Stop";
