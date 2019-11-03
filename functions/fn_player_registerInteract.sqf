@@ -4,11 +4,10 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
 {
     private _interactPoint = ([_x, "actionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
 
-
     // TODO when I make a mod of it: this belongs into the main config
     private _mainAction = [
         "ACE_MainActions",
-        "",
+        "Interactions",
         "",
         {},
         {true},
@@ -16,7 +15,6 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
         [],
         _interactPoint
     ] call ace_interact_menu_fnc_createAction;
-    // ACE_MainActions
 
     [
         configName _x,
@@ -96,6 +94,12 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
         _loadAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass;
+
+//
+//    _sheep = (getPos player) nearestObject "Sheep_Random_F";
+//     [_sheep, true, [0,1,1], 90, false] call ace_dragging_fnc_setCarryable;
+//
+//  works for single animal, but I want it in Init XEH 
 
 } forEach _animalConfigs;
 
