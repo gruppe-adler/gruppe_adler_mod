@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /**
  * returns CBA hash map of vehicle to array of Space configs
  */
@@ -7,15 +9,11 @@ params [
 
 assert(!(isNull _animal));
 
-private _vehiclesConfigPath = missionConfigFile >> "GRAD_animalTransport" >> "Vehicles";
 private _animalClass = typeOf _animal;
 
 // configured vehicle classes
-_possibleVehicleClasses = ("true" configClasses(_vehiclesConfigPath)) select {
-    !isNull(_x >> _animalClass)
-} apply {
-    configName _x
-};
+private _possibleVehicleClasses = [] call FUNC(getSupportedCarConfigs);
+_possibleVehicleClasses = _possibleVehicleClasses apply { configName _x };
 
 private _result = [] call cba_fnc_hashCreate;
 
@@ -25,7 +23,7 @@ private _nearVehicles = nearestObjects [_animal, _possibleVehicleClasses, GRAD_a
     [
         _result,
         _x,
-        ([_x, typeOf _animal] call GRAD_animalTransport_fnc_findSuitableSpaces)
+        ([_x, typeOf _animal] call FUNC(findSuitableSpaces))
     ] call cba_fnc_hashSet;
 } forEach _nearVehicles;
 

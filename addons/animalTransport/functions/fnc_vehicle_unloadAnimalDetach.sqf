@@ -1,10 +1,12 @@
+#include "script_component.hpp"
+
 params [
     "_vehicle",
     "_animal"
 ];
 
 private _unloadPoint = [
-    missionConfigFile >> "GRAD_animalTransport" >> "Vehicles" >> typeOf _vehicle,
+    [_vehicle] call FUNC(getCustomConfig),
     "unloadPoint",
     [0, 0, 0]
 ] call BIS_fnc_returnConfigEntry;

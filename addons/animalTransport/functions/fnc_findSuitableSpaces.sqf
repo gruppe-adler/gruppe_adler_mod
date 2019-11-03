@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /**
  * returns array of open Spaces
  */
@@ -9,7 +11,11 @@ params [
 assert(_animalClass != "");
 assert(!(isNull _vehicle));
 
-private _spaces = "true" configClasses(missionConfigFile >> "GRAD_animalTransport" >> "Vehicles" >> (typeOf _vehicle) >> _animalClass >> "Spaces");
+private _customVehicleConfig = [_vehicle] call FUNC(getCustomConfig);
+if (isNull _customVehicleConfig) exitWith {
+    []
+};
+private _spaces = "true" configClasses(_customVehicleConfig >> _animalClass >> "Spaces");
 
 /* {unit: object, role: string, cargoIndex: number, ...}[] */
 private _seats = fullCrew [_vehicle, "", true];
@@ -27,7 +33,7 @@ _spaces = _spaces select {
 };
 
 // discard places that animals already occupy
-private _occupiedSpaces = _vehicle getVariable ["GRAD_animalTransport_animals", ([]  call cba_fnc_hashCreate)];
+private _occupiedSpaces = _vehicle getVariable [QGVAR(animals), ([]  call cba_fnc_hashCreate)];
 
 _spaces select {
     !([_occupiedSpaces, configName _x] call cba_fnc_hashHasKey);

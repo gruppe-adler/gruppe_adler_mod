@@ -1,11 +1,13 @@
+#include "script_component.hpp"
+
 params [
     ["_vehicle", objNull]
 ];
 
-if (isNull _vehicle) exitWith { diag_log "arrgh vic is null"; };
+if (isNull _vehicle) exitWith { ERROR("arrgh vic is null"); };
 
 private _emptyHash = ([] call cba_fnc_hashCreate);
-private _animals = _vehicle getVariable ["GRAD_animalTransport_animals", _emptyHash];
+private _animals = _vehicle getVariable [QGVAR(animals), _emptyHash];
 
 private _totalCount = count ([_animals] call cba_fnc_hashKeys);
 
@@ -20,7 +22,7 @@ cba_fnc_hashValues = {
     }
 };
 
-player setVariable ["GRAD_animalTransport_lastUnloadTime", 0];
+player setVariable [QGVAR(lastUnloadTime), 0];
 
 [
     (_totalCount / GRAD_animalTransport_unloadSpeed) + 1, // TODO check if numbers are floats per default
@@ -28,16 +30,16 @@ player setVariable ["GRAD_animalTransport_lastUnloadTime", 0];
         ([_animals] call cba_fnc_hashValues)
     ],
     { // onFinish
-        diag_log "unloading finished";
+        LOG("unloading finished");
     },
     { // onFailure
         params ["", "", "", "_errorCode"];
-        diag_log format["unloading failed with %1", _errorCode];
+        WARNING("unloading failed with %1", _errorCode);
     },
     format["unloading %1 animals", _totalCount],
     {
         params ["_args", "_elapsedTime", "_totalTime", "_errorCode"];
-        private _lastUnloadTime = player getVariable ["GRAD_animalTransport_lastUnloadTime", 0];
+        private _lastUnloadTime = player getVariable [QGVAR(lastUnloadTime), 0];
         private _timeToUnload = ((_elapsedTime - _lastUnloadTime) * GRAD_animalTransport_unloadSpeed) > 1;
         if (!_timeToUnload) exitWith {true};
 
@@ -48,8 +50,8 @@ player setVariable ["GRAD_animalTransport_lastUnloadTime", 0];
         if (_animalIndex == -1) exitWith {false};
 
         private _animal = (_animals select _animalIndex);
-        ["GRAD_animalTransport_vehicle_unloadAnimal", [_animal], attachedTo _animal] call CBA_fnc_targetEvent;
-        player setVariable ["GRAD_animalTransport_lastUnloadTime", _elapsedTime];
+        [QGVAR(vehicle_unloadAnimal), [_animal], attachedTo _animal] call CBA_fnc_targetEvent;
+        player setVariable [QGVAR(lastUnloadTime), _elapsedTime];
         _animals set [_animalIndex, objNull]; // remember: arrays are mutable, we're editing the same copy over and over
         true
     }

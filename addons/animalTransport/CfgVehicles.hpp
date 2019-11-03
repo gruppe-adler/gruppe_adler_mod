@@ -1,25 +1,41 @@
-class GRAD_animalTransport {
-    class Animals {
-        class Sheep_random_F {
+class CfgVehicles {
+    class Animal_Base_F;
+    class Sheep_random_F: Animal_Base_F {
+        class GRAD_AnimalTransport {
             stop = "Sheep_Stop";
             default = "Sheep_Idle_Stop";
             actionPoint[] = {0, 0.35, 0.65};
         };
-        class Goat_random_F {
+        ACE_dragging_canCarry = 1;
+        ACE_dragging_carryPosition[] = {0, 1, 1};
+        ACE_dragging_carryDirection = 90;
+    };
+    class Goat_Base_F: Animal_Base_F {
+        class GRAD_AnimalTransport {
             stop = "Goat_Stop";
             default = "Goat_Idle_Stop";
         };
-        class Alsatian_Random_F {
-            stop = "Dog_Stop";
-            default = "Dog_Idle_Stop";
-        };
-        class Fin_random_F {
+    };
+    class Dog_Base_F: Animal_Base_F {
+        class GRAD_AnimalTransport {
             stop = "Dog_Stop";
             default = "Dog_Idle_Stop";
         };
     };
-    class Vehicles {
-        class B_G_Van_01_transport_F {
+    class Fowl_Base_F: Animal_Base_F {
+        class GRAD_AnimalTransport {
+            actionPoint[] = {0, 0, 0.25};
+        };
+    };
+    class Rabbit_F: Animal_Base_F {
+        class GRAD_AnimalTransport {
+            actionPoint[] = {0, 0, 0.1};
+        };
+    };
+
+    class Van_01_base_F;
+    class I_G_Van_01_transport_F: Van_01_base_F {
+		class GRAD_AnimalTransport {
             unloadPoint[] = {0, -4, -0.6};
             unloadActionPoint[] = {0, -3.5, -0.4};
             class Sheep_random_F {
@@ -59,7 +75,11 @@ class GRAD_animalTransport {
                 };
             };
         };
-        class rhsgref_ins_g_ural_work_open {
+	};
+
+    class RHS_Ural_Civ_Base;
+    class rhsgref_ins_ural_work_open: RHS_Ural_Civ_Base {
+		class GRAD_AnimalTransport {
             unloadPoint[] = {0, -4, -0.2};
             unloadActionPoint[] = {0, -3.2, -0.1};
             class Sheep_random_F {

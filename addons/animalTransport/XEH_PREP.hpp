@@ -1,0 +1,15 @@
+PREP(controlAnimal);
+PREP(findSuitableSpace);
+PREP(findSuitableSpaces);
+PREP(findSuitableVehicle);
+PREP(findSuitableVehicles);
+PREP(getSupportedAnimalConfigs);
+PREP(getCustomConfig);
+PREP(getSupportedCarConfigs);
+PREP(player_interactMenuClosed);
+PREP(player_interactMenuOpened);
+PREP(player_unloadAnimals);
+PREP(vehicle_loadAnimal);
+PREP(vehicle_lockCargoIndex);
+PREP(vehicle_unloadAnimal);
+PREP(vehicle_unloadAnimalDetach);
