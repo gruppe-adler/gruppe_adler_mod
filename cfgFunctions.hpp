@@ -22,7 +22,6 @@ class GRAD_animalTransport {
         class registerEventHandler {
             postInit = 1;
         };
-        class setYawPitchRoll {};
         class vehicle_loadAnimal {};
         class vehicle_lockCargoIndex {};
         class vehicle_unloadAnimal {};

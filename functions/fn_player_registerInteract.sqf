@@ -8,7 +8,7 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
     // TODO when I make a mod of it: this belongs into the main config
     private _mainAction = [
         "ACE_MainActions",
-        "Interactions",
+        "",
         "",
         {},
         {true},
@@ -25,31 +25,6 @@ private _animalConfigs = "true" configClasses(missionConfigFile >> "GRAD_animalT
         _mainAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass;
-
-    _carryAction = [
-        "GRAD_animalTransport_carryAction",
-        "carry animal",
-        "",
-        {
-            _target attachTo [player, [-0.3, 0.5, 1]];
-            player setVariable ["ACE_dragging_isCarrying", true, true];
-            // player setVariable ["ACE_dragging_carriedObject", objNull, true];
-
-            [_target, 90, 0, 45] call GRAD_animalTransport_fnc_setYawPitchRoll; // TODO make network safe - proxy through event
-            [_target, "stop"] call GRAD_animalTransport_fnc_controlAnimal;
-        },
-        {!(player getVariable ["ACE_dragging_isCarrying", false])},
-        {[]},
-        []
-    ] call ace_interact_menu_fnc_createAction;
-    [
-        configName _x,
-        0,
-        ["ACE_MainActions"],
-        _carryAction,
-        true
-    ] call ace_interact_menu_fnc_addActionToClass;
-
 
     private _loadAction = [
         "GRAD_animalTransport_loadAction",
