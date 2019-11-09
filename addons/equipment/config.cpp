@@ -16,3 +16,4 @@ class CfgPatches {
 
 #include "cfgVehicles.hpp"
 #include "cfgUnitInsignia.hpp"
+#include "cfgWeapons.hpp"
