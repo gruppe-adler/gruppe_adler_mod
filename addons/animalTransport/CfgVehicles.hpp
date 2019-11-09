@@ -1,43 +1,81 @@
+#define GRAD_ANIMALTRANSPORT_UNLOAD_ACTION \
+    displayName = "unload animals"; \
+    condition = QUOTE(_this call DFUNC(interact_unloadCondition)); \
+    statement = QUOTE(_this call DFUNC(interact_unloadStatement)); \
+    icon = ""; \
+    insertChildren = QUOTE(_this call DFUNC(interact_unloadChildren));
+
+#define GRAD_ANIMALTRANSPORT_LOAD_ACTION \
+    condition = "true"; \
+    displayName = "Interactions"; \
+    distance = "4"; \
+    class GVAR(loadAction) { \
+        displayName = "load on vehicle"; \
+        condition = QUOTE(_this call DFUNC(interact_loadCondition)); \
+        statement = QUOTE(_this call DFUNC(interact_loadStatement)); \
+        icon = ""; \
+        insertChildren = QUOTE(_this call DFUNC(interact_loadChildren)); \
+    };
+
 class CfgVehicles {
     class Animal_Base_F;
     class Sheep_random_F: Animal_Base_F {
+        class ACE_Actions {
+            class ACE_MainActions {
+                position = "[0, 0.35, 0.65]";
+                GRAD_ANIMALTRANSPORT_LOAD_ACTION
+            };
+        };
         class GRAD_AnimalTransport {
             stop = "Sheep_Stop";
             default = "Sheep_Idle_Stop";
-            actionPoint[] = {0, 0.35, 0.65};
         };
         ACE_dragging_canCarry = 1;
         ACE_dragging_carryPosition[] = {0, 1, 1};
         ACE_dragging_carryDirection = 90;
     };
     class Goat_Base_F: Animal_Base_F {
+        class ACE_Actions {
+            class ACE_MainActions {
+                position = "[0, 0.35, 0.65]";
+                GRAD_ANIMALTRANSPORT_LOAD_ACTION
+            };
+        };
         class GRAD_AnimalTransport {
             stop = "Goat_Stop";
             default = "Goat_Idle_Stop";
         };
+        ACE_dragging_canCarry = 1;
+        ACE_dragging_carryPosition[] = {0, 1, 1};
+        ACE_dragging_carryDirection = 90;
     };
     class Dog_Base_F: Animal_Base_F {
+        class ACE_Actions {
+            class ACE_MainActions {
+                position = "[0, 0.35, 0.65]";
+                GRAD_ANIMALTRANSPORT_LOAD_ACTION
+            };
+        };
         class GRAD_AnimalTransport {
             stop = "Dog_Stop";
             default = "Dog_Idle_Stop";
         };
-    };
-    class Fowl_Base_F: Animal_Base_F {
-        class GRAD_AnimalTransport {
-            actionPoint[] = {0, 0, 0.25};
-        };
-    };
-    class Rabbit_F: Animal_Base_F {
-        class GRAD_AnimalTransport {
-            actionPoint[] = {0, 0, 0.1};
-        };
+        ACE_dragging_canCarry = 1;
+        ACE_dragging_carryPosition[] = {0, 1, 1};
+        ACE_dragging_carryDirection = 90;
     };
 
     class Van_01_base_F;
     class I_G_Van_01_transport_F: Van_01_base_F {
+        class ACE_Actions {
+            class GVAR(unloadAction) {
+                position = "[0, -3.5, -0.4]";
+                GRAD_ANIMALTRANSPORT_UNLOAD_ACTION
+            };
+        };
 		class GRAD_AnimalTransport {
             unloadPoint[] = {0, -4, -0.6};
-            unloadActionPoint[] = {0, -3.5, -0.4};
+
             class Sheep_random_F {
                 class Spaces {
                     class FrontOuterLeft {
@@ -79,9 +117,14 @@ class CfgVehicles {
 
     class RHS_Ural_Civ_Base;
     class rhsgref_ins_ural_work_open: RHS_Ural_Civ_Base {
+        class ACE_Actions {
+            class GVAR(unloadAction) {
+                position = "[0, -3.2, -0.1]";
+                GRAD_ANIMALTRANSPORT_UNLOAD_ACTION
+            };
+        };
 		class GRAD_AnimalTransport {
             unloadPoint[] = {0, -4, -0.2};
-            unloadActionPoint[] = {0, -3.2, -0.1};
             class Sheep_random_F {
                 class Spaces {
                     class FrontLeft {

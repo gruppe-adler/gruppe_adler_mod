@@ -13,12 +13,11 @@ class Extended_PreInit_EventHandlers {
 class Extended_PostInit_EventHandlers {
     class ADDON {
         init = QUOTE(call COMPILE_FILE(XEH_postInit));
-        clientInit = QUOTE(call COMPILE_FILE(XEH_postClientInit));
     };
 };
 
 
-class Extended_Init_EventHandlers {
+class Extended_InitPost_EventHandlers {
     class Sheep_random_F {
         class ADDON {
             init = QUOTE(_this call ace_dragging_fnc_initObject);
@@ -33,7 +32,7 @@ class Extended_Init_EventHandlers {
         class ADDON {
             init = QUOTE(_this call ace_dragging_fnc_initObject);
         };
-    };    
+    };
     class Fowl_Base_F {
         class ADDON {
             init = QUOTE(_this call ace_dragging_fnc_initObject);
