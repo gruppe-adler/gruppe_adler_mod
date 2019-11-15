@@ -7,30 +7,8 @@ class CfgVehicles {
             actionPoint[] = {0, 0.35, 0.65};
         };
         ACE_dragging_canCarry = 1;
-        ACE_dragging_carryPosition[] = {0, 1, 1};
+        ACE_dragging_carryPosition[] = {-0.5, 0.6, 0.5};
         ACE_dragging_carryDirection = 90;
-    };
-    class Goat_Base_F: Animal_Base_F {
-        class GRAD_AnimalTransport {
-            stop = "Goat_Stop";
-            default = "Goat_Idle_Stop";
-        };
-    };
-    class Dog_Base_F: Animal_Base_F {
-        class GRAD_AnimalTransport {
-            stop = "Dog_Stop";
-            default = "Dog_Idle_Stop";
-        };
-    };
-    class Fowl_Base_F: Animal_Base_F {
-        class GRAD_AnimalTransport {
-            actionPoint[] = {0, 0, 0.25};
-        };
-    };
-    class Rabbit_F: Animal_Base_F {
-        class GRAD_AnimalTransport {
-            actionPoint[] = {0, 0, 0.1};
-        };
     };
 
     class Van_01_base_F;
@@ -117,6 +95,91 @@ class CfgVehicles {
                         offset[] = {0.4, -3.0, -0.20};
                         dir = 270;
                         cargoIndices[] = {10, 11};
+                    };
+                };
+            };
+        };
+    };
+    class rhs_gaz66_vmf;
+    class rhs_gaz66o_vmf: rhs_gaz66_vmf {
+        class GRAD_AnimalTransport {
+            unloadPoint[] = {0, -3, -0.6};
+            unloadActionPoint[] = {0, -2.5, -0.4};
+            class Sheep_random_F {
+                class Spaces {
+                    class FrontOuterLeft {
+                        offset[] = {-0.8, -0.6, -0.6};
+                    };
+                    class FrontInnerLeft {
+                        offset[] = {-0.35, -0.75, -0.6};
+                    };
+                    class FrontInnerRight {
+                        offset[] = {0.1, -0.6, -0.6};
+                    };
+                    class FrontOuterRight {
+                        offset[] = { 0.55, -0.75, -0.6};
+                    };
+                    class BackOuterRight {
+                        offset[] = { 0.55, -2.0, -0.6};
+                    };
+                    class BackInnerRight {
+                        offset[] = { 0.25, -1.8, -0.6};
+                    };
+                    class BackInnerLeft {
+                        offset[] = { -0.2, -2.0, -0.6};
+                    };
+                    class BackOuterLeft {
+                        offset[] = { -0.65, -1.8, -0.6};
+                    };
+                };
+            };
+        };
+    };
+    class rhs_zil131_open_base;
+    class rhs_zil131_flatbed_base: rhs_zil131_open_base {
+        class GRAD_AnimalTransport {
+            unloadPoint[] = {0, -3, -0.6};
+            unloadActionPoint[] = {0, -2.5, -0.4};
+            class Sheep_random_F {
+                class Spaces {
+                    class FrontOuterLeft {
+                        offset[] = {-0.9, -0.5, -0.6};
+                    };
+                    class FrontInnerLeft {
+                        offset[] = {-0.45, -0.65, -0.6};
+                    };
+                    class FrontMiddle {
+                        offset[] = {0.0, -0.5, -0.6};
+                    };
+                    class FrontInnerRight {
+                        offset[] = { 0.45, -0.65, -0.6};
+                    };
+                    class FrontOuterRight {
+                        offset[] = { 0.9, -0.5, -0.6};
+                    };
+                    class CenterRight {
+                        offset[] = { -0.1, -1.1, -0.6};
+                        dir = 90;
+                    };
+                    class BackOuterRight {
+                        offset[] = { 0.9, -1.5, -0.6};
+                        dir = 180;
+                    };
+                    class BackInnerRight {
+                        offset[] = { 0.45, -1.4, -0.6};
+                        dir = 180;
+                    };
+                    class BackInnerLeft {
+                        offset[] = { -0.45, -1.0, -0.6};
+                        dir = 180;
+                    };
+                    class BackOuterLeft {
+                        offset[] = { -0.9, -1.1, -0.6};
+                        dir = 180;
+                    };
+                    class BackLeft {
+                        offset[] = { -0.0, -2.4, -0.6};
+                        dir = 270;
                     };
                 };
             };

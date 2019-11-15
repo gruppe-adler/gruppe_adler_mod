@@ -25,7 +25,7 @@ cba_fnc_hashValues = {
 player setVariable [QGVAR(lastUnloadTime), 0];
 
 [
-    (_totalCount / GRAD_animalTransport_unloadSpeed) + 1, // TODO check if numbers are floats per default
+    (_totalCount / GRAD_animalTransport_unloadSpeed) + 1,
     [ // callback arguments
         ([_animals] call cba_fnc_hashValues)
     ],

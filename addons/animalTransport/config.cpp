@@ -5,8 +5,14 @@ class CfgPatches {
 		author = "$STR_grad_Author";
 		name = QUOTE(ADDON);
 		url = "$STR_grad_URL";
-		requiredVersion = 1.0;
-		requiredAddons[] = {"grad_main","A3_Ui_F","ace_common","cba_common", "ace_dragging"}; // TODO check all other classes we reference
+		requiredAddons[] = {
+			"grad_main",
+			"ace_dragging",
+			"a3_animals_f_beta_sheep",
+			"rhs_c_trucks" /*GAZ-66*/,
+			"rhs_c_zil131"
+			// TODO: find Ural
+		};
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;

@@ -68,10 +68,7 @@ pack_directory() {
 
 if [[ $module != "" ]]; then
     echo "building only $module"
-    build_pbo "$releaseDir/addons/$module"
-	find "$releaseDir/addons" -maxdepth 1 ! -path "$1" -type d | while read component; do
-		rm -r "$component"
-	done
+    build_pbo $module
 else
 
     #format readme
