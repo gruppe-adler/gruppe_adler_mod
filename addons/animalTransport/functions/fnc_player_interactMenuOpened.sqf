@@ -11,11 +11,11 @@ if (_menuType != INTERACT) exitWith {};
 private _menuTarget = cursorObject;
 
 if (isNull _menuTarget) exitWith {};
-if !(_menuTarget isKindOf "Animal_Base_F" ) exitWith {};
+if !(_menuTarget isKindOf "Animal_Base_F") exitWith {};
 
 private _className = typeOf _menuTarget;
 private _customConfig = [_menuTarget] call FUNC(getCustomConfig);
 if (isNull _customConfig) exitWith {};
 
 GVAR(stoppedAnimals) pushBack _menuTarget;
-[QGVAR(animal_stopped), _animal, _animal] call CBA_fnc_targetEvent;
+[QGVAR(animal_stopped), _menuTarget, _menuTarget] call CBA_fnc_targetEvent;
