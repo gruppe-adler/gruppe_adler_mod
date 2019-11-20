@@ -13,7 +13,7 @@ private _settingsGroup = "GRAD Animal Transport";
     "SLIDER",
     "Maximal distance from which an animal may be loaded onto a vehicle",
     _settingsGroup,
-    [2, 25, 1, 1]
+    [2, 25, 5, 1]
 ] call CBA_settings_fnc_init;
 
 [
