@@ -9,6 +9,6 @@ params [
 if (_menuType != INTERACT) exitWith {};
 
 {
-    [_x, "default"] call FUNC(controlAnimal);
+    [QGVAR(animal_released), _x, _x] call CBA_fnc_targetEvent;
 } forEach GVAR(stoppedAnimals);
 GVAR(stoppedAnimals) = [];
