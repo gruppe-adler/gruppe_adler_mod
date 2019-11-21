@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 
 params [
-    ["_vehicle", objNull],
-    ["_animal", objNull]
+    "_vehicle",
+    "_animal"
 ];
 
 private _unloadPoint = [

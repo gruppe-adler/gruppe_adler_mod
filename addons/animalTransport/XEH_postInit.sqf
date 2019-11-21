@@ -20,6 +20,7 @@
     _this call FUNC(player_interactMenuClosed)
 }] call CBA_fnc_addEventHandler;
 
+
 [QGVAR(animal_stopped), {
     scriptName QGVAR(animal_stopped);
     [_this, "stop"] call FUNC(controlAnimal)
@@ -28,9 +29,4 @@
 [QGVAR(animal_released), {
     scriptName QGVAR(animal_released);
     [_this, "default"] call FUNC(controlAnimal)
-}] call CBA_fnc_addEventHandler;
-
-[QGVAR(animal_unloadAnimalDetach), {
-    scriptName QGVAR(animal_unload);
-    _this call FUNC(animal_unloadAnimalDetach);
 }] call CBA_fnc_addEventHandler;
