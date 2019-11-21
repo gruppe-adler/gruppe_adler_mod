@@ -18,4 +18,5 @@ private _customConfig = [_menuTarget] call FUNC(getCustomConfig);
 if (isNull _customConfig) exitWith {};
 
 GVAR(stoppedAnimals) pushBack _menuTarget;
-[QGVAR(animal_stopped), _menuTarget, _menuTarget] call CBA_fnc_targetEvent;
+
+[_menuTarget, "stop"] call FUNC(controlAnimal);

@@ -19,14 +19,3 @@
     scriptName QGVAR(ace_interactMenuClosed);
     _this call FUNC(player_interactMenuClosed)
 }] call CBA_fnc_addEventHandler;
-
-
-[QGVAR(animal_stopped), {
-    scriptName QGVAR(animal_stopped);
-    [_this, "stop"] call FUNC(controlAnimal)
-}] call CBA_fnc_addEventHandler;
-
-[QGVAR(animal_released), {
-    scriptName QGVAR(animal_released);
-    [_this, "default"] call FUNC(controlAnimal)
-}] call CBA_fnc_addEventHandler;

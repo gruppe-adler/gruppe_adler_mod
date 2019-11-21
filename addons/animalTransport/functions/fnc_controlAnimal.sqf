@@ -13,4 +13,4 @@ if (isNull _animalConfig) exitWith { ERROR_1("cannot handle animal %1", _animal)
 
 private _move = [_animalConfig, _action, ""] call BIS_fnc_returnConfigEntry;
 
-_animal playMove _move;
+ [_animal, _move] call ace_common_fnc_doAnimation;
