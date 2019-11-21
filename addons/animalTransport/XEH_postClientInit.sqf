@@ -54,7 +54,8 @@ if (!hasInterface) exitWith {};
         FUNC(interact_unloadCondition),
         FUNC(interact_unloadChildren),
         [],
-        _unloadActionPoint
+        _unloadActionPoint,
+        2.5
     ] call ace_interact_menu_fnc_createAction;
 
     [
@@ -62,7 +63,6 @@ if (!hasInterface) exitWith {};
         0,
         [],
         _positionedUnloadAction,
-        2.5,
         true
     ] call ace_interact_menu_fnc_addActionToClass;
 } forEach ([] call FUNC(getSupportedCarConfigs));

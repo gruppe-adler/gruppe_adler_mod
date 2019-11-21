@@ -14,8 +14,8 @@ class CfgVehicles {
     class Van_01_base_F;
     class I_G_Van_01_transport_F: Van_01_base_F {
 		class GRAD_AnimalTransport {
-            unloadPoint[] = {0, -4.3, -0.6};
-            unloadActionPoint[] = {0, -3.5, -0.4};
+            unloadPoint[] = {0, -4.2, -0.6};
+            unloadActionPoint[] = {0, -3.4, -0.4};
             class Sheep_random_F {
                 class Spaces {
                     class FrontOuterLeft {
