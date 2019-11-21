@@ -13,4 +13,4 @@ private _unloadPoint = [
 
 _animal attachTo [_vehicle, _unloadPoint];
 detach _animal;
-_animal setDir ((getDir _vehicle) - 180);
+["ace_common_setDir", [_animal, (getDir _vehicle) - 180], _animal] call CBA_fnc_targetEvent;

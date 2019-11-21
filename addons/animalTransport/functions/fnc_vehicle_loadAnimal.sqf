@@ -22,7 +22,7 @@ private _seatOffset = [_space, "offset", [0, 0, 0]] call BIS_fnc_returnConfigEnt
 _animal attachTo [_vehicle, _seatOffset];
 
 private _dir = [_space, "dir", 0] call BIS_fnc_returnConfigEntry;
-_animal setDir _dir;
+["ace_common_setDir", [_target, _dir], _animal] call CBA_fnc_targetEvent;
 
 private _allAnimals = _vehicle getVariable [QGVAR(animals), ([] call cba_fnc_hashCreate)];
 [_allAnimals, configName _space, _animal] call cba_fnc_hashSet;
