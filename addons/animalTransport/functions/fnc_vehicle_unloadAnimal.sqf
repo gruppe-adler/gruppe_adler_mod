@@ -25,7 +25,7 @@ private _seatsOccupiedByMe = [];
         _seatsOccupiedByOthers = _seatsOccupiedByOthers + _cargoIndices;
         true
     } else {
-        [_vehicle, _animal] call FUNC(vehicle_unloadAnimalDetach);
+        [QGVAR(animal_unloadAnimalDetach), [_vehicle, _animal], _animal] call CBA_fnc_targetEvent;
         _seatsOccupiedByMe = _cargoIndices;
         false
     }
