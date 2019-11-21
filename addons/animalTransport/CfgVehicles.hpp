@@ -14,7 +14,7 @@ class CfgVehicles {
     class Van_01_base_F;
     class I_G_Van_01_transport_F: Van_01_base_F {
 		class GRAD_AnimalTransport {
-            unloadPoint[] = {0, -4, -0.6};
+            unloadPoint[] = {0, -4.0, -0.6};
             unloadActionPoint[] = {0, -3.5, -0.4};
             class Sheep_random_F {
                 class Spaces {
@@ -58,7 +58,7 @@ class CfgVehicles {
     class RHS_Ural_Civ_Base;
     class rhsgref_ins_ural_work_open: RHS_Ural_Civ_Base {
 		class GRAD_AnimalTransport {
-            unloadPoint[] = {0, -4, -0.2};
+            unloadPoint[] = {0, -4.0, -0.2};
             unloadActionPoint[] = {0, -3.2, -0.1};
             class Sheep_random_F {
                 class Spaces {
@@ -103,7 +103,7 @@ class CfgVehicles {
     class rhs_gaz66_vmf;
     class rhs_gaz66o_vmf: rhs_gaz66_vmf {
         class GRAD_AnimalTransport {
-            unloadPoint[] = {0, -3, -0.6};
+            unloadPoint[] = {0, -3.0, -0.6};
             unloadActionPoint[] = {0, -2.5, -0.4};
             class Sheep_random_F {
                 class Spaces {
@@ -138,8 +138,8 @@ class CfgVehicles {
     class rhs_zil131_open_base;
     class rhs_zil131_flatbed_base: rhs_zil131_open_base {
         class GRAD_AnimalTransport {
-            unloadPoint[] = {0, -3, -0.6};
-            unloadActionPoint[] = {0, -2.5, -0.4};
+            unloadPoint[] = {0, -3.2, -0.6};
+            unloadActionPoint[] = {0, -2.6, -0.4};
             class Sheep_random_F {
                 class Spaces {
                     class FrontOuterLeft {
