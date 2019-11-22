@@ -8,6 +8,7 @@ PREP(getCustomConfig);
 PREP(getSupportedCarConfigs);
 PREP(interact_loadAction);
 PREP(interact_loadChildren);
+PREP(interact_loadChildrenSpaces);
 PREP(interact_loadCondition);
 PREP(interact_unloadAction);
 PREP(interact_unloadChildren);
