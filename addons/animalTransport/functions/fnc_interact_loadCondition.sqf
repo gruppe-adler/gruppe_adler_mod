@@ -2,7 +2,7 @@
 
 params ["_target"];
 
-TRACE("interact_loadCondition");
+TRACE_1("interact_loadCondition with %1", _target);
 
 (isNull (attachedTo _target)) &&
 !(isNull ([_target] call FUNC(findSuitableVehicle)))

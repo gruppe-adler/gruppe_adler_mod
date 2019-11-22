@@ -9,7 +9,7 @@ if (isNull _animal) exitWith {
     objNull
 };
 
-TRACE("findSuitableVehicle");
+TRACE_1("findSuitableVehicle: %1", _animal);
 
 // configured vehicle classes
 _possibleVehicleClasses = [] call FUNC(getSupportedCarConfigs);

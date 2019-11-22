@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-TRACE("postClientInit!");
+LOG("postClientInit");
 
 if (!hasInterface) exitWith {};
 
