@@ -5,6 +5,8 @@ params [
     ["_action", "default"]
 ];
 
+TRACE_2("fnc_controlAnimal: %1 => %2", _animal, _action);
+
 assert(!isNull _animal);
 assert(_action in ["stop", "default"]);
 

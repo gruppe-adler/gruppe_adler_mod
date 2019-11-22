@@ -9,10 +9,12 @@ if (isNull _animal) exitWith {
     objNull
 };
 
+TRACE("findSuitableVehicle");
+
 // configured vehicle classes
 _possibleVehicleClasses = [] call FUNC(getSupportedCarConfigs);
 _possibleVehicleClassNames = _possibleVehicleClasses apply { configName _x};
-private _candidates = nearestObjects [_animal, _possibleVehicleClassNames, GRAD_animalTransport_loadingRange, false];
+private _candidates = nearestObjects [_animal, _possibleVehicleClassNames, GVAR(loadingRange), false];
 
 private _foundIdx = _candidates findIf {
     !(isNull ([_x, typeOf _animal] call FUNC(findSuitableSpace)));

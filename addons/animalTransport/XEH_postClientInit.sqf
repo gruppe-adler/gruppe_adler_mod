@@ -1,12 +1,14 @@
 #include "script_component.hpp"
 
+TRACE("postClientInit!");
+
 if (!hasInterface) exitWith {};
 
 {
     private _interactPoint = ([_x >> "GRAD_AnimalTransport", "actionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
 
     private _mainAction = [
-        "ACE_MainActions",
+        "MainActions",
         "Interactions",
         "",
         {},
@@ -27,7 +29,7 @@ if (!hasInterface) exitWith {};
     private _loadAction = [
         QGVAR(loadAction),
         "load on vehicle",
-        "", // icon
+        "a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa",
         FUNC(interact_loadAction),
         FUNC(interact_loadCondition),
         FUNC(interact_loadChildren),
@@ -37,7 +39,7 @@ if (!hasInterface) exitWith {};
     [
         configName _x,
         0,
-        ["ACE_MainActions"],
+        ["MainActions"],
         _loadAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass;

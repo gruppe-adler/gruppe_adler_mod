@@ -17,7 +17,7 @@ _possibleVehicleClasses = _possibleVehicleClasses apply { configName _x };
 
 private _result = [] call cba_fnc_hashCreate;
 
-private _nearVehicles = nearestObjects [_animal, _possibleVehicleClasses, GRAD_animalTransport_loadingRange, false];
+private _nearVehicles = nearestObjects [_animal, _possibleVehicleClasses, GVAR(loadingRange), false];
 
 {
     [
