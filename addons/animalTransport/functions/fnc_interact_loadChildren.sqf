@@ -10,7 +10,7 @@ private _spaces = [_target] call FUNC(findSuitableVehicles);
     _vehicleAction = [
         format ["GRAD_animalTransport_loadAction_%1", _forEachIndex],
         ([_vehicle] call FUNC(vehicleName)),
-        ([typeOf _vehicle] call ace_common_getVehicleIcon),
+        ([typeOf _vehicle] call ace_common_fnc_getVehicleIcon),
         {
             params ["_target", "", "_params"];
             _params params ["_vehicle"];
