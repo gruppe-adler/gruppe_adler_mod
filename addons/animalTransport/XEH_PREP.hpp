@@ -19,3 +19,4 @@ PREP(vehicle_loadAnimal);
 PREP(vehicle_lockCargoIndex);
 PREP(vehicle_unloadAnimal);
 PREP(vehicle_unloadAnimalDetach);
+PREP(vehicleName);
