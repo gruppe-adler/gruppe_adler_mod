@@ -8,7 +8,7 @@ if (!hasInterface) exitWith {};
     private _interactPoint = ([_x >> "GRAD_AnimalTransport", "actionPoint", [0, 0, 0]] call BIS_fnc_returnConfigEntry);
 
     private _mainAction = [
-        "MainActions",
+        "ACE_MainActions",
         "Interactions",
         "",
         {},
@@ -39,7 +39,7 @@ if (!hasInterface) exitWith {};
     [
         configName _x,
         0,
-        ["MainActions"],
+        ["ACE_MainActions"],
         _loadAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass;

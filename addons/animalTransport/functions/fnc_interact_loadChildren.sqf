@@ -21,7 +21,7 @@ private _spaces = [_target] call FUNC(findSuitableVehicles);
         {[]},
         [_vehicle]
     ] call ace_interact_menu_fnc_createAction;
-    _spaceActions = _vehicleSpaces apply {
+    private _spaceActions = _vehicleSpaces apply {
         private _spaceName = configName _x;
         [
             format ["GRAD_animalTransport_loadAction_%1_%2", _forEachIndex, _spaceName],
@@ -40,11 +40,7 @@ private _spaces = [_target] call FUNC(findSuitableVehicles);
     [
         _vehicleAction,
         _spaceActions apply {
-            [
-                _x,
-                [],
-                _target
-            ]
+            [_x, [], _target]
         },
         _target
     ]
