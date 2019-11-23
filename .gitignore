@@ -1,5 +1,7 @@
 release/
+*.pbo
 .idea/
+.vscode/
 
 # Windows image file caches
 Thumbs.db

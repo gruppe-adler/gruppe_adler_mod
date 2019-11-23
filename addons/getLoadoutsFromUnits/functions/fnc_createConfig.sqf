@@ -12,3 +12,4 @@ GVAR(variables) = [_units, _types];
 
 //Create Gui to get loadout name and medic equip
 [_units, _types] call FUNC(createGUI);
+

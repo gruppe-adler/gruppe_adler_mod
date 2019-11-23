@@ -5,35 +5,53 @@
 // PARAMS:
 // 	0: Display <DISPLAY>
 
-params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
+
+params ["_control"];
+
 disableSerialization;
 
 private _display = ctrlParent _control;
 private _structuredText = [];
 
-diag_log "ONBTNOK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-
-GVAR(variables) params ["_units", "_types"];
-
 private _tab = "    ";
 private _doubleTab = _tab + _tab;
 
-{
-    private _ctrlCombo = _display displayCtrl _x;
+GVAR(units) params ["_units", "_types"];
 
-    private _unit = (_ctrlCombo lbData (lbCurSel _ctrlCombo));
-    diag_log format ["_unit = %1", _unit];
-    if !(_unit isEqualTo "") then {
-        [_unit, _forEachIndex] call FUNC(addMedicItems);
-    };
+if (cbChecked (_display displayCtrl IDC_ITEMS)) then {
+    {
+        [_x] call FUNC(addStandardItems);
+    }forEach _units;
+};
+
+{
+    private _listbox = _display displayCtrl _x;
+
+    private _selectedUnit = (_listbox lbData (lbCurSel _listbox));
+    if !(_selectedUnit isEqualTo "") then {
+        private _splitt = ((parseSimpleArray _selectedUnit) select 0) splitString "_";
+        _splitt deleteAt 0;
+        private _joinedString = _splitt joinString "_";
+        private _find = _types find _joinedString;
+
+        if (_find > -1) then {
+            [_units select _find, _forEachIndex] call FUNC(addMedicItems);
+        };
+    };  
 }forEach [IDC_CFR, IDC_SQL, IDC_PTL];
 
-_structuredText pushBack format ["class %1 {", (_display displayCtrl IDC_NAME)];
+private _name = ctrlText (_display displayCtrl IDC_NAME);
+
+if (_name isEqualTo "") then {_name = "FactionName";};
+_name = [_name] call BIS_fnc_filterString; 
+
+_structuredText pushBack format ["class %1 {", _name];
 _structuredText pushBack (_tab + "class AllUnits {");
 _structuredText append ([
     "uniform",
-    "backpack",
     "vest",
+    "backpack",
+    "headgear",
     "primaryWeapon",
     "primaryWeaponMagazine",
     "primaryWeaponMuzzle",
@@ -55,7 +73,7 @@ _structuredText append ([
     "handgunWeaponPointer",
     "handgunWeaponUnderbarrel",
     "handgunWeaponUnderbarrelMagazine",
-    "headgear",
+
     "goggles",
     "nvgoggles",
     "binoculars",
@@ -75,6 +93,6 @@ _structuredText pushBack (_tab + "class Type {");
 _structuredText pushBack (_tab + "};");
 _structuredText pushBack "};";
 
-GVAR(variables) = nil;
+GVAR(units) = nil;
 
 copyToClipboard (_structuredText joinString (toString [13,10]));

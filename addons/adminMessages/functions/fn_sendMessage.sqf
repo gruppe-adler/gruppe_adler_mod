@@ -10,18 +10,14 @@ if (_message == "") exitWith {};
 
 _editBox ctrlSetText "";
 
-ga_adminMessages_channel radioChannelAdd [player];
-ga_adminMessages_channel radioChannelSetCallsign localize "STR_grad_ADMINMESSAGES_SENDCONFIRM_CHANNEL";
-
-player customChat [ga_adminMessages_channel, localize "STR_grad_ADMINMESSAGES_SENDCONFIRM"];
-player say2D "3DEN_notificationDefault";
-
-ga_adminMessages_channel radioChannelRemove [player];
-
 if ([] call grad_adminMessages_fnc_isAdminOrZeus) then {
-    _lbData = _listbox lbData (lbCurSel _listbox);
-    _receiveConditionParams = [];
-    _receiveCondition = if ((call compile _lbData) < 0) then {
+
+    private _lbCurSel = lbCurSel _listbox;
+    private _lbData = _listbox lbData _lbCurSel;
+    private _lbText = _listbox lbText _lbCurSel;
+    private _receiveConditionParams = [];
+
+    private _receiveCondition = if ((call compile _lbData) < 0) then {
         switch (call compile _lbData) do {
             case (-2): {{true}};                                                //EVERYONE
             case (-3): {{[] call grad_adminMessages_fnc_isAdminOrZeus}};        //OTHER ADMINS AND ZEUS
@@ -35,7 +31,19 @@ if ([] call grad_adminMessages_fnc_isAdminOrZeus) then {
         _receiveConditionParams = [_lbData];
         {getPlayerUID player == (_this select 0)}
     };
+
+    // display sent message locally
+    [format ["%1 %2",localize "STR_grad_ADMINMESSAGES_TO",_lbText],_message] call FUNC(displayMessage);
+
+    // send message to recipient
     [profileName,getPlayerUID player,_message,_receiveCondition,_receiveConditionParams] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
+
 } else {
+    // display sent message locally
+    [format ["%1 %2",localize "STR_grad_ADMINMESSAGES_TO","Admin"],_message] call FUNC(displayMessage);
+
+    // send message to recipient
     [profileName,getPlayerUID player,_message] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
 };
+
+playSound "3DEN_notificationDefault";

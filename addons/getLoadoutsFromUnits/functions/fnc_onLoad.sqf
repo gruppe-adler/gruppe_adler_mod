@@ -7,9 +7,7 @@
 
 params ["_display"];
 
-//Setting up the dialog
 disableSerialization;
-GVAR(variables) params ["_units", "_types"];
 
 {
     private _listbox = _display displayCtrl _x;
@@ -28,7 +26,7 @@ GVAR(variables) params ["_units", "_types"];
 
         _categoryIndex = _categoryIndex + 1;
 
-    } forEach _units;
-
+    } forEach (GVAR(units) select 0);
+    
     lbSort _listbox;
 } forEach [IDC_CFR, IDC_SQL, IDC_PTL];
