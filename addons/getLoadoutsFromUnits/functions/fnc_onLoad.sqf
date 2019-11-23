@@ -6,6 +6,7 @@
 // 	0: Display <DISPLAY>
 
 params ["_display"];
+
 disableSerialization;
 
 {
@@ -26,5 +27,6 @@ disableSerialization;
         _categoryIndex = _categoryIndex + 1;
 
     } forEach (GVAR(units) select 0);
+    
     lbSort _listbox;
 } forEach [IDC_CFR, IDC_SQL, IDC_PTL];

@@ -8,7 +8,8 @@ private _units = ((get3DENSelected "object") select {_x isKindOf "CAManBase"}) s
     _index != -1
 };
 
-GVAR(units) = [_units, _types];
+GVAR(variables) = [_units, _types];
 
 //Create Gui to get loadout name and medic equip
-[] call FUNC(createGUI);
+[_units, _types] call FUNC(createGUI);
+

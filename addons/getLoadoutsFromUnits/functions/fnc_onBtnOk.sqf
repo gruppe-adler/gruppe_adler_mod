@@ -5,11 +5,14 @@
 // PARAMS:
 // 	0: Display <DISPLAY>
 
+
 params ["_control"];
+
 disableSerialization;
 
 private _display = ctrlParent _control;
 private _structuredText = [];
+
 private _tab = "    ";
 private _doubleTab = _tab + _tab;
 
@@ -70,6 +73,7 @@ _structuredText append ([
     "handgunWeaponPointer",
     "handgunWeaponUnderbarrel",
     "handgunWeaponUnderbarrelMagazine",
+
     "goggles",
     "nvgoggles",
     "binoculars",
@@ -90,4 +94,5 @@ _structuredText pushBack (_tab + "};");
 _structuredText pushBack "};";
 
 GVAR(units) = nil;
+
 copyToClipboard (_structuredText joinString (toString [13,10]));

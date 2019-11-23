@@ -2,3 +2,4 @@
 params ["_units"];
 
 (findDisplay 313) createDisplay QGVAR(getUnitsLoadoutsGui);
+
