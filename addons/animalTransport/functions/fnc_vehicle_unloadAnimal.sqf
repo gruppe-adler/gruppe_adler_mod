@@ -32,7 +32,7 @@ private _seatsOccupiedByMe = [];
 }] call CBA_fnc_hashFilter; /*remove the animal in question*/
 
 {
-        [_vehicle, _x, false] call FUNC(vehicle_lockCargoIndex);
+    [_vehicle, _x, false] call FUNC(vehicle_lockCargoIndex);
 } forEach (_seatsOccupiedByMe - _seatsOccupiedByOthers);
 
 _vehicle setVariable [QGVAR(animals), _animals, true];

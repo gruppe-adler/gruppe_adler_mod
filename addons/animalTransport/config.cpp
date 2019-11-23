@@ -9,14 +9,13 @@ class CfgPatches {
 			"grad_main",
 			"ace_dragging",
 			"a3_animals_f_beta_sheep",
-			"rhs_c_trucks" /*GAZ-66*/,
+			"rhs_c_trucks",
 			"rhs_c_zil131"
-			// TODO: find Ural
 		};
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;
-        authors[] = {"Fusselwurm"};
+		authors[] = {"Fusselwurm"};
 	};
 };
 
