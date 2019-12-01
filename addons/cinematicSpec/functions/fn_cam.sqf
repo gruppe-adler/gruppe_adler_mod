@@ -22,6 +22,7 @@ GRAD_CINEMACAM_VECTORUP = vectorUp _specCam;
 switch (_spectatorType) do {
     case "ace": {
         [false] call ACE_spectator_fnc_setSpectator;
+        [true] call FUNC(setRadioSpectator);
     };
     case "eg": {
 	    ["Terminate"] call BIS_fnc_EGSpectator;
@@ -41,6 +42,16 @@ if (!GVAR(registered) && !GVAR(warned)) then {
     systemChat "WARNING: cinematicSpec enabled in a scenario that has NOT declared compatibility. This scenario may break for you if/when it tries to end your spectator mode while you are still in cinematicSpec! See README for details.";
     GVAR(warned) = true;
 };
+
+[{
+    params ["","_handle"];
+    if (isNil "GRAD_CINEMACAM") exitWith {
+        [_handle] call CBA_fnc_removePerFrameHandler;
+    };
+
+    player setVectorDirAndUp [vectorDir GRAD_CINEMACAM,vectorUp GRAD_CINEMACAM];
+    player setPosASL (getPosASL GRAD_CINEMACAM);
+},0.1,[]] call CBA_fnc_addPerFrameHandler;
 
 [
     {

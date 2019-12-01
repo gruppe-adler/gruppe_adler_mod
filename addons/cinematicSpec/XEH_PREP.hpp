@@ -1,0 +1,10 @@
+PREP(cam);
+PREP(cameraOld);
+PREP(chainHandlers);
+PREP(api_cancelCinematicSpec);
+PREP(api_declareCinematicSpecAware);
+PREP(returnToPreviousSpec);
+PREP(setupComms);
+PREP(watchEGSpectator); // postInit = 1;
+PREP(ui_ace_handleKeyDown);
+PREP(ui_eg_handleKeyDown);

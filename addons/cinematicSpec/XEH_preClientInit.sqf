@@ -3,12 +3,25 @@
 
 SCRIPT(XEH_preInit);
 
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
+
 [
     "Gruppe Adler",
     QGVAR(toggle),
     "Enter Cinematic Spectator",
     "",
     ""
+] call CBA_fnc_addKeybind;
+
+
+[
+    "Gruppe Adler",
+    QGVAR(tfar_mute_spectators),
+    "Mute spectators",
+    "hint 'foo';",
+    "hint 'bar';"
 ] call CBA_fnc_addKeybind;
 
 GVAR(registered) = false;
