@@ -20,8 +20,8 @@ PREP_RECOMPILE_END;
     "Gruppe Adler",
     QGVAR(tfar_mute_spectators),
     "Mute spectators",
-    "hint 'foo';",
-    "hint 'bar';"
+    {hint 'foo';},
+    {hint 'bar';}
 ] call CBA_fnc_addKeybind;
 
 GVAR(registered) = false;
