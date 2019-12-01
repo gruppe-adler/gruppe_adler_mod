@@ -9,7 +9,18 @@ pboprefix="grad_"
 toolsDir=$(realpath "$(pwd)/$(dirname $0)")
 baseDir=`dirname "${toolsDir}"`
 platform=`uname`
-module="$1"
+if [[ $1 =~ "--" ]]; then
+	params=$1
+	module=""
+else
+	module="$1"
+	params="$2"
+fi
+
+withReadme="1"
+if [[ $params =~ "--skip-readme" ]]; then
+	withReadme="0"
+fi
 
 
 if [[ ${platform} == "Linux" ]]; then
@@ -86,9 +97,14 @@ else
     sed -i '$a These components are are whitelisted on our servers. You can activate a component by moving its *.pbo file from *the optionals* to the *addons* directory.' "${readmeFile}"
     pack_directory "$releaseDir/optionals"
 
-    npm install -g markdown-pdf
-    markdown-pdf "${readmeFile}"
-    rm "${readmeFile}"
+	if [[ $withReadme == "1" ]]; then
+		echo "compiling PDF readme..."
+    	npm install -g markdown-pdf
+    	markdown-pdf "${readmeFile}"
+    	rm "${readmeFile}"
+	else
+		echo "skipping PDF readme..."
+	fi
 fi
 
 version=$RAW_VERSION
