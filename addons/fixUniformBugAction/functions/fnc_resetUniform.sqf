@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 private _loadout = getUnitLoadout player;
 
 if ((_loadout select 3 select 0) isEqualTo "") then {
