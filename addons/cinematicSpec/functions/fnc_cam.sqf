@@ -43,16 +43,6 @@ if (!GVAR(registered) && !GVAR(warned)) then {
     GVAR(warned) = true;
 };
 
-[{
-    params ["","_handle"];
-    if (isNil "GRAD_CINEMACAM") exitWith {
-        [_handle] call CBA_fnc_removePerFrameHandler;
-    };
-
-    player setVectorDirAndUp [vectorDir GRAD_CINEMACAM,vectorUp GRAD_CINEMACAM];
-    player setPosASL (getPosASL GRAD_CINEMACAM);
-},0.1,[]] call CBA_fnc_addPerFrameHandler;
-
 [
     {
         private _bisCam = missionNamespace getVariable ["GRAD_CINEMACAM", objNull];
