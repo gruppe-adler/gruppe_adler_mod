@@ -1,9 +1,9 @@
 #define PREFIX GRAD
 #define MAINPREFIX x
 
-#define MINOR 14
-#define PATCHLVL 0
-#define COMMIT 0d37ee5
+#define MINOR 15
+#define PATCHLVL 1
+#define COMMIT 052280d
 
 #define VERSION MAJOR.MINOR.PATCHLVL
 #define VERSION_AR MAJOR,MINOR,PATCHLVL
