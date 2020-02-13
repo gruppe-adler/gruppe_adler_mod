@@ -3,6 +3,7 @@ PREP(assertBetween);
 PREP(assertEquals);
 PREP(assertGreaterThan);
 PREP(assertLessThan);
+PREP(assertNotNull);
 PREP(executeContext);
 PREP(executeTest);
 PREP(printResults);
