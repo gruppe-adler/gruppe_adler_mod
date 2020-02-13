@@ -10,6 +10,9 @@
         };
         true
     } forEach _results;
+    if (isNil "_overallResultOkay") then {
+        _overallResultOkay = false;
+    };
 
     if (_overallResultOkay) then {
         private _text = format["OK       %1", (_path joinString " ")];
