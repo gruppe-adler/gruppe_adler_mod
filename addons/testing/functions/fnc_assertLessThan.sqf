@@ -6,6 +6,10 @@ params [
     ["_message", ""]
 ];
 
+if (_message == "") then {
+    _message = format ["%1 < %2", _a, _b];
+};
+
 if (typeName _a != "SCALAR") exitWith {
     [STATUS_ERROR, "first parameter is not a number"] call grad_testing_fnc_addAssertionResult;
 };
