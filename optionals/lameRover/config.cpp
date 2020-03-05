@@ -6,7 +6,7 @@ class CfgPatches {
 		author = "$STR_grad_Author";
 		authors[] = {"fusselwurm <fusselwurm@gmail.com>"};
 		name = CSTRING(COMPONENT);
-		requiredAddons[] = {"cba_main","ace_main"}; // LOP & RHS
+		requiredAddons[] = {"po_vehicles"};
 		requiredVersion = 1.0;
 		units[] = {};
 		url = "$STR_grad_URL";
@@ -16,8 +16,9 @@ class CfgPatches {
 };
 
 class CfgVehicles {
+	class Car_F;
 	class PO_LandRover_base: Car_F {
-		enginePower = 161;
-		peakTorque = 731;
+		enginePower = 83;
+		peakTorque = 376;
 	};
 };
