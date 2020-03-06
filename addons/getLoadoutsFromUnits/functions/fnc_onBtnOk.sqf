@@ -16,7 +16,7 @@ private _structuredText = [];
 private _tab = "    ";
 private _doubleTab = _tab + _tab;
 
-GVAR(units) params ["_units", "_types"];
+GVAR(variables) params ["_units", "_types"];
 
 if (cbChecked (_display displayCtrl IDC_ITEMS)) then {
     {
@@ -73,7 +73,6 @@ _structuredText append ([
     "handgunWeaponPointer",
     "handgunWeaponUnderbarrel",
     "handgunWeaponUnderbarrelMagazine",
-
     "goggles",
     "nvgoggles",
     "binoculars",
@@ -93,6 +92,6 @@ _structuredText pushBack (_tab + "class Type {");
 _structuredText pushBack (_tab + "};");
 _structuredText pushBack "};";
 
-GVAR(units) = nil;
+GVAR(variables) = nil;
 
 copyToClipboard (_structuredText joinString (toString [13,10]));
