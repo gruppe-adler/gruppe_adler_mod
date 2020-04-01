@@ -64,7 +64,8 @@ if  (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
 
             params ["_unit", "", "", "_channel", "_additional"];
 
-            private _frequency = [(call TFAR_fnc_activeLRRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
+            // TFAR_fnc_activeLRRadio has to be called in a non-scheduled environment
+            private _frequency = {[(call TFAR_fnc_activeLRRadio), (_channel + 1)] call TFAR_fnc_getChannelFrequency; } call CBA_fnc_directCall;
             if (_additional) then {
 
                 if (_channel isEqualTo (_unit getVariable [QGVAR(freqAdditionalLR), -1])) exitWith {
