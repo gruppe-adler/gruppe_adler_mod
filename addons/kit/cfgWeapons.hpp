@@ -12,11 +12,11 @@ class CfgWeapons
 	class U_B_GEN_Soldier_F: Uniform_Base //Combat Casual
 	{
 		class ItemInfo;
-	}
+	};
 	class U_I_E_Uniform_01_tanktop_F: Uniform_Base //Combat Fatigues (Tank Top, Gloves)
 	{
 		class ItemInfo;
-	}
+	};
 
 	// COMBAT UNIFORM START COMBAT UNIFORM START COMBAT UNIFORM START COMBAT UNIFORM START COMBAT UNIFORM START
 	// COMBAT UNIFORM START COMBAT UNIFORM START COMBAT UNIFORM START COMBAT UNIFORM START COMBAT UNIFORM START
