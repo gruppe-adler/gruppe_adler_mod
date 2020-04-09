@@ -8,3 +8,5 @@ PREP(getLoadoutAndFormat);
 PREP(getWeapon);
 PREP(onBtnOk);
 PREP(onLoad);
+PREP(vanillaCivDefactionizer);
+PREP(vanillaMilitaryDefactionizer);
