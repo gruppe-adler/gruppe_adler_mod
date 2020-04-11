@@ -2,9 +2,13 @@
 
 private _types = [];
 private _units = ((get3DENSelected "object") select {_x isKindOf "CAManBase"}) select {
-    private _split = (typeOf _x) splitString "_";
-    _split deleteAt 0;
-    private _index = _types pushBackUnique (_split joinString "_");
+    private _type = if ((faction _x) != "CIV_F") then {
+        [_x] call FUNC(vanillaMilitaryDefactionizer);
+    } else {
+        [_x] call FUNC(vanillaCivDefactionizer);
+    };
+
+    private _index = _types pushBackUnique _type;
     _index != -1
 };
 
