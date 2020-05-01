@@ -1,7 +1,11 @@
+keys/*
 release/
+releases/*
+*.biprivatekey
 *.pbo
 .idea/
 .vscode/
+.hemtt/local
 
 # Windows image file caches
 Thumbs.db
