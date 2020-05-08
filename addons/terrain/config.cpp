@@ -20,6 +20,6 @@ class CfgWorlds {
         fogBeta0Max = 0.001;
     };
     class tem_vinjesvingenc: CAWorld {
-        fogBeta0Max = 0.5;
+        fogBeta0Max = 0.001;
     };
 };
