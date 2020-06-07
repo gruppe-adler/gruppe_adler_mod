@@ -55,8 +55,8 @@ class CfgVehicles {
         };
 	};
 
-    class RHS_Ural_Civ_Base;
-    class rhsgref_ins_ural_work_open: RHS_Ural_Civ_Base {
+    class RHS_Ural_Base;
+    class RHS_Ural_Civ_Base: RHS_Ural_Base {
 		class GRAD_AnimalTransport {
             unloadPoint[] = {0, -4.1, -0.2};
             unloadActionPoint[] = {0, -3.3, -0.1};
