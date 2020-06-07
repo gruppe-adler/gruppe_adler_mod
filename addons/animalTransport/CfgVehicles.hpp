@@ -185,4 +185,58 @@ class CfgVehicles {
             };
         };
     };
+    class Truck_02_base_F;
+    class Truck_02_transport_base_F: Truck_02_base_F { /*Zamak open with benches*/
+        class GRAD_AnimalTransport {
+            unloadPoint[] = {0, -4.3, -0.2};
+            unloadActionPoint[] = {0, -3.5, -0.1};
+            class Sheep_random_F {
+                class Spaces {
+                    class FrontCenter  {
+                        offset[] = { 0.00, -0.50, -0.80};
+                    };
+                    class FrontRight  {
+                        offset[] = { 0.50,  0.20, -0.80};
+                        cargoIndices[] = {2, 4};
+                    };
+                    class FrontLeft {
+                        offset[] = {-0.40,  0.20, -0.80};
+                        cargoIndices[] = {3, 5};
+                    };
+                    class MiddleCenter  {
+                        offset[] = { 0.00, -0.90, -0.80};
+                        dir = 180;
+                    };
+                    class MiddleLeft  {
+                        offset[] = {-0.45, -1.30, -0.80};
+                        cargoIndices[] = {6, 8};
+                    };
+                    class MiddleRight  {
+                        offset[] = { 0.45, -1.30, -0.80};
+                        cargoIndices[] = {7, 9};
+                    };
+                    class BackLeft  {
+                        offset[] = {-0.45, -1.70, -0.80};
+                        dir = 180;
+                        cargoIndices[] = {10, 12};
+                    };
+                    class DiagonalRight {
+                        offset[] = { 0.00, -2.40, -0.80};
+                        dir = 45;
+                        cargoIndices[] = {11};
+                    };
+                    class DiagonalLeft {
+                        offset[] = { 0.00, -2.80, -0.80};
+                        dir = 225;
+                        cargoIndices[] = {14};
+                    };
+                    class BackRight  {
+                        offset[] = { 0.50, -2.40, -0.80};
+                        dir = 180;
+                        cargoIndices[] = {13, 15};
+                    };
+                };
+            };
+        };
+    };
 };
