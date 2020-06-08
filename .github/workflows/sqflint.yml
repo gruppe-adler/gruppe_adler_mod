@@ -17,10 +17,10 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-    - name: Install dependencies
+    - name: Install sqflint
       run: |
         python -m pip install --upgrade pip
-        pip install sqflint
+        python -m pip install https://github.com/gruppe-adler/sqf/archive/0f6edf0d7b928afc8783ccad3c3c7cb7120feb1a.tar.gz
     - name: Lint with
       run: |
         sqflint -d . -e e
