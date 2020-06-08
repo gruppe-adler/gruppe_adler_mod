@@ -1,10 +1,9 @@
+#include "script_component.hpp"
+
 /*
 *   Original function from ace_logistics_wirecutter by gpgpgpgp, edited by commy2, PabstMirror
 *   Adapted for grad_axe by McDiod
 */
-
-
-#include "script_component.hpp"
 
 params ["_unit", "_treeObject"];
 

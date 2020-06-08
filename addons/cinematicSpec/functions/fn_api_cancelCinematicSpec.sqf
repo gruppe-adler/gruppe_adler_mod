@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /**
  * if player is in cinematicSpec, send them back to the spectator mode they came from.
  * this function is callbacked. example usage:
@@ -7,8 +9,6 @@
  *
  * returns "sync" on immediate callback execution and "async" if callback execution is delayed
  */
-
-#include "script_component.hpp"
 
 params [
     ["_callback", {}],

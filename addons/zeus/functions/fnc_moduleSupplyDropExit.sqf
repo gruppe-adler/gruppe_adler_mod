@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /*
     @Authors
         Christian 'chris5790' Klemm
@@ -10,7 +12,6 @@
     @Example
         ?
 */
-#include "script_component.hpp"
 
 if(!local _this) exitWith {};
 
