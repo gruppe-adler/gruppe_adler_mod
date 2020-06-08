@@ -1,7 +1,8 @@
 # Gruppe Adler Mod
 
 [![GitHub tag](https://img.shields.io/github/tag/gruppe-adler/gruppe_adler_mod.svg)](https://github.com/gruppe-adler/gruppe_adler_mod/releases)
-[![Build Status](https://api.travis-ci.com/gruppe-adler/gruppe_adler_mod.svg?branch=master)](https://travis-ci.com/gruppe-adler/gruppe_adler_mod)
+![build](https://github.com/gruppe-adler/gruppe_adler_mod/workflows/CI/badge.svg)
+![ACE SQF validator](https://github.com/gruppe-adler/gruppe_adler_mod/workflows/ACE%20SQF%20validator/badge.svg)
 
 Gruppe Adler Mod is a collection of Gruppe Adler original addons, that add new functionality or modify and improve existing functionality to suit our Arma gameplay.
 
