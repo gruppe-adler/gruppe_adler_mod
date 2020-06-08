@@ -1,9 +1,9 @@
+#include "script_component.hpp"
+
 /*
 *   Original function from ace_logistics_wirecutter by PabstMirror
 *   Adapted for grad_axe by McDiod
 */
-
-#include "script_component.hpp"
 
 params ["_interactionType"];
 

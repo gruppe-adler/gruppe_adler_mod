@@ -1,8 +1,8 @@
+#include "script_component.hpp"
+
 /*  Displays notification on missionstart if player can load a marker set.
 *   Called from XEH_preClientInit.sqf
 */
-
-#include "script_component.hpp"
 
 private _saveMarkersData = profileNamespace getVariable QGVAR(saveData);
 if (isNil "_saveMarkersData") exitWith {};
