@@ -15,7 +15,7 @@ switch (_mode) do
 	 */
 	case "Initialize" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private _registerInitialPlayerGroups = _params param [0, false, [true]];
 		private _maxUnitsPerGroup = _params param [1, 99, [0]];
@@ -106,7 +106,7 @@ switch (_mode) do
 	 */
 	case "OnClientMessage" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_variable", "_message"];
 		_variable 	= _params param [0, "", [""]];
@@ -140,7 +140,7 @@ switch (_mode) do
 
 	case "RegisterGroup" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_leader"];
 		_group	= _params param [0, grpNull, [grpNull]];
@@ -249,7 +249,7 @@ switch (_mode) do
 
 	case "SetName" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_name"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -263,7 +263,7 @@ switch (_mode) do
 
 	case "SetPrivateState" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_state"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -325,7 +325,7 @@ switch (_mode) do
 
 	case "AddGroupMember" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_player"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -413,7 +413,7 @@ switch (_mode) do
 	 */
 	case "KickPlayer" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_leader", "_player"];
 		_group    = _params param [0, grpNull, [grpNull]];
