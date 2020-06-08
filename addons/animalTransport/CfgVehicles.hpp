@@ -239,4 +239,24 @@ class CfgVehicles {
             };
         };
     };
+    class Car_F;
+    class Quadbike_01_base_F: Car_F {
+        class GRAD_AnimalTransport {
+            unloadPoint[] = {0, -1.4, -0.2};
+            unloadActionPoint[] = {0, -1.0, -0.3};
+            class Sheep_random_F {
+                class Spaces {
+                    class BackSeat  {
+                        /* legs sticking out behind: */
+                        offset[] = {-0.4, -1.4, -0.3};
+                        dir[] = {{1,0,0}, {0,1,0}};
+                        /* alternative orientation, legs front: */
+                        //    offset[] = {-0.3, -0.2, -0.3};
+                        //    dir = {{1,0,0}, {0,-1,0}};
+                        cargoIndices[] = {0};
+                    };
+                };
+            };
+        };
+    };
 };
