@@ -4,7 +4,26 @@ class CfgVehicles {
         class GRAD_AnimalTransport {
             stop = "Sheep_Stop";
             default = "Sheep_Idle_Stop";
-            actionPoint[] = {0, 0.35, 0.65};
+        };
+        class ACE_Actions {
+            class ACE_MainActions {
+                displayName = CSTRING(MainAction);
+                distance = 3;
+                condition = QUOTE(true);
+                statement = "";
+                icon = "\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa";
+                position = "[0, 0.35, 0.65]";
+
+                class GVAR(loadAction) {
+                    displayName = "load on vehicle";
+                    distance = 3;
+                    condition = QUOTE([_target] call FUNC(interact_loadCondition));
+                    statement = QUOTE([_target] call FUNC(interact_loadAction));
+                    insertChildren = QUOTE([_target] call FUNC(interact_loadChildren));
+                    icon = "\a3\ui_f\data\IGUI\Cfg\Actions\loadVehicle_ca.paa";
+                };
+
+            };
         };
         ACE_dragging_canCarry = 1;
         ACE_dragging_carryPosition[] = {-0.5, 0.6, 0.5};
