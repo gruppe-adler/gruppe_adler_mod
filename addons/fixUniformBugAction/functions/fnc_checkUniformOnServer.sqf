@@ -4,8 +4,8 @@
     [
         {
             params ["_unit"];
-            
-            ((isNil (uniform _unit)) || {isNil (uniformContainer _unit)})
+
+            (("" == (uniform _unit)) || {isNull (uniformContainer _unit)})
         },
         {
             params ["_unit"];
