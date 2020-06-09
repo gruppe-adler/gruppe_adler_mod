@@ -19,6 +19,7 @@ private _necessarySeats = [_space, "cargoIndices", []] call BIS_fnc_returnConfig
 
 
 private _seatOffset = [_space, "offset", [0, 0, 0]] call BIS_fnc_returnConfigEntry;
+_animal setVariable ["ace_dragging_canCarry", false, true];
 _animal attachTo [_vehicle, _seatOffset];
 
 private _dir = [_space, "dir", 0] call BIS_fnc_returnConfigEntry;
