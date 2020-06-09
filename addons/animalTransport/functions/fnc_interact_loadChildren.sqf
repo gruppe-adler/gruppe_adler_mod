@@ -17,9 +17,9 @@ private _spaces = [_target] call FUNC(findSuitableVehicles);
 
             [QGVAR(vehicle_loadAnimal), [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
         },
-        {true},
+        {params ["", "", "_args"]; _args params ["","_vehicleSpaces"]; _vehicleSpaces > 0},
         FUNC(interact_loadChildrenSpaces),
-        [_vehicle]
+        [_vehicle, count _vehicleSpaces]
     ] call ace_interact_menu_fnc_createAction;
 
     [

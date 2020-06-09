@@ -3,6 +3,7 @@ PREP(findSuitableSpace);
 PREP(findSuitableSpaces);
 PREP(findSuitableVehicle);
 PREP(findSuitableVehicles);
+PREP(findTransportsInLoadingRange);
 PREP(getSupportedAnimalConfigs);
 PREP(getCustomConfig);
 PREP(getSupportedCarConfigs);
