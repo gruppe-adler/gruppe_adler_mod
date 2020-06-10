@@ -9,22 +9,15 @@ params [
 
 assert(!(isNull _animal));
 
-private _animalClass = typeOf _animal;
-
-// configured vehicle classes
-private _possibleVehicleClasses = [] call FUNC(getSupportedCarConfigs);
-_possibleVehicleClasses = _possibleVehicleClasses apply { configName _x };
+private _candidates = [_animal] call FUNC(findTransportsInLoadingRange);
 
 private _result = [] call cba_fnc_hashCreate;
-
-private _nearVehicles = nearestObjects [_animal, _possibleVehicleClasses, GVAR(loadingRange), false];
-
 {
     [
         _result,
         _x,
         ([_x, typeOf _animal] call FUNC(findSuitableSpaces))
     ] call cba_fnc_hashSet;
-} forEach _nearVehicles;
+} forEach _candidates;
 
 _result
