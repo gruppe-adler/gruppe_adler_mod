@@ -21,6 +21,10 @@ if (typeName _upper != "SCALAR") exitWith {
     [STATUS_ERROR, "third parameter is not a number"] call grad_testing_fnc_addAssertionResult;
 };
 
+if (_lower >= _upper) exitWith {
+    [STATUS_ERROR, "second parameter must be lower than third parameter"] call grad_testing_fnc_addAssertionResult;
+};
+
 if (_actual > _lower && _actual < _upper) then {
     [STATUS_SUCCESS, _message] call grad_testing_fnc_addAssertionResult;
 } else {

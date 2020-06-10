@@ -25,6 +25,7 @@ To reflect this, with this framework you declare a tree of setups, with the actu
 Every branch consists of these elements:
 * a description
 * a setup code block
+    * alternatively: an *array of* setup code blocks (basically running the children several times with different setups)
 * an array of children
 * a cleanup code block
 
