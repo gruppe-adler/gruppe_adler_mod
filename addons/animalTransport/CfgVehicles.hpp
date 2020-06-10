@@ -31,7 +31,7 @@ class CfgVehicles {
     };
 
     class Van_01_base_F;
-    class I_G_Van_01_transport_F: Van_01_base_F {
+    class Van_01_transport_base_F: Van_01_base_F {
 		class GRAD_AnimalTransport {
             unloadPoint[] = {0, -4.2, -0.6};
             unloadActionPoint[] = {0, -3.4, -0.4};
@@ -73,6 +73,48 @@ class CfgVehicles {
             };
         };
 	};
+    class I_G_Van_01_transport_F: Van_01_base_F {
+        class GRAD_AnimalTransport { /* NOTE: same as Van_01_transport_base_F above! */
+            unloadPoint[] = {0, -4.2, -0.6};
+            unloadActionPoint[] = {0, -3.4, -0.4};
+            class Sheep_random_F {
+                class Spaces {
+                    class FrontOuterLeft {
+                        offset[] = {-0.7, -1.4, -0.6};
+                        cargoIndices[] = {2, 4};
+                    };
+                    class FrontInnerLeft {
+                        offset[] = {-0.25, -1.6, -0.6};
+                        cargoIndices[] = {2, 4};
+                    };
+                    class FrontInnerRight {
+                        offset[] = {0.2, -1.4, -0.6};
+                        cargoIndices[] = {3, 5};
+                    };
+                    class FrontOuterRight {
+                        offset[] = { 0.65, -1.6, -0.6};
+                        cargoIndices[] = {3, 5};
+                    };
+                    class BackOuterRight {
+                        offset[] = { 0.7, -3.0, -0.6};
+                        cargoIndices[] = {7, 9,11};
+                    };
+                    class BackInnerRight {
+                        offset[] = { 0.25, -2.8, -0.6};
+                        cargoIndices[] = {7, 9,11};
+                    };
+                    class BackInnerLeft {
+                        offset[] = { -0.2, -3.0, -0.6};
+                        cargoIndices[] = {6, 8, 10};
+                    };
+                    class BackOuterLeft {
+                        offset[] = { -0.65, -2.8, -0.6};
+                        cargoIndices[] = {6, 8, 10};
+                    };
+                };
+            };
+        };
+    };
 
     class RHS_Ural_Base;
     class RHS_Ural_Civ_Base: RHS_Ural_Base {
