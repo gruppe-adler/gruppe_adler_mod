@@ -178,7 +178,7 @@ switch _mode do
 		private _display = uiNamespace getVariable ["BIS_dynamicGroups_display", displayNull];
 
 		// Make sure ourt display is valid
-		CHECK(isNull _display)
+		CHECK(isNull _display);
 
 		// Controls
 		private
@@ -327,7 +327,7 @@ switch _mode do
 
 		private "_display";
 		_display = uiNamespace getVariable ["BIS_dynamicGroups_display", displayNull];
-		CHECK(isNull _display)
+		CHECK(isNull _display);
 
 		private ["_sectionGroups", "_buttonJoin", "_playersListbox"];
 		_sectionGroups 	= _display displayCtrl IDC_DYNAMICGROUPS_SECTIONGROUPS;
@@ -401,11 +401,11 @@ switch _mode do
 
 		private "_display";
 		_display = uiNamespace getVariable ["BIS_dynamicGroups_display", displayNull];
-		CHECK(isNull _display)
+		CHECK(isNull _display);
 
 		private "_listbox";
 		_listbox = _display displayCtrl IDC_DYNAMICGROUPS_LISTBOXGROUPS;
-		CHECK(isNull _listbox)
+		CHECK(isNull _listbox);
 
 		// Clear the tree
 		tvClear _listbox;
@@ -1049,7 +1049,7 @@ switch _mode do
 		_button = _params select 0;
 
 		_button ctrlEnable false;
-		["SetDefaultFocus"] call DISPLAY:
+		["SetDefaultFocus"] call DISPLAY;
 
 		private ["_display", "_listbox", "_listBoxIndex", "_selectedUid"];
 		_display 	= uiNamespace getVariable ["BIS_dynamicGroups_display", displayNull];
@@ -1136,7 +1136,7 @@ switch _mode do
 		private _button = _params select 0;
 
 		_button ctrlEnable false;
-		["SetDefaultFocus"] call DISPLAY:
+		["SetDefaultFocus"] call DISPLAY;
 
 		private ["_hasGroup", "_hasEnoughPlayers"];
 		_hasGroup 		= ["PlayerHasGroup", [player]] call GROUPS;
@@ -1224,7 +1224,7 @@ switch _mode do
 		_button = _params select 0;
 
 		_button ctrlEnable false;
-		["SetDefaultFocus"] call DISPLAY:
+		["SetDefaultFocus"] call DISPLAY;
 
 		private ["_display", "_listboxGroups", "_index", "_groupUniqueId"];
 		_display 	= uiNamespace getVariable ["BIS_dynamicGroups_display", displayNull];
@@ -1277,7 +1277,7 @@ switch _mode do
 		_button = _params select 0;
 
 		_button ctrlEnable false;
-		["SetDefaultFocus"] call DISPLAY:
+		["SetDefaultFocus"] call DISPLAY;
 
 		private ["_display", "_isTree", "_listbox", "_listboxIndex"];
 		_display 	= uiNamespace getVariable ["BIS_dynamicGroups_display", displayNull];

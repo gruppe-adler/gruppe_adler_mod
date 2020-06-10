@@ -15,7 +15,7 @@ switch (_mode) do
 	 */
 	case "Initialize" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private _registerInitialPlayerGroups = _params param [0, false, [true]];
 		private _maxUnitsPerGroup = _params param [1, 99, [0]];
@@ -78,7 +78,7 @@ switch (_mode) do
 	 */
 	case "Terminate" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		// Clear client message event handler
 		VAR_ON_CLIENT_MESSAGE addPublicVariableEventHandler [missionnamespace, {}];
@@ -106,7 +106,7 @@ switch (_mode) do
 	 */
 	case "OnClientMessage" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_variable", "_message"];
 		_variable 	= _params param [0, "", [""]];
@@ -140,7 +140,7 @@ switch (_mode) do
 
 	case "RegisterGroup" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_leader"];
 		_group	= _params param [0, grpNull, [grpNull]];
@@ -249,7 +249,7 @@ switch (_mode) do
 
 	case "SetName" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_name"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -263,7 +263,7 @@ switch (_mode) do
 
 	case "SetPrivateState" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_state"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -277,7 +277,7 @@ switch (_mode) do
 
 	case "CreateGroupAndRegister" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_player"];
 		_player = _params param [0, objNull, [objNull]];
@@ -304,7 +304,7 @@ switch (_mode) do
 
 	case "SwitchLeader" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_player"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -325,7 +325,7 @@ switch (_mode) do
 
 	case "AddGroupMember" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_player"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -353,7 +353,7 @@ switch (_mode) do
 
 	case "RemoveGroupMember" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_player"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -383,7 +383,7 @@ switch (_mode) do
 	 */
 	case "SwitchGroup" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_player"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -413,7 +413,7 @@ switch (_mode) do
 	 */
 	case "KickPlayer" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_group", "_leader", "_player"];
 		_group    = _params param [0, grpNull, [grpNull]];
@@ -442,7 +442,7 @@ switch (_mode) do
 	 */
 	case "UnKickPlayer" :
 	{
-		CHECK(!isServer)
+		CHECK(!isServer);
 
 		private ["_groupId", "_player"];
 		_group  = _params param [0, grpNull, [grpNull]];
@@ -616,7 +616,7 @@ switch (_mode) do
 	 */
 	case "InitializePlayer" :
 	{
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private ["_player", "_registerInitialGroup"];
 		_player 				= _params param [0, player, [objNull]];
@@ -695,7 +695,7 @@ switch (_mode) do
 	 */
 	case "TerminatePlayer" :
 	{
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private _player = _params param [0, player, [objNull]];
 
@@ -724,7 +724,7 @@ switch (_mode) do
 	 */
 	case "SendClientMessage" :
 	{
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private ["_inMode", "_inParams"];
 		_inMode         = _params param [0, "", [""]];
@@ -747,7 +747,7 @@ switch (_mode) do
 	case "AddKeyEvents" :
 	{
 		disableSerialization;
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private ["_display"];
 		_display = _params param [0, displayNull, [displayNull]];
@@ -806,7 +806,7 @@ switch (_mode) do
 	case "RemoveKeyEvents" :
 	{
 		disableSerialization;
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private ["_display"];
 		_display = _params param [0, displayNull, [displayNull]];
@@ -857,7 +857,7 @@ switch (_mode) do
 	case "OnKeyDown" :
 	{
 		disableSerialization;
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private ["_key", "_ctrl"];
 		_key  = _params param [1, -1, [0]];
@@ -886,7 +886,7 @@ switch (_mode) do
 	case "OnKeyUp" :
 	{
 		disableSerialization;
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private ["_key", "_ctrl"];
 		_key  = _params param [1, -1, [0]];
@@ -921,7 +921,7 @@ switch (_mode) do
 	 */
 	case "UpdateKeyDown" :
 	{
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		if (!isNil { uiNamespace getVariable "BIS_dynamicGroups_keyDownTime" } && {count (["GetPlayerInvites", [player]] call GROUPS) > 0}) then
 		{
@@ -1190,14 +1190,14 @@ switch (_mode) do
 	 */
 	case "OnInvitationReceived" :
 	{
-		CHECK(!hasInterface)
+		CHECK(!hasInterface);
 
 		private ["_group", "_to", "_from"];
 		_group  = _params param [0, grpNull, [grpNull]];
 		_to     = _params param [1, objNull, [objNull]];
 		_from   = _params param [2, objNull, [objNull]];
 
-		CHECK(player != _to)
+		CHECK(player != _to);
 
 		if (!isNull _to && {!isNull _from} && {_to != _from}) then
 		{
