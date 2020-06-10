@@ -14,7 +14,8 @@ TRACE_1("findSuitableVehicle: %1", _animal);
 private _candidates = [_animal] call FUNC(findTransportsInLoadingRange);
 
 private _foundIdx = _candidates findIf {
-    !(isNull ([_x, typeOf _animal] call FUNC(findSuitableSpace)));
+    private _space = [_x, typeOf _animal] call FUNC(findSuitableSpace);
+    !(isNull _space)
 };
 
 if (_foundIdx == -1) then {

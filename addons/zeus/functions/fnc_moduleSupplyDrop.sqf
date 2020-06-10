@@ -51,7 +51,7 @@ GVAR(supplyBox) = _box;
 
     _confirmButton ctrlAddEventHandler ["MouseButtonClick", {
         _dialog = findDisplay 3646235;
-        _selection = lbCurSel (_dialog displayCtrl 1500);
+        private _selection = lbCurSel (_dialog displayCtrl 1500);
         if(_selection == -1) exitWith {};
 
         GVAR(supplyPlaneType) = (_dialog displayCtrl 1500) lbData _selection;
@@ -60,7 +60,12 @@ GVAR(supplyBox) = _box;
         [
             GVAR(supplyBox),
             {
-                params ["_success", "_box", "_positionAsl"];
+                params [
+                    ["_success", false],
+                    ["_box", objNull],
+                    ["_positionAsl", [0,0,0]]
+                ];
+
                 GVAR(supplyBox) = nil;
                 if(!_success) exitWith {
                     GVAR(supplyPlaneType) = nil;
@@ -92,7 +97,7 @@ GVAR(supplyBox) = _box;
                     "FLY"
                 ];
                 _plane addMPEventHandler ["MPKilled", {
-                    params ["_plane"];
+                    params [["_plane", objNull]];
                     if(!local _plane) exitWith {};
 
                     private _box = _plane getVariable [QGVAR(box), objnull];
@@ -122,8 +127,14 @@ GVAR(supplyBox) = _box;
 
                 [
                     {
-                        params ["_args", "_pfHandle"];
-                        _args params ["_plane", "_marker"];
+                        params [
+                            ["_args", []],
+                            ["_pfHandle", -1]
+                        ];
+                        _args params [
+                            ["_plane", objNull],
+                            ["_marker", ""]
+                        ];
                         if(!alive _plane || {isNull _plane}) exitWIth {
                             [_pfHandle] call CBA_fnc_removePerFrameHandler;
                             deleteMarkerLocal _marker;
