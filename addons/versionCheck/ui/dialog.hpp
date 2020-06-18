@@ -10,8 +10,8 @@ class RscButtonMenuCancel;
 class grad_RscDisplayVersionCheck: RscStandardDisplay {
     idd = 60022;
 
-    onLoad = "uiNamespace setVariable ['grad_versionCheck_display',_this select 0]";
-    onUnload = "uiNamespace setVariable ['grad_versionCheck_display',nil]";
+    onLoad = "uiNamespace setVariable ['GVAR(display)',_this select 0]";
+    onUnload = "uiNamespace setVariable ['GVAR(display)',nil]";
 
     class ControlsBackground {
         class Title: RscText

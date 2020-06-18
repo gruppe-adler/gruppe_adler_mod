@@ -2,16 +2,16 @@
 SCRIPT(XEH_postInitClient);
 
 
-private _waitUntil = {!isNil "grad_versionCheck_versions_server" && {!isNil "ace_common_checkPBOsWhitelist"}};
+private _waitUntil = {!isNil QGVAR(versions_server) && {!isNil "ace_common_checkPBOsWhitelist"}};
 private _onTimeOut = {
-    _logMessage = format ["Server versions received: %1, Whitelist received: %2",!isNil "grad_versionCheck_versions_server",!isNil "ace_common_checkPBOsWhitelist"];
+    _logMessage = format ["Server versions received: %1, Whitelist received: %2",!isNil QGVAR(versions_server),!isNil "ace_common_checkPBOsWhitelist"];
     ERROR(_logMessage);
-    [_logMessage] remoteExec ["grad_versionCheck_fnc_logServer",2,false];
+    [_logMessage] remoteExec [QFUNC(logServer),2,false];
 
     _message = format ["[GRAD] (versionCheck): %1 versionCheck timed out.",profileName];
     _message remoteExec ["systemChat",0,false];
 
-    if ("grad_versionCheck_setting_kickOnTimeout" call CBA_settings_fnc_get) then {
+    if (QGVAR(setting_kickOnTimeout) call CBA_settings_fnc_get) then {
         [{endMission "END1"},[],3] call CBA_fnc_waitAndExecute;
     };
 };
@@ -21,28 +21,28 @@ private _onTimeOut = {
     _whitelist = toLower ace_common_checkPBOsWhitelist;
     _whitelist = _whitelist splitString "[,""']";
 
-    private _serverAddons = [grad_versionCheck_versions_server] call CBA_fnc_hashKeys;
-    private _clientAddons = [grad_versionCheck_versions] call CBA_fnc_hashKeys;
+    private _serverAddons = [GVAR(versions_server)] call CBA_fnc_hashKeys;
+    private _clientAddons = [GVAR(versions)] call CBA_fnc_hashKeys;
 
-    grad_versionCheck_missingAddonsServer = _clientAddons - _serverAddons - _whitelist;
-    grad_versionCheck_missingAddonsClient = _serverAddons - _clientAddons - _whitelist;
+    GVAR(missingAddonsServer) = _clientAddons - _serverAddons - _whitelist;
+    GVAR(missingAddonsClient) = _serverAddons - _clientAddons - _whitelist;
 
-    grad_versionCheck_versionMismatches = (((_serverAddons arrayIntersect _clientAddons) apply {
-            private _clientAddon = [grad_versionCheck_versions, _x] call CBA_fnc_hashGet;
-            private _serverAddon = [grad_versionCheck_versions_server, _x] call CBA_fnc_hashGet;
+    GVAR(versionMismatches) = (((_serverAddons arrayIntersect _clientAddons) apply {
+            private _clientAddon = [GVAR(versions), _x] call CBA_fnc_hashGet;
+            private _serverAddon = [GVAR(versions_server), _x] call CBA_fnc_hashGet;
             [_x, _serverAddon#0, _clientAddon#0];
     }) select {
         (_x select 1) != (_x select 2)
     });
 
-    grad_versionCheck_clientUsesPatching = _clientAddons select {
-        private _clientAddon = [grad_versionCheck_versions, _x] call CBA_fnc_hashGet;
+    GVAR(clientUsesPatching) = _clientAddons select {
+        private _clientAddon = [GVAR(versions), _x] call CBA_fnc_hashGet;
         (_clientAddon#1)
     };
 
-    if (count grad_versionCheck_versionMismatches > 0 || count grad_versionCheck_missingAddonsClient > 0 || count grad_versionCheck_missingAddonsServer > 0 || count grad_versionCheck_clientUsesPatching > 0) then {
-        [] call grad_versionCheck_fnc_logResult;
-        [] call grad_versionCheck_fnc_openDialog;
+    if (count GVAR(versionMismatches) > 0 || count GVAR(missingAddonsClient) > 0 || count GVAR(missingAddonsServer) > 0 || count GVAR(clientUsesPatching) > 0) then {
+        [] call FUNC(logResult);
+        [] call FUNC(openDialog);
     };
 
 },[],60,_onTimeOut] call CBA_fnc_waitUntilAndExecute;
