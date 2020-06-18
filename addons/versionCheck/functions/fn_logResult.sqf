@@ -51,3 +51,19 @@ if (count grad_versionCheck_missingAddonsServer > 0) then {
     _message = format ["[GRAD] (versionCheck): %1 additional addons: %2",profileName,_displayList];
     _message remoteExec ["systemChat",0,false];
 };
+
+if (count grad_versionCheck_clientUsesPatching > 0) then {
+
+    _logMessage = format ["Client %1 uses filePatching for %2",profileName,grad_versionCheck_clientUsesPatching];
+    INFO(_logMessage);
+    [_logMessage] remoteExec ["grad_versionCheck_fnc_logServer",2,false];
+
+    _displayList = +grad_versionCheck_clientUsesPatching;
+    if (count _displayList > 3) then {
+        _displayList resize 3;
+        _displayList pushBack (format ["...and %1 other addons.",(count grad_versionCheck_clientUsesPatching)-3]);
+    };
+
+    _message = format ["[GRAD] (versionCheck): %1 filePatching for addons: %2",profileName,_displayList];
+    _message remoteExec ["systemChat",0,false];
+};

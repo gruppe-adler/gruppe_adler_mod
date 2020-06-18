@@ -28,14 +28,19 @@ private _onTimeOut = {
     grad_versionCheck_missingAddonsClient = _serverAddons - _clientAddons - _whitelist;
 
     grad_versionCheck_versionMismatches = (((_serverAddons arrayIntersect _clientAddons) apply {
-            private _clientVersion = [grad_versionCheck_versions, _x] call CBA_fnc_hashGet;
-            private _serverVersion = [grad_versionCheck_versions_server, _x] call CBA_fnc_hashGet;
-            [_x, _serverVersion, _clientVersion];
+            private _clientAddon = [grad_versionCheck_versions, _x] call CBA_fnc_hashGet;
+            private _serverAddon = [grad_versionCheck_versions_server, _x] call CBA_fnc_hashGet;
+            [_x, _serverAddon#0, _clientAddon#0];
     }) select {
         (_x select 1) != (_x select 2)
     });
 
-    if (count grad_versionCheck_versionMismatches > 0 || count grad_versionCheck_missingAddonsClient > 0 || count grad_versionCheck_missingAddonsServer > 0) then {
+    grad_versionCheck_clientUsesPatching = _clientAddons select {
+        private _clientAddon = [grad_versionCheck_versions, _x] call CBA_fnc_hashGet;
+        (_clientAddon#1)
+    };
+
+    if (count grad_versionCheck_versionMismatches > 0 || count grad_versionCheck_missingAddonsClient > 0 || count grad_versionCheck_missingAddonsServer > 0 || count grad_versionCheck_clientUsesPatching > 0) then {
         [] call grad_versionCheck_fnc_logResult;
         [] call grad_versionCheck_fnc_openDialog;
     };

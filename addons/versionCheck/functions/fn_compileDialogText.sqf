@@ -29,6 +29,14 @@ if (count grad_versionCheck_missingAddonsServer > 0) then {
     } forEach grad_versionCheck_missingAddonsServer;
 };
 
+if (count grad_versionCheck_clientUsesPatching > 0) then {
+
+    _dialogTopicArray = _dialogTextArray select (_dialogTextArray pushBack ["Using file patching for addons:"]);
+
+    {
+        _dialogTopicArray pushBack (format ["- %1",_x]);
+    } forEach grad_versionCheck_clientUsesPatching;
+};
 
 private _dialogComposeArray = [];
 {
