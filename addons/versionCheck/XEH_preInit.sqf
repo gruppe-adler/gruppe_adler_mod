@@ -3,16 +3,13 @@ SCRIPT(XEH_preInit);
 
 grad_versionCheck_versions = [[],nil] call CBA_fnc_hashCreate;
 
-private _cfgPatches = (configFile >> "CfgPatches");
-for [{_i=0},{_i<(count _cfgPatches)-1},{_i=_i+1}] do {
-    _addonClass = _cfgPatches select _i;
-    _addonName = configName _addonClass;
-    if (_addonName find "A3" != 0) then {
-        _vNo = [_addonClass] call grad_versionCheck_fnc_getVersionNo;
-        [grad_versionCheck_versions,toLower _addonName, _vNo] call CBA_fnc_hashSet;
+{
+    _x params ["_name", "_version", "_isPatched"];
+    _name = toLower _name;
+    if (_name find "a3" != 0) then {
+        [grad_versionCheck_versions, _name, _version] call CBA_fnc_hashSet;
     };
-};
-
+} forEach allAddonsInfo;
 
 [
     "grad_versionCheck_setting_kickOnVersionMismatch",
