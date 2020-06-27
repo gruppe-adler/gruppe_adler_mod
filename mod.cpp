@@ -1,13 +1,10 @@
 name = "Gruppe Adler Mod";
 author = "Gruppe Adler";
-picture = "Adler.paa";
+picture = "Adler_w.paa";
 actionName = "Website";
 action = "https://www.gruppe-adler.de/";
 description = "Gruppe Adler Mod";
 logo = "Adler.paa";
-logoOver = "Adler.paa";
+logoOver = "Adler_w.paa";
 tooltip = "Gruppe Adler Mod";
 overview = "Gruppe Adler Mod contains an assortment of addons that modify existing mods or add new functionality.";
-overviewPicture = "Adler.paa";
-overviewText = "";
-overviewFootnote = "";
