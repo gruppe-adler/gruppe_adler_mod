@@ -1,6 +1,6 @@
 name = "Gruppe Adler Mod";
 author = "Gruppe Adler";
-picture = "Adler_w.paa";
+picture = "Adler_w_2.paa";
 actionName = "Website";
 action = "https://www.gruppe-adler.de/";
 description = "Gruppe Adler Mod";

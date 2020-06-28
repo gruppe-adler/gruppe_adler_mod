@@ -2,10 +2,9 @@ name = "Gruppe Adler Mod"
 prefix = "grad"
 author = "Gruppe Adler"
 files = [
-    "Adler.paa",
-    "Adler_w.paa",
     "Adler_64.paa",
     "Adler_w_64.paa",
+    "Adler_w_2.paa",
     "mod.cpp",
     "LICENSE",
     "README.md"
