@@ -6,7 +6,7 @@ params [
     ["_animal", objNull]
 ];
 
-private _possibleVehicleClasses = [] call FUNC(getSupportedCarConfigs); // configured vehicle classes
+private _possibleVehicleClasses = [] call FUNC(getSupportedContainerConfigs); // configured vehicle classes
 private _possibleVehicleClassNames = _possibleVehicleClasses apply { configName _x};
 (nearestObjects [_animal, _possibleVehicleClassNames, GVAR(loadingRange) + 10, false]) select {
     private _unloadPoint = [

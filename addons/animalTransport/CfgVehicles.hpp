@@ -7,7 +7,7 @@ class CfgVehicles {
         };
         class ACE_Actions {
             class ACE_MainActions {
-                displayName = CSTRING(MainAction);
+                displayName = "Interactions";
                 distance = 3;
                 condition = QUOTE(true);
                 statement = "";

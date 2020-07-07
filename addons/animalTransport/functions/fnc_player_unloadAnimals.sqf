@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 params [
-    ["_vehicle", objNull]
+    ["_vehicle", objNull, [objNull]]
 ];
 
 if (isNull _vehicle) exitWith { ERROR("arrgh vic is null"); };
@@ -15,17 +15,10 @@ if (_totalCount < 1) exitWith {
     hint "nothing to unload";
 };
 
-cba_fnc_hashValues = {
-    private _hash = _this select 0;
-    (_this call cba_fnc_hashKeys) apply {
-        [_hash, _x] call cba_fnc_hashGet
-    }
-};
-
 player setVariable [QGVAR(lastUnloadTime), 0];
 
 [
-    (_totalCount / GRAD_animalTransport_unloadSpeed) + 1,
+    (_totalCount / GVAR(unloadSpeed)) + 1,
     [ // callback arguments
         ([_animals] call cba_fnc_hashValues)
     ],
@@ -39,11 +32,13 @@ player setVariable [QGVAR(lastUnloadTime), 0];
     format["unloading %1 animals", _totalCount],
     {
         params ["_args", "_elapsedTime", "_totalTime", "_errorCode"];
+        _args params [
+            ["_animals", [], [[]]]
+        ];
         private _lastUnloadTime = player getVariable [QGVAR(lastUnloadTime), 0];
-        private _timeToUnload = ((_elapsedTime - _lastUnloadTime) * GRAD_animalTransport_unloadSpeed) > 1;
+        private _timeToUnload = ((_elapsedTime - _lastUnloadTime) * GVAR(unloadSpeed)) > 1;
         if (!_timeToUnload) exitWith {true};
 
-        private _animals = _args select 0;
         private _animalIndex = _animals findIf {
             !(isNull _x) && !(isNull (attachedTo _x))
         };

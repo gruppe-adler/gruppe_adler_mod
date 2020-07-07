@@ -1,15 +1,15 @@
 #include "script_component.hpp"
 
 params [
-    ["_vehicle", objNull],
-    ["_animal", objNull],
-    ["_spaceName", ""]
+    ["_vehicle", objNull, [objNull]],
+    ["_animal", objNull, [objNull]],
+    ["_spaceName", "", [""]]
 ];
 assert(!(isNull _vehicle));
 assert(!(isNull _animal));
 assert(local _vehicle);
 
-_space = [_vehicle, typeOf _animal, _spaceName] call FUNC(findSuitableSpace);
+private _space = [_vehicle, typeOf _animal, _spaceName] call FUNC(findSuitableSpace);
 if (_space == configNull) exitWith { WARNING("loading failed, no open seat %1", _spaceName); };
 
 private _necessarySeats = [_space, "cargoIndices", []] call BIS_fnc_returnConfigEntry;

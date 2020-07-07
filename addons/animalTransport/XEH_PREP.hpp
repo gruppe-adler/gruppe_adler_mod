@@ -6,7 +6,7 @@ PREP(findSuitableVehicles);
 PREP(findTransportsInLoadingRange);
 PREP(getSupportedAnimalConfigs);
 PREP(getCustomConfig);
-PREP(getSupportedCarConfigs);
+PREP(getSupportedContainerConfigs);
 PREP(interact_loadAction);
 PREP(interact_loadChildren);
 PREP(interact_loadChildrenSpaces);
