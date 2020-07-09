@@ -15,6 +15,7 @@ if ((_loadout select 3 select 0) isEqualTo "") then {
             _loadout set [3, _uniformArray];
         };
     };
-}else{
-    player setUnitLoadout _loadout;
 };
+
+player setUnitLoadout _loadout;
+
