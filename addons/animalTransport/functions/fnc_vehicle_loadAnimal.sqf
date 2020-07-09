@@ -3,7 +3,8 @@
 params [
     ["_vehicle", objNull, [objNull]],
     ["_animal", objNull, [objNull]],
-    ["_spaceName", "", [""]]
+    ["_spaceName", "", [""]],
+    ["_instigator", objNull, [objNull]]
 ];
 assert(!(isNull _vehicle));
 assert(!(isNull _animal));
@@ -34,3 +35,5 @@ private _allAnimals = _vehicle getVariable [QGVAR(animals), ([] call cba_fnc_has
 [_allAnimals, configName _space, _animal] call cba_fnc_hashSet;
 
 _vehicle setVariable [QGVAR(animals), _allAnimals, true];
+
+[QGVAR(animal_loaded), [_vehicle, _animal, _instigator]] call CBA_fnc_localEvent;

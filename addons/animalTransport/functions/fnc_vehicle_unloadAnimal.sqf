@@ -1,7 +1,8 @@
 #include "script_component.hpp"
 
 params [
-    ["_animal", objNull, [objNull]]
+    ["_animal", objNull, [objNull]],
+    ["_instigator", objNull, [objNull]]
 ];
 
 if (isNull _animal) exitWith { ERROR("arrgh animal to be unloaded is null"); };
@@ -26,6 +27,7 @@ private _seatsOccupiedByMe = [];
         true
     } else {
         [_vehicle, _animal] call FUNC(vehicle_unloadAnimalDetach);
+        [QGVAR(animal_unloaded), [_vehicle, _animal, _instigator]] call CBA_fnc_localEvent;
         _seatsOccupiedByMe = _cargoIndices;
         false
     }

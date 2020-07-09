@@ -45,7 +45,7 @@ player setVariable [QGVAR(lastUnloadTime), 0];
         if (_animalIndex == -1) exitWith {false};
 
         private _animal = (_animals select _animalIndex);
-        [QGVAR(vehicle_unloadAnimal), [_animal], attachedTo _animal] call CBA_fnc_targetEvent;
+        [QGVAR(vehicle_unloadAnimal), [_animal, player], attachedTo _animal] call CBA_fnc_targetEvent;
         player setVariable [QGVAR(lastUnloadTime), _elapsedTime];
         _animals set [_animalIndex, objNull]; // remember: arrays are mutable, we're editing the same copy over and over
         true

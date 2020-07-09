@@ -15,7 +15,7 @@ private _spaces = [_target] call FUNC(findSuitableVehicles);
             params ["_target", "", "_params"];
             _params params ["_vehicle"];
 
-            [QGVAR(vehicle_loadAnimal), [_vehicle, _target], _vehicle] call CBA_fnc_targetEvent;
+            [QGVAR(vehicle_loadAnimal), [_vehicle, _target, "", player], _vehicle] call CBA_fnc_targetEvent;
         },
         {params ["", "", "_args"]; _args params ["","_vehicleSpaces"]; _vehicleSpaces > 0},
         FUNC(interact_loadChildrenSpaces),
