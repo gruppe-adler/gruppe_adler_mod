@@ -13,7 +13,7 @@ _spaces apply {
         {
             params ["_target", "", "_params"];
             _params params ["_vehicle", "_spaceName"];
-            [QGVAR(vehicle_loadAnimal), [_vehicle, _target, _spaceName], _vehicle] call CBA_fnc_targetEvent;
+            [QGVAR(vehicle_loadAnimal), [_vehicle, _target, _spaceName, player], _vehicle] call CBA_fnc_targetEvent;
         },
         {true},
         {[]},
