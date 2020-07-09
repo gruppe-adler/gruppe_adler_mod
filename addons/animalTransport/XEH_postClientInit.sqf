@@ -25,4 +25,4 @@ if (!hasInterface) exitWith {};
         _positionedUnloadAction,
         true
     ] call ace_interact_menu_fnc_addActionToClass;
-} forEach ([] call FUNC(getSupportedCarConfigs));
+} forEach ([] call FUNC(getSupportedContainerConfigs));

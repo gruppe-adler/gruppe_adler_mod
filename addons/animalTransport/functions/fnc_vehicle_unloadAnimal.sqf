@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 params [
-    ["_animal", objNull]
+    ["_animal", objNull, [objNull]]
 ];
 
 if (isNull _animal) exitWith { ERROR("arrgh animal to be unloaded is null"); };
