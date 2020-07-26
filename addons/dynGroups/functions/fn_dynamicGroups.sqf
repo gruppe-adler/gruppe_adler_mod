@@ -211,8 +211,6 @@ switch (_mode) do
 			{
 				["UnregisterGroup: Group (%1) unregistered and deleted (%2)", _group, _keep] call BIS_fnc_logFormat;
 			};
-			
-			["GRAD_dynGroups_unregisterGroup", [_group, _name]] call CBA_fnc_globalEvent;
 		};
 	};
 
@@ -263,7 +261,6 @@ switch (_mode) do
 		{
 			_group setGroupIdGlobal [_name];
 		};
-		["GRAD_dynGroups_setName", [_group, _name]] call CBA_fnc_globalEvent;
 	};
 
 	case "SetPrivateState" :
