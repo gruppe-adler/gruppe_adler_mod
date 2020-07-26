@@ -2,6 +2,9 @@
 
 params ["_saveName","_mapName",["_markersData",[]]];
 
+private _idNamespace = missionNamespace getVariable [QGVAR(idNamespace),objNull];
+private _playerID = _idNamespace getVariable [getPlayerUID player,"UNKNOWN"];
+
 {
     _x params [
         "_alpha",
@@ -16,7 +19,7 @@ params ["_saveName","_mapName",["_markersData",[]]];
         "_channel"
     ];
 
-    private _markerID = format ["_USER_DEFINED #-1%1%2/%3/%4",_saveName,_mapName,_forEachIndex,_channel];
+    private _markerID = format ["_USER_DEFINED #%1/%2/%3",_playerID,_forEachIndex,_channel];
 
     private _marker = createMarker [_markerID,_pos];
     _marker setMarkerAlpha _alpha;
