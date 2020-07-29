@@ -181,6 +181,8 @@ switch (_mode) do
 			{
 				["RegisterGroup: Group (%1) registered with leader (%2)", _group, _leader] call BIS_fnc_logFormat;
 			};
+			
+			["GRAD_dynGroups_registerGroup", [_group, _name]] call CBA_fnc_globalEvent;
 		};
 	};
 
