@@ -1,4 +1,5 @@
 name = "Gruppe Adler Mod"
+modname = "gruppe_adler_mod"
 prefix = "grad"
 author = "Gruppe Adler"
 files = [
