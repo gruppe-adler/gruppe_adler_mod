@@ -19,6 +19,10 @@ private _playerID = _idNamespace getVariable [getPlayerUID player,"UNKNOWN"];
         "_channel"
     ];
 
+    // LOAD ALL MARKERS INTO GLOBAL CHANNEL, BECAUSE E.G. SIDECHANNEL MARKERS ARE VISIBLE IN SIDECHANNELS OF ALL SIDES, GROUP CHANNEL IN GROUP CHANNELS OF ALL GROUPS etc.
+    _channel = 0;
+    // END
+
     private _markerID = format ["_USER_DEFINED #%1/%2/%3",_playerID,_forEachIndex,_channel];
 
     private _marker = createMarker [_markerID,_pos];
