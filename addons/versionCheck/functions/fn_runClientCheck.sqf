@@ -1,7 +1,5 @@
 #include "..\script_component.hpp"
 
-assert(!isServer);
-
 private _whitelist = toLower ace_common_checkPBOsWhitelist;
 _whitelist = _whitelist splitString "[,""']";
 
