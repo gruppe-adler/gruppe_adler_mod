@@ -16,3 +16,10 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+class CfgVehicles {
+	class Boat_Transport_02_base_F;
+	class Rubber_duck_base_F: Boat_Transport_02_base_F {
+		rudderForceCoef = 1;
+	};
+};
