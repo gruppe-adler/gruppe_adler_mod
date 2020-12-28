@@ -3,7 +3,6 @@
 private _whitelist = toLower GVAR(setting_whitelist);
 _whitelist = if (_whitelist isEqualTo "") then {[]} else {parseSimpleArray _whitelist};
 
-
 private _serverAddons = [GVAR(versions_server)] call CBA_fnc_hashKeys;
 private _clientAddons = [GVAR(versions)] call CBA_fnc_hashKeys;
 

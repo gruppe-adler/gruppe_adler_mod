@@ -3,7 +3,7 @@ SCRIPT(XEH_preInit);
 
 call FUNC(determineVersions);
 
-private _settingsGroup = "GRAD Version Check"; 
+private _settingsGroup = "GRAD Version Check";
 
 [
     QGVAR(setting_kickOnVersionMismatch),
@@ -53,7 +53,7 @@ private _settingsGroup = "GRAD Version Check";
 [
     QGVAR(setting_whitelist),
     "EDITBOX",
-    ["Whitelisted addons", "Array or CSV. Names as returned by 'allAddonsInfo'"],
+    ["Whitelisted addons", "something that parseSimpleArray understands"],
     _settingsGroup,
     "",
     true,
