@@ -12,7 +12,7 @@ params ["_initiator"];
         {
             params ["_unit", "_initiator"];
             INFO_2("forcing uniform reset on %1 (check initiated by %2)", _unit, _initiator);
-            [] remoteExecCall [QFUNC(resetUniform), _unit];
+            [_unit] remoteExecCall [QFUNC(resetUniform), _unit];
         },
         [_x, _initiator],
         60,

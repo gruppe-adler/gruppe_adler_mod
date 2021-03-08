@@ -1,11 +1,13 @@
 #include "script_component.hpp"
 
-private _loadout = getUnitLoadout player;
+params ["_unit"];
+
+private _loadout = getUnitLoadout _unit;
 
 if ((_loadout select 3 select 0) isEqualTo "") then {
     private _configPath = [] call GRAD_Loadout_fnc_getLoadoutConfigPath;
-    private _loadoutConfig = [player, _configPath] call GRAD_Loadout_fnc_getUnitLoadoutFromConfig;
-    _loadoutConfig = [_loadoutConfig, player] call GRAD_Loadout_fnc_ApplyRevivers;
+    private _loadoutConfig = [_unit, _configPath] call GRAD_Loadout_fnc_getUnitLoadoutFromConfig;
+    _loadoutConfig = [_loadoutConfig, _unit] call GRAD_Loadout_fnc_ApplyRevivers;
 
     if (([_loadoutConfig] call CBA_fnc_hashSize) > 0) then {
         private _uniform = [_loadoutConfig, "uniform"] call CBA_fnc_hashGet;
@@ -17,5 +19,5 @@ if ((_loadout select 3 select 0) isEqualTo "") then {
     };
 };
 
-player setUnitLoadout _loadout;
+_unit setUnitLoadout _loadout;
 
