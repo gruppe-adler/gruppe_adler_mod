@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+    <Package name="Main">
+        <Key ID="STR_grad_Author">
+            <English>Gruppe Adler</English>
+            <German>Gruppe Adler</German>
+        </Key>
+        <Key ID="STR_grad_URL">
+            <English>https://www.gruppe-adler.de/international/</English>
+            <German>https://www.gruppe-adler.de/</German>
+        </Key>
+    </Package>
+</Project>
