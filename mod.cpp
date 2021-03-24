@@ -7,4 +7,4 @@ description = "Gruppe Adler Mod";
 logo = "Adler_64.paa";
 logoOver = "Adler_w_64.paa";
 tooltip = "Gruppe Adler Mod";
-overview = "Gruppe Adler Mod contains an assortment of addons that modify existing mods or add new functionality.";
+overview = "Gruppe Adler Mod contains an assortment of addons that modify existing mods or add new functionality. Has dependencies to Gruppe Adler Mod, ACE, CBA, RHS and TFAR";
