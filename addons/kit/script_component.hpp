@@ -1,4 +1,4 @@
 #define COMPONENT kit
 
-#include "\x\grad\addons\main\script_mod.hpp"
-#include "\x\grad\addons\main\script_macros.hpp"
+#include "\x\grad\addons\macros\script_mod.hpp"
+#include "\x\grad\addons\macros\script_macros.hpp"
