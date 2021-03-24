@@ -7,7 +7,7 @@ echo "versionfile updater. looking for tag…"
 
 version=$(git describe --always --tag)
 
-versionfile="$baseDir/addons/macros/script_version.hpp"
+versionfile="$baseDir/addons/main/script_version.hpp"
 
 IFS='.-' read -ra versionbits <<< ${version}
 major=${versionbits[0]}
