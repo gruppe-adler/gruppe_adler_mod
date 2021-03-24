@@ -1,5 +1,5 @@
-### main
-Main component. Handles versioning and macros.
+### macros
+Macros component. Handles versioning and macros.
 
 #### Maintainer(s)
 * McDiod
