@@ -6,7 +6,6 @@ class cfgFunctions {
             class allMarkers {};
             class createMarkerPreview {};
             class findSaveInList {};
-            class getMarkerChannel {};
             class getMarkersInArea {};
             class loadDisplay {};
             class loadHelp {};

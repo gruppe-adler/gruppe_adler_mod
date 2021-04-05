@@ -34,7 +34,8 @@ _thisDataMarkersArray resize 0;
         markerSize _x,
         markerText _x,
         markerType _x,
-        [_x] call FUNC(getMarkerChannel)
+        markerChannel _x,
+        markerPolyline _x
     ];
 
 } forEach _markers;
