@@ -17,7 +17,8 @@ GVAR(previewMarkers) = [];
         "_size",
         "_text",
         "_type",
-        "_channel"
+        "_channel",
+        ["_polyline",[]]
     ];
 
     private _markerID = format ["_USER_DEFINED #-1/%1/%2",_forEachIndex,_channel];
@@ -32,6 +33,9 @@ GVAR(previewMarkers) = [];
     _marker setMarkerSizeLocal _size;
     _marker setMarkerTextLocal _text;
     _marker setMarkerTypeLocal _type;
+    if (count _polyline > 0) then {
+        _marker setMarkerPolylineLocal _polyline;
+    };
 
     GVAR(previewMarkers) pushBack _marker;
 
