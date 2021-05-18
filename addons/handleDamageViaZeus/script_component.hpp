@@ -2,3 +2,4 @@
 #include "\x\grad_mod\addons\main\script_mod.hpp"
 #include "\x\grad_mod\addons\main\script_macros.hpp"
 
+#include "\z\ace\addons\medical_gui\script_component.hpp 
