@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+    <Package name="handleDamageViaZeus">
+        <Key ID="STR_grad_handleDamageViaZeus_displayName">
+            <English>handleDamage</English>
+            <German>handleDamage</German>
+        </Key>
+    </Package>
+</Project>

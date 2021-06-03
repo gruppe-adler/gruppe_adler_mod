@@ -18,8 +18,8 @@
 params ["_display"];
 
 // Create background effects based on interact menu setting
-if (EGVAR(interact_menu,menuBackground) == 1) then {[QGVAR(id), true] call EFUNC(common,blurScreen)};
-if (EGVAR(interact_menu,menuBackground) == 2) then {0 cutRsc [QEGVAR(interact_menu,menuBackground), "PLAIN", 1, false]};
+if (ace_interact_menu_menuBackground == 1) then {["ace_medical_gui_id", true] call ace_common_fnc_blurScreen};
+if (ace_interact_menu_menuBackground == 2) then {0 cutRsc [ace_interact_menu_menuBackground, "PLAIN", 1, false]};
 
 // Fix mouse moving randomly
 [{

@@ -158,6 +158,7 @@ class GVAR(TriageSelect): RscControlsGroupNoScrollbars {
 };
 
 class ACE_Medical_Menu {
+    /*
     idd = IDD_MEDICAL_MENU;
     movingEnable = 1;
     enableSimulation = 1;
@@ -429,6 +430,7 @@ class ACE_Medical_Menu {
         class TriageToggle: GVAR(TriageToggle) {};
         class TriageSelect: GVAR(TriageSelect) {};
     };
+    
 };
 
 class GVAR(RscTriageCard) {
@@ -654,4 +656,5 @@ class RscTitles {
             };
         };
     };
+    */
 };
