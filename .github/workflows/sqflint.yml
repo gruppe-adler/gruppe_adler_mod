@@ -20,7 +20,7 @@ jobs:
     - name: Install sqflint
       run: |
         python -m pip install --upgrade pip
-        python -m pip install https://github.com/gruppe-adler/sqf/archive/0f6edf0d7b928afc8783ccad3c3c7cb7120feb1a.tar.gz
+        python -m pip install https://github.com/jokoho48/sqf/archive/31b21d39afaaa57506eff00cd37580294b191a9b.tar.gz
     - name: Lint with
       run: |
         sqflint -d . -e e
