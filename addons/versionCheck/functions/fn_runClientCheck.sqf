@@ -2,22 +2,22 @@
 
 private _whitelist = (toLower ace_common_checkPBOsWhitelist) splitString "[,""']";
 
-private _serverAddons = [GVAR(versions_server)] call CBA_fnc_hashKeys;
-private _clientAddons = [GVAR(versions)] call CBA_fnc_hashKeys;
+private _serverAddons = keys GVAR(versions_server);
+private _clientAddons = keys GVAR(versions);
 
 GVAR(missingAddonsServer) = _clientAddons - _serverAddons - _whitelist;
 GVAR(missingAddonsClient) = _serverAddons - _clientAddons - _whitelist;
 
 GVAR(versionMismatches) = (((_serverAddons arrayIntersect _clientAddons) apply {
-		private _clientAddon = [GVAR(versions), _x] call CBA_fnc_hashGet;
-		private _serverAddon = [GVAR(versions_server), _x] call CBA_fnc_hashGet;
+		private _clientAddon = GVAR(versions) get _x;
+		private _serverAddon = GVAR(versions_server) get _x;
 		[_x, _serverAddon#0, _clientAddon#0];
 }) select {
 	(_x select 1) != (_x select 2)
 });
 
 GVAR(clientUsesPatching) = _clientAddons select {
-	private _clientAddon = [GVAR(versions), _x] call CBA_fnc_hashGet;
+	private _clientAddon = GVAR(versions) get _x;
 	(_clientAddon#1)
 };
 
