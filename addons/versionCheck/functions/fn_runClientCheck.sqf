@@ -1,13 +1,6 @@
 #include "..\script_component.hpp"
 
-private _whitelist = toLower GVAR(setting_whitelist);
-_whitelist = if (_whitelist isEqualTo "") then {
-	(toLower ace_common_checkPBOsWhitelist) splitString "[,""']";
-} else {
-	parseSimpleArray _whitelist
-};
-
-
+private _whitelist = (toLower ace_common_checkPBOsWhitelist) splitString "[,""']";
 
 private _serverAddons = [GVAR(versions_server)] call CBA_fnc_hashKeys;
 private _clientAddons = [GVAR(versions)] call CBA_fnc_hashKeys;

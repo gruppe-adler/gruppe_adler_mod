@@ -49,14 +49,3 @@ private _settingsGroup = "GRAD Version Check";
     false,
     1
 ] call CBA_settings_fnc_init;
-
-[
-    QGVAR(setting_whitelist),
-    "EDITBOX",
-    ["Whitelisted addons", "something that parseSimpleArray understands"],
-    _settingsGroup,
-    "",
-    true,
-    {},
-    true
-] call CBA_fnc_addSetting;
