@@ -10,7 +10,10 @@ private _pad = {
 	(_str + ((_a apply {" "}) joinString ""));
 };
 
-private _description = [];
+private _description = [
+		"   LOCAL    |   SERVER   |   ADDON    <br/>", 
+		"------------|------------|---------- <br/>"
+];
 
 private _addonNames = keys grad_versionCheck_versions;
 _addonNames sort true;
