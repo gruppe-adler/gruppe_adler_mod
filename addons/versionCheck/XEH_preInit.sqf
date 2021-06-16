@@ -49,3 +49,6 @@ private _settingsGroup = "GRAD Version Check";
     false,
     1
 ] call CBA_settings_fnc_init;
+
+GVAR(addonVersionsTitle) = "Addon Versions";
+[GVAR(addonVersionsTitle), "<execute expression=""call grad_versionCheck_fnc_createDiaryEntry"">Show</execute>"] call EFUNC(ui,addHelpRecord);
