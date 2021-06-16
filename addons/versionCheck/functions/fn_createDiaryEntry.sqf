@@ -7,7 +7,7 @@ private _pad = {
 
 	private  _a = [];
 	_a resize (_targetLen - _strLen);
-	_str + (_a apply {" "} joinString "")
+	_str + (_a apply {" "} joinString "");
 };
 
 private _description = [];
