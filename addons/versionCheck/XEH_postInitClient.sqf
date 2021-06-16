@@ -9,5 +9,5 @@ private _waitUntil = {!isNil QGVAR(versions_server) && {!isNil "ace_common_check
     FUNC(runClientCheck),
     [],
     60,
-    FUNC(timeoutClientCheck),
+    FUNC(timeoutClientCheck)
 ] call CBA_fnc_waitUntilAndExecute;

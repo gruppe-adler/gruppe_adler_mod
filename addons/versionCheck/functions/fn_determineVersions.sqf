@@ -9,6 +9,6 @@ GVAR(versions) = [[],nil] call CBA_fnc_hashCreate;
     private _vNo = [_addonClass] call FUNC(getVersionNo);
     private _isPatched = false;
     if (_name find "a3" != 0) then {
-        [GVAR(versions), _name, [_version, _isPatched]] call CBA_fnc_hashSet;
+        [GVAR(versions), _name, [_vNo, _isPatched]] call CBA_fnc_hashSet;
     };
 } forEach ("true" configClasses (configFile >> "CfgPatches"));
