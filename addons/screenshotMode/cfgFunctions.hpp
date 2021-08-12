@@ -2,7 +2,7 @@ class CfgFunctions {
 	class grad_screenshotMode {
 		class misc
 		{
-			file = "x\grad\addons\screenshotMode\functions";
+			file = "x\grad_mod\addons\screenshotMode\functions";
 			class toggleAll {};
 			class toggleACENametags {};
 			class toggleDuiHud {};

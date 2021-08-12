@@ -2,7 +2,7 @@ class CfgFunctions {
 	class grad_cinematicSpec {
 		class misc
 		{
-			file = "x\grad\addons\cinematicSpec\functions";
+			file = "x\grad_mod\addons\cinematicSpec\functions";
 			class cam {};
 			class cameraOld {};
 			class chainHandlers {};

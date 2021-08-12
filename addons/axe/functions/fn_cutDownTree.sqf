@@ -39,7 +39,7 @@ private _progressCheck = {
     _args params ["_treeObject", "_lastSoundEffectTime", "_unit"];
 
     if (_passedTime > (_lastSoundEffectTime + SOUND_CLIP_TIME_SPACEING)) then {
-        playSound3D [format ["x\grad\addons\axe\sound\chop_%1.ogg", (round(random 25)) +1], objNull, false, (getPosASL _unit), 3, 1, 80];
+        playSound3D [format ["x\grad_mod\addons\axe\sound\chop_%1.ogg", (round(random 25)) +1], objNull, false, (getPosASL _unit), 3, 1, 80];
         _args set [1, _passedTime];
     };
 

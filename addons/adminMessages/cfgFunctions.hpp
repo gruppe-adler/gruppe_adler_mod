@@ -1,7 +1,7 @@
 class CfgFunctions {
     class grad_adminMessages {
         class adminMessages {
-            file = "x\grad\addons\adminMessages\functions";
+            file = "x\grad_mod\addons\adminMessages\functions";
 
             class displayMessage {};
             class initListbox {};

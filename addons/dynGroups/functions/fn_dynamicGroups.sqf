@@ -1,5 +1,5 @@
 // Include common defines file
-#include "\x\grad\addons\dynGroups\DynamicGroupsCommonDefines.inc"
+#include "\x\grad_mod\addons\dynGroups\DynamicGroupsCommonDefines.inc"
 
 private ["_mode", "_params"];
 _mode   = _this param [0, "", [""]];

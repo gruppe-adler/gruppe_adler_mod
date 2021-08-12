@@ -1,7 +1,7 @@
 class cfgFunctions {
 	class grad_saveMarkers {
 		class common {
-			file = "x\grad\addons\saveMarkers\functions";
+			file = "x\grad_mod\addons\saveMarkers\functions";
 
             class allMarkers {};
             class createMarkerPreview {};

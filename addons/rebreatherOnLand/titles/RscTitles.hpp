@@ -22,7 +22,7 @@ class RscTitles {
 	    		idc = -1;
 	    		type = 0;
 	    		style = 48;
-	    		text = "\x\grad\addons\rebreatherOnLand\titles\mask.paa";
+	    		text = "\x\grad_mod\addons\rebreatherOnLand\titles\mask.paa";
 	    		colorBackground[] = {1,1,1,1};
 	    		colorText[] = {1,1,1,1};
 	    		font = "EtelkaMonospaceProBold";
@@ -49,7 +49,7 @@ class RscTitles {
             Idc=-1;
             type=0;
             style = 48;
-            text = "\x\grad\addons\rebreatherOnLand\titles\fog.paa";
+            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
             colorBackground[] = {1,1,1,1};
             colorText[] = {1,1,1,0.6};
             font = "PuristaMedium";
@@ -76,7 +76,7 @@ class RscTitles {
             Idc=-1;
             type=0;
             style = 48;
-            text = "\x\grad\addons\rebreatherOnLand\titles\fog.paa";
+            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
             colorBackground[] = {1,1,1,1};
             colorText[] = {1,1,1,0.6};
             font = "PuristaMedium";
@@ -103,7 +103,7 @@ class RscTitles {
             Idc=-1;
             type=0;
             style = 48;
-            text = "\x\grad\addons\rebreatherOnLand\titles\ice.paa";
+            text = "\x\grad_mod\addons\rebreatherOnLand\titles\ice.paa";
             colorBackground[] = {1,1,1,1};
             colorText[] = {1,1,1,0.6};
             font = "PuristaMedium";
@@ -119,7 +119,7 @@ class RscTitles {
             Idc=-1;
             type=0;
             style = 48;
-            text = "\x\grad\addons\rebreatherOnLand\titles\fog.paa";
+            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
             colorBackground[] = {1,1,1,1};
             colorText[] = {1,1,1,0.2};
             font = "PuristaMedium";
@@ -146,7 +146,7 @@ class RscTitles {
             Idc=-1;
             type=0;
             style = 48;
-            text = "\x\grad\addons\rebreatherOnLand\titles\ice.paa";
+            text = "\x\grad_mod\addons\rebreatherOnLand\titles\ice.paa";
             colorBackground[] = {1,1,1,1};
             colorText[] = {1,1,1,0.6};
             font = "PuristaMedium";
@@ -162,7 +162,7 @@ class RscTitles {
             Idc=-1;
             type=0;
             style = 48;
-            text = "\x\grad\addons\rebreatherOnLand\titles\fog.paa";
+            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
             colorBackground[] = {1,1,1,1};
             colorText[] = {1,1,1,0.2};
             font = "PuristaMedium";

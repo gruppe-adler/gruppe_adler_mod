@@ -1,7 +1,7 @@
 class CfgFunctions {
 	class grad_rebreatherOnLand {
 		class rebreatherOnLand {
-			file = "x\grad\addons\rebreatherOnLand\functions";
+			file = "x\grad_mod\addons\rebreatherOnLand\functions";
 
 			class addInventoryEHs {};
 			class addPFH {};

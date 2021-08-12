@@ -1,3 +1,3 @@
 class CfgScriptPaths {
-    grad_dynGroups = "\x\grad\addons\dynGroups\";
+    grad_dynGroups = "\x\grad_mod\addons\dynGroups\";
 };

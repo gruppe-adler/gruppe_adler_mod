@@ -4,8 +4,8 @@
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
-#include "\x\grad\addons\main\script_mod.hpp"
-#include "\x\grad\addons\main\script_macros.hpp"
+#include "\x\grad_mod\addons\main\script_mod.hpp"
+#include "\x\grad_mod\addons\main\script_macros.hpp"
 
 #define STATUS_ERROR "error"
 #define STATUS_FAIL "fail"

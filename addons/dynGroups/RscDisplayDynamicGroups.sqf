@@ -2,7 +2,7 @@
 disableSerialization;
 
 // Include common defines file
-#include "\x\grad\addons\dynGroups\DynamicGroupsCommonDefines.inc"
+#include "\x\grad_mod\addons\dynGroups\DynamicGroupsCommonDefines.inc"
 
 // Script parameters
 private ["_mode", "_params"];
@@ -313,7 +313,7 @@ switch _mode do
 			private _insignia = missionNamespace getVariable [VAR_FORCED_INSIGNIA, ""];
 			private _insigniaTexture = if (_insignia != "") then {["GetInsigniaTexture", [_insignia]] call GROUPS} else {["GetInsigniaTexture", [_groupPicture]] call GROUPS};
 			if (_insigniaTexture == "") then {
-				_groupIcon ctrlSetText "\x\grad\addons\dynGroups\data\noInsignia.paa";
+				_groupIcon ctrlSetText "\x\grad_mod\addons\dynGroups\data\noInsignia.paa";
 			} else {
 				_groupIcon ctrlSetText _insigniaTexture;
 			};

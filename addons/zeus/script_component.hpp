@@ -1,7 +1,7 @@
 #define COMPONENT zeus
 
-#include "\x\grad\addons\main\script_mod.hpp"
-#include "\x\grad\addons\main\script_macros.hpp"
+#include "\x\grad_mod\addons\main\script_mod.hpp"
+#include "\x\grad_mod\addons\main\script_macros.hpp"
 
 //UI
 #define SIZEX ((safezoneW / safezoneH) min 1.2)
