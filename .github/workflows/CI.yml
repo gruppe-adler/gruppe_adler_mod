@@ -1,0 +1,55 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  hemtt:
+    name: Build with HEMTT
+    runs-on: windows-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Build with HEMTT
+      uses: gruppe-adler/action-release-with-hemtt@2.2.0
+      id: build
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ steps.build.outputs.zip_name }}
+        path: ${{ steps.build.outputs.release_path }}
+  sqfvalidator:
+    name: Validate with ACE3's SQF-Validator
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        wget https://raw.githubusercontent.com/acemod/ACE3/c8812e093a366187355b8581bb0da83197cd6f95/tools/sqf_validator.py
+        sed -i '117d' sqf_validator.py
+        sed -i '116d' sqf_validator.py
+        sed -i '115d' sqf_validator.py
+    - name: Validate
+      run: |
+        python3 sqf_validator.py
+  sqflint:
+    name: Lint with SQFLint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install SQFLint
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install https://github.com/jokoho48/sqf/archive/39c93cdb8fee84236f2766a006cd66fae8acce17.tar.gz
+    - name: Lint
+      run: |
+        sqflint -d . -e w
