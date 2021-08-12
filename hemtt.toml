@@ -1,6 +1,6 @@
 name = "Gruppe Adler Mod"
-modname = "gruppe_adler_mod"
-prefix = "grad"
+modname = "grad_mod"
+prefix = "grad_mod"
 author = "Gruppe Adler"
 files = [
     "logo_active_ca.paa",
@@ -19,7 +19,7 @@ key_name = "{{prefix}}_{{version}}"
 authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 
 releasebuild = [
-    "@zip gruppe_adler_mod_{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
+    "@zip {{modname}}_{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
 ]
 
 [header_exts]
