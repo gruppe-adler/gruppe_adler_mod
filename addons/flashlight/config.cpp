@@ -2,9 +2,9 @@
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_grad_Author";
+        author = "$STR_GRAD_MOD_AUTHOR";
         name = QUOTE(ADDON);
-        url = "$STR_grad_URL";
+        url = "$STR_GRAD_MOD_URL";
 		requiredVersion = 1.0;
 		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "cba_jr"};
 		units[] = {"Item_acc_flashlight"};

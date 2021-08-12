@@ -2,7 +2,7 @@ class CfgVehicles {
 	class ace_zeus_moduleBase;
 
 	class GVAR(moduleBase): ace_zeus_moduleBase {
-		author = "$STR_grad_Author";
+		author = "$STR_GRAD_MOD_AUTHOR";
 	};
 
 	class GVAR(moduleSupplyDrop): GVAR(moduleBase) {

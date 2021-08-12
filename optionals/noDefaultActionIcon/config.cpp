@@ -3,13 +3,13 @@
 class CfgPatches {
 	class ADDON {
 		ACE_isOptional = 1;
-		author = "$STR_grad_Author";
+		author = "$STR_GRAD_MOD_AUTHOR";
 		authors[] = {"fusselwurm <fusselwurm@gmail.com>"};
 		name = CSTRING(COMPONENT);
 		requiredAddons[] = {"cba_main","ace_main"};
 		requiredVersion = 1.0;
 		units[] = {};
-		url = "$STR_grad_URL";
+		url = "$STR_GRAD_MOD_URL";
 		VERSION_CONFIG;
 		weapons[] = {};
 	};
