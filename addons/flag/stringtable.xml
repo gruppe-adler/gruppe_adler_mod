@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="gruppe_adler_mod">
      <Package name="flag">
-          <Key ID="STR_GRAD_flag_gruppeAdlerWhite_display">
+          <Key ID="STR_GRAD_MOD_FLAG_displayName">
                <Original>Flag (Gruppe Adler)</Original>
                <English>Flag (Gruppe Adler)</English>
                <German>Flagge (Gruppe Adler)</German>
