@@ -15,10 +15,10 @@ class GVAR(display): RscStandardDisplay {
         {
             idc = -1;
 
-            x = GRAD_VERSIONCHECK_TOTALX;
-            y = GRAD_VERSIONCHECK_TOTALY;
-            w = GRAD_VERSIONCHECK_TOTALW;
-            h = GRAD_VERSIONCHECK_TITLEH;
+            x = VERSIONCHECK_TOTALX;
+            y = VERSIONCHECK_TOTALY;
+            w = VERSIONCHECK_TOTALW;
+            h = VERSIONCHECK_TITLEH;
 
             colorBackground[]=
             {
@@ -32,10 +32,10 @@ class GVAR(display): RscStandardDisplay {
 		class Text: RscText	{
 			idc=-1;
 
-			x = GRAD_VERSIONCHECK_TOTALX;
-            y = GRAD_VERSIONCHECK_TEXTY;
-            w = GRAD_VERSIONCHECK_TOTALW;
-            h = GRAD_VERSIONCHECK_TEXTH;
+			x = VERSIONCHECK_TOTALX;
+            y = VERSIONCHECK_TEXTY;
+            w = VERSIONCHECK_TOTALW;
+            h = VERSIONCHECK_TEXTH;
 
 			colorBackground[]={0,0,0,0.69999999};
 		};
@@ -45,10 +45,10 @@ class GVAR(display): RscStandardDisplay {
         class Title: RscTitle {
             idc = -1;
 
-            x = GRAD_VERSIONCHECK_TOTALX;
-            y = GRAD_VERSIONCHECK_TOTALY;
-            w = GRAD_VERSIONCHECK_TOTALW;
-            h = GRAD_VERSIONCHECK_TITLEH;
+            x = VERSIONCHECK_TOTALX;
+            y = VERSIONCHECK_TOTALY;
+            w = VERSIONCHECK_TOTALW;
+            h = VERSIONCHECK_TITLEH;
 
             text = "GRAD VERSIONCHECK";
         };
@@ -56,10 +56,10 @@ class GVAR(display): RscStandardDisplay {
         class TextCG: RscControlsGroup {
 			idc=2300;
 
-            x = GRAD_VERSIONCHECK_TOTALX;
-            y = GRAD_VERSIONCHECK_TEXTY;
-            w = GRAD_VERSIONCHECK_TOTALW;
-            h = GRAD_VERSIONCHECK_TEXTH;
+            x = VERSIONCHECK_TOTALX;
+            y = VERSIONCHECK_TEXTY;
+            w = VERSIONCHECK_TOTALW;
+            h = VERSIONCHECK_TEXTH;
 
 			class Controls {
 				class Text: RscStructuredText {
@@ -67,8 +67,8 @@ class GVAR(display): RscStandardDisplay {
 
                     x = 0;
                     y = 0;
-                    w = GRAD_VERSIONCHECK_TOTALW;
-                    h = GRAD_VERSIONCHECK_TEXTH;
+                    w = VERSIONCHECK_TOTALW;
+                    h = VERSIONCHECK_TEXTH;
 
 					size="(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 				};
@@ -78,10 +78,10 @@ class GVAR(display): RscStandardDisplay {
 		class ButtonOK: RscButtonMenuCancel {
 			text="OK";
 
-			x = GRAD_VERSIONCHECK_BUTTONX;
-			y = GRAD_VERSIONCHECK_BUTTONY;
-			w = GRAD_VERSIONCHECK_BUTTONW;
-			h = GRAD_VERSIONCHECK_TITLEH;
+			x = VERSIONCHECK_BUTTONX;
+			y = VERSIONCHECK_BUTTONY;
+			w = VERSIONCHECK_BUTTONW;
+			h = VERSIONCHECK_TITLEH;
 		};
     };
 };
