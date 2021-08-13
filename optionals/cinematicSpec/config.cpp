@@ -1,17 +1,17 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-	class ADDON {
-		author = "$STR_GRAD_MOD_AUTHOR";
-		name = CSTRING(component);
-		url = "$STR_GRAD_MOD_URL";
-		requiredVersion = 1.0;
-		requiredAddons[] = {"grad_main","ace_spectator"};
-		units[] = {};
-		weapons[] = {};
-		VERSION_CONFIG;
-		authors[] = {"[A] Fusselwurm <fusselwurm@gmail.com>"};
-	};
+    class ADDON {
+        name = QUOTE(ADDON);
+        author = QUOTE(AUTHOR);
+        url = QUOTE(URL);
+        authors[] = {"Fusselwurm"};
+        requiredVersion = 1.0;
+        requiredAddons[] = {QMAINPATCH, "ace_spectator"};
+        VERSION_CONFIG;
+        units[] = {};
+        weapons[] = {};
+    };
 };
 
 #include "cfgEventHandlers.hpp"

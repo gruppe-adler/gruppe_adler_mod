@@ -1,13 +1,15 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-	class ADDON {
-		author = "$STR_GRAD_MOD_AUTHOR";
-		name = QUOTE(ADDON);
-		url = "$STR_GRAD_MOD_URL";
-		requiredVersion = 1.0;
-		requiredAddons[] = {"grad_main","ace_zeus"};
-		units[] = {
+    class ADDON {
+        name = QUOTE(ADDON);
+        author = QUOTE(AUTHOR);
+        url = QUOTE(URL);
+        authors[] = {"chris5790", "McDiod"};
+        requiredVersion = 1.0;
+        requiredAddons[] = {QMAINPATCH, "ace_zeus"};
+        VERSION_CONFIG;
+        units[] = {
 			QGVAR(moduleSupplyDrop),
 			QGVAR(moduleDiagnostics),
 			QGVAR(moduleToggleBFT),
@@ -17,13 +19,8 @@ class CfgPatches {
 			QGVAR(moduleBlacklistHeadless),
 			QGVAR(moduleAddPlayersToZeus)
 		};
-		weapons[] = {};
-		VERSION_CONFIG;
-        authors[] = {
-			"chris5790",
-			"McDiod"
-		};
-	};
+        weapons[] = {};
+    };
 };
 
 class CfgFactionClasses {

@@ -3,12 +3,14 @@
 class CfgPatches {
     class ADDON {
         name = QUOTE(ADDON);
+        author = QUOTE(AUTHOR);
+        url = QUOTE(URL);
+        authors[] = {"Salbei"};
+        requiredVersion = 1.0;
+        requiredAddons[] = {QMAINPATCH};
+        VERSION_CONFIG;
         units[] = {};
         weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"grad_main"};
-        authors[] = { "Salbei"};
-        VERSION_CONFIG;
     };
 };
 

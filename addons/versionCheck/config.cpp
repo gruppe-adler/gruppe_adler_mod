@@ -1,17 +1,17 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-	class ADDON {
-		author = "$STR_GRAD_MOD_AUTHOR";
-		name = QUOTE(ADDON);
-		url = "$STR_GRAD_MOD_URL";
-		requiredVersion = 1.0;
-		requiredAddons[] = {"ace_common", "grad_main", "grad_ui"};
-		units[] = {};
-		weapons[] = {};
-		VERSION_CONFIG;
+    class ADDON {
+        name = QUOTE(ADDON);
+        author = QUOTE(AUTHOR);
+        url = QUOTE(URL);
         authors[] = {"McDiod"};
-	};
+        requiredVersion = 1.0;
+        requiredAddons[] = {QMAINPATCH, "ace_common", "grad_mod_ui"};
+        VERSION_CONFIG;
+        units[] = {};
+        weapons[] = {};
+    };
 };
 
 #include "cfgEventHandlers.hpp"

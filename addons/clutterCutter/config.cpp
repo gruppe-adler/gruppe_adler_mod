@@ -2,15 +2,15 @@
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_GRAD_MOD_AUTHOR";
         name = QUOTE(ADDON);
-        url = "$STR_GRAD_MOD_URL";
+        author = QUOTE(AUTHOR);
+        url = QUOTE(URL);
+        authors[] = {"Raimo", "Fusselwurm"};
         requiredVersion = 1.0;
-        requiredAddons[] = {"grad_main", "ace_interact_menu"};
+        requiredAddons[] = {QMAINPATCH, "ace_interact_menu"};
+        VERSION_CONFIG;
         units[] = {};
         weapons[] = {};
-        VERSION_CONFIG;
-        authors[] = {"Raimo", "Fusselwurm"};
     };
 };
 

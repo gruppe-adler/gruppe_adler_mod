@@ -2,18 +2,16 @@
 
 class CfgPatches {
     class ADDON {
-        author = "$STR_GRAD_MOD_AUTHOR";
         name = QUOTE(ADDON);
-        url = "$STR_GRAD_MOD_URL";
-		requiredVersion = 1.0;
-		requiredAddons[] = {"A3_Data_F", "A3_Weapons_F", "cba_jr"};
-		units[] = {"Item_acc_flashlight"};
-		weapons[] = {"acc_flashlight"};
+        author = QUOTE(AUTHOR);
+        url = QUOTE(URL);
+        authors[] = {"nomisum"};
+        requiredVersion = 1.0;
+        requiredAddons[] = {QMAINPATCH, "a3_data_f", "a3_weapons_f", "cba_jr"};
         VERSION_CONFIG;
-        authors[] = {
-			"nomisum <nomisum@gmail.com>"
-		};
-	};
+        units[] = {};
+        weapons[] = {};
+    };
 };
 
 class asdg_SlotInfo;
