@@ -2,243 +2,243 @@
 <Project name="Gruppe Adler Mod">
     <Package name="zeus">
         <Container name="common">
-            <Key ID="STR_GRAD_ZEUS_side">
+            <Key ID="STR_GRAD_MOD_ZEUS_side">
                 <German>Seite</German>
                 <Original>Side</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_faction">
+            <Key ID="STR_GRAD_MOD_ZEUS_faction">
                 <German>Faktion</German>
                 <Original>Faction</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_loadouts">
+            <Key ID="STR_GRAD_MOD_ZEUS_loadouts">
                 <German>Loadouts</German>
                 <Original>Loadouts</Original>
             </Key>
         </Container>
         <Container name="moduleDiagnostics">
-            <Key ID="STR_GRAD_ZEUS_moduleDiagnosticsName">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleDiagnosticsName">
                 <German>Monitoring</German>
                 <Original>Monitoring</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_players">
+            <Key ID="STR_GRAD_MOD_ZEUS_players">
                 <German>Spieler</German>
                 <Original>Players</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_avgFPS">
+            <Key ID="STR_GRAD_MOD_ZEUS_avgFPS">
                 <German>Durschn. FPS</German>
                 <Original>Avg. FPS</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_serverFPS">
+            <Key ID="STR_GRAD_MOD_ZEUS_serverFPS">
                 <German>Server FPS</German>
                 <Original>Server FPS</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_conscious">
+            <Key ID="STR_GRAD_MOD_ZEUS_conscious">
                 <German>Bei Bewusstsein</German>
                 <Original>Conscious</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_unconscious">
+            <Key ID="STR_GRAD_MOD_ZEUS_unconscious">
                 <German>Bewusstlos</German>
                 <Original>Unconscious</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_injured">
+            <Key ID="STR_GRAD_MOD_ZEUS_injured">
                 <German>Verletzt</German>
                 <Original>Injured</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_aiUnits">
+            <Key ID="STR_GRAD_MOD_ZEUS_aiUnits">
                 <German>KI Einheiten</German>
                 <Original>AI units</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_aiGroups">
+            <Key ID="STR_GRAD_MOD_ZEUS_aiGroups">
                 <German>KI Gruppen</German>
                 <Original>AI groups</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_optionPlayerFPS">
+            <Key ID="STR_GRAD_MOD_ZEUS_optionPlayerFPS">
                 <German>Spieler FPS</German>
                 <Original>Player FPS</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_optionPlayerFreqs">
+            <Key ID="STR_GRAD_MOD_ZEUS_optionPlayerFreqs">
                 <German>Spieler Funkfrequenzen</German>
                 <Original>Player Radio Frequencies</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_optionPlayerMedicalStatus">
+            <Key ID="STR_GRAD_MOD_ZEUS_optionPlayerMedicalStatus">
                 <German>Spieler Gesundheitszustand</German>
                 <Original>Player medical status</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_optionObjectLocality">
+            <Key ID="STR_GRAD_MOD_ZEUS_optionObjectLocality">
                 <German>Objektlokalität</German>
                 <Original>Object locality</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_optionAIStatus">
+            <Key ID="STR_GRAD_MOD_ZEUS_optionAIStatus">
                 <German>KI Status</German>
                 <Original>AI status</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_optionSummaryWindow">
+            <Key ID="STR_GRAD_MOD_ZEUS_optionSummaryWindow">
                 <German>Übersichtsfenster</German>
                 <Original>Summary window</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_fleeing">
+            <Key ID="STR_GRAD_MOD_ZEUS_fleeing">
                 <German>flüchtet</German>
                 <Original>fleeing</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_suppressed">
+            <Key ID="STR_GRAD_MOD_ZEUS_suppressed">
                 <German>unterdrückt</German>
                 <Original>suppressed</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_downFor">
+            <Key ID="STR_GRAD_MOD_ZEUS_downFor">
                 <German>bew. seit</German>
                 <Original>down for</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_injuredBodyPart">
+            <Key ID="STR_GRAD_MOD_ZEUS_injuredBodyPart">
                 <German>verletzt</German>
                 <Original>injured</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_head">
+            <Key ID="STR_GRAD_MOD_ZEUS_head">
                 <German>Kopf</German>
                 <Original>head</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_body">
+            <Key ID="STR_GRAD_MOD_ZEUS_body">
                 <German>Torso</German>
                 <Original>body</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_leftArm">
+            <Key ID="STR_GRAD_MOD_ZEUS_leftArm">
                 <German>l. Arm</German>
                 <Original>left arm</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_rightArm">
+            <Key ID="STR_GRAD_MOD_ZEUS_rightArm">
                 <German>r. Arm</German>
                 <Original>right arm</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_leftLeg">
+            <Key ID="STR_GRAD_MOD_ZEUS_leftLeg">
                 <German>l. Bein</German>
                 <Original>left leg</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_rightLeg">
+            <Key ID="STR_GRAD_MOD_ZEUS_rightLeg">
                 <German>r. Bein</German>
                 <Original>right leg</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_onOwner">
+            <Key ID="STR_GRAD_MOD_ZEUS_onOwner">
                 <German>auf</German>
                 <Original>on</Original>
             </Key>
         </Container>
         <Container name="moduleToggleBFT">
-            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTName">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleToggleBFTName">
                 <German>BFT umschalten</German>
                 <Original>Toggle BFT</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTError1">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleToggleBFTError1">
                 <German>Nicht-leeres Objekt auswählen</German>
                 <Original>Select non-empty object</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResult">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleToggleBFTResult">
                 <German>BFT für Gruppe %1.</German>
                 <Original>Group BFT %1.</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOn">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleToggleBFTResultOn">
                 <German>eingeschaltet</German>
                 <Original>toggled on</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOff">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleToggleBFTResultOff">
                 <German>ausgeschaltet</German>
                 <Original>toggled off</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleAddPlayersToZeusName">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleAddPlayersToZeusName">
                 <German>Spieler zu Zeus hinzufügen</German>
                 <Original>Add players to Zeus</Original>
             </Key>
         </Container>
         <Container name="moduleReloadLoadout">
-            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutName">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleReloadLoadoutName">
                 <German>Loadout neu laden</German>
                 <Original>Reload Loadout</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutError1">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleReloadLoadoutError1">
                 <German>Fehler: Einheit auswählen.</German>
                 <Original>Error: Select a unit.</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutError2">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleReloadLoadoutError2">
                 <German>Fehler: GRAD-Loadout nicht installiert.</German>
                 <Original>Error: GRAD-Loadout not installed.</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleReloadLoadoutConfirm">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleReloadLoadoutConfirm">
                 <German>%1s Loadout neu geladen.</German>
                 <Original>Loadout reloaded for %1.</Original>
             </Key>
         </Container>
         <Container name="moduleSetLoadouts">
-            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsName">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleSetLoadoutsName">
                 <German>Faktionsloadouts festlegen</German>
                 <Original>Set Faction Loadouts</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsReapply">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleSetLoadoutsReapply">
                 <German>Loadouts neu anwenden</German>
                 <Original>Reapply Loadouts</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsSet">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleSetLoadoutsSet">
                 <German>Loadouts festgelegt</German>
                 <Original>Loadouts set</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsReapplied">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleSetLoadoutsReapplied">
                 <German>und neu angewendet</German>
                 <Original>and reapplied</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleSetLoadoutsError1">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleSetLoadoutsError1">
                 <German>Fehler: Keine Loadouts gefunden oder GRAD-Loadout nicht installiert.</German>
                 <Original>Error: No loadouts found or GRAD-Loadout not installed.</Original>
             </Key>
         </Container>
         <Container name="moduleMoveRespawn">
-            <Key ID="STR_GRAD_ZEUS_moduleMoveRespawnName">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleMoveRespawnName">
                 <German>Respawnposition verschieben</German>
                 <Original>Move Respawn Position</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleMoveRespawnError1">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleMoveRespawnError1">
                 <German>Fehler: %1 existiert nicht.</German>
                 <Original>Error: %1 does not exist.</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleMoveRespawnConfirm">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleMoveRespawnConfirm">
                 <German>%1 verschoben nach %2.</German>
                 <Original>%1 moved to %2.</Original>
             </Key>
         </Container>
         <Container name="moduleBlacklistHeadless">
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistHeadlessName">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistHeadlessName">
                 <German>Blacklist Headless Übertragung</German>
                 <Original>Blacklist Headless Transfer</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistHeadlessMoveTo">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistHeadlessMoveTo">
                 <German>Jetzt übertragen nach:</German>
                 <Original>Transfer now to:</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistHeadlessDoBlacklist">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistHeadlessDoBlacklist">
                 <German>Übertragung sperren</German>
                 <Original>Blacklist Transfer</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistDontMove">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistDontMove">
                 <German>nicht übertragen</German>
                 <Original>don't transfer</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistPlayer">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistPlayer">
                 <German>Spieler</German>
                 <Original>Player</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistServer">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistServer">
                 <German>Server</German>
                 <Original>Server</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistHeadlessError1">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistHeadlessError1">
                 <German>Fehler: Gruppe enthält Spieler.</German>
                 <Original>Error: Group contains players. </Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistBlacklisted">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistBlacklisted">
                 <German>Übertragung gesperrt</German>
                 <Original>blacklisted</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistUnblacklisted">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistUnblacklisted">
                 <German>Übertragung entsperrt</German>
                 <Original>unblacklisted</Original>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleBlacklistTransferred">
+            <Key ID="STR_GRAD_MOD_ZEUS_moduleBlacklistTransferred">
                 <German>und übertragen zu %1.</German>
                 <Original>and transferred to %1.</Original>
             </Key>

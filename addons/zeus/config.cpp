@@ -24,7 +24,7 @@ class CfgPatches {
 };
 
 class CfgFactionClasses {
-	class GVAR(Grad) {
+	class GVAR(category) {
 		displayName = "Gruppe Adler";
 		priority = 2;
 		side = 7;

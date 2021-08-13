@@ -2,7 +2,7 @@
 
 /*
 *   Credits: PabstMirror, ACE_zeus_fnc_ui_globalSetSkill
-*   Adapted for grad_zeus by McDiod
+*   Adapted for grad_mod_zeus by McDiod
 */
 
 
