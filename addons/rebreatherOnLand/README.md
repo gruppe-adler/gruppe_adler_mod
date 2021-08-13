@@ -1,12 +1,12 @@
-### rebreatherOnLand
+# `rebreatherOnLand`
 This little addon adds three *Oxygen Tank* vests to the game that look cool for high altitude parachuting.
 
 <img src="http://i.imgur.com/sqRzJfK.png" width="512" />
 
-#### Maintainer(s)
+## Maintainer(s)
 * McDiod
 
-#### Class Names
+## Class Names
 These are available in the arsenal/loadout editor:
 
 display name        | class name
@@ -24,7 +24,7 @@ Oxygen Tank (Olive) | V_GA_OxygenTank_Oli_nomask
 Oxygen Tank (Green) | V_GA_OxygenTank_Rgr_nomask
 
 
-#### Extra Functionality
+## Extra Functionality
 There is some optional functionality that you can unlock by adding this to your init.sqf:
 
 `[] call grad_rebreatherOnLand_fnc_init;`

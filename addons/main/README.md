@@ -1,5 +1,5 @@
-### main
+# `main`
 Main component. Handles versioning and macros.
 
-#### Maintainer(s)
-* McDiod
+## Maintainer(s)
+- McDiod

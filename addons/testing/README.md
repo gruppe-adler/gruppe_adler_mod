@@ -1,12 +1,12 @@
-### testing
+# `testing`
 
 Unit testing framework
 
-#### Maintainer(s)
+## Maintainer(s)
 
 * Fusselwurm
 
-#### Description
+## Explanation
 
 **Automate script testing.**
 
@@ -39,10 +39,9 @@ When running the tests, **every leaf is executed in isolation** - preceded by al
 
 In the end, the results are pretty-printed to systemChat as well as `rpt`.
 
-#### Usage example
+## Usage example
 
-```arma.sqf
-
+```sqf
 ["a rubber boat",
     {
         if (worldName != "VR") then {
