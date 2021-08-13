@@ -11,11 +11,11 @@
  * vest magazines <ARRAY> [classname,ammo count, amount of mags]
  *
  * Example:
- * [player] call grad_rebreatherOnLand_fnc_vestMagazines;
+ * [player] call grad_mod_rebreatherOnLand_fnc_vestMagazines;
  *
  * Public: No
  */
-
+#include "script_component.hpp"
 
 params ["_unit"];
 

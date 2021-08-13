@@ -11,27 +11,27 @@ These are available in the arsenal/loadout editor:
 
 display name        | class name
 --------------------|--------------------
-Oxygen Tank (Black) | V_GA_OxygenTank_Blk
-Oxygen Tank (Olive) | V_GA_OxygenTank_Oli
-Oxygen Tank (Green) | V_GA_OxygenTank_Rgr
+Oxygen Tank (Black) | grad_mod_rebreatherOnLand_OxygenTank_Blk
+Oxygen Tank (Olive) | grad_mod_rebreatherOnLand_OxygenTank_Oli
+Oxygen Tank (Green) | grad_mod_rebreatherOnLand_OxygenTank_Rgr
 
 These are not available in the arsenal/loadout editor and should only be used in conjunction with the *Extra Functionality*:
 
 display name        | class name
 --------------------|--------------------
-Oxygen Tank (Black) | V_GA_OxygenTank_Blk_nomask
-Oxygen Tank (Olive) | V_GA_OxygenTank_Oli_nomask
-Oxygen Tank (Green) | V_GA_OxygenTank_Rgr_nomask
+Oxygen Tank (Black) | grad_mod_rebreatherOnLand_OxygenTank_Blk_nomask
+Oxygen Tank (Olive) | grad_mod_rebreatherOnLand_OxygenTank_Oli_nomask
+Oxygen Tank (Green) | grad_mod_rebreatherOnLand_OxygenTank_Rgr_nomask
 
 
 ## Extra Functionality
 There is some optional functionality that you can unlock by adding this to your init.sqf:
 
-`[] call grad_rebreatherOnLand_fnc_init;`
+`[] call grad_mod_rebreatherOnLand_fnc_init;`
 
 The init function adds a CBA_perFrameHandler that costs minimal performance. To stop it again, i.e. because your parajump is complete, use:
 
-`[] call grad_rebreatherOnLand_fnc_stop;`
+`[] call grad_mod_rebreatherOnLand_fnc_stop;`
 
 **Take off mask:**  
 Take off and put on your mask with ACE-Selfinteraction → Equipment → Take off oxygen mask. The mask will block some of your vision, but save you from oxygen deprivation when jumping from high altitude.

@@ -14,6 +14,6 @@ class CfgPatches {
     };
 };
 
-#include "cfgFunctions.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgWeapons.hpp"
 #include "titles\RscTitles.hpp"
-#include "cfgWeapons.hpp"

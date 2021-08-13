@@ -1,176 +1,100 @@
-#include "..\defines.hpp"
+class RscPicture;
+class GVAR(defaultCtrl): RscPicture {
+    idc = -1;
+    x = safezoneX;
+    y = safezoneY;
+    w = safezoneW;
+    h = safezoneH;
+    colorBackground[] = {1,1,1,1};
+};
 
 class RscTitles {
-    class ga_rebreatherOnLand_RscDefault {
+    class GVAR(Default) {
         idd = -1;
         fadein = 0;
         fadeout = 0;
         duration = 0;
     };
 
-	class ga_rebreatherOnLand_RscMask
-	{
+	class GVAR(Mask) {
 		idd = -1;
 		movingEnable = 0;
 		duration = 99999;
 		fadein = 0.1;
 		fadeout = 0.1;
-		name = "OXYGEN MASK";
-		controls[] = {"ga_rebreatherOnLand_Mask"};
-
-			class ga_rebreatherOnLand_Mask {
-	    		idc = -1;
-	    		type = 0;
-	    		style = 48;
-	    		text = "\x\grad_mod\addons\rebreatherOnLand\titles\mask.paa";
-	    		colorBackground[] = {1,1,1,1};
+        class controls {
+			class mask: GVAR(defaultCtrl) {
+	    		text = QPATHTOF(titles\mask.paa);
 	    		colorText[] = {1,1,1,1};
-	    		font = "EtelkaMonospaceProBold";
-	    		sizeEx = 0.05;
-	    		x = safezoneX;
-	    		y = safezoneY;
-	    		w = safezoneW;
-	    		h = safezoneH;
 			};
+        };
 	};
 
-    class ga_rebreatherOnLand_RscFogIn
-    {
+    class GVAR(FogIn) {
         idd = -1;
         movingEnable = 0;
         duration = 99999;
         fadein = FOGFADE;
         fadeout = 0;
-        name = "FOG FADE IN";
-        controls[] = {"ga_rebreatherOnLand_Fog"};
-
-        class ga_rebreatherOnLand_Fog
-        {
-            Idc=-1;
-            type=0;
-            style = 48;
-            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
-            colorBackground[] = {1,1,1,1};
-            colorText[] = {1,1,1,0.6};
-            font = "PuristaMedium";
-            sizeEx = 0.05;
-            x = safezoneX;
-            y = safezoneY;
-            w = safezoneW;
-            h = safezoneH;
+        class controls {
+            class fog: GVAR(defaultCtrl) {
+                text = QPATHTOF(titles\fog.paa);
+                colorText[] = {1,1,1,0.6};
+            };
         };
     };
 
-    class ga_rebreatherOnLand_RscFogOut
-    {
+    class GVAR(FogOut) {
         idd = -1;
         movingEnable = 0;
         duration = 0;
         fadein = 0;
         fadeout = FOGFADE;
-        name = "FOG FADE OUT";
-        controls[] = {"ga_rebreatherOnLand_Fog"};
-
-        class ga_rebreatherOnLand_Fog
-        {
-            Idc=-1;
-            type=0;
-            style = 48;
-            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
-            colorBackground[] = {1,1,1,1};
-            colorText[] = {1,1,1,0.6};
-            font = "PuristaMedium";
-            sizeEx = 0.05;
-            x = safezoneX;
-            y = safezoneY;
-            w = safezoneW;
-            h = safezoneH;
+        class controls {
+            class fog: GVAR(defaultCtrl) {
+                text = QPATHTOF(titles\fog.paa);
+                colorText[] = {1,1,1,0.6};
+            };
         };
+
     };
 
-    class ga_rebreatherOnLand_RscIceIn
-    {
+    class GVAR(IceIn) {
         idd = -1;
         movingEnable = 0;
         duration = 99999;
         fadein = ICEFADE;
         fadeout = 0;
-        name = "ICE FADE IN";
-        controls[] = {"ga_rebreatherOnLand_Ice"};
+        class controls {
+            class ice: GVAR(defaultCtrl) {
+                text = QPATHTOF(titles\ice.paa);
+                colorText[] = {1,1,1,0.6};
+            };
 
-        class ga_rebreatherOnLand_Ice
-        {
-            Idc=-1;
-            type=0;
-            style = 48;
-            text = "\x\grad_mod\addons\rebreatherOnLand\titles\ice.paa";
-            colorBackground[] = {1,1,1,1};
-            colorText[] = {1,1,1,0.6};
-            font = "PuristaMedium";
-            sizeEx = 0.05;
-            x = safezoneX;
-            y = safezoneY;
-            w = safezoneW;
-            h = safezoneH;
+            // class fog: GVAR(defaultCtrl) {
+            //     text = QPATHTOF(titles\fog.paa);
+            //     colorText[] = {1,1,1,0.2};
+            // };
         };
 
-        class ga_rebreatherOnLand_Fog
-        {
-            Idc=-1;
-            type=0;
-            style = 48;
-            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
-            colorBackground[] = {1,1,1,1};
-            colorText[] = {1,1,1,0.2};
-            font = "PuristaMedium";
-            sizeEx = 0.05;
-            x = safezoneX;
-            y = safezoneY;
-            w = safezoneW;
-            h = safezoneH;
-        };
     };
 
-    class ga_rebreatherOnLand_RscIceOut
-    {
+    class GVAR(IceOut) {
         idd = -1;
         movingEnable = 0;
         duration = 0;
         fadein = 0;
         fadeout = ICEFADE;
-        name = "ICE FADE OUT";
-        controls[] = {"ga_rebreatherOnLand_Ice"};
+        class controls {
+            class ice: GVAR(defaultCtrl) {
+                text = QPATHTOF(titles\ice.paa);
+                colorText[] = {1,1,1,0.6};
+            };
 
-        class ga_rebreatherOnLand_Ice
-        {
-            Idc=-1;
-            type=0;
-            style = 48;
-            text = "\x\grad_mod\addons\rebreatherOnLand\titles\ice.paa";
-            colorBackground[] = {1,1,1,1};
-            colorText[] = {1,1,1,0.6};
-            font = "PuristaMedium";
-            sizeEx = 0.05;
-            x = safezoneX;
-            y = safezoneY;
-            w = safezoneW;
-            h = safezoneH;
-        };
-
-        class ga_rebreatherOnLand_Fog
-        {
-            Idc=-1;
-            type=0;
-            style = 48;
-            text = "\x\grad_mod\addons\rebreatherOnLand\titles\fog.paa";
-            colorBackground[] = {1,1,1,1};
-            colorText[] = {1,1,1,0.2};
-            font = "PuristaMedium";
-            sizeEx = 0.05;
-            x = safezoneX;
-            y = safezoneY;
-            w = safezoneW;
-            h = safezoneH;
+            // class fog: GVAR(defaultCtrl) {
+            //     text = QPATHTOF(titles\fog.paa);
+            //     colorText[] = {1,1,1,0.2};
+            // };
         };
     };
 };
