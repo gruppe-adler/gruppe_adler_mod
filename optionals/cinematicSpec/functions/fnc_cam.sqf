@@ -14,9 +14,9 @@ switch (_spectatorType) do {
    };
 };
 
-GRAD_CINEMACAM_LASTPOS = getPos _specCam;
-GRAD_CINEMACAM_VECTORDIR = vectorDir _specCam;
-GRAD_CINEMACAM_VECTORUP = vectorUp _specCam;
+GVAR(lastPos) = getPos _specCam;
+GVAR(vectorDir) = vectorDir _specCam;
+GVAR(vectorUp) = vectorUp _specCam;
 
 
 switch (_spectatorType) do {
@@ -32,9 +32,9 @@ switch (_spectatorType) do {
 };
 
 [
-    GRAD_CINEMACAM_LASTPOS,
-    GRAD_CINEMACAM_VECTORDIR,
-    GRAD_CINEMACAM_VECTORUP
+    GVAR(lastPos),
+    GVAR(vectorDir),
+    GVAR(vectorUp)
 ] call FUNC(cameraOld); // will set CINEMACAM
 
 if (!GVAR(registered) && !GVAR(warned)) then {
@@ -44,7 +44,7 @@ if (!GVAR(registered) && !GVAR(warned)) then {
 
 [
     {
-        private _bisCam = missionNamespace getVariable ["GRAD_CINEMACAM", objNull];
+        private _bisCam = missionNamespace getVariable [QGVAR(cam), objNull];
         private _end = isNull _bisCam;
         _end
     },
@@ -66,9 +66,9 @@ if (!GVAR(registered) && !GVAR(warned)) then {
            };
         };
 
-        _specCam setPos GRAD_CINEMACAM_LASTPOS;
-        _specCam setVectorDir GRAD_CINEMACAM_VECTORDIR;
-        _specCam setVectorUp GRAD_CINEMACAM_VECTORUP;
+        _specCam setPos GVAR(lastPos);
+        _specCam setVectorDir GVAR(vectorDir);
+        _specCam setVectorUp GVAR(vectorUp);
 
         // for some reason, I do need to do this for both EG and ACE spec
         [{_this cameraEffect ["INTERNAL", "BACK"]; }, _specCam, 0] call CBA_fnc_waitAndExecute;

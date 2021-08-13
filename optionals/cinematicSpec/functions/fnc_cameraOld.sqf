@@ -9,19 +9,19 @@ _pX = _pos select 0;
 _pY = _pos select 1;
 _pZ = _pos select 2;
 
-if (!isNil "GRAD_CINEMACAM") exitWith {};
+if (!isNil QGVAR(cam)) exitWith {};
 
 //--- Is FLIR available
-if (isNil "GRAD_CINEMACAM_ISFLIR") then {
-	GRAD_CINEMACAM_ISFLIR = isClass (configFile >> "cfgpatches" >> "A3_Data_F");
+if (isNil QGVAR(isFLIR)) then {
+	GVAR(isFLIR) = isClass (configFile >> "cfgpatches" >> "A3_Data_F");
 };
 
-GRAD_CINEMACAM_MAP = false;
-GRAD_CINEMACAM_VISION = 0;
-GRAD_CINEMACAM_FOCUS = 0;
-GRAD_CINEMACAM_COLOR = ppEffectCreate ["colorCorrections", 1600];
-if (isNil "GRAD_CINEMACAM_PPEFFECTS") then {
-	GRAD_CINEMACAM_PPEFFECTS = [
+GVAR(map) = false;
+GVAR(vision) = 0;
+GVAR(focus) = 0;
+GVAR(color) = ppEffectCreate ["colorCorrections", 1600];
+if (isNil QGVAR(ppEffects)) then {
+	GVAR(ppEffects) = [
 		[1, 1, -0.01, [1.0, 0.6, 0.0, 0.005], [1.0, 0.96, 0.66, 0.55], [0.95, 0.95, 0.95, 0.0]],
 		[1, 1.02, -0.005, [0.0, 0.0, 0.0, 0.0], [1, 0.8, 0.6, 0.65],  [0.199, 0.587, 0.114, 0.0]],
 		[1, 1.15, 0, [0.0, 0.0, 0.0, 0.0], [0.5, 0.8, 1, 0.5],  [0.199, 0.587, 0.114, 0.0]],
@@ -34,24 +34,24 @@ if (typeName _this != typeName objNull) then {_this = cameraOn};
 
 private ["_local"];
 _local = "camera" camCreate [_pX, _pY, _pZ];
-GRAD_CINEMACAM = _local;
+GVAR(cam) = _local;
 _local camCommand "MANUAL ON";
 _local camCommand "INERTIA ON";
 _local cameraEffect ["INTERNAL", "BACK"];
 showCinemaBorder false;
-GRAD_CINEMACAM setVectorDir _vectorDir;
-GRAD_CINEMACAM setVectorUp _vectorUp;
+GVAR(cam) setVectorDir _vectorDir;
+GVAR(cam) setVectorUp _vectorUp;
 
 
 _mapIconEH = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", '
-	if (isNil "GRAD_CINEMACAM" || {isNull GRAD_CINEMACAM}) exitWith { ((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["Draw",_this]; };
+	if (isNil QGVAR(cam) || {isNull GVAR(cam)}) exitWith { ((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["Draw",_this]; };
     (_this select 0) drawIcon [
         gettext (configfile >> "RscDisplayCamera" >> "iconCamera"),
         [0,1,1,1],
-		position GRAD_CINEMACAM,
+		position GVAR(cam),
 		32,
 		32,
-		direction GRAD_CINEMACAM,
+		direction GVAR(cam),
 		"",
 		1
     ];
@@ -65,9 +65,9 @@ _keyDown = (findDisplay 46) displayAddEventHandler ["keydown","
 	_ctrl = _this select 3;
 
 	if (_key in (actionkeys 'nightvision')) then {
-		GRAD_CINEMACAM_VISION = GRAD_CINEMACAM_VISION + 1;
-		if (GRAD_CINEMACAM_ISFLIR) then {
-					_vision = GRAD_CINEMACAM_VISION % 4;
+		GVAR(vision) = GVAR(vision) + 1;
+		if (GVAR(isFLIR)) then {
+					_vision = GVAR(vision) % 4;
 			switch (_vision) do {
 				case 0: {
 					camusenvg false;
@@ -87,7 +87,7 @@ _keyDown = (findDisplay 46) displayAddEventHandler ["keydown","
 				};
 			};
 		} else {
-			_vision = GRAD_CINEMACAM_VISION % 2;
+			_vision = GVAR(vision) % 2;
 			switch (_vision) do {
 				case 0: {
 					camusenvg false;
@@ -100,13 +100,13 @@ _keyDown = (findDisplay 46) displayAddEventHandler ["keydown","
 	};
 
 	if (_key in (actionkeys 'showmap')) then {
-		if (GRAD_CINEMACAM_MAP) then {
+		if (GVAR(map)) then {
 			openmap [false,false];
-			GRAD_CINEMACAM_MAP = false;
+			GVAR(map) = false;
 		} else {
 			openmap [true,true];
-			GRAD_CINEMACAM_MAP = true;
-			mapanimadd [0,0.1,position GRAD_CINEMACAM];
+			GVAR(map) = true;
+			mapanimadd [0,0.1,position GVAR(cam)];
 			mapanimcommit;
 		};
 	};
@@ -119,19 +119,19 @@ _keyDown = (findDisplay 46) displayAddEventHandler ["keydown","
 			copytoclipboard str _worldpos;
 		};
 	};
-	if (_key == 83 && !isnil 'GRAD_CINEMACAM_LASTPOS') then {
-		GRAD_CINEMACAM setpos GRAD_CINEMACAM_LASTPOS;
+	if (_key == 83 && !isnil QGVAR(lastPos)) then {
+		GVAR(cam) setpos GVAR(lastPos);
 	};
 
 	if (_key == 41) then {
-		GRAD_CINEMACAM_COLOR ppeffectenable false;
+		GVAR(color) ppeffectenable false;
 	};
 	if (_key >= 2 && _key <= 11) then {
 		_id = _key - 2;
-		if (_id < count GRAD_CINEMACAM_PPEFFECTS) then {
-			GRAD_CINEMACAM_COLOR ppEffectAdjust (GRAD_CINEMACAM_PPEFFECTS select _id);
-			GRAD_CINEMACAM_COLOR ppEffectCommit 0;
-			GRAD_CINEMACAM_COLOR ppeffectenable true;
+		if (_id < count GVAR(ppEffects)) then {
+			GVAR(color) ppEffectAdjust (GVAR(ppEffects) select _id);
+			GVAR(color) ppEffectCommit 0;
+			GVAR(color) ppeffectenable true;
 		};
 	};
 "];
@@ -139,13 +139,13 @@ _keyDown = (findDisplay 46) displayAddEventHandler ["keydown","
 //--- focus on someone
 _mousebuttonclick_focus = (findDisplay 46) displayAddEventHandler ["MouseButtonDblClick","
 	_n = _this select 0;
-	GRAD_CINEMACAM_FOCUS = GRAD_CINEMACAM_FOCUS + _n/10;
-	if (_n > 0 && GRAD_CINEMACAM_FOCUS < 0) then {GRAD_CINEMACAM_FOCUS = 0};
-	if (GRAD_CINEMACAM_FOCUS < 0) then {GRAD_CINEMACAM_FOCUS = -1};
-	GRAD_CINEMACAM camcommand 'manual off';
-	GRAD_CINEMACAM campreparefocus [GRAD_CINEMACAM_FOCUS,1];
-	GRAD_CINEMACAM camcommitprepared 0;
-	GRAD_CINEMACAM camcommand 'manual on';
+	GVAR(focus) = GVAR(focus) + _n/10;
+	if (_n > 0 && GVAR(focus) < 0) then {GVAR(focus) = 0};
+	if (GVAR(focus) < 0) then {GVAR(focus) = -1};
+	GVAR(cam) camcommand 'manual off';
+	GVAR(cam) campreparefocus [GVAR(focus),1];
+	GVAR(cam) camcommitprepared 0;
+	GVAR(cam) camcommand 'manual on';
 "];
 
 
@@ -160,7 +160,7 @@ _map_mousebuttonclick = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["
 			_veh = vehicle player;
 			_veh setpos [_worldpos select 0,_worldpos select 1,position _veh select 2];
 		} else {
-			GRAD_CINEMACAM setpos [_worldpos select 0,_worldpos select 1,position GRAD_CINEMACAM select 2];
+			GVAR(cam) setpos [_worldpos select 0,_worldpos select 1,position GVAR(cam) select 2];
 		};
 	};
 "];
@@ -175,24 +175,24 @@ _map_mousebuttonclick = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["
 	params ["_local", "_keyDown", "_mousebuttonclick_focus", "_map_mousebuttonclick", "_mapIconEH"];
 
 	waitUntil {
-		if (!isNull GRAD_CINEMACAM) then {
-				_lastpos = position GRAD_CINEMACAM; 
-				_lastVectorUp = vectorUp GRAD_CINEMACAM;
-				_lastVectorDir = vectorDir GRAD_CINEMACAM;
+		if (!isNull GVAR(cam)) then {
+				_lastpos = position GVAR(cam); 
+				_lastVectorUp = vectorUp GVAR(cam);
+				_lastVectorDir = vectorDir GVAR(cam);
 			};
-		isNull GRAD_CINEMACAM
+		isNull GVAR(cam)
 	};
 
 	player cameraEffect ["TERMINATE", "BACK"];
-	GRAD_CINEMACAM = nil;
-	GRAD_CINEMACAM_MAP = nil;
-	GRAD_CINEMACAM_VISION = nil;
+	GVAR(cam) = nil;
+	GVAR(map) = nil;
+	GVAR(vision) = nil;
 	camDestroy _local;
-	GRAD_CINEMACAM_LASTPOS = _lastpos;
-	GRAD_CINEMACAM_VECTORUP = _lastVectorUp;
-	GRAD_CINEMACAM_VECTORDIR = _lastVectorDir;
+	GVAR(lastPos) = _lastpos;
+	GVAR(vectorUp) = _lastVectorUp;
+	GVAR(vectorDir) = _lastVectorDir;
 
-	ppEffectDestroy GRAD_CINEMACAM_COLOR;
+	ppEffectDestroy GVAR(color);
 	(findDisplay 46) displayRemoveEventHandler ["keydown",_keyDown];
 	(findDisplay 46) displayRemoveEventHandler ["MouseButtonDblClick",_mousebuttonclick_focus];
 	((findDisplay 12) displayCtrl 51) ctrlRemoveEventHandler ["mousebuttonclick",_map_mousebuttonclick];

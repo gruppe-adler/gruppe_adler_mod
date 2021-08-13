@@ -15,16 +15,16 @@ params [
     ["_callbackArgs", []]
 ];
 
-if (isNil QUOTE(GRAD_CINEMACAM)) exitWith {
+if (isNil QGVAR(cam)) exitWith {
     _callbackArgs call _callback;
     "sync"
 };
 
-GRAD_CINEMACAM = objNull;
+GVAR(cam) = objNull;
 
 [
     {
-        isNil QUOTE(GRAD_CINEMACAM)
+        isNil QGVAR(cam)
     },
     {
         _this call CBA_fnc_waitAndExecute;
