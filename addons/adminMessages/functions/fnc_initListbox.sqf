@@ -2,7 +2,7 @@
 
 params [["_ctrl",controlNull]];
 
-if !([] call grad_adminMessages_fnc_isAdminOrZeus) exitWith {_ctrl ctrlShow false};
+if !([] call FUNC(isAdminOrZeus)) exitWith {_ctrl ctrlShow false};
 
 private _fnc_getHeadlineText = {
     params ["_locStr"];
@@ -27,20 +27,20 @@ private _fnc_addEntry = {
 
 
 //LATEST CONVERSATIONS =========================================================
-if (!isNil "grad_adminMessages_latestConvos" && {count grad_adminMessages_latestConvos > 0}) then {
-    ["STR_grad_ADMINMESSAGES_LATESTCONVOS"] call _fnc_addHeadline;
+if (!isNil QGVAR(latestConvos) && {count GVAR(latestConvos) > 0}) then {
+    [LSTRING(latestConvos)] call _fnc_addHeadline;
     {
         _x call _fnc_addEntry;
         false
-    } count grad_adminMessages_latestConvos;
+    } count GVAR(latestConvos);
     ["",-1] call _fnc_addEntry;
 };
 
 
 //BY SIDE ======================================================================
-["STR_grad_ADMINMESSAGES_BYCATEGORY"] call _fnc_addHeadline;
-[localize "STR_grad_ADMINMESSAGES_EVERYONE",-2] call _fnc_addEntry;
-[localize "STR_grad_ADMINMESSAGES_OTHERADMINS",-3] call _fnc_addEntry;
+[LSTRING(byCategory] call _fnc_addHeadline;
+[LLSTRING(everyone),-2] call _fnc_addEntry;
+[LLSTRING(otherAdmins),-3] call _fnc_addEntry;
 ["BLUFOR",-4] call _fnc_addEntry;
 ["OPFOR",-5] call _fnc_addEntry;
 ["INDEPENDENT",-6] call _fnc_addEntry;
@@ -49,7 +49,7 @@ if (!isNil "grad_adminMessages_latestConvos" && {count grad_adminMessages_latest
 
 
 //LIST OF PLAYERS ==============================================================
-["STR_grad_ADMINMESSAGES_BYPLAYER"] call _fnc_addHeadline;
+[LSTRING(byPlayer)] call _fnc_addHeadline;
 private _playerData = [];
 {
     _playerData pushBack [toUpper ([_x,true] call BIS_fnc_getName),getPlayerUID _x];

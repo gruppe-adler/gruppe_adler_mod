@@ -13,7 +13,7 @@ class RscTitles {
 
         class controls {
             class chatBox: RscStructuredText {
-                idc = GA_ADMINMESSAGES_IDC_CUSTOMCHATTEXT;
+                idc = IDC_CUSTOMCHATTEXT;
 
                 colorBackground[] = {0,0,0,0.3};
                 font = "RobotoCondensed";

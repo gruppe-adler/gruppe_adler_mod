@@ -4,11 +4,11 @@ class RscEdit;
 class RscButtonMenu;
 class RscCombo;
 
-class ga_adminMessages_sendBoxTitleBase: RscTitle {
+class GVAR(sendBoxTitleBase): RscTitle {
     idc = -1;
     style = 0;
 
-    onLoad = "_this call grad_adminMessages_fnc_setTitle";
+    onLoad = QUOTE(_this call FUNC(setTitle));
 
     text = "ERROR ";
     colorBackground[] = {
@@ -18,24 +18,24 @@ class ga_adminMessages_sendBoxTitleBase: RscTitle {
         "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
     };
 
-    x = GA_ADMINMESSAGES_TITLE_X;
-    y = GA_ADMINMESSAGES_TITLE_Y;
-    w = GA_ADMINMESSAGES_TOTAL_W;
-    h = GA_ADMINMESSAGES_ELEMENT_H;
+    x = TITLE_X;
+    y = TITLE_Y;
+    w = TOTAL_W;
+    h = ELEMENT_H;
 };
 
-class ga_adminMessages_sendBoxBGBase: RscText {
+class GVAR(sendBoxBGBase): RscText {
     idc = -1;
 
     colorBackground[] = {0, 0, 0, 0.700000};
 
-    x = GA_ADMINMESSAGES_TITLE_X;
-    y = GA_ADMINMESSAGES_EDITBOX_BG_Y;
-    w = GA_ADMINMESSAGES_TOTAL_W;
-    h = GA_ADMINMESSAGES_EDITBOX_BG_H;
+    x = TITLE_X;
+    y = EDITBOX_BG_Y;
+    w = TOTAL_W;
+    h = EDITBOX_BG_H;
 };
 
-class ga_adminMessages_sendBoxBase: RscEdit {
+class GVAR(sendBoxBase): RscEdit {
     idc = -1;
     style = 16;
 
@@ -44,43 +44,43 @@ class ga_adminMessages_sendBoxBase: RscEdit {
     font = "EtelkaMonospacePro";
     sizeEx = "0.7 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
-    onLoad = "uiNamespace setVariable [""grad_adminMessages_sendBoxCtrl"",(_this select 0)]";
-    onUnLoad = "uiNamespace setVariable [""grad_adminMessages_sendBoxCtrl"",nil]";
+    onLoad = QUOTE(uiNamespace setVariable [QQGVAR(sendBoxCtrl),(_this select 0)]);
+    onUnLoad = QUOTE(uiNamespace setVariable [QQGVAR(sendBoxCtrl),nil]);
 
-    x = GA_ADMINMESSAGES_EDITBOX_X;
-    y = GA_ADMINMESSAGES_EDITBOX_Y;
-    w = GA_ADMINMESSAGES_EDITBOX_W;
-    h = GA_ADMINMESSAGES_EDITBOX_H;
+    x = EDITBOX_X;
+    y = EDITBOX_Y;
+    w = EDITBOX_W;
+    h = EDITBOX_H;
 };
 
-class ga_adminMessages_sendBoxButtonBase: RscButtonMenu {
-    idc = GA_ADMINMESSAGES_IDC_SENDBUTTON;
+class GVAR(sendBoxButtonBase): RscButtonMenu {
+    idc = IDC_SENDBUTTON;
 
-    onLoad = "uiNamespace setVariable [""grad_adminMessages_sendBoxButtonCtrl"",(_this select 0)]; _this call grad_adminMessages_fnc_setSendButtonPosition";
-    onUnLoad = "uiNamespace setVariable [""grad_adminMessages_sendBoxButtonCtrl"",nil]";
+    onLoad = QUOTE(uiNamespace setVariable [QQGVAR(sendBoxButtonCtrl),(_this select 0)]; _this call FUNC(setSendButtonPosition));
+    onUnLoad = QUOTE(uiNamespace setVariable [QQGVAR(sendBoxButtonCtrl),nil]);
 
-    text = "$STR_grad_ADMINMESSAGES_SENDBOXBUTTON";
-    action = "call grad_adminMessages_fnc_sendMessage";
+    text = CSTRING(sendBoxButton);
+    action = QUOTE(call FUNC(sendMessage));
 
-    x = GA_ADMINMESSAGES_TITLE_X;
-    y = GA_ADMINMESSAGES_SENDBUTTON_Y;
-    w = GA_ADMINMESSAGES_TOTAL_W;
-    h = GA_ADMINMESSAGES_ELEMENT_H;
+    x = TITLE_X;
+    y = SENDBUTTON_Y;
+    w = TOTAL_W;
+    h = ELEMENT_H;
 };
 
-class ga_adminMessages_sendBoxListboxBase: RscCombo {
+class GVAR(sendBoxListboxBase): RscCombo {
     idc = -1;
 
     font = "EtelkaMonospacePro";
     rowHeight = 10;
     /*sizeEx = "0.7 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";*/
 
-    onLoad = "uiNamespace setVariable [""grad_adminMessages_sendBoxListboxCtrl"",(_this select 0)]; _this call grad_adminMessages_fnc_initListbox";
-    onUnLoad = "uiNamespace setVariable [""grad_adminMessages_sendBoxListboxCtrl"",nil]";
-    onLBSelChanged = "_this call grad_adminMessages_fnc_onRecipientChanged";
+    onLoad = QUOTE(uiNamespace setVariable [QQGVAR(sendBoxListboxCtrl),(_this select 0)]; _this call FUNC(initListbox));
+    onUnLoad = QUOTE(uiNamespace setVariable [QQGVAR(sendBoxListboxCtrl),nil]);
+    onLBSelChanged = QUOTE(_this call FUNC(onRecipientChanged));
 
-    x = GA_ADMINMESSAGES_TITLE_X;
-    y = GA_ADMINMESSAGES_SENDBUTTON_Y;
-    w = GA_ADMINMESSAGES_TOTAL_W;
-    h = GA_ADMINMESSAGES_ELEMENT_H;
+    x = TITLE_X;
+    y = SENDBUTTON_Y;
+    w = TOTAL_W;
+    h = ELEMENT_H;
 };

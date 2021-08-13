@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
-private _editBox = uiNamespace getVariable ["grad_adminMessages_sendBoxCtrl",controlNull];
-private _listbox = uiNamespace getVariable ["grad_adminMessages_sendBoxListboxCtrl",controlNull];
+private _editBox = uiNamespace getVariable [QGVAR(sendBoxCtrl),controlNull];
+private _listbox = uiNamespace getVariable [QGVAR(sendBoxListboxCtrl),controlNull];
 
 if (isNull _editBox || isNull _listbox) exitWith {};
 
@@ -10,7 +10,7 @@ if (_message == "") exitWith {};
 
 _editBox ctrlSetText "";
 
-if ([] call grad_adminMessages_fnc_isAdminOrZeus) then {
+if ([] call FUNC(isAdminOrZeus)) then {
 
     private _lbCurSel = lbCurSel _listbox;
     private _lbData = _listbox lbData _lbCurSel;
@@ -19,8 +19,8 @@ if ([] call grad_adminMessages_fnc_isAdminOrZeus) then {
 
     private _receiveCondition = if ((call compile _lbData) < 0) then {
         switch (call compile _lbData) do {
-            case (-2): {{true}};                                                //EVERYONE
-            case (-3): {{[] call grad_adminMessages_fnc_isAdminOrZeus}};        //OTHER ADMINS AND ZEUS
+            case (-2): {{true}};                               //EVERYONE
+            case (-3): {{[] call FUNC(isAdminOrZeus)}};        //OTHER ADMINS AND ZEUS
             case (-4): {{playerSide == WEST}};
             case (-5): {{playerSide == EAST}};
             case (-6): {{playerSide == INDEPENDENT}};
@@ -33,17 +33,17 @@ if ([] call grad_adminMessages_fnc_isAdminOrZeus) then {
     };
 
     // display sent message locally
-    [format ["%1 %2",localize "STR_grad_ADMINMESSAGES_TO",_lbText],_message] call FUNC(displayMessage);
+    [format ["%1 %2",LLSTRING(to),_lbText],_message] call FUNC(displayMessage);
 
     // send message to recipient
-    [profileName,getPlayerUID player,_message,_receiveCondition,_receiveConditionParams] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
+    [profileName,getPlayerUID player,_message,_receiveCondition,_receiveConditionParams] remoteExec [QFUNC(receiveMessage),0,false];
 
 } else {
     // display sent message locally
-    [format ["%1 %2",localize "STR_grad_ADMINMESSAGES_TO","Admin"],_message] call FUNC(displayMessage);
+    [format ["%1 %2",LLSTRING(to),"Admin"],_message] call FUNC(displayMessage);
 
     // send message to recipient
-    [profileName,getPlayerUID player,_message] remoteExec ["grad_adminMessages_fnc_receiveMessage",0,false];
+    [profileName,getPlayerUID player,_message] remoteExec [QFUNC(receiveMessage),0,false];
 };
 
 playSound "3DEN_notificationDefault";

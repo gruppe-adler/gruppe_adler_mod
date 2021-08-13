@@ -2,66 +2,66 @@
 <Project name="gruppe_adler_mod">
 	<Package name="adminMessages">
 		<Container name="gui">
-			<Key ID="STR_grad_ADMINMESSAGES_SENDBOXTITLEPLAYER">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_sendBoxTitlePlayer">
 				<Original>MESSAGE ADMIN</Original>
 				<English>MESSAGE ADMIN</English>
 				<German>NACHRICHT AN ADMIN</German>
 			</Key>
-			<Key ID="STR_grad_ADMINMESSAGES_SENDBOXTITLEADMIN">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_sendBoxTitleAdmin">
 				<Original>MESSAGE PLAYER</Original>
 				<English>MESSAGE PLAYER</English>
 				<German>NACHRICHT AN SPIELER</German>
 			</Key>
-            <Key ID="STR_grad_ADMINMESSAGES_SENDBOXBUTTON">
+            <Key ID="STR_GRAD_MOD_ADMINMESSAGES_sendBoxButton">
                 <Original>SEND</Original>
 				<English>SEND</English>
 				<German>SENDEN</German>
 			</Key>
-			<Key ID="STR_grad_ADMINMESSAGES_SELECTVALIDRECIP">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_selectValidRecipient">
                 <Original>SELECT VALID RECIPIENT</Original>
 				<English>SELECT VALID RECIPIENT</English>
 				<German>EMPFÄNGER AUSWÄHLEN</German>
 			</Key>
-			<Key ID="STR_grad_ADMINMESSAGES_SENDTO">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_sendTo">
                 <Original>SEND TO %1</Original>
 				<English>SEND TO %1</English>
 				<German>SENDEN AN %1</German>
 			</Key>
 		</Container>
 		<Container name="listbox">
-			<Key ID="STR_grad_ADMINMESSAGES_LATESTCONVOS">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_latestConvos">
                 <Original>LATEST CONVERSATIONS</Original>
 				<English>LATEST CONVERSATIONS</English>
 				<German>AKTUELLE GESPRÄCHE</German>
 			</Key>
-			<Key ID="STR_grad_ADMINMESSAGES_BYCATEGORY">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_byCategory">
                 <Original>CATEGORIES</Original>
 				<English>CATEGORIES</English>
 				<German>KATEGORIEN</German>
 			</Key>
-			<Key ID="STR_grad_ADMINMESSAGES_EVERYONE">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_everyone">
                 <Original>EVERYONE</Original>
 				<English>EVERYONE</English>
 				<German>ALLE</German>
 			</Key>
-			<Key ID="STR_grad_ADMINMESSAGES_OTHERADMINS">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_otherAdmins">
                 <Original>OTHER ADMINS AND ZEUS</Original>
 				<English>OTHER ADMINS AND ZEUS</English>
 				<German>ANDERE ADMINS UND ZEUSE</German>
 			</Key>
-			<Key ID="STR_grad_ADMINMESSAGES_BYPLAYER">
+			<Key ID="STR_GRAD_MOD_ADMINMESSAGES_byPlayer">
                 <Original>PLAYERS</Original>
 				<English>PLAYERS</English>
 				<German>SPIELER</German>
 			</Key>
 		</Container>
         <Container name="functions">
-            <Key ID="STR_grad_ADMINMESSAGES_CHANNEL">
+            <Key ID="STR_GRAD_MOD_ADMINMESSAGES_channel">
                 <Original>Adminmessage (%1):</Original>
 				<English>Adminmessage (%1):</English>
 				<German>Adminnachricht (%1):</German>
 			</Key>
-            <Key ID="STR_grad_ADMINMESSAGES_TO">
+            <Key ID="STR_GRAD_MOD_ADMINMESSAGES_to">
                 <Original>to</Original>
 				<English>to</English>
 				<German>an</German>
