@@ -7,11 +7,8 @@ class RscControlsGroup;
 class RscStructuredText;
 class RscButtonMenuCancel;
 
-class grad_RscDisplayVersionCheck: RscStandardDisplay {
+class GVAR(display): RscStandardDisplay {
     idd = 60022;
-
-    onLoad = "uiNamespace setVariable ['grad_versionCheck_display',_this select 0]";
-    onUnload = "uiNamespace setVariable ['grad_versionCheck_display',nil]";
 
     class ControlsBackground {
         class Title: RscText

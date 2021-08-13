@@ -7,7 +7,7 @@ if (isNull (findDisplay 46)) exitWith {
 };
 
 
-private _display = (findDisplay 46) createDisplay "grad_RscDisplayVersionCheck";
+private _display = (findDisplay 46) createDisplay QGVAR(display);
 private _textCtrl = _display displayCtrl 1100;
 _textCtrl ctrlSetStructuredText ([] call FUNC(compileDialogText));
 

@@ -15,17 +15,17 @@ private _description = [
 		"------------|------------|---------- <br/>"
 ];
 
-private _addonNames = keys grad_versionCheck_versions;
+private _addonNames = keys GVAR(versions);
 _addonNames sort true;
 {
 	private _name = _x;
 
-	private _myVersion = (grad_versionCheck_versions getOrDefault [_name, ["-", false]])#0;
+	private _myVersion = (GVAR(versions) getOrDefault [_name, ["-", false]])#0;
 	if (_myVersion isEqualTo "") then {
 		_myVersion = "-";
 	};
 	_myVersion = [_myVersion, 10] call _pad;
-	private _serverVersion = (grad_versionCheck_versions_server getOrDefault [_name, ["-", false]])#0;
+	private _serverVersion = (GVAR(versions_server) getOrDefault [_name, ["-", false]])#0;
 	if (_serverVersion isEqualTo "") then {
 		_serverVersion = "-";
 	};	
@@ -35,4 +35,4 @@ _addonNames sort true;
 
 } forEach _addonNames;
 
-player setDiaryRecordText [["grad_ui_helpSubject", [GVAR(addonVersionsTitle)] call EFUNC(ui,getHelpRecord)], [GVAR(addonVersionsTitle), "<font face=""EtelkaMonospacePro"" size=""8"">" + (_description joinString "") + "</font>"]]
+player setDiaryRecordText [[QEGVAR(ui,helpSubject), [GVAR(addonVersionsTitle)] call EFUNC(ui,getHelpRecord)], [GVAR(addonVersionsTitle), "<font face=""EtelkaMonospacePro"" size=""8"">" + (_description joinString "") + "</font>"]]

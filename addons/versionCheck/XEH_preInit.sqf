@@ -1,5 +1,11 @@
 #include "script_component.hpp"
-SCRIPT(XEH_preInit);
+
+ADDON = false;
+
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
+
 
 call FUNC(determineVersions);
 
@@ -51,4 +57,6 @@ private _settingsGroup = "GRAD Version Check";
 ] call CBA_settings_fnc_init;
 
 GVAR(addonVersionsTitle) = "Addon Versions";
-[GVAR(addonVersionsTitle), "<execute expression=""call grad_versionCheck_fnc_createDiaryEntry"">Show</execute>"] call EFUNC(ui,addHelpRecord);
+[GVAR(addonVersionsTitle), QUOTE(<execute expression=""call FUNC(createDiaryEntry)"">Show</execute>)] call EFUNC(ui,addHelpRecord);
+
+ADDON = true;
