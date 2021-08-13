@@ -3,9 +3,9 @@ class Display3DEN {
     class ContextMenu: ctrlMenu {
         class Items {
             class Log {
-                items[] = {"LogPosition", "LogClasses", "GRAD_getLoadoutsFromUnits"};
+                items[] += {QUOTE(ADDON)};
             };
-            class GRAD_getLoadoutsFromUnits {
+            class ADDON {
                 text = "Copy Grad-Loadout to Clipboard";
                 action = QUOTE([] call FUNC(createConfig));
                 conditionShow = "selectedObject";
