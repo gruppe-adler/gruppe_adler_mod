@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (!hasInterface) exitWith {};
+
 [
     {
         !isNull(["GetDisplay"] call BIS_fnc_EGSpectator);

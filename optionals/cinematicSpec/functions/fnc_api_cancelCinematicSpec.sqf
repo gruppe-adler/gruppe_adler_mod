@@ -5,7 +5,7 @@
  * this function is callbacked. example usage:
  * [{
  *     [false] call ace_spectator_fnc_setSpectator;
- * }] call grad_cinematicSpec_fnc_cancelCinematicSpec;
+ * }] call grad_mod_cinematicSpec_fnc_api_cancelCinematicSpec;
  *
  * returns "sync" on immediate callback execution and "async" if callback execution is delayed
  */

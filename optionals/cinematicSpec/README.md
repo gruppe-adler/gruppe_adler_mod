@@ -11,15 +11,15 @@ Right click to return to previous spec mode.
 The component will warn you about this on entering cinematicSpec.
 If unsure, *do not* use this in a scenario where respawn exists.
 
-**Scenario designers:** to disable spectator mode, call `grad_cinematicSpec_fnc_cancelCinematicSpec` with a callback. Example:
+**Scenario designers:** to disable spectator mode, call `grad_mod_cinematicSpec_fnc_api_cancelCinematicSpec` with a callback. Example:
 
 ```sqf
 [{
     [false] call ace_spectator_fnc_setSpectator;
-}] call grad_cinematicSpec_fnc_api_cancelCinematicSpec;
+}] call grad_mod_cinematicSpec_fnc_api_cancelCinematicSpec;
 ```
 
-If you have ensured compatibility as shown above, call `grad_cinematicSpec_fnc_api_declareCinematicSpecAware` on all clients on mission start to disable the incompatibility warning.
+If you have ensured compatibility as shown above, call `grad_mod_cinematicSpec_fnc_api_declareCinematicSpecAware` on all clients on mission start to disable the incompatibility warning.
 
 
 
