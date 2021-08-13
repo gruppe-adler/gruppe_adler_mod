@@ -1,6 +1,10 @@
 #include "script_component.hpp"
-SCRIPT(XEH_preInit);
 
+ADDON = false;
+
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
 
 [
     QGVAR(setting_timeFactor),
@@ -19,3 +23,5 @@ SCRIPT(XEH_preInit);
     [5,600,40,0],
     1
 ] call CBA_settings_fnc_init;
+
+ADDON = true;

@@ -2,7 +2,7 @@
 
 /*
 *   Original function from ace_logistics_wirecutter by gpgpgpgp, edited by commy2, PabstMirror
-*   Adapted for grad_axe by McDiod
+*   Adapted for grad_mod_axe by McDiod
 */
 
 params ["_unit", "_treeObject"];
@@ -39,13 +39,13 @@ private _progressCheck = {
     _args params ["_treeObject", "_lastSoundEffectTime", "_unit"];
 
     if (_passedTime > (_lastSoundEffectTime + SOUND_CLIP_TIME_SPACEING)) then {
-        playSound3D [format ["x\grad_mod\addons\axe\sound\chop_%1.ogg", (round(random 25)) +1], objNull, false, (getPosASL _unit), 3, 1, 80];
+        playSound3D [format [QPATHTOF(sound\chop_%1.ogg), (round(random 25)) +1], objNull, false, (getPosASL _unit), 3, 1, 80];
         _args set [1, _passedTime];
     };
 
-    ((!isNull _treeObject) && {(damage _treeObject) < 1} && {("grad_axe" in (items _unit))})
+    ((!isNull _treeObject) && {(damage _treeObject) < 1} && {(QUOTE(ADDON) in (items _unit))})
 };
 
-[_timeToCut, [_treeObject,0,_unit], _onCompletion, _onFail, localize "STR_GRAD_AXE_CUTTING_TREE", _progressCheck, ["isNotSwimming"]] call ace_common_fnc_progressBar;
+[_timeToCut, [_treeObject,0,_unit], _onCompletion, _onFail, LLSTRING(cuttingTree), _progressCheck, ["isNotSwimming"]] call ace_common_fnc_progressBar;
 
-["grad_treeChoppingStarted", [_unit, _treeObject]] call CBA_fnc_globalEvent;
+[QGVAR(treeChoppingStarted), [_unit, _treeObject]] call CBA_fnc_globalEvent;
