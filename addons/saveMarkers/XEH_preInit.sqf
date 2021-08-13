@@ -1,5 +1,11 @@
 #include "script_component.hpp"
 
+ADDON = false;
+
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
+
 [
     QGVAR(setting_canBeOpened),
     "LIST",
@@ -11,3 +17,5 @@
         1
     ]
 ] call CBA_settings_fnc_init;
+
+ADDON = true;
