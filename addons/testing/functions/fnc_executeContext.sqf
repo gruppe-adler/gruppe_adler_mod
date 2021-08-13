@@ -35,10 +35,10 @@ if (_setup isEqualType {}) then {
                     _cleanups
                 ],
                _x
-            ] call grad_testing_fnc_executeContext;
+            ] call FUNC(executeContext);
         } forEach _subroutines;
     } else {
-        grad_testing_results pushBack [_descriptions, [/*assertion results will go here*/]];
+        GVAR(results) pushBack [_descriptions, [/*assertion results will go here*/]];
 
         private _setupParameter = [];
         private _cleanupParameters = [];

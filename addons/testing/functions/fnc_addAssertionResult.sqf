@@ -5,11 +5,11 @@ params [
     ["_message", ""]
 ];
 
-if (count grad_testing_results == 0) then {
+if (count GVAR(results) == 0) then {
     throw "cannot run test assertions, we are not in a test context!";
 };
 
-private _leaf = grad_testing_results select (count grad_testing_results - 1);
+private _leaf = GVAR(results) select (count GVAR(results) - 1);
 private _descriptions = _leaf#0;
 private _results = _leaf#1;
 _results pushBack [_status, _message];

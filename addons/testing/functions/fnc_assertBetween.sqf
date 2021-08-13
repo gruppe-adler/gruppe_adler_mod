@@ -12,21 +12,21 @@ if (_message == "") then {
 };
 
 if (typeName _actual != "SCALAR") exitWith {
-    [STATUS_ERROR, "first parameter is not a number"] call grad_testing_fnc_addAssertionResult;
+    [STATUS_ERROR, "first parameter is not a number"] call FUNC(addAssertionResult);
 };
 if (typeName _lower != "SCALAR") exitWith {
-    [STATUS_ERROR, "second parameter is not a number"] call grad_testing_fnc_addAssertionResult;
+    [STATUS_ERROR, "second parameter is not a number"] call FUNC(addAssertionResult);
 };
 if (typeName _upper != "SCALAR") exitWith {
-    [STATUS_ERROR, "third parameter is not a number"] call grad_testing_fnc_addAssertionResult;
+    [STATUS_ERROR, "third parameter is not a number"] call FUNC(addAssertionResult);
 };
 
 if (_lower >= _upper) exitWith {
-    [STATUS_ERROR, "second parameter must be lower than third parameter"] call grad_testing_fnc_addAssertionResult;
+    [STATUS_ERROR, "second parameter must be lower than third parameter"] call FUNC(addAssertionResult);
 };
 
 if (_actual > _lower && _actual < _upper) then {
-    [STATUS_SUCCESS, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_SUCCESS, _message] call FUNC(addAssertionResult);
 } else {
-    [STATUS_FAIL, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_FAIL, _message] call FUNC(addAssertionResult);
 }

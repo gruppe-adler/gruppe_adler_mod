@@ -9,16 +9,16 @@ if (isNil "_x") exitWith {
     if (_message == "") then {
         _message = "is defined";
     };
-    [STATUS_FAIL, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_FAIL, _message] call FUNC(addAssertionResult);
 };
 if (isNull _x) exitWith {
     if (_message == "") then {
         _message = "is not null";
     };
-    [STATUS_FAIL, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_FAIL, _message] call FUNC(addAssertionResult);
 };
 
 if (_message == "") then {
     _message = "is defined and not null";
 };
-[STATUS_SUCCESS, _message] call grad_testing_fnc_addAssertionResult;
+[STATUS_SUCCESS, _message] call FUNC(addAssertionResult);

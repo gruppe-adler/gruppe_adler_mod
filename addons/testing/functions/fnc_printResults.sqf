@@ -36,4 +36,4 @@
             diag_log _text;
         } forEach _results;
     };
-} forEach grad_testing_results;
+} forEach GVAR(results);

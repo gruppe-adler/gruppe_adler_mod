@@ -11,14 +11,14 @@ if (_message == "") then {
 };
 
 if (typeName _a != "SCALAR") exitWith {
-    [STATUS_ERROR, "first parameter is not a number"] call grad_testing_fnc_addAssertionResult;
+    [STATUS_ERROR, "first parameter is not a number"] call FUNC(addAssertionResult);
 };
 if (typeName _b != "SCALAR") exitWith {
-    [STATUS_ERROR, "second parameter is not a number"] call grad_testing_fnc_addAssertionResult;
+    [STATUS_ERROR, "second parameter is not a number"] call FUNC(addAssertionResult);
 };
 
 if (_a < _b) then {
-    [STATUS_SUCCESS, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_SUCCESS, _message] call FUNC(addAssertionResult);
 } else {
-    [STATUS_FAIL, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_FAIL, _message] call FUNC(addAssertionResult);
 }

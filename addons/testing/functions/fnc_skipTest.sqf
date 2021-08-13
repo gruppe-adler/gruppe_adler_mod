@@ -4,4 +4,4 @@ params [
     ["_message", ""]
 ];
 
-[STATUS_SKIPPED, _message] call grad_testing_fnc_addAssertionResult;
+[STATUS_SKIPPED, _message] call FUNC(addAssertionResult);

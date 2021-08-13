@@ -6,7 +6,7 @@ params [
 ];
 
 if (_x isEqualTo true) then {
-    [STATUS_SUCCESS, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_SUCCESS, _message] call FUNC(addAssertionResult);
 } else {
-    [STATUS_FAIL, _message] call grad_testing_fnc_addAssertionResult;
+    [STATUS_FAIL, _message] call FUNC(addAssertionResult);
 }

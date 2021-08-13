@@ -1,6 +1,8 @@
-_this spawn {
-    grad_testing_results = [];
-    [[], _this] call grad_testing_fnc_executeContext;
+#include "script_component.hpp"
 
-    [grad_testing_results] call grad_testing_fnc_printResults;
+_this spawn {
+    GVAR(results) = [];
+    [[], _this] call FUNC(executeContext);
+
+    [GVAR(results)] call FUNC(printResults);
 };

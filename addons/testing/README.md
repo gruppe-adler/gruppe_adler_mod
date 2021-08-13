@@ -70,7 +70,7 @@ In the end, the results are pretty-printed to systemChat as well as `rpt`.
                 ["does get destroyed",
                     {
                         params [["_boat", objNull]];
-                        [alive _boat, false] call grad_testing_fnc_assertEquals;
+                        [alive _boat, false] call grad_mod_testing_fnc_assertEquals;
                     }
                 ]
             ]
@@ -86,14 +86,14 @@ In the end, the results are pretty-printed to systemChat as well as `rpt`.
                 ["does get damaged somewhat without being destroyed",
                     {
                         params [["_boat", objNull]];
-                        [damage _boat, 0.2] call grad_testing_fnc_assertGreaterThan;
-                        [alive _boat, true] call grad_testing_fnc_assertEquals;
+                        [damage _boat, 0.2] call grad_mod_testing_fnc_assertGreaterThan;
+                        [alive _boat, true] call grad_mod_testing_fnc_assertEquals;
                     }
                 ],
                 ["does not hurt the occupant",
                     {
                         params [["_boat", objNull]];
-                        [0, damage (driver _boat)] call grad_testing_fnc_assertEquals;
+                        [0, damage (driver _boat)] call grad_mod_testing_fnc_assertEquals;
                     }
                 ],
                 ["and bump again very slightly afterward",
@@ -109,8 +109,8 @@ In the end, the results are pretty-printed to systemChat as well as `rpt`.
                         ["retains the higher damage from the first bump",
                             {
                                 params [["_boat", objNull], ["_firstDamage", -1]];
-                                [_firstDamage, 0.4] call grad_testing_fnc_assertGreaterThan;
-                                [damage _boat, _firstDamage] call grad_testing_fnc_assertEquals;
+                                [_firstDamage, 0.4] call grad_mod_testing_fnc_assertGreaterThan;
+                                [damage _boat, _firstDamage] call grad_mod_testing_fnc_assertEquals;
                             }
                         ]
                     ]
@@ -125,7 +125,7 @@ In the end, the results are pretty-printed to systemChat as well as `rpt`.
         deleteVehicle _tree;
         sleep 0.2;
     }
-] call grad_testing_fnc_executeTest;
+] call grad_mod_testing_fnc_executeTest;
 
 ```
 
