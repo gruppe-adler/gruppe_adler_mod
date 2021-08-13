@@ -49,7 +49,7 @@
 
 // Misc
 #define UI_OPEN_KEY							"TeamSwitch"
-#define DEFAULT_INSIGNIA					"NoInsignia"
+#define DEFAULT_INSIGNIA					QGVAR(NoInsignia)
 #define HOLD_DOWN_TIME_FOR_INVITE_ACCEPT	0.7
 #define INTERFACE_UPDATE_DELAY				0.4
 #define INVITE_LIFETIME						60

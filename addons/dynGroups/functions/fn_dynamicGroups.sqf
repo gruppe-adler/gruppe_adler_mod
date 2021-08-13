@@ -1,5 +1,5 @@
 // Include common defines file
-#include "\x\grad_mod\addons\dynGroups\DynamicGroupsCommonDefines.inc"
+#include "script_component.hpp"
 
 private ["_mode", "_params"];
 _mode   = _this param [0, "", [""]];
@@ -182,7 +182,7 @@ switch (_mode) do
 				["RegisterGroup: Group (%1) registered with leader (%2)", _group, _leader] call BIS_fnc_logFormat;
 			};
 			
-			["GRAD_dynGroups_registerGroup", [_group, _name]] call CBA_fnc_globalEvent;
+			[QGVAR(registerGroup), [_group, _name]] call CBA_fnc_globalEvent;
 		};
 	};
 
@@ -1300,7 +1300,7 @@ switch (_mode) do
 
 	case "LoadRandomInsignia" :
 	{
-		"NoInsignia"
+		QGVAR(NoInsignia)
 	};
 
 	case "GetInsigniaDisplayName" :

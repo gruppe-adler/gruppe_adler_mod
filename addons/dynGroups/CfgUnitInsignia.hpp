@@ -4,7 +4,7 @@ class CfgUnitInsignia {
     delete Curator;
     delete MANW;
 
-    class NoInsignia {
+    class GVAR(NoInsignia) {
         author = "McDiod";
         displayName = "No Insignia";
         texture = "";

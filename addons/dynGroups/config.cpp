@@ -14,7 +14,8 @@ class CfgPatches {
     };
 };
 
-#include "cfgScriptPaths.hpp"
-#include "cfgFunctions.hpp"
-#include "cfgUnitInsignia.hpp"
+#include "CfgScriptPaths.hpp"
+#include "CfgFunctions.hpp"
+#include "CfgUnitInsignia.hpp"
+#include "CfgEventHandlers.hpp"
 #include "dialogs.hpp"

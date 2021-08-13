@@ -1,0 +1,3 @@
+class CfgScriptPaths {
+    ADDON = QPATHTOF();
+};

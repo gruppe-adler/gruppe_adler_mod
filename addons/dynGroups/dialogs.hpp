@@ -2,11 +2,10 @@ class RscControlsGroupNoScrollbars;
 class RscButton;
 class RscDisplayDynamicGroups
 {
-    onLoad = "[""onLoad"",_this,""RscDisplayDynamicGroups"",'grad_dynGroups'] call 	(uinamespace getvariable 'BIS_fnc_initDisplay')";
-    onUnload = "[""onUnload"",_this,""RscDisplayDynamicGroups"",'grad_dynGroups'] call 	(uinamespace getvariable 'BIS_fnc_initDisplay')";
+    onLoad = QUOTE([""onLoad"",_this,""RscDisplayDynamicGroups"",QUOTE(QUOTE(ADDON))] call 	(uinamespace getvariable 'BIS_fnc_initDisplay'));
+    onUnload = QUOTE([""onUnload"",_this,""RscDisplayDynamicGroups"",QUOTE(QUOTE(ADDON))] call 	(uinamespace getvariable 'BIS_fnc_initDisplay'));
 
-    scriptName = "RscDisplayDynamicGroups";
-    scriptPath = "grad_dynGroups";
+    scriptPath = QUOTE(ADDON);
 
 	class controls
 	{
@@ -25,7 +24,7 @@ class RscDisplayDynamicGroups
                     colorShadow[] = {0,0,0,0};
                     colorBorder[] = {0,0,0,0};
 
-                    action = "call grad_dynGroups_fnc_selectInsignia";
+                    action = QUOTE(call FUNC(selectInsignia));
 
                     x="12.3 * (((safezoneW / safezoneH) min 1.2) / 40)";
 					y="1.9 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";

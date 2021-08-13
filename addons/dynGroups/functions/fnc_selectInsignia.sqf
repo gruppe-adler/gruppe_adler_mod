@@ -1,4 +1,4 @@
-#include "\x\grad_mod\addons\dynGroups\DynamicGroupsCommonDefines.inc"
+#include "script_component.hpp"
 
 if !(["PlayerIsLeader",[player]] call BIS_fnc_dynamicGroups) exitWith {};
 
