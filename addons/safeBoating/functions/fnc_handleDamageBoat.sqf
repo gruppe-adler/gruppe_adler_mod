@@ -6,7 +6,7 @@ private _boat = vehicle _unit; // yes, this will even work if _unit is the unman
 
 // NOTE: getHit / getHitIndex will oftentimes falsely return 0 ,
 //       hence we need to remember the previos damage.
-private _damageVar = format ["grad_safeBoating_damage_%1", _selection];
+private _damageVar = format [QGVAR(damage_%1), _selection];
 
 if (!(isNull _source && (_projectile == "") && isNull _instigator)) exitWith {
     _boat setVariable [_damageVar, _damage, true];

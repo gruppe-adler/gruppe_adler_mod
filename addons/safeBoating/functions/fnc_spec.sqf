@@ -28,7 +28,7 @@
                 ["does get destroyed",
                     {
                         params [["_boat", objNull]];
-                        [alive _boat, false] call grad_testing_fnc_assertEquals;
+                        [alive _boat, false] call EFUNC(testing,assertEquals);
                     }
                 ]
             ]
@@ -44,14 +44,14 @@
                 ["does get damaged somewhat without being destroyed",
                     {
                         params [["_boat", objNull]];
-                        [damage _boat, 0.2] call grad_testing_fnc_assertGreaterThan;
-                        [alive _boat, true] call grad_testing_fnc_assertEquals;
+                        [damage _boat, 0.2] call EFUNC(testing,assertGreaterThan);
+                        [alive _boat, true] call EFUNC(testing,assertEquals);
                     }
                 ],
                 ["does not hurt the occupant",
                     {
                         params [["_boat", objNull]];
-                        [0, damage (driver _boat)] call grad_testing_fnc_assertEquals;
+                        [0, damage (driver _boat)] call EFUNC(testing,assertEquals);
                     }
                 ],
                 ["and bump again very slightly afterward",
@@ -67,8 +67,8 @@
                         ["retains the higher damage from the first bump",
                             {
                                 params [["_boat", objNull], ["_firstDamage", -1]];
-                                [_firstDamage, 0.4] call grad_testing_fnc_assertGreaterThan;
-                                [damage _boat, _firstDamage] call grad_testing_fnc_assertEquals;
+                                [_firstDamage, 0.4] call EFUNC(testing,assertGreaterThan);
+                                [damage _boat, _firstDamage] call EFUNC(testing,assertEquals);
                             }
                         ]
                     ]
@@ -86,13 +86,13 @@
                 ["does not get damaged",
                     {
                         params [["_boat", objNull]];
-                        [0, damage _boat] call grad_testing_fnc_assertEquals;
+                        [0, damage _boat] call EFUNC(testing,assertEquals);
                     }
                 ],
                 ["does not hurt the occupant",
                     {
                         params [["_boat", objNull]];
-                        [0, damage (driver _boat)] call grad_testing_fnc_assertEquals;
+                        [0, damage (driver _boat)] call EFUNC(testing,assertEquals);
                     }
                 ]
             ]
@@ -110,7 +110,7 @@
                 ["gets destroyed",
                     {
                         params [["_boat", objNull]];
-                        [alive _boat, false] call grad_testing_fnc_assertEquals;
+                        [alive _boat, false] call EFUNC(testing,assertEquals);
                     }
                 ],
                 ["kills the occupant",
@@ -118,8 +118,8 @@
                         // NOTE: for some reason, boat occupants are protected from explosions. to be investigated.
                         // so even when they should be killed - retuned damage is 1 - they actually are not.
                         //params [["_boat", objNull], ["_driver", objNull]];
-                        // [alive _driver, false] call grad_testing_fnc_assertEquals;
-                        ["does not work. #not_our_fault"] call grad_testing_fnc_skipTest;
+                        // [alive _driver, false] call EFUNC(testing,assertEquals);
+                        ["does not work. #not_our_fault"] call EFUNC(testing,skipTest);
                     }
                 ]
             ]
@@ -140,7 +140,7 @@
                 ["nearly gets destroyed",
                     {
                         params [["_boat", objNull]];
-                        [damage _boat, 0.7, 0.9] call grad_testing_fnc_assertBetween;
+                        [damage _boat, 0.7, 0.9] call EFUNC(testing,assertBetween);
                     }
                 ],
                 ["and later bumps with moderate speed",
@@ -154,7 +154,7 @@
                         ["keeps the high bullet damage",
                             {
                                 params [["_boat", objNull]];
-                                [damage _boat, 0.7, 0.9] call grad_testing_fnc_assertBetween;
+                                [damage _boat, 0.7, 0.9] call EFUNC(testing,assertBetween);
                             }
                         ]
                     ]
@@ -169,4 +169,4 @@
         deleteVehicle _tree;
         sleep 0.2;
     }
-] call grad_testing_fnc_executeTest;
+] call EFUNC(testing,executeTest);
