@@ -32,4 +32,4 @@ private _existingDmg = getAllHitPointsDamage _building;
 			false
 		];	
 	};
-} forEach _existingDmg#0;
+} forEach _existingDmg select 0;

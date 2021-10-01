@@ -1,9 +1,10 @@
 PREP(action_fusebox);
+PREP(close);
 PREP(createFuseboxActions);
 PREP(condition);
-PREP(condition_fusebox);
 PREP(condition_off);
 PREP(condition_on);
 PREP(ensureFuseboxHelper);
 PREP(fadeFuseboxHelper);
+PREP(open);
 PREP(server_setBuildingMainSwitch);

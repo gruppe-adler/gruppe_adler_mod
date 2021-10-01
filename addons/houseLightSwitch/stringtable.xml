@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+    <Package name="houseLightSwitch">
+        <Key ID="STR_grad_houseLightSwitch_close">
+            <English>Close Fuse Box</English>
+            <German>Schaltschrank schließen</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_open">
+            <English>Open Fuse Box</English>
+            <German>Schaltschrank schließen</German>
+        </Key>
+    </Package>
+</Project>
