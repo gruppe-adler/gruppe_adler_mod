@@ -23,7 +23,7 @@ _target animate ["fuseBox_open", 1];
     {
         _this animationPhase "fuseBox_open" == 1
     }, {
-        _this setVariable [QGVAR(isClosed), true, true];
+        _this setVariable [QGVAR(isClosed), false, true];
     },
     _target
 ] call CBA_fnc_waitUntilAndExecute;

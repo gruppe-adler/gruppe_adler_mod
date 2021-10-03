@@ -5,12 +5,12 @@ params [
 ];
 assert(!(isNull _building));
 	
-private _helper = _building getVariable [QGVAR(fuseboxHelper), objNull];
-if (_helper isNotEqualTo objNull) exitWith {
+private _helper = _building getVariable [QGVAR(fusebox), objNull];
+if !(isNull _helper) exitWith {
 	TRACE_1("Fuse Box for %1 exists already!", _building);
 };
-private _allPos = _building buildingPos -1; 
 
+private _allPos = _building buildingPos -1; 
 if (_allPos isEqualTo []) exitWith {
 	TRACE_1("Building %1 cant place Fuse Box", _building);
 };
@@ -21,12 +21,11 @@ _newArray sort true;
 private _newPos = (_newArray select 0 select 1) vectorAdd [0,0,1.1];
 private _posZ = _newPos select 2;
 private _buildingDir = getDir _building;
-private _helper = objNull;
  
 for "_dir" from 0 to 270 step 90 do { 
 	private _externalPos = _newPos getPos [15, _buildingDir + _dir];
-
 	_externalPos set [2, _posZ];
+	
 	private _intersects = lineIntersectsSurfaces [(AGLToASL _newPos), (AGLToASL _externalPos), player, objNull, true, -1, "VIEW", "GEOM", false];
 
 	{
@@ -41,10 +40,10 @@ for "_dir" from 0 to 270 step 90 do {
 				params ["_args", "_handle"];
 				_args params ["_pos", "_time"];
 
-				if ((diag_tickTime - _time) > 10) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
+				if ((diag_tickTime - _time) > GVAR(markerShowTime)) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
 	
     			drawIcon3D ["\a3\ui_f\data\IGUI\Cfg\Actions\ico_cpt_batt_OFF_ca.paa", [1,1,1,1], _pos, 1, 1, 0];
-			}, 0, [ASLToAGL _pos, diag_tickTime]] call CBA_fnc_addPerFrameHandler;
+			}, 0, [(_helper modelToWorld (boundingCenter _helper)), diag_tickTime]] call CBA_fnc_addPerFrameHandler;
 
 			_bool = true;
 		};
@@ -53,4 +52,4 @@ for "_dir" from 0 to 270 step 90 do {
 	if !(isNull _helper) exitWith {};
 };
 
-_building setVariable [QGVAR(fuseboxHelper), _helper];
+_building setVariable [QGVAR(fusebox), _helper];

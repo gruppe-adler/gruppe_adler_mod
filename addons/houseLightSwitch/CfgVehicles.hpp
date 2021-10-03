@@ -4,11 +4,11 @@ class CfgVehicles {
 		class ACE_SelfActions {
 			class ACE_Equipment {
 				class GRAD_houseLightSwitch_fusebox {
-					displayName = "Locate fuse box";
+					displayName = CSTRING(locate);
 					condition = QUOTE(call FUNC(condition));
 					exceptions[] = {};
-					statement = QUOTE(call FUNC(action_fusebox));
-					icon = "\x\grad\addons\houseLightSwitch\ui\bulb-question.paa";
+					statement = QUOTE(call FUNC(actionFusebox));
+					icon = QPATHTOF(ui\bulbQuestion.paa);
 				};
 			};
 		};
@@ -33,7 +33,7 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_MainActions {
                 distance = 5;
-                condition = 'alive _target && {[_player, _target, [INTERACT_EXCEPTIONS_APOBS]] call ace_common_fnc_canInteractWith}';
+                condition = 'alive _target && {[_player, _target, []] call ace_common_fnc_canInteractWith}';
                 class GVAR(open) {
                     selection = "";
                     displayName = CSTRING(open);
@@ -49,6 +49,24 @@ class CfgVehicles {
                     statement = QUOTE([_target] call FUNC(close));
                     showDisabled = 0;
                     priority = -1;
+                };
+                class GVAR(on) {
+                    selection = "";
+                    displayName = CSTRING(on);
+                    condition = QUOTE(call FUNC(conditionOn);
+                    statement = QUOTE([_target] call FUNC(lightsOn));
+                    showDisabled = 0;
+                    priority = -1;
+                    icon = QPATHTOF(ui\bulbOn.paa);
+                };
+                class GVAR(off) {
+                    selection = "";
+                    displayName = CSTRING(off);
+                    condition = QUOTE(call FUNC(conditionOff);
+                    statement = QUOTE([_target] call FUNC(lightsOff));
+                    showDisabled = 0;
+                    priority = -1;
+                    icon = QPATHTOF(ui\bulbOff.paa);
                 };
             };
         };
