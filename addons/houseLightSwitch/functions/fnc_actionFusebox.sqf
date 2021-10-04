@@ -18,17 +18,4 @@ if !(isNull _fusebox) exitWith {
 	};
 };
 
-[
-	ACE_player distance _building, 
-	[_building],
-	{
-		params ["_args"];
-		_args params ["_building"];
-
-		assert(!isNull(_building));
-
-		[_building] call FUNC(ensureFusebox);
-	}, 
-	{hint "Failure"}, 
-	localize LSTRING(search)
-] call ace_common_fnc_progressBar;
+[_building] call FUNC(ensureFusebox);

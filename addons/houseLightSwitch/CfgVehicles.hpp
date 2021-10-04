@@ -37,7 +37,7 @@ class CfgVehicles {
                 class GVAR(open) {
                     selection = "";
                     displayName = CSTRING(open);
-                    condition = QUOTE(_target getVariable [ARR_2(QQGVAR(isClosed), true)]);
+                    condition = QUOTE([_target] call FUNC(isClosed));
                     statement = QUOTE([_target] call FUNC(open));
                     showDisabled = 0;
                     priority = -1;
@@ -45,7 +45,7 @@ class CfgVehicles {
                 class GVAR(close) {
                     selection = "";
                     displayName = CSTRING(close);
-                    condition = QUOTE(_target getVariable [ARR_2(QQGVAR(isClosed), false)]);
+                    condition = QUOTE([_target] call FUNC(isOpen));
                     statement = QUOTE([_target] call FUNC(close));
                     showDisabled = 0;
                     priority = -1;
