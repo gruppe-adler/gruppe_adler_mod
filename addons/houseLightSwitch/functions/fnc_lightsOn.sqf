@@ -1,3 +1,7 @@
-params ["_target"];
+#include "script_component.hpp"
 
-[QGVAR(fuseboxSwitched), [_target, true]] call CBA_fnc_serverEvent;
+params [
+	["_fusebox", objNull, [objNull]]
+];
+
+[QGVAR(fuseboxSwitched), [_fusebox, true]] call CBA_fnc_serverEvent;

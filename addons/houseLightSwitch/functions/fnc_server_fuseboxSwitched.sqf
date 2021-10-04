@@ -14,7 +14,7 @@ private _building = _fusebox getVariable [QGVAR(building), objNull];
 
 private _isOn = _fusebox getVariable [QGVAR(mainSwitchState), true];
 if (_newState isEqualTo _isOn) exitWith {
-	TRACE_2("someone tried to switch lights on building %1 to pre-existing state %2", _building, _newState);
+	WARNING_2("someone tried to switch lights on building %1 to pre-existing state %2", _building, _newState);
 };
 _fusebox setVariable [QGVAR(mainSwitchState), _newState, true];
 
@@ -34,4 +34,4 @@ private _existingDmg = getAllHitPointsDamage _building;
 			false
 		];	
 	};
-} forEach _existingDmg select 0;
+} forEach (_existingDmg#0);
