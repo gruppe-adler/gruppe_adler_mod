@@ -33,11 +33,11 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_MainActions {
                 distance = 5;
-                condition = 'alive _target && {[_player, _target, []] call ace_common_fnc_canInteractWith}';
+                condition = "alive _target && {[_player, _target, []] call ace_common_fnc_canInteractWith}";
                 class GVAR(open) {
                     selection = "";
                     displayName = CSTRING(open);
-                    condition = QUOTE(_target getVariable [ARR_2(QUOTE(QGVAR(isClosed)), true)]);
+                    condition = QUOTE(_target getVariable [ARR_2(QQGVAR(isClosed), true)]);
                     statement = QUOTE([_target] call FUNC(open));
                     showDisabled = 0;
                     priority = -1;
@@ -45,7 +45,7 @@ class CfgVehicles {
                 class GVAR(close) {
                     selection = "";
                     displayName = CSTRING(close);
-                    condition = QUOTE(_target getVariable [ARR_2(QUOTE(QGVAR(isClosed)), false)]);
+                    condition = QUOTE(_target getVariable [ARR_2(QQGVAR(isClosed), false)]);
                     statement = QUOTE([_target] call FUNC(close));
                     showDisabled = 0;
                     priority = -1;
@@ -53,7 +53,7 @@ class CfgVehicles {
                 class GVAR(on) {
                     selection = "";
                     displayName = CSTRING(on);
-                    condition = QUOTE(call FUNC(conditionOn);
+                    condition = QUOTE(call FUNC(conditionOn));
                     statement = QUOTE([_target] call FUNC(lightsOn));
                     showDisabled = 0;
                     priority = -1;
@@ -62,7 +62,7 @@ class CfgVehicles {
                 class GVAR(off) {
                     selection = "";
                     displayName = CSTRING(off);
-                    condition = QUOTE(call FUNC(conditionOff);
+                    condition = QUOTE(call FUNC(conditionOff));
                     statement = QUOTE([_target] call FUNC(lightsOff));
                     showDisabled = 0;
                     priority = -1;
