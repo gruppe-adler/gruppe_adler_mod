@@ -7,4 +7,4 @@ PREP(ensureFusebox);
 PREP(lightsOff);
 PREP(lightsOn);
 PREP(open);
-PREP(server_setBuildingMainSwitch);
+PREP(server_fuxeboxSwitched);

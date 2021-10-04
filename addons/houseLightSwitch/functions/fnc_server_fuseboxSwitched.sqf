@@ -4,17 +4,19 @@
 #define MAGIC_DAMAGE_LIGHT_OFF 0.9
 
 params [
-	["_building", objNull, [objNull]],
+	["_fusebox", objNull, [objNull]],
 	["_newState", false, [false]]
 ];
 
 assert(isServer); // terrain objects are local *everywhere*. therefore, force server to have a single point of truth.
 
-private _isOn = _building getVariable [QGVAR(mainSwitchState), true];
+private _building = _fusebox getVariable [QGVAR(building), objNull];
+
+private _isOn = _fusebox getVariable [QGVAR(mainSwitchState), true];
 if (_newState isEqualTo _isOn) exitWith {
 	TRACE_2("someone tried to switch lights on building %1 to pre-existing state %2", _building, _newState);
 };
-_building setVariable [QGVAR(mainSwitchState), _newState, true];
+_fusebox setVariable [QGVAR(mainSwitchState), _newState, true];
 
 private _existingDmg = getAllHitPointsDamage _building;
 

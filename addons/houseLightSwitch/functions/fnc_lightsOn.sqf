@@ -1,4 +1,3 @@
 params ["_target"];
 
-[QGVAR(setBuildingMainSwitch), [GVAR(house), true]] call CBA_fnc_serverEvent;
-[_building] call FUNC(fadeFuseboxHelper);
+[QGVAR(fuseboxSwitched), [_target, true]] call CBA_fnc_serverEvent;

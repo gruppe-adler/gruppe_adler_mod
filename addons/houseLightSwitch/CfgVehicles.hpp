@@ -53,7 +53,7 @@ class CfgVehicles {
                 class GVAR(on) {
                     selection = "";
                     displayName = CSTRING(on);
-                    condition = QUOTE(call FUNC(conditionOn));
+                    condition = QUOTE([_target] call FUNC(conditionOn));
                     statement = QUOTE([_target] call FUNC(lightsOn));
                     showDisabled = 0;
                     priority = -1;
@@ -62,7 +62,7 @@ class CfgVehicles {
                 class GVAR(off) {
                     selection = "";
                     displayName = CSTRING(off);
-                    condition = QUOTE(call FUNC(conditionOff));
+                    condition = QUOTE([_target] call FUNC(conditionOff));
                     statement = QUOTE([_target] call FUNC(lightsOff));
                     showDisabled = 0;
                     priority = -1;

@@ -1,3 +1,7 @@
 #include "script_component.hpp"
 
-[] call FUNC(condition) && {GVAR(house) getVariable [QGVAR(mainSwitchState), true] isEqualTo false};
+params [
+	["_fusebox", objNull, [objNull]]
+];
+
+[] call FUNC(condition) && {_fusebox getVariable [QGVAR(mainSwitchState), true] isEqualTo false};
