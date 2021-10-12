@@ -250,10 +250,10 @@
             </Key>
             <Key ID="STR_GRAD_ZEUS_AmountRPG">
                 <English>Amount of rockets to add</English>
-                <German>Anzahl der zu hinzufügenden Racketen</German>
+                <German>Anzahl der zu hinzufügenden Raketen</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_AmountHandgranades">
-                <English>Amount of granades to add</English>
+                <English>Amount of grenades to add</English>
                 <German>Anzahl der zu hinzufügenden Granaten</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleFillBoxName">

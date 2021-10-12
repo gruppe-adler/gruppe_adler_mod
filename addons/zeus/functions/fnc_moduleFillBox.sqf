@@ -14,7 +14,7 @@ private _magazines = [];
 { 
  	private _player = _x; 
 
-	if !(isNull getAssignedCuratorLogic _player) then {
+	if (isNull getAssignedCuratorLogic _player) then {
 		private _loadout = getUnitLoadout _player; 
 		_loadout params ["", "", "", ["_uniform", []], ["_vest", []], ["_backpack", []]];
 
