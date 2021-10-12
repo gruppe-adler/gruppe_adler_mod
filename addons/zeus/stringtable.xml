@@ -243,5 +243,27 @@
                 <Original>and transferred to %1.</Original>
             </Key>
         </Container>
+        <Container name="moduleFillBox">
+            <Key ID="STR_GRAD_ZEUS_settingCategory">
+                <English>GRAD Zeus</English>
+                <German>GRAD Zeus</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_AmountRPG">
+                <English>Amount of rockets to add</English>
+                <German>Anzahl der zu hinzufügenden Racketen</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_AmountHandgranades">
+                <English>Amount of granades to add</English>
+                <German>Anzahl der zu hinzufügenden Granaten</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleFillBoxName">
+                <English>Fill Box</English>
+                <German>Box füllen</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleFillBoxError">
+                <English>Not a Supply Box</English>
+                <German>Keine Nachschubkiste</German>
+            </Key>
+        </Container>
     </Package>
 </Project>
