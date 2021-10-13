@@ -45,7 +45,7 @@ private _magazines = [];
 			}; 
 		}forEach _container; 
 	};
-}forEach allPlayers;
+}forEach playableUnits + switchableUnits;
 
 {	
 	_x params ["_type", "_amount"];
