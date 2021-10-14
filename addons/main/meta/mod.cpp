@@ -1,0 +1,10 @@
+name = "Gruppe Adler Mod MAIN";
+author = "Gruppe Adler";
+picture = "Adler_64.paa";
+actionName = "Website";
+action = "https://www.gruppe-adler.de/";
+description = "GRAD MAIN";
+logo = "Adler_64.paa";
+logoOver = "Adler_64.paa";
+tooltip = "GRAD MAIN";
+overview = "Gruppe Adler Mod main module";
