@@ -37,7 +37,7 @@ private _weapons = [];
 				private _amount = -1;
 				{
 					_amount = switch (_x) do {
-						case "HandGrenade" : {GVAR(amountHandgranades)};
+						case "HandGrenade" : {GVAR(amountHandgrenades)};
 						case "CA_LauncherMagazine" : {GVAR(amountRPG)};
 						case "CA_Magazine" : {GVAR(amountRifle)};
 						default {-1};
@@ -69,7 +69,7 @@ private _weapons = [];
 		private _amount = -1;
 		{
 			_amount = switch (_x) do {
-				case "HandGrenade" : {GVAR(amountHandgranades)};
+				case "HandGrenade" : {GVAR(amountHandgrenades)};
 				case "CA_LauncherMagazine" : {GVAR(amountRPG)};
 				case "CA_Magazine" : {GVAR(amountRifle)};
 				default {-1};

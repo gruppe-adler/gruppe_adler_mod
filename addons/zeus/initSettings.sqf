@@ -17,7 +17,7 @@
 ] call CBA_fnc_addSetting;
 
 [
-	QGVAR(amountHandgranades), 
+	QGVAR(amountHandgrenades), 
 	"SLIDER", 
 	localize LSTRING(AmountHandgranades), 
 	localize LSTRING(settingCategory), 
