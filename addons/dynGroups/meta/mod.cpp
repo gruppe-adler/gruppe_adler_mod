@@ -1,0 +1,10 @@
+name = "GRAD dynGroups";
+author = "Gruppe Adler";
+picture = "Adler_64.paa";
+actionName = "Website";
+action = "https://www.gruppe-adler.de/";
+description = "GRAD dynGroups";
+logo = "Adler_64.paa";
+logoOver = "Adler_64.paa";
+tooltip = "Gruppe Adler Mod dynGroups";
+overview = "dynGrpups ftw! ";
