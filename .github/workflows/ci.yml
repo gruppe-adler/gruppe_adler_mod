@@ -9,11 +9,12 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
-
+    - name: Remove stand-alone mod metadata
+      id: rm-standalone-metadata
+      run: rm -r addons/*/meta
     - name: Build with HEMTT
       uses: gruppe-adler/action-release-with-hemtt@2.0.0
       id: build
-
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
