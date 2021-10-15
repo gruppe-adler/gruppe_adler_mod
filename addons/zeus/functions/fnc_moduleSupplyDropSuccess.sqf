@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /*
     @Authors
         Christian 'chris5790' Klemm
@@ -10,7 +12,6 @@
     @Example
         ?
 */
-#include "script_component.hpp"
 
 private _supplyBox = (vehicle _this) getVariable [QGVAR(box), objNull];
 if !(local _supplyBox) exitWith {};
@@ -33,7 +34,7 @@ private _dropPos = (vehicle _this) modelToWorld [_maxWidth + 10 ,0,0];
 private _light = "Chemlight_blue" createVehicle [0,0,0];
 private _para = createVehicle ["B_Parachute_02_F", [0,0,0], [], 0, "NONE"];
 _para setPosASL _dropPos;
-_supplyBox attachTo [_para, [0,0,0]];
+_supplyBox attachTo [_para, [0,0,1]];
 _light attachTo [_para, [0,0,0]];
 
 [{

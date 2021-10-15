@@ -8,7 +8,8 @@ private _newState = param [0, true];
     FUNC(toggleACENametags),
     FUNC(toggleSTHud),
     FUNC(toggleTFAR),
-    FUNC(toggleVanillaHUD)
+    FUNC(toggleVanillaHUD),
+    FUNC(toggleDuiHud)
 ];
 
 false;

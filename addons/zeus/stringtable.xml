@@ -56,6 +56,10 @@
                 <German>Spieler FPS</German>
                 <Original>Player FPS</Original>
             </Key>
+            <Key ID="STR_GRAD_ZEUS_optionPlayerFreqs">
+                <German>Spieler Funkfrequenzen</German>
+                <Original>Player Radio Frequencies</Original>
+            </Key>
             <Key ID="STR_GRAD_ZEUS_optionPlayerMedicalStatus">
                 <German>Spieler Gesundheitszustand</German>
                 <Original>Player medical status</Original>

@@ -11,10 +11,12 @@ class CfgPatches {
 		weapons[] = {};
 		VERSION_CONFIG;
         authors[] = {
-			"McDiod"
+			"McDiod",
+      "DerZade"
 		};
 	};
 };
 
 #include "cfgFunctions.hpp"
+#include "cfgEventhandlers.hpp"
 #include "dialog\directConnect.hpp"

@@ -1,9 +1,10 @@
+#include "script_component.hpp"
+
 /*
 *   Credits: PabstMirror, ACE_zeus_fnc_ui_globalSetSkill
 *   Adapted for grad_zeus by McDiod
 */
 
-#include "script_component.hpp"
 
 disableSerialization;
 

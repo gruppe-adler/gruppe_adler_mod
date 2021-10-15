@@ -1,9 +1,10 @@
+#include "script_component.hpp"
+
 /*
 *   Credits: PabstMirror, ACE_zeus_fnc_ui_globalSetSkill
 *   Adapted for grad_zeus by McDiod
 */
 
-#include "script_component.hpp"
 
 disableSerialization;
 
@@ -19,6 +20,7 @@ _control ctrlRemoveAllEventHandlers "setFocus";
 (_display displayCtrl 27003) cbSetChecked (GVAR(DiagnosticsSettings) select 2);
 (_display displayCtrl 27004) cbSetChecked (GVAR(DiagnosticsSettings) select 3);
 (_display displayCtrl 27005) cbSetChecked (GVAR(DiagnosticsSettings) select 4);
+(_display displayCtrl 27006) cbSetChecked (GVAR(DiagnosticsSettings) select 5);
 
 private _fnc_onUnload = {
     private _logic = GETMVAR(BIS_fnc_initCuratorAttributes_target,objnull);
@@ -37,7 +39,8 @@ private _fnc_onConfirm = {
         cbChecked (_display displayCtrl 27002),
         cbChecked (_display displayCtrl 27003),
         cbChecked (_display displayCtrl 27004),
-        cbChecked (_display displayCtrl 27005)
+        cbChecked (_display displayCtrl 27005),
+        cbChecked (_display displayCtrl 27006)
     ];
 
     _settings call FUNC(moduleDiagnosticsOnConfirm);

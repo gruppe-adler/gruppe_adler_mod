@@ -1,9 +1,9 @@
+#include "script_component.hpp"
+
 /*
 *   Original function from ace_logistics_wirecutter by PabstMirror
 *   Adapted for grad_axe by McDiod
 */
-
-#include "script_component.hpp"
 
 params ["_interactionType"];
 
@@ -48,16 +48,18 @@ if (!("grad_axe" in (items ace_player))) exitWith {};
             };
 
             {
-                if (!(_x in _treesHelped)) then {
-                    _treesHelped pushBack _x;
-                    private _helper = "ACE_LogicDummy" createVehicleLocal [0,0,0];
-                    private _action = ["grad_axe_cutDownTree",localize "STR_GRAD_AXE_CUT_TREE","x\grad\addons\axe\ui\action_axe_ca.paa", _fncStatement, _fncCondition, {}, _x, {[0,0,0]}, 5.5, [false, false, false, false, true]] call ace_interact_menu_fnc_createAction;
-                    [_helper, 0, [],_action] call ace_interact_menu_fnc_addActionToObject;
-                    _addedHelpers pushBack _helper;
-                    _helperQueue pushBack [_helper,_x];
-                };
-                nil
-            } count (nearestTerrainObjects [ace_player, ["TREE","SMALL TREE","BUSH"], 15]);
+                _treesHelped pushBack _x;
+                private _helper = "ACE_LogicDummy" createVehicleLocal [0,0,0];
+                private _action = ["grad_axe_cutDownTree",localize "STR_GRAD_AXE_CUT_TREE","x\grad\addons\axe\ui\action_axe_ca.paa", _fncStatement, _fncCondition, {}, _x, {[0,0,0]}, 5.5, [false, false, false, false, true]] call ace_interact_menu_fnc_createAction;
+                [_helper, 0, [],_action] call ace_interact_menu_fnc_addActionToObject;
+                _addedHelpers pushBack _helper;
+                _helperQueue pushBack [_helper,_x];
+            } forEach (
+                (nearestTerrainObjects [ace_player, ["TREE","SMALL TREE","BUSH"], 15]) select {
+                    !(_x in _treesHelped) &&
+                    {!isObjectHidden _x}
+                }
+            );
 
             [{
                 params ["_helperQueue","_PFHID"];

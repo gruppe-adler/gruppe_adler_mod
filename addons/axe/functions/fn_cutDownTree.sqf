@@ -1,10 +1,9 @@
+#include "script_component.hpp"
+
 /*
 *   Original function from ace_logistics_wirecutter by gpgpgpgp, edited by commy2, PabstMirror
 *   Adapted for grad_axe by McDiod
 */
-
-
-#include "script_component.hpp"
 
 params ["_unit", "_treeObject"];
 
@@ -40,7 +39,7 @@ private _progressCheck = {
     _args params ["_treeObject", "_lastSoundEffectTime", "_unit"];
 
     if (_passedTime > (_lastSoundEffectTime + SOUND_CLIP_TIME_SPACEING)) then {
-        playSound3D ["x\grad\addons\axe\sound\chop.ogg", objNull, false, (getPosASL _unit), 1, 1, 80];
+        playSound3D [format ["x\grad\addons\axe\sound\chop_%1.ogg", (round(random 25)) +1], objNull, false, (getPosASL _unit), 3, 1, 80];
         _args set [1, _passedTime];
     };
 

@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /*
     @Authors
         Christian 'chris5790' Klemm
@@ -10,7 +12,6 @@
     @Example
         ?
 */
-#include "script_component.hpp"
 
 
 //curator points fix
@@ -36,4 +37,18 @@ if (isServer) then {
             (_unit) setVariable [QGVAR(downSince),if (_unconsc) then {CBA_missionTime} else {nil},true];
         };
     }] call CBA_fnc_addEventHandler;
+};
+
+if (hasInterface) then {
+    [
+        {!isNil {player getVariable ["grad_loadout_applicationCount", nil]}},
+        {
+            [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
+        },
+        [],
+        15,
+        {
+            [] call FUNC(moduleDiagnosticsGetPlayerFreqsAtStart);
+        }
+    ] call CBA_fnc_waitUntilAndExecute;
 };

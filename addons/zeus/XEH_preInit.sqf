@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 /*
     @Authors
         Christian 'chris5790' Klemm
@@ -10,7 +12,6 @@
     @Example
         ?
 */
-#include "script_component.hpp"
 
 ADDON = false;
 
@@ -19,7 +20,7 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 if (hasInterface) then {
-    GVAR(DiagnosticsSettings) = [false,false,false,false,false];
+    GVAR(DiagnosticsSettings) = [false,false,false,false,false,false];
 };
 
 if (isServer) then {

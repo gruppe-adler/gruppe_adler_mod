@@ -6,7 +6,7 @@ class CfgWeapons {
         author = "McDiod";
         displayName = "$STR_GRAD_AXE_AXENAME";
         descriptionShort = "$STR_GRAD_AXE_AXEDESCRIPTION";
-        /* model = QPATHTOF(data\ace_wirecutter.p3d); */
+        model = "\A3\Structures_F\Items\Tools\Axe_F.p3d";
         picture = "\x\grad\addons\axe\ui\item_axe_ca.paa";
         scope = 2;
         class ItemInfo: CBA_MiscItem_ItemInfo {
