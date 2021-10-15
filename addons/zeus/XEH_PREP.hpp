@@ -32,7 +32,6 @@ PREP(moduleSupplyDrop);
 PREP(moduleSupplyDropExit);
 PREP(moduleSupplyDropSuccess);
 
-PREP(moduleChairCircle);
 PREP(moduleChairCircleCreate);
 PREP(moduleChairCircleGetPoint);
 

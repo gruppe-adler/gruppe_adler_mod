@@ -8,8 +8,8 @@ class CfgVehicles {
 	class GVAR(moduleChairCircle): GVAR(moduleBase) {
 		curatorCanAttach = 1;
 		category = QGVAR(Grad);
-		displayName = "Chair Circle";
-		function = QFUNC(moduleChairCircle);
+		displayName = CSTRING(modulechairCircleName);
+		function = QFUNC(moduleChairCircleCreate);
 	};
 
 	class GVAR(moduleSupplyDrop): GVAR(moduleBase) {

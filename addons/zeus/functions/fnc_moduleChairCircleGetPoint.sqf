@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 params ["_origin", "_count", "_distance"];
 
 private _array = [];
@@ -9,7 +11,6 @@ for "_i" from 1 to _count do {
 	private _position = _origin getPos [_distance, _direction];
 
 	_array pushBack _position;
-
 	_direction = _direction + _angle;
 };
 
