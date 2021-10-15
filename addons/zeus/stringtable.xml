@@ -257,8 +257,8 @@
                 <German>Anzahl der zu hinzuzufügenden Granaten</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleFillBoxName">
-                <English>Fill Box</English>
-                <German>Box füllen</German>
+                <English>Fill ammo box for players</English>
+                <German>Mun-Kiste für Spieler füllen</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleFillBoxError">
                 <English>Not a Supply Box</English>
