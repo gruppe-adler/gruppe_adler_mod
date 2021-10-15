@@ -9,7 +9,8 @@ private _fire = _logic getvariable ["bis_fnc_curatorAttachObject_object", objnul
 deleteVehicle _logic;
 
 private _count = count (playableUnits + switchableUnits);
-private _positions = [_pos, _count, _count/5] call FUNC(moduleChairCircleGetPoint);
+if (_count < 1) exitWith { WARNING("cannot create a circle with less than one chair");};
+private _positions = [_pos, _count, (_count/5) max 2] call FUNC(moduleChairCircleGetPoint);
 private _chairs = [];
 
 {
