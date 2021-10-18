@@ -14,14 +14,14 @@ private _positions = [_pos, _count, (_count/5) max 2] call FUNC(moduleChairCircl
 private _chairs = [];
 
 {
-  	private _chair = createVehicle ["Land_CampingChair_V2_F", _x, [], 0, "CAN_COLLIDE"];
-	_chair setPos _x;
-  	_chair setDir ((_chair getRelDir _pos) - 180);
-  	_chairs pushBack _chair;
+    private _chair = createVehicle ["Land_CampingChair_V2_F", _x, [], 0, "CAN_COLLIDE"];
+    _chair setPos _x;
+    _chair setDir ((_chair getRelDir _pos) - 180);
+    _chairs pushBack _chair;
 } forEach _positions;
 
 if (isNull _fire ) then {
-	createVehicle ["Campfire_burning_F", _pos, [], 0, "CAN_COLLIDE"];
+    createVehicle ["Campfire_burning_F", _pos, [], 0, "CAN_COLLIDE"];
 };
 
 _chairs
