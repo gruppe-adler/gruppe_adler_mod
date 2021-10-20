@@ -243,5 +243,26 @@
                 <Original>and transferred to %1.</Original>
             </Key>
         </Container>
+        <Container name="moduleDrop">
+            <Key ID="STR_GRAD_ZEUS_notAmmoBox">
+                <English>the drop object needs to be an ammo box</English>
+                <German>Das Abwurfobjekt muss eine Ammobox sein</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_dropActiv">
+                <English>Drop already activ</English>
+                <German>Es ist gerade ein Abwurf mit dieser Box aktiv</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_dropStarting">
+                <English>Drop is starting</English>
+                <German>Abwurf wird gestartet</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_dropActiv">
+                <English>Choose dropzone</English>
+                <German>Ziel auswählen</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleSupplyDropName">
+                <English>Supply Drop</English>
+                <German>Nachschub Lieferung</German>
+            </Key>
     </Package>
 </Project>

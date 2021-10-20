@@ -22,11 +22,11 @@ private _box = attachedTo _logic;
 deleteVehicle _logic;
 
 if !(_box isKindOf "ReammoBox_F") exitWith {
-    [objNull, "Das Abwurfobjekt muss eine Ammobox sein"] call BIS_fnc_showCuratorFeedbackMessage;
+    [objNull, localize LSTRING(notAmmoBox)] call BIS_fnc_showCuratorFeedbackMessage;
 };
 
 if(_box getVariable [QGVAR(supplyDropInProgress), false]) exitWith {
-    [objNull, "Es ist gerade ein Abwurf mit dieser Box aktiv"] call BIS_fnc_showCuratorFeedbackMessage;
+    [objNull, localize LSTRING(dropActiv)] call BIS_fnc_showCuratorFeedbackMessage;
 };
 
 if(!createDialog QGVAR(moduleSupplyDrop)) exitWith {};
@@ -45,7 +45,7 @@ GVAR(supplyBox) = _box;
         private _entry = _listbox lbAdd getText(_x >> "displayName");
         _listbox lbSetData [_entry, configName _x];
         _listbox lbSetPicture [_entry, getText(_x >> "picture")];
-    } forEach ("(configName _x) isKindOf 'Plane' && {getNumber(_x >> 'scope') == 2}" configClasses (configFile >> "CfgVehicles"));
+    } forEach ("(configName _x) isKindOf 'Plane' && {getNumber(_x >> 'scope') == 2} && {((getNumber(_x >> 'VehicleTransport' >> 'Carrier' >> 'canBeTransported') == 1) || (getArray(_x >> 'VehicleTransport' >> 'Carrier' >> 'exits') isNotEqualTo []))}" configClasses (configFile >> "CfgVehicles"));
 
     lbSort _listbox;
 
@@ -72,12 +72,12 @@ GVAR(supplyBox) = _box;
                 };
                 if(isNil {_box} || {isNull _box}) exitWith {};
                 if(_box getVariable [QGVAR(supplyDropInProgress), false]) exitWith {
-                    [objNull, "Es ist gerade ein Abwurf mit dieser Box aktiv"] call BIS_fnc_showCuratorFeedbackMessage;
+                    [objNull, localize LSTRING(dropActiv)] call BIS_fnc_showCuratorFeedbackMessage;
                 };
 
                 _box setVariable [QGVAR(supplyDropInProgress), true, true];
 
-                [objNull, "Abwurf wird gestartet"] call BIS_fnc_showCuratorFeedbackMessage;
+                [objNull, localize LSTRING(dropStarting)] call BIS_fnc_showCuratorFeedbackMessage;
 
                 if(local _box) then {
                     _box allowDamage false;
@@ -165,7 +165,7 @@ GVAR(supplyBox) = _box;
                 _dropWaypoint setWaypointCompletionRadius 80;
                 _dropWaypoint setWaypointStatements ["true", QUOTE(this call FUNC(moduleSupplyDropSuccess))];
             },
-            "Ziel auswählen"
+            localize LSTRING(dropStarting)
         ] call ace_zeus_fnc_getModuleDestination;
     }];
 
