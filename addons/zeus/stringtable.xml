@@ -243,5 +243,11 @@
                 <Original>and transferred to %1.</Original>
             </Key>
         </Container>
+        <Container name="modulechairCircle">
+            <Key ID="STR_GRAD_ZEUS_modulechairCircleName">
+                <English>Create Chair Circle for players</English>
+                <German>Stuhlkreis für Spieler erzeugen</German>
+            </Key>
+        </Container>
     </Package>
 </Project>
