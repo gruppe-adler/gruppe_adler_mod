@@ -16,14 +16,17 @@ class CfgPatches {
 			QGVAR(moduleMoveRespawn),
 			QGVAR(moduleBlacklistHeadless),
 			QGVAR(moduleAddPlayersToZeus),
-			QGVAR(moduleFillBox)
+			QGVAR(moduleFillBox),
+			QGVAR(moduleChairCircle),
+			QGVAR(moduleAddPlayersToZeus)
 		};
 		weapons[] = {};
 		VERSION_CONFIG;
         authors[] = {
 			"chris5790",
 			"McDiod",
-			"Salbei"
+			"Salbei",
+			"nomisum"
 		};
 	};
 };
