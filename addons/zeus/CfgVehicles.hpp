@@ -15,7 +15,7 @@ class CfgVehicles {
 	class GVAR(moduleSupplyDrop): GVAR(moduleBase) {
 		curatorCanAttach = 1;
 		category = QGVAR(Grad);
-		displayName = "Supply Drop";
+		displayName = CSTRING(moduleSupplyDropName);
 		function = QFUNC(moduleSupplyDrop);
 	};
 
