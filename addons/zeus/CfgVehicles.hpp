@@ -67,4 +67,11 @@ class CfgVehicles {
 		displayName = CSTRING(moduleAddPlayersToZeusName);
 		function = QFUNC(moduleAddPlayersToZeus);
 	};
+
+	class GVAR(moduleFillBox): GVAR(moduleBase) {
+		curatorCanAttach = 1;
+		category = QGVAR(Grad);
+		displayName = CSTRING(moduleFillBoxName);
+		function = QFUNC(moduleFillBox);
+	};
 };

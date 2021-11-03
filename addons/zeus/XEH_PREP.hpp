@@ -36,3 +36,5 @@ PREP(moduleChairCircleCreate);
 PREP(moduleChairCircleGetPoint);
 
 PREP(moduleToggleBFT);
+
+PREP(moduleFillBox);

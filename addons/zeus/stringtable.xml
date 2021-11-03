@@ -243,6 +243,28 @@
                 <Original>and transferred to %1.</Original>
             </Key>
         </Container>
+        <Container name="moduleFillBox">
+            <Key ID="STR_GRAD_ZEUS_settingCategory">
+                <English>GRAD Zeus</English>
+                <German>GRAD Zeus</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_AmountRPG">
+                <English>Amount of rockets to add</English>
+                <German>Anzahl der zu hinzuzufügenden Raketen</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_AmountHandgranades">
+                <English>Number of grenades to add</English>
+                <German>Anzahl der zu hinzuzufügenden Granaten</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleFillBoxName">
+                <English>Fill ammo box for players</English>
+                <German>Mun-Kiste für Spieler füllen</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleFillBoxError">
+                <English>Not a Supply Box</English>
+                <German>Keine Nachschubkiste</German>
+            </Key>
+        </Container>
         <Container name="moduleDrop">
             <Key ID="STR_GRAD_ZEUS_notAmmoBox">
                 <English>the drop object needs to be an ammo box</English>

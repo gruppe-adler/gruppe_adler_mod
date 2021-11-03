@@ -15,6 +15,8 @@ class CfgPatches {
 			QGVAR(moduleSetLoadouts),
 			QGVAR(moduleMoveRespawn),
 			QGVAR(moduleBlacklistHeadless),
+			QGVAR(moduleAddPlayersToZeus),
+			QGVAR(moduleFillBox),
 			QGVAR(moduleChairCircle),
 			QGVAR(moduleAddPlayersToZeus)
 		};
@@ -23,6 +25,7 @@ class CfgPatches {
         authors[] = {
 			"chris5790",
 			"McDiod",
+			"Salbei",
 			"nomisum"
 		};
 	};

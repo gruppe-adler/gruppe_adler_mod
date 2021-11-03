@@ -28,4 +28,6 @@ if (isServer) then {
     GVAR(usersObjectLocality) = [];
 };
 
+#include "initSettings.sqf"
+
 ADDON = true;
