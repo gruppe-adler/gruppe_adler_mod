@@ -248,11 +248,15 @@
                 <English>GRAD Zeus</English>
                 <German>GRAD Zeus</German>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_AmountRPG">
-                <English>Amount of rockets to add</English>
+            <Key ID="STR_GRAD_ZEUS_NumberRifle">
+                <English>Number of magazines to add</English>
+                <German>Anzahl der zu hinzuzufügenden Magazine</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_NumberRPG">
+                <English>Number of rockets to add</English>
                 <German>Anzahl der zu hinzuzufügenden Raketen</German>
             </Key>
-            <Key ID="STR_GRAD_ZEUS_AmountHandgranades">
+            <Key ID="STR_GRAD_ZEUS_NumberHandgranades">
                 <English>Number of grenades to add</English>
                 <German>Anzahl der zu hinzuzufügenden Granaten</German>
             </Key>

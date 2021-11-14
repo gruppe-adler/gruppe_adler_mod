@@ -34,19 +34,19 @@ private _weapons = [];
 			if (count _x > 2) then { 
 				private _type = _x select 0;
 
-				private _amount = -1;
+				private _number = -1;
 				{
-					_amount = switch (_x) do {
-						case "HandGrenade" : {GVAR(amountHandgrenades)};
-						case "CA_LauncherMagazine" : {GVAR(amountRPG)};
-						case "CA_Magazine" : {GVAR(amountRifle)};
+					_number = switch (_x) do {
+						case "HandGrenade" : {GVAR(numberHandgrenades)};
+						case "CA_LauncherMagazine" : {GVAR(numberRPG)};
+						case "CA_Magazine" : {GVAR(numberRifle)};
 						default {-1};
 					};
 
-					if (_amount > -1) exitWith {};
+					if (_number > -1) exitWith {};
 				}forEach ([configFile >> "CfgMagazines" >> _type, true] call BIS_fnc_returnParents);
 
-				_magazines pushBackUnique [_type, _amount]; 
+				_magazines pushBackUnique [_type, _number]; 
 			}; 
 		}forEach _container; 
 	};
@@ -66,24 +66,24 @@ private _weapons = [];
 	if (_foundCompatibleMag) then {
 		private _type = selectRandom _allowedMagazines;
 		
-		private _amount = -1;
+		private _number = -1;
 		{
-			_amount = switch (_x) do {
-				case "HandGrenade" : {GVAR(amountHandgrenades)};
-				case "CA_LauncherMagazine" : {GVAR(amountRPG)};
-				case "CA_Magazine" : {GVAR(amountRifle)};
+			_number = switch (_x) do {
+				case "HandGrenade" : {GVAR(numberHandgrenades)};
+				case "CA_LauncherMagazine" : {GVAR(numberRPG)};
+				case "CA_Magazine" : {GVAR(numberRifle)};
 				default {-1};
 			};
 
-			if (_amount > -1) exitWith {};
+			if (_number > -1) exitWith {};
 		}forEach ([configFile >> "CfgMagazines" >> _type, true] call BIS_fnc_returnParents);
 
-		_magazines pushBackUnique [_type, _amount];
+		_magazines pushBackUnique [_type, _number];
 	};
 }forEach _weapons;
 
 {	
-	_x params ["_type", "_amount"];
+	_x params ["_type", "_number"];
 
-	_box addMagazineCargoGlobal [_type, _amount];
+	_box addMagazineCargoGlobal [_type, _number];
 }forEach _magazines;

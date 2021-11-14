@@ -15,7 +15,6 @@ class CfgPatches {
 			QGVAR(moduleSetLoadouts),
 			QGVAR(moduleMoveRespawn),
 			QGVAR(moduleBlacklistHeadless),
-			QGVAR(moduleAddPlayersToZeus),
 			QGVAR(moduleFillBox),
 			QGVAR(moduleChairCircle),
 			QGVAR(moduleAddPlayersToZeus)
