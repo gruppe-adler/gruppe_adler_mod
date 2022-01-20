@@ -123,28 +123,32 @@
         </Container>
         <Container name="moduleToggleBFT">
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTName">
-                <German>BFT umschalten</German>
                 <Original>Toggle BFT</Original>
+                <German>BFT umschalten</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTError1">
-                <German>Nicht-leeres Objekt auswählen</German>
                 <Original>Select non-empty object</Original>
+                <German>Nicht-leeres Objekt auswählen</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResult">
-                <German>BFT für Gruppe %1.</German>
-                <Original>Group BFT %1.</Original>
+                <Original>Global BFT %1</Original>
+                <German>Globales BFT %1</German>
+            </Key>
+            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTGroupResult">
+                <Original>Group %1 BFT %2.</Original>
+                <German>BFT für Gruppe %1 %2.</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOn">
-                <German>eingeschaltet</German>
                 <Original>toggled on</Original>
+                <German>eingeschaltet</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOff">
-                <German>ausgeschaltet</German>
                 <Original>toggled off</Original>
+                <German>ausgeschaltet</German>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleAddPlayersToZeusName">
-                <German>Spieler zu Zeus hinzufügen</German>
                 <Original>Add players to Zeus</Original>
+                <German>Spieler zu Zeus hinzufügen</German>
             </Key>
         </Container>
         <Container name="moduleReloadLoadout">
