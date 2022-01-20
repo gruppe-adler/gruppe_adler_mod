@@ -10,6 +10,7 @@ deleteVehicle _logic;
 if (isNull _unit) then {
     private _current = missionNamespace getVariable ["ace_map_BFT_Enabled", false];
     ace_map_BFT_Enabled = !_current;
+    publicVariable "ace_map_BFT_Enabled";
 
     [objNull, format [localize LSTRING(moduleToggleBFTResult), [localize LSTRING(moduleToggleBFTResultOn), localize LSTRING(moduleToggleBFTResultOff)] select _current]] call bis_fnc_showCuratorFeedbackMessage;
 } else {
