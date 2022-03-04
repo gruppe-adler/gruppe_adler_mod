@@ -6,8 +6,8 @@ params ["_saveName","_mapName",["_markersData",[]]];
 private _playerID = getPlayerID player;
 private _markerIDIndex = 0;
 
-[_playerID, _markerIDIndex] spawn {
-    params ["_playerID", "_markerIDIndex"];
+[_playerID, _markerIDIndex, _markersData] spawn {
+    params ["_playerID", "_markerIDIndex", "_markersData"];
     {
         _x params [
             "_alpha",
