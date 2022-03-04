@@ -9,7 +9,9 @@ class cfgFunctions {
             class getMarkersInArea {};
             class loadDisplay {};
             class loadHelp {};
-            class loadMarkers {};
+            class loadMarkersLoop {};
+            class loadMarkersStart {};
+            class loadMarker {};
             class loadNotification {};
             class onButtonDelete {};
             class onButtonLoad {};
