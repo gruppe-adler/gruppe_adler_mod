@@ -29,8 +29,7 @@ private _markerIDIndex = 0;
         };
 
         // increment marker index until unused _markerID is found
-        private _markerID = format ["_USER_DEFINED #%1/%2/%3",
-        ,_markerIDIndex,_channel];
+        private _markerID = format ["_USER_DEFINED #%1/%2/%3", _playerID, _markerIDIndex, _channel];
         while {markerShape _markerID != ""} do {
             _markerIDIndex = _markerIDIndex + 1;
             _markerID = format ["_USER_DEFINED #%1/%2/%3",_playerID,_markerIDIndex,_channel];
