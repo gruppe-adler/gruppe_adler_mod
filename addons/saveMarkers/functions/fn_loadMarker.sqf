@@ -36,9 +36,9 @@ _marker setMarkerPosLocal _pos;
 _marker setMarkerShapeLocal _shape;
 _marker setMarkerSizeLocal _size;
 _marker setMarkerTextLocal _text;
-_marker setMarkerType _type;
 if (count _polyline > 0) then {
-	_marker setMarkerPolyline _polyline;
+	_marker setMarkerPolylineLocal _polyline;
 };
+_marker setMarkerType _type;
 
 _markerIDIndex
