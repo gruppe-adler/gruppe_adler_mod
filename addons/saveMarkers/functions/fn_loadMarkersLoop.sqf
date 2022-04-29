@@ -21,5 +21,5 @@ params ["_playerID", "_markerIDIndex", "_markersData"];
         };
     },
     [_playerID, _markerIDIndex, _markersData],
-    1
+    0.5
 ] call CBA_fnc_waitAndExecute;
