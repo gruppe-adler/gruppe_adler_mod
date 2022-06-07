@@ -137,9 +137,9 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			y =  Y + GRID_H * 43;
 			w =  34 * GRID_W;
 			h =  5 * GRID_H;
-			text = "Default Items";
+			text = "Default Medical Items";
 			style = 1;
-			toolTip = "Replaces the inventory of the uniform with our default items, e.g. bandages, map tools, flashlight, etc.";
+			toolTip = "Adds default medical items to uniform.";
 		};
 		class DefaultItems: ctrlCheckbox
 		{
@@ -149,7 +149,6 @@ class GVAR(getUnitsLoadoutsGui): DisplaySimulated
 			h =  5 * GRID_H;
 			idc = IDC_ITEMS;
 		};
-
 
 		class ButtonContinue: ctrlButtonOK
 		{
