@@ -1,4 +1,3 @@
-PREP(addMedicItems);
 PREP(createBaseClass);
 PREP(createConfig);
 PREP(createGUI);
