@@ -72,7 +72,6 @@ if (!(_loadout select 5 isEqualTo []) && {!(_loadout select 5 select 1 isEqualTo
     _return pushBack (_tripleTab + "};");
 };
 
-diag_log str _typesMedical;
 {
     _x params ["_medicalTyp", "_index"];
 
