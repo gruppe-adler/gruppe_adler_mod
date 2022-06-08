@@ -38,12 +38,14 @@ if (isText (configFile >> "CfgWeapons" >> _radio >> "tf_parent")) then {
     _radio = getText (configFile >> "CfgWeapons" >> _radio >> "tf_parent");
 };
 
-_return pushBack ([_tripleTab, _loadout select 9 select 0, "map"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, _loadout select 9 select 3, "compass"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, _loadout select 9 select 4, "watch"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, _loadout select 9 select 1, "gps"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, _radio, "radio"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, _loadout select 9 select 5, "nvgoggles"] call FUNC(convertToString));
+_return append [
+    [_tripleTab, _loadout select 9 select 0, "map"] call FUNC(convertToString),
+    [_tripleTab, _loadout select 9 select 3, "compass"] call FUNC(convertToString),
+    [_tripleTab, _loadout select 9 select 4, "watch"] call FUNC(convertToString),
+    [_tripleTab, _loadout select 9 select 1, "gps"] call FUNC(convertToString),
+    [_tripleTab, _radio, "radio"] call FUNC(convertToString),
+    [_tripleTab, _loadout select 9 select 5, "nvgoggles"] call FUNC(convertToString)
+];
 
 //Items in Uniform
 if (!(_loadout select 3 isEqualTo []) && {!(_loadout select 3 select 1 isEqualTo [])}) then {
