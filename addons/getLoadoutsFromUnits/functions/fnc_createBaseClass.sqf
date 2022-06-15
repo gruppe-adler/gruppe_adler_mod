@@ -15,6 +15,7 @@ private _baseLoadout = [
 	["", "", "", "", "", ""]												//Items (Map, Radio, etc)
 ];
 private _soldierLoadout = [_loadoutHash, "Soldier_F"] call CBA_fnc_hashGet;
+if (_soldiersLoadout isEqualTo []) exitWith { _baseLoadout };
 
 _types deleteAt (_types find "Soldier_F");
 
@@ -27,8 +28,6 @@ _types deleteAt (_types find "Soldier_F");
 		private _loadoutWeapon = _x;
 		private _weaponArraySoldier = _soldierLoadout select _forEachIndex;
 		private _baseLoadoutWeapons = _baseLoadout select _forEachIndex;
-
-		diag_log format ["Loadout: %1, Equal: %2", _loadoutWeapon, _loadoutWeapon isNotEqualTo []];
 
 		if (_loadoutWeapon isNotEqualTo []) then {
 			{

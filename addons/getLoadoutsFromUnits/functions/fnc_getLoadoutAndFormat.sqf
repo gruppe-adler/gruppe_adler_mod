@@ -11,10 +11,12 @@ private _tripleTab = _tab + _tab + _tab;
 _return pushBack (_tab + _tab + format ["class %1 {", _type]);
 
 //Clothing
-_return pushBack ([_tripleTab, [_loadout select 3] call FUNC(getClothes), "uniform"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, [_loadout select 4] call FUNC(getClothes), "vest"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, [_loadout select 5] call FUNC(getClothes), "backpack"] call FUNC(convertToString));
-_return pushBack ([_tripleTab, _loadout select 6, "headgear"] call FUNC(convertToString));
+_return append [
+    [_tripleTab, [_loadout select 3] call FUNC(getClothes), "uniform"] call FUNC(convertToString),
+    [_tripleTab, [_loadout select 4] call FUNC(getClothes), "vest"] call FUNC(convertToString),
+    [_tripleTab, [_loadout select 5] call FUNC(getClothes), "backpack"] call FUNC(convertToString),
+    [_tripleTab, _loadout select 6, "headgear"] call FUNC(convertToString)
+];
 
 //Primary Weapon
 private _weaponArray = [_loadout select 0, "primary", _tripleTab] call FUNC(getWeapon);
