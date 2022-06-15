@@ -77,8 +77,6 @@ if (!(_loadout select 5 isEqualTo []) && {!(_loadout select 5 select 1 isEqualTo
 {
     _x params ["_medicalTyp", "_index"];
 
-    diag_log format ["%1 - %2 = Equal: %1", _medicalTyp, _type, _medicalTyp isEqualTo _type];
-
     if (_medicalTyp isEqualTo _type) exitWith {
         _return pushBack "";
         _return pushBack (_tripleTab + (["GRAD_FACTIONS_MEDICITEMS_CFR", "GRAD_FACTIONS_MEDICITEMS_SQ", "GRAD_FACTIONS_MEDICITEMS_PT"] select _index));
