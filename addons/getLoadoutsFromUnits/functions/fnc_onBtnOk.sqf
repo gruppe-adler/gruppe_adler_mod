@@ -50,7 +50,7 @@ _name = [_name] call BIS_fnc_filterString;
 _structuredText pushBack format ["class %1 {", _name];
 _structuredText pushBack (_tab + "class AllUnits {");
 
-if ("Soldier_F" in _types) then {
+if (count _types > 2) then {
     private _baseLoadout = [_loadoutHash, _types] call FUNC(createBaseClass);
     
     _structuredText append ([_baseLoadout, _tab] call FUNC(getBaseLoadoutAndFormat));

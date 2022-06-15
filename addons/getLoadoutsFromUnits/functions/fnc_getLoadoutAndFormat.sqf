@@ -36,7 +36,7 @@ private _binocular = if !(_loadout select 8 isEqualTo []) then {
 };
 
 private _radio =  _loadout select 9 select 2;
-if (isText (configFile >> "CfgWeapons" >> _radio >> "tf_parent")) then {
+if (!isNull _radio && {isText (configFile >> "CfgWeapons" >> _radio >> "tf_parent")}) then {
     _radio = getText (configFile >> "CfgWeapons" >> _radio >> "tf_parent");
 };
 
@@ -84,5 +84,9 @@ if (!(_loadout select 5 isEqualTo []) && {!(_loadout select 5 select 1 isEqualTo
 }forEach _typesMedical;
 
 _return pushBack (_tab + _tab + "};");
+
+diag_log str _return;
+_return = _return - [objNull];
+diag_log str _return;
 
 _return

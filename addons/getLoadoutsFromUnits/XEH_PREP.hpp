@@ -10,5 +10,6 @@ PREP(getLoadoutAndFormat);
 PREP(getWeapon);
 PREP(onBtnOk);
 PREP(onLoad);
+PREP(returnBaseItem);
 PREP(vanillaCivDefactionizer);
 PREP(vanillaMilitaryDefactionizer);

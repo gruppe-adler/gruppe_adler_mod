@@ -2,8 +2,8 @@
 
 params ["_clothes"];
 
-private _return = "";
-if !(_clothes isEqualTo []) then {
+private _return = objNull;
+if (_clothes isNotEqualTo []) then {
     _return = _clothes select 0;
 };
 
