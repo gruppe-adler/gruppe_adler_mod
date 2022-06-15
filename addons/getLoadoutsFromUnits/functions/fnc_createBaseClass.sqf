@@ -31,7 +31,11 @@ _types deleteAt (_types find "Soldier_F");
 
 		if (_loadoutWeapon isNotEqualTo []) then {
 			{
-				if ((_x isNotEqualTo "" && {_x isNotEqualTo []}) && {_x isEqualTo (_weaponArraySoldier select _forEachIndex)}) then {
+				if (
+					(_x isNotEqualTo "" && {_x isNotEqualTo []}) 
+					&& {_weaponArraySoldier isNotEqualTo []} 
+					&& {_x isEqualTo (_weaponArraySoldier select _forEachIndex)}
+				) then {
 					_baseLoadoutWeapons set [_forEachIndex, _x];
 					_weaponArraySoldier set [_forEachIndex, ""];
 					_loadoutWeapon set [_forEachIndex, ""];
