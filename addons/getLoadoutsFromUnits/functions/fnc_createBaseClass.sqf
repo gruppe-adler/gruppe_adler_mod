@@ -209,151 +209,151 @@ _baseLoadout set [9, [_map, _gps, _radio, _compass, _watch, _nvgoggles]];
 
 		if (_primaryWeaponClass isNotEqualTo []) then {
 			if ((_primaryWeaponClass select 0) isEqualTo _primaryWeapon) then {
-				_primaryWeaponClass set [0, objNull];
+				_primaryWeaponClass set [0, nil];
 			};
 			if ((_primaryWeaponClass select 1) isEqualTo _primaryWeaponMuzzle) then {
-				_primaryWeaponClass set [0, objNull];
+				_primaryWeaponClass set [1, nil];
 			};
 			if ((_primaryWeaponClass select 2) isEqualTo _primaryWeaponPointer) then {
-				_primaryWeaponClass set [0, objNull];
+				_primaryWeaponClass set [2, nil];
 			};
 			if ((_primaryWeaponClass select 3) isEqualTo _primaryWeaponOptic) then {
-				_primaryWeaponClass set [0, objNull];
+				_primaryWeaponClass set [3, nil];
 			};
 
 			private _mag = _primaryWeaponClass select 4;
 			if ((_mag select 0) isEqualTo _primaryWeaponMagazine) then {
-				_mag set [0, objNull];
-				_primaryWeaponClass set [0, _mag];
+				_mag set [0, nil];
+				_primaryWeaponClass set [4, _mag];
 			};
 
 			private _magU = _primaryWeaponClass select 5;
 			if ((_magU select 0) isEqualTo _primaryWeaponUnderbarrelMagazine) then {
-				_magU set [0, objNull];
-				_primaryWeaponClass set [0, _magU];
+				_magU set [0, nil];
+				_primaryWeaponClass set [5, _magU];
 			};
 			
 			if ((_primaryWeaponClass select 6) isEqualTo _primaryWeaponUnderbarrel) then {
-				_primaryWeaponClass set [0, objNull];
+				_primaryWeaponClass set [6, nil];
 			};
 		};
 
 		if (_secondaryWeaponClass isNotEqualTo []) then {
 			if ((_secondaryWeaponClass select 0) isEqualTo _secondaryWeapon) then {
-				_secondaryWeaponClass set [0, objNull];
+				_secondaryWeaponClass set [0, nil];
 			};
 			if ((_secondaryWeaponClass select 1) isEqualTo _secondaryWeaponMuzzle) then {
-				_secondaryWeaponClass set [0, objNull];
+				_secondaryWeaponClass set [1, nil];
 			};
 			if ((_secondaryWeaponClass select 2) isEqualTo _secondaryWeaponPointer) then {
-				_secondaryWeaponClass set [0, objNull];
+				_secondaryWeaponClass set [2, nil];
 			};
 			if ((_secondaryWeaponClass select 3) isEqualTo _secondaryWeaponOptic) then {
-				_secondaryWeaponClass set [0, objNull];
+				_secondaryWeaponClass set [3, nil];
 			};
 
 			private _mag = _secondaryWeaponClass select 4;
 			if ((_mag select 0) isEqualTo _secondaryWeaponMagazine) then {
-				_mag set [0, objNull];
-				_secondaryWeaponClass set [0, _mag];
+				_mag set [0, nil];
+				_secondaryWeaponClass set [4, _mag];
 			};
 
 			private _magU = _secondaryWeaponClass select 5;
 			if ((_magU select 0) isEqualTo _secondaryWeaponUnderbarrelMagazine) then {
-				_magU set [0, objNull];
-				_secondaryWeaponClass set [0, _magU];
+				_magU set [0, nil];
+				_secondaryWeaponClass set [5, _magU];
 			};
 			
 			if ((_secondaryWeaponClass select 6) isEqualTo _secondaryWeaponUnderbarrel) then {
-				_secondaryWeaponClass set [0, objNull];
+				_secondaryWeaponClass set [6, nil];
 			};
 		};
 
 		if (_handgunWeaponClass isNotEqualTo []) then {
 			if ((_handgunWeaponClass select 0) isEqualTo _handgunWeapon) then {
-				_handgunWeaponClass set [0, objNull];
+				_handgunWeaponClass set [0, nil];
 			};
 			if ((_handgunWeaponClass select 1) isEqualTo _handgunWeaponMuzzle) then {
-				_handgunWeaponClass set [0, objNull];
+				_handgunWeaponClass set [1, nil];
 			};
 			if ((_handgunWeaponClass select 2) isEqualTo _handgunWeaponPointer) then {
-				_handgunWeaponClass set [0, objNull];
+				_handgunWeaponClass set [2, nil];
 			};
 			if ((_handgunWeaponClass select 3) isEqualTo _handgunWeaponOptic) then {
-				_handgunWeaponClass set [0, objNull];
+				_handgunWeaponClass set [3, nil];
 			};
 
 			private _mag = _handgunWeaponClass select 4;
 			if ((_mag select 0) isEqualTo _handgunWeaponMagazine) then {
-				_mag set [0, objNull];
-				_handgunWeaponClass set [0, _mag];
+				_mag set [0, nil];
+				_handgunWeaponClass set [4, _mag];
 			};
 
 			private _magU = _handgunWeaponClass select 5;
 			if ((_magU select 0) isEqualTo _handgunWeaponUnderbarrelMagazine) then {
-				_magU set [0, objNull];
-				_handgunWeaponClass set [0, _magU];
+				_magU set [0, nil];
+				_handgunWeaponClass set [5, _magU];
 			};
 			
 			if ((_handgunWeaponClass select 6) isEqualTo _handgunWeaponUnderbarrel) then {
-				_handgunWeaponClass set [0, objNull];
+				_handgunWeaponClass set [6, nil];
 			};
 		};
 
 		if (_uniformClass isNotEqualTo []) then {
 			if (_uniformClass select 0 isEqualTo _uniform) then {
-				_uniformClass set [0, objNull];
+				_uniformClass set [0, nil];
 			};
 		};
 
 		if (_vestClass isNotEqualTo []) then {
 			if (_vestClass select 0 isEqualTo _vest) then {
-				_vestClass set [0, objNull];
+				_vestClass set [0, nil];
 			};
 		};
 
 		if (_backpackClass isNotEqualTo []) then {
 			if (_backpackClass select 0 isEqualTo _backpack) then {
-				_backpackClass set [0, objNull];
+				_backpackClass set [0, nil];
 			};
 		};
 
 		if (_headgearClass isNotEqualTo "") then {
 			if (_headgearClass isEqualTo _headgear) then {
-				_headgearClass = objNull;
+				_headgearClass = nil;
 			};
 		};
 
 		if (_gogglesClass isNotEqualTo "") then {
 			if (_gogglesClass isEqualTo _goggles) then {
-				_gogglesClass = objNull;
+				_gogglesClass = nil;
 			};
 		};
 
 		if (_binocularClass isNotEqualTo []) then {
 			if (_binocularClass select 0 isEqualTo _binocular) then {
-				_binocularClass set [0, objNull];
+				_binocularClass set [0, nil];
 			};
 		};
 
 		if (_itemsClass isNotEqualTo []) then {
 			if ((_itemsClass select 0) isEqualTo _map) then {
-				_itemsClass set [0, objNull];
+				_itemsClass set [0, nil];
 			};
 			if ((_itemsClass select 1) isEqualTo _gps) then {
-				_itemsClass set [1, objNull];
+				_itemsClass set [1, nil];
 			};
 			if ((_itemsClass select 2) isEqualTo _radio) then {
-				_itemsClass set [2, objNull];
+				_itemsClass set [2, nil];
 			};
 			if ((_itemsClass select 3) isEqualTo _compass) then {
-				_itemsClass set [3, objNull];
+				_itemsClass set [3, nil];
 			};
 			if ((_itemsClass select 4) isEqualTo _watch) then {
-				_itemsClass set [4, objNull];
+				_itemsClass set [4, nil];
 			};
 			if ((_itemsClass select 5) isEqualTo _nvgoggles) then {
-				_itemsClass set [5, objNull];
+				_itemsClass set [5, nil];
 			};
 		};
 
@@ -361,7 +361,5 @@ _baseLoadout set [9, [_map, _gps, _radio, _compass, _watch, _nvgoggles]];
 		[_loadoutHash, _x, [_primaryWeaponClass, _secondaryWeaponClass, _handgunWeaponClass, _uniformClass, _vestClass, _backpackClass, _headgearClass, _googlesClass, _binocluarClass, _itemsClass]] call CBA_fnc_hashSet;
 	};
 }forEach _types;
-
-diag_log str _baseLoadout;
 
 _baseLoadout
