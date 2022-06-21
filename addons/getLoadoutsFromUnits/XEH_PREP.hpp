@@ -10,6 +10,7 @@ PREP(getLoadoutAndFormat);
 PREP(getWeapon);
 PREP(onBtnOk);
 PREP(onLoad);
+PREP(removeNilFromArray);
 PREP(returnBaseItem);
 PREP(vanillaCivDefactionizer);
 PREP(vanillaMilitaryDefactionizer);

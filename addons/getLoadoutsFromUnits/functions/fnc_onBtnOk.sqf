@@ -90,7 +90,7 @@ if (count _types > 2) then {
         "watch",
         "radio"
     ] apply {_doubleTab + _x + " = """";"});
-    _structuredText pushBack (_tab + "};");
+    _structuredText pushBack "};";
 };
 
 _structuredText pushBack (_tab + "class Type {");
