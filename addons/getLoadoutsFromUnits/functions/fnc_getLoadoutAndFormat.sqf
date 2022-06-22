@@ -86,9 +86,6 @@ if (!(_loadout select 5 isEqualTo []) && {!(_loadout select 5 select 1 isEqualTo
 
 _return pushBack (_tab + _tab + "};");
 
-
-//_return = _return - [nil]; - This sadly does not work :(
-//So I have to do it the hard way
-_return = [_return] call FUNC(removeNilFromArray);
+_return = _return select {!isNil "_x" };
 
 _return
