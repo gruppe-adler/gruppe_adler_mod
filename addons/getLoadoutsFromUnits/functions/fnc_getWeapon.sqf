@@ -32,6 +32,7 @@ if !(_weaponArray isEqualTo []) then {
     if ((_underbarrelMagazin isEqualType []) && {_underbarrelMagazin isNotEqualTo []} && {!isNil {_underbarrelMagazin select 0}})then {
         _return pushBack (_tripleTab + format ["%1WeaponUnderbarrel = ""%2"";", _name,  _underbarrelMagazin select 0]);
     };
+    /*
 } else {
     _return append [
         _tripleTab + format ["%1Weapon = """";", _name],
@@ -42,6 +43,7 @@ if !(_weaponArray isEqualTo []) then {
         _tripleTab + format ["%1WeaponUnderbarrel = """";", _name],
         _tripleTab + format ["%1WeaponUnderbarrel = """";", _name]
     ];
+    */
 };
 
 _return

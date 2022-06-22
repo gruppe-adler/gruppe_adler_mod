@@ -62,7 +62,7 @@ private _radios = [];
 			["_backpack", []], 
 			["_headgear", ""], 
 			["_googles", ""], 
-			["_binocluar", []], 
+			["_binocular", []], 
 			["_items", []]
 		];
 

@@ -31,8 +31,9 @@ private _weaponArray = [_loadout select 2, "handgun", _tripleTab] call FUNC(getW
 _return = _return + _weaponArray;
 
 //Basic Items (Binocular, NVG, Maps, etc.)
-private _binocular = if !(_loadout select 8 isEqualTo []) then {
-    _return pushBack (_tripleTab + format ["binoculars = ""%1"";", _loadout select 8 select 0])
+private _binoLoadout = _loadout select 8;
+private _binocular = if (_binoLoadout isEqualType [] && {_binoLoadout isNotEqualTo []} && {!isNil {_binoLoadout select 0}}) then {
+    _return pushBack (_tripleTab + format ["binoculars = ""%1"";", _binoLoadout select 0])
 };
 
 private _radio =  _loadout select 9 select 2;

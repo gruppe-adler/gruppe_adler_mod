@@ -26,7 +26,7 @@ private _weaponArray = [_loadout select 2, "handgun", _doubleTab] call FUNC(getB
 _return = _return + _weaponArray;
 
 //Basic Items (Binocular, NVG, Maps, etc.)
-private _binocular = if !(_loadout select 8 isEqualTo []) then {
+private _binocular = if (_loadout select 8 isNotEqualTo []) then {
     format ["binoculars = ""%1"";", _loadout select 8 select 0]
 } else {
     "binoculars = """";"
