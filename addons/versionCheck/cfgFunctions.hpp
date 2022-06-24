@@ -4,14 +4,10 @@ class cfgFunctions {
 			file = "x\grad\addons\versionCheck\functions";
 
 			class compileDialogText {};
-			class createDiaryEntry {};
-			class determineVersions {};
-			class getVersionNo {};
+            class getVersionNo {};
 			class logResult {};
 			class logServer {};
 			class openDialog {};
-			class runClientCheck {};
-			class timeoutClientCheck {};
 		};
 	};
 };

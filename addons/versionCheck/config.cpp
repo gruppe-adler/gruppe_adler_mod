@@ -6,7 +6,7 @@ class CfgPatches {
 		name = QUOTE(ADDON);
 		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
-		requiredAddons[] = {"ace_common", "grad_main", "grad_ui"};
+		requiredAddons[] = {"grad_main","ace_common"};
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;

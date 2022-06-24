@@ -1,9 +1,7 @@
-PREP(convertToString);
-PREP(createBaseClass);
+PREP(addMedicItems);
+PREP(addStandardItems);
 PREP(createConfig);
 PREP(createGUI);
-PREP(getBaseLoadoutAndFormat);
-PREP(getBaseWeapon);
 PREP(getClothes);
 PREP(getItems);
 PREP(getLoadoutAndFormat);

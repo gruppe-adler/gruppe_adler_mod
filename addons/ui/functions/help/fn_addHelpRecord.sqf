@@ -2,6 +2,8 @@
 
 params [["_title","ERROR: NO TITLE"],["_text","ERROR: NO TEXT"]];
 
-ISNILS(GVAR(helpRecordsQueue), []);
+if (isNil QGVAR(helpRecords)) then {
+    GVAR(helpRecords) = [];
+};
 
-GVAR(helpRecordsQueue) pushBack [_title,_text];
+GVAR(helpRecords) pushBack [_title,_text];

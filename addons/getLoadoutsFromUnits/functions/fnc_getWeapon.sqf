@@ -9,7 +9,7 @@ if !(_weaponArray isEqualTo []) then {
     if (_weapon != "") then {
         _return pushBack (_tripleTab + format ["%1Weapon = ""%2"";", _name,  _weapon]);
 
-        if ((_magazine isEqualType []) && {_magazine isNotEqualTo []} && {(_magazine select 0) != ""}) then {
+        if (!(_magazine isEqualTo []) && {(_magazine select 0) != ""}) then {
             _return pushBack( _tripleTab + format ["%1WeaponMagazine = ""%2"";", _name,  _magazine select 0]);
         };
 
@@ -29,7 +29,7 @@ if !(_weaponArray isEqualTo []) then {
             _return pushBack (_tripleTab + format ["%1WeaponUnderbarrel = ""%2"";", _name,  _underbarrel]);
         };
 
-        if ((_underbarrelMagazin isEqualType []) && {_underbarrelMagazin isNotEqualTo []} && {(_underbarrelMagazin select 0) != ""})then {
+        if (!(_underbarrelMagazin isEqualTo []) && {(_underbarrelMagazin select 0) != ""})then {
             _return pushBack (_tripleTab + format ["%1WeaponUnderbarrelMagazine = ""%2"";", _name,  _underbarrelMagazin select 0]);
         };
     };

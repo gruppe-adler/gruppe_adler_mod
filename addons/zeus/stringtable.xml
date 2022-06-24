@@ -123,32 +123,28 @@
         </Container>
         <Container name="moduleToggleBFT">
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTName">
-                <Original>Toggle BFT</Original>
                 <German>BFT umschalten</German>
+                <Original>Toggle BFT</Original>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTError1">
-                <Original>Select non-empty object</Original>
                 <German>Nicht-leeres Objekt auswählen</German>
+                <Original>Select non-empty object</Original>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResult">
-                <Original>Global BFT %1</Original>
-                <German>Globales BFT %1</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleToggleBFTGroupResult">
-                <Original>Group %1 BFT %2.</Original>
-                <German>BFT für Gruppe %1 %2.</German>
+                <German>BFT für Gruppe %1.</German>
+                <Original>Group BFT %1.</Original>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOn">
-                <Original>toggled on</Original>
                 <German>eingeschaltet</German>
+                <Original>toggled on</Original>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleToggleBFTResultOff">
-                <Original>toggled off</Original>
                 <German>ausgeschaltet</German>
+                <Original>toggled off</Original>
             </Key>
             <Key ID="STR_GRAD_ZEUS_moduleAddPlayersToZeusName">
-                <Original>Add players to Zeus</Original>
                 <German>Spieler zu Zeus hinzufügen</German>
+                <Original>Add players to Zeus</Original>
             </Key>
         </Container>
         <Container name="moduleReloadLoadout">
@@ -245,68 +241,6 @@
             <Key ID="STR_GRAD_ZEUS_moduleBlacklistTransferred">
                 <German>und übertragen zu %1.</German>
                 <Original>and transferred to %1.</Original>
-            </Key>
-        </Container>
-        <Container name="moduleFillBox">
-            <Key ID="STR_GRAD_ZEUS_settingCategory">
-                <English>GRAD Zeus</English>
-                <German>GRAD Zeus</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_NumberRifle">
-                <English>Number of magazines to add</English>
-                <German>Anzahl der zu hinzuzufügenden Magazine</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_NumberRPG">
-                <English>Number of rockets to add</English>
-                <German>Anzahl der zu hinzuzufügenden Raketen</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_NumberHandgranades">
-                <English>Number of grenades to add</English>
-                <German>Anzahl der zu hinzuzufügenden Granaten</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleFillBoxName">
-                <English>Fill ammo box for players</English>
-                <German>Mun-Kiste für Spieler füllen</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleFillBoxError">
-                <English>Not a Supply Box</English>
-                <German>Keine Nachschubkiste</German>
-            </Key>
-        </Container>
-        <Container name="moduleDrop">
-            <Key ID="STR_GRAD_ZEUS_notAmmoBox">
-                <English>the drop object needs to be an ammo box</English>
-                <German>Das Abwurfobjekt muss eine Ammobox sein</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_dropActiv">
-                <English>Drop already activ</English>
-                <German>Es ist gerade ein Abwurf mit dieser Box aktiv</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_dropStarting">
-                <English>Drop is starting</English>
-                <German>Abwurf wird gestartet</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_chooseDropZone">
-                <English>Choose dropzone</English>
-                <German>Ziel auswählen</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_moduleSupplyDropName">
-                <English>Supply Drop</English>
-                <German>Nachschub Lieferung</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_dropSuccessful">
-                <English>Drop succesful</English>
-                <German>Abwurf erfolgreich</German>
-            </Key>
-            <Key ID="STR_GRAD_ZEUS_choosePlaneSpawn">
-                <English>Choose plane spawn</English>
-                <German>Flugzeug Startpunkt auswählen</German>
-            </Key>
-        </Container>
-        <Container name="modulechairCircle">
-            <Key ID="STR_GRAD_ZEUS_modulechairCircleName">
-                <English>Create Chair Circle for players</English>
-                <German>Stuhlkreis für Spieler erzeugen</German>
             </Key>
         </Container>
     </Package>

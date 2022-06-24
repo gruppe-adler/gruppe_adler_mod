@@ -11,11 +11,11 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build with HEMTT
-      uses: gruppe-adler/action-release-with-hemtt@2.2.0
+      uses: gruppe-adler/action-release-with-hemtt@2.0.0
       id: build
 
     - name: Upload artifact
-      uses: actions/upload-artifact@1.0.0
+      uses: actions/upload-artifact@v2
       with:
-        name: 'gruppe_adler_mod'
-        path: ${{ steps.build.outputs.zip_path }}
+        name: ${{ steps.build.outputs.zip_name }}
+        path: ${{ steps.build.outputs.release_path }}

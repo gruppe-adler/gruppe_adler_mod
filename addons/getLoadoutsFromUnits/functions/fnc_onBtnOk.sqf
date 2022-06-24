@@ -5,6 +5,7 @@
 // PARAMS:
 // 	0: Display <DISPLAY>
 
+
 params ["_control"];
 
 disableSerialization;
@@ -17,15 +18,12 @@ private _doubleTab = _tab + _tab;
 
 GVAR(variables) params ["_units", "_types"];
 
-private _itemsChecked = cbChecked (_display displayCtrl IDC_ITEMS);
-private _loadouts = [];
+if (cbChecked (_display displayCtrl IDC_ITEMS)) then {
+    {
+        [_x] call FUNC(addStandardItems);
+    }forEach _units;
+};
 
-{
-    _loadouts pushBack [_types select _forEachIndex, getUnitLoadout _x];
-}forEach _units;
-
-private _loadoutHash = [_loadouts, 0] call CBA_fnc_hashCreate;
-private _typesMedical = [];
 {
     private _listbox = _display displayCtrl _x;
 
@@ -37,7 +35,7 @@ private _typesMedical = [];
         private _find = _types find _joinedString;
 
         if (_find > -1) then {
-            _typesMedical pushBack [_joinedString, _forEachIndex];
+            [_units select _find, _forEachIndex] call FUNC(addMedicItems);
         };
     };  
 }forEach [IDC_CFR, IDC_SQL, IDC_PTL];
@@ -49,54 +47,46 @@ _name = [_name] call BIS_fnc_filterString;
 
 _structuredText pushBack format ["class %1 {", _name];
 _structuredText pushBack (_tab + "class AllUnits {");
-
-if ("Soldier_F" in _types) then {
-    private _baseLoadout = [_loadoutHash, _types] call FUNC(createBaseClass);
-    
-    _structuredText append ([_baseLoadout, _tab] call FUNC(getBaseLoadoutAndFormat));
-} else {
-    _structuredText append ([
-        "uniform",
-        "vest",
-        "backpack",
-        "headgear",
-        "primaryWeapon",
-        "primaryWeaponMagazine",
-        "primaryWeaponMuzzle",
-        "primaryWeaponOptics",
-        "primaryWeaponPointer",
-        "primaryWeaponUnderbarrel",
-        "primaryWeaponUnderbarrelMagazine",
-        "secondaryWeapon",
-        "secondaryWeaponMagazine",
-        "secondaryWeaponMuzzle",
-        "secondaryWeaponOptics",
-        "secondaryWeaponPointer",
-        "secondaryWeaponUnderbarrel",
-        "secondaryWeaponUnderbarrelMagazine",
-        "handgunWeapon",
-        "handgunWeaponMagazine",
-        "handgunWeaponMuzzle",
-        "handgunWeaponOptics",
-        "handgunWeaponPointer",
-        "handgunWeaponUnderbarrel",
-        "handgunWeaponUnderbarrelMagazine",
-        "goggles",
-        "nvgoggles",
-        "binoculars",
-        "map",
-        "gps",
-        "compass",
-        "watch",
-        "radio"
-    ] apply {_doubleTab + _x + " = """";"});
-    _structuredText pushBack (_tab + "};");
-};
-
+_structuredText append ([
+    "uniform",
+    "vest",
+    "backpack",
+    "headgear",
+    "primaryWeapon",
+    "primaryWeaponMagazine",
+    "primaryWeaponMuzzle",
+    "primaryWeaponOptics",
+    "primaryWeaponPointer",
+    "primaryWeaponUnderbarrel",
+    "primaryWeaponUnderbarrelMagazine",
+    "secondaryWeapon",
+    "secondaryWeaponMagazine",
+    "secondaryWeaponMuzzle",
+    "secondaryWeaponOptics",
+    "secondaryWeaponPointer",
+    "secondaryWeaponUnderbarrel",
+    "secondaryWeaponUnderbarrelMagazine",
+    "handgunWeapon",
+    "handgunWeaponMagazine",
+    "handgunWeaponMuzzle",
+    "handgunWeaponOptics",
+    "handgunWeaponPointer",
+    "handgunWeaponUnderbarrel",
+    "handgunWeaponUnderbarrelMagazine",
+    "goggles",
+    "nvgoggles",
+    "binoculars",
+    "map",
+    "gps",
+    "compass",
+    "watch",
+    "radio"
+] apply {_doubleTab + _x + " = """";"});
+_structuredText pushBack (_tab + "};");
 _structuredText pushBack (_tab + "class Type {");
 
 {
-    _structuredText append ([_loadoutHash, (_types select _forEachIndex), _tab, _typesMedical, _itemsChecked] call FUNC(getLoadoutAndFormat));
+    _structuredText append ([_x, (_types select _forEachIndex), _tab] call FUNC(getLoadoutAndFormat));
 }forEach _units;
 
 _structuredText pushBack (_tab + "};");

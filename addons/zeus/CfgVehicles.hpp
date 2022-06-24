@@ -5,17 +5,10 @@ class CfgVehicles {
 		author = "$STR_grad_Author";
 	};
 
-	class GVAR(moduleChairCircle): GVAR(moduleBase) {
-		curatorCanAttach = 1;
-		category = QGVAR(Grad);
-		displayName = CSTRING(modulechairCircleName);
-		function = QFUNC(moduleChairCircleCreate);
-	};
-
 	class GVAR(moduleSupplyDrop): GVAR(moduleBase) {
 		curatorCanAttach = 1;
 		category = QGVAR(Grad);
-		displayName = CSTRING(moduleSupplyDropName);
+		displayName = "Supply Drop";
 		function = QFUNC(moduleSupplyDrop);
 	};
 
@@ -66,12 +59,5 @@ class CfgVehicles {
 		category = QGVAR(Grad);
 		displayName = CSTRING(moduleAddPlayersToZeusName);
 		function = QFUNC(moduleAddPlayersToZeus);
-	};
-
-	class GVAR(moduleFillBox): GVAR(moduleBase) {
-		curatorCanAttach = 1;
-		category = QGVAR(Grad);
-		displayName = CSTRING(moduleFillBoxName);
-		function = QFUNC(moduleFillBox);
 	};
 };

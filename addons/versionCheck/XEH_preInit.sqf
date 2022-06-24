@@ -1,54 +1,60 @@
 #include "script_component.hpp"
 SCRIPT(XEH_preInit);
 
-call FUNC(determineVersions);
+grad_versionCheck_versions = [[],nil] call CBA_fnc_hashCreate;
 
-private _settingsGroup = "GRAD Version Check";
+private _cfgPatches = (configFile >> "CfgPatches");
+for [{_i=0},{_i<(count _cfgPatches)-1},{_i=_i+1}] do {
+    _addonClass = _cfgPatches select _i;
+    _addonName = configName _addonClass;
+    if (_addonName find "A3" != 0) then {
+        _vNo = [_addonClass] call grad_versionCheck_fnc_getVersionNo;
+        [grad_versionCheck_versions,toLower _addonName, _vNo] call CBA_fnc_hashSet;
+    };
+};
+
 
 [
-    QGVAR(setting_kickOnVersionMismatch),
+    "grad_versionCheck_setting_kickOnVersionMismatch",
     "CHECKBOX",
     "Kick if client has version mismatch",
-    _settingsGroup,
+    "GRAD Version Check",
     true,
     1
 ] call CBA_settings_fnc_init;
 
 [
-    QGVAR(setting_kickOnMissingClient),
+    "grad_versionCheck_setting_kickOnMissingClient",
     "CHECKBOX",
     "Kick if client is missing addon",
-    _settingsGroup,
+    "GRAD Version Check",
     true,
     1
 ] call CBA_settings_fnc_init;
 
 [
-    QGVAR(setting_kickOnMissingServer),
+    "grad_versionCheck_setting_kickOnMissingServer",
     "CHECKBOX",
     "Kick if client loaded additional addon",
-    _settingsGroup,
+    "GRAD Version Check",
     true,
     1
 ] call CBA_settings_fnc_init;
 
 [
-    QGVAR(setting_kickOnTimeout),
+    "grad_versionCheck_setting_kickOnTimeout",
     "CHECKBOX",
     "Kick if client check times out",
-    _settingsGroup,
+    "GRAD Version Check",
     false,
     1
 ] call CBA_settings_fnc_init;
 
 [
-    QGVAR(setting_dontKickAdmin),
+    "grad_versionCheck_setting_dontKickAdmin",
     "CHECKBOX",
     "Never kick admin",
-    _settingsGroup,
+    "GRAD Version Check",
     false,
     1
 ] call CBA_settings_fnc_init;
-
-GVAR(addonVersionsTitle) = "Addon Versions";
-[GVAR(addonVersionsTitle), "<execute expression=""call grad_versionCheck_fnc_createDiaryEntry"">Show</execute>"] call EFUNC(ui,addHelpRecord);
