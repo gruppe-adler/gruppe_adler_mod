@@ -10,7 +10,8 @@ class CfgFunctions {
 		};
         class help {
 			file = QPATHTOF(functions\help);
-            class addHelpRecord {};
+			class addHelpRecord {};
+			class getHelpRecord {};
 		};
 	};
 };
