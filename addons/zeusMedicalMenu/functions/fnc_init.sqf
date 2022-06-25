@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call grad_mod_handleDamageViaZeus_fnc_init
+ * [] call grad_mod_zeusMedicalMenu_fnc_init
  *
  * Public: No
  */
@@ -29,8 +29,8 @@ if (dialog || {isNull _unit}) exitWith {
 };
 
 // Store current target
-GVAR(target) = _target;
+GVAR(target) = _unit;
 
 // Create the menu display
-createDialog "ACE_Medical_Menu";
+createDialog QGVAR(ACE_Medical_Menu);
 GVAR(lastOpenedOn) = CBA_missionTime;

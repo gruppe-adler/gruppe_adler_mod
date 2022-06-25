@@ -3,16 +3,18 @@
 class CfgPatches {
     class ADDON {
         name = QUOTE(ADDON);
-        units[] = {};
+        units[] = {
+            GVAR(zeusMedicalMenu)
+        };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { QMAINPATCH };
+        requiredAddons[] = { QMAINPATCH , "grad_zeus", "ace_medical_gui"};
         authors[] = { "Salbei" };
         VERSION_CONFIG;
     };
 };
 
-#include "CfgUIGrids.hpp"
 #include "CfgEventHandlers.hpp"
+#include "CfgUIGrids.hpp"
 #include "CfgVehicles.hpp"
 #include "gui.hpp"

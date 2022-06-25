@@ -19,9 +19,9 @@ class CfgUIGrids {
 
         class Variables {
             class GVAR(patientInfo) {
-                displayName = ECSTRING(medical,Category);
-                description = CSTRING(IGUI_PatientInfo);
-                preview = QPATHTOF(ui\patient_info_preview_ca.paa);
+                displayName = EECSTRING(ace,medical,Category);
+                description = EECSTRING(ace,medical,IGUI_PatientInfo);
+                preview = QPATHTOEF(ace,medical_gui,ui\patient_info_preview_ca.paa);
                 saveToProfile[] = {0, 1};
                 canResize = 0;
             };

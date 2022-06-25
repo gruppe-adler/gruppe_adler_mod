@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+    <Package name="zeusMedicalMenu">
+         <Key ID="STR_grad_zeusMedicalMenu_displayName">
+            <English>Medical Menu</English>
+            <German>Medical Menu</German>
+        </Key>
+    </Package>
+</Project>

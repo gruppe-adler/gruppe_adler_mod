@@ -1,0 +1,11 @@
+PREP(collectActions);
+PREP(displayPatientInformation);
+PREP(displayTriageCard);
+PREP(handleTriageSelect);
+PREP(init);
+PREP(menuPFH);
+PREP(onMenuClose);
+PREP(onMenuOpen);
+PREP(toggleTriageSelect);
+PREP(treatment);
+PREP(updateActions);
