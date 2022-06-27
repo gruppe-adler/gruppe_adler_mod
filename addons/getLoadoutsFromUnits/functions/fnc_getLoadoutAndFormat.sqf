@@ -79,13 +79,25 @@ if (!(_loadout select 5 isEqualTo []) && {!(_loadout select 5 select 1 isEqualTo
     _x params ["_medicalTyp", "_index"];
 
     if (_medicalTyp isEqualTo _type) exitWith {
-        _return pushBack "";
-        _return pushBack (_tripleTab + (["GRAD_FACTIONS_MEDICITEMS_CFR", "GRAD_FACTIONS_MEDICITEMS_SQ", "GRAD_FACTIONS_MEDICITEMS_PT"] select _index));
+        _return append [
+            "",
+            _tripleTab + "class Rank {",
+            _tripleTab + _tab + "class PRIVATE {",
+            _tripleTab + _tab + _tab + (["GRAD_FACTIONS_MEDICITEMS_CFR", "GRAD_FACTIONS_MEDICITEMS_SQ", "GRAD_FACTIONS_MEDICITEMS_PT"] select _index),
+            _tripleTab + _tab + "};",
+            _tripleTab + _tab + "class CORPORAL: PRIVATE {}",
+            _tripleTab + _tab + "class SERGEANT: PRIVATE {}",
+            _tripleTab + _tab + "class LIEUTENANT: PRIVATE {}",
+            _tripleTab + _tab + "class CAPTAIN: PRIVATE {}",
+            _tripleTab + _tab + "class MAJOR: PRIVATE {}",
+            _tripleTab + _tab + "class COLONEL: PRIVATE {}",
+            _tripleTab + "}",
+            ""
+        ];
     };
 }forEach _typesMedical;
 
 _return pushBack (_tab + _tab + "};");
-
 _return = _return select {!isNil "_x" };
 
 _return

@@ -203,7 +203,7 @@ _baseLoadout set [9, [_map, _gps, _radio, _compass, _watch, _nvgoggles]];
 			["_backpackClass", []], 
 			["_headgearClass", ""], 
 			["_googlesClass", ""], 
-			["_binocluarClass", []], 
+			["_binocularClass", []], 
 			["_itemsClass", []]
 		];
 
@@ -330,10 +330,8 @@ _baseLoadout set [9, [_map, _gps, _radio, _compass, _watch, _nvgoggles]];
 			};
 		};
 
-		if (_binocularClass isNotEqualTo []) then {
-			if (_binocularClass select 0 isEqualTo _binocular) then {
-				_binocularClass set [0, nil];
-			};
+		if (_binocularClass isNotEqualTo [] && {(_binocularClass select 0) isEqualTo _binoculars}) then {
+			_binocularClass = [];
 		};
 
 		if (_itemsClass isNotEqualTo []) then {
@@ -357,8 +355,7 @@ _baseLoadout set [9, [_map, _gps, _radio, _compass, _watch, _nvgoggles]];
 			};
 		};
 
-
-		[_loadoutHash, _x, [_primaryWeaponClass, _secondaryWeaponClass, _handgunWeaponClass, _uniformClass, _vestClass, _backpackClass, _headgearClass, _googlesClass, _binocluarClass, _itemsClass]] call CBA_fnc_hashSet;
+		[_loadoutHash, _x, [_primaryWeaponClass, _secondaryWeaponClass, _handgunWeaponClass, _uniformClass, _vestClass, _backpackClass, _headgearClass, _googlesClass, _binocularClass, _itemsClass]] call CBA_fnc_hashSet;
 	};
 }forEach _types;
 
