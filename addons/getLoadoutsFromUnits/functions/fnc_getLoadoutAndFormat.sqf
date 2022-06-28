@@ -31,12 +31,13 @@ private _weaponArray = [_loadout select 2, "handgun", _tripleTab] call FUNC(getW
 _return = _return + _weaponArray;
 
 //Basic Items (Binocular, NVG, Maps, etc.)
-private _binocular = if !(_loadout select 8 isEqualTo []) then {
-    _return pushBack (_tripleTab + format ["binoculars = ""%1"";", _loadout select 8 select 0])
+private _binoLoadout = _loadout select 8;
+private _binocular = if (_binoLoadout isEqualType [] && {_binoLoadout isNotEqualTo []} && {!isNil {_binoLoadout select 0}}) then {
+    _return pushBack (_tripleTab + format ["binoculars = ""%1"";", _binoLoadout select 0])
 };
 
 private _radio =  _loadout select 9 select 2;
-if (isText (configFile >> "CfgWeapons" >> _radio >> "tf_parent")) then {
+if (!isNil _radio && {isText (configFile >> "CfgWeapons" >> _radio >> "tf_parent")}) then {
     _radio = getText (configFile >> "CfgWeapons" >> _radio >> "tf_parent");
 };
 
@@ -78,11 +79,25 @@ if (!(_loadout select 5 isEqualTo []) && {!(_loadout select 5 select 1 isEqualTo
     _x params ["_medicalTyp", "_index"];
 
     if (_medicalTyp isEqualTo _type) exitWith {
-        _return pushBack "";
-        _return pushBack (_tripleTab + (["GRAD_FACTIONS_MEDICITEMS_CFR", "GRAD_FACTIONS_MEDICITEMS_SQ", "GRAD_FACTIONS_MEDICITEMS_PT"] select _index));
+        _return append [
+            "",
+            _tripleTab + "class Rank {",
+            _tripleTab + _tab + "class PRIVATE {",
+            _tripleTab + _tab + _tab + (["GRAD_FACTIONS_MEDICITEMS_CFR", "GRAD_FACTIONS_MEDICITEMS_SQ", "GRAD_FACTIONS_MEDICITEMS_PT"] select _index),
+            _tripleTab + _tab + "};",
+            _tripleTab + _tab + "class CORPORAL: PRIVATE {}",
+            _tripleTab + _tab + "class SERGEANT: PRIVATE {}",
+            _tripleTab + _tab + "class LIEUTENANT: PRIVATE {}",
+            _tripleTab + _tab + "class CAPTAIN: PRIVATE {}",
+            _tripleTab + _tab + "class MAJOR: PRIVATE {}",
+            _tripleTab + _tab + "class COLONEL: PRIVATE {}",
+            _tripleTab + "}",
+            ""
+        ];
     };
 }forEach _typesMedical;
 
 _return pushBack (_tab + _tab + "};");
+_return = _return select {!isNil "_x" };
 
 _return
