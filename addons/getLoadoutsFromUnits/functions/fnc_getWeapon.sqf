@@ -41,7 +41,7 @@ if !(_weaponArray isEqualTo []) then {
         _tripleTab + format ["%1WeaponPointer = """";", _name],
         _tripleTab + format ["%1WeaponMuzzle = """";", _name],
         _tripleTab + format ["%1WeaponUnderbarrel = """";", _name],
-        _tripleTab + format ["%1WeaponUnderbarrel = """";", _name]
+        _tripleTab + format ["%1WeaponUnderbarrelMagazine = """";", _name]
     ];
     */
 };
