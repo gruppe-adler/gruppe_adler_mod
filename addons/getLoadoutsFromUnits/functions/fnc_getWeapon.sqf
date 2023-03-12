@@ -30,7 +30,7 @@ if !(_weaponArray isEqualTo []) then {
     };
 
     if ((_underbarrelMagazin isEqualType []) && {_underbarrelMagazin isNotEqualTo []} && {!isNil {_underbarrelMagazin select 0}})then {
-        _return pushBack (_tripleTab + format ["%1WeaponUnderbarrel = ""%2"";", _name,  _underbarrelMagazin select 0]);
+        _return pushBack (_tripleTab + format ["%1WeaponUnderbarrelMagazine = ""%2"";", _name,  _underbarrelMagazin select 0]);
     };
     /*
 } else {
@@ -41,7 +41,7 @@ if !(_weaponArray isEqualTo []) then {
         _tripleTab + format ["%1WeaponPointer = """";", _name],
         _tripleTab + format ["%1WeaponMuzzle = """";", _name],
         _tripleTab + format ["%1WeaponUnderbarrel = """";", _name],
-        _tripleTab + format ["%1WeaponUnderbarrel = """";", _name]
+        _tripleTab + format ["%1WeaponUnderbarrelMagazine = """";", _name]
     ];
     */
 };
