@@ -2,23 +2,23 @@
 <Project name="Any Name">
     <Package name="Mission One">
         <Container name="Some Words">
-            <Key ID="STR_GRAD_UI_DIRECTCONNECTBUTTON">
+            <Key ID="STR_GRAD_MOD_UI_DIRECTCONNECTBUTTON">
                 <Original>CONNECT (%1)</Original>
                 <German>VERBINDEN (%1)</German>
             </Key>
-            <Key ID="STR_GRAD_UI_DIRECTCONNECTPASSWORDWINDOWTITLE">
+            <Key ID="STR_GRAD_MOD_UI_DIRECTCONNECTPASSWORDWINDOWTITLE">
                 <Original>CONNECT TO GRUPPE ADLER</Original>
                 <German>MIT GRUPPE ADLER VERBINDEN</German>
             </Key>
-            <Key ID="STR_GRAD_UI_DIRECTCONNECTPASSWORDTEXTFIRST">
+            <Key ID="STR_GRAD_MOD_UI_DIRECTCONNECTPASSWORDTEXTFIRST">
                 <Original>Looks like you are connecting for the first time. Please enter the password.</Original>
                 <German>Es sieht aus als würdest du das erste mal verbinden. Bitte gib das Passwort ein.</German>
             </Key>
-            <Key ID="STR_GRAD_UI_DIRECTCONNECTPASSWORDTEXTFAIL">
+            <Key ID="STR_GRAD_MOD_UI_DIRECTCONNECTPASSWORDTEXTFAIL">
                 <Original>Looks like your last connection attempt didn't work. Please check your password.</Original>
                 <German>Es sieht aus als sei dein letzter Versuch fehlgeschlagen. Bitte überprüfe das Passwort.</German>
             </Key>
-            <Key ID="STR_GRAD_UI_DIRECTCONNECTPORTTEXT">
+            <Key ID="STR_GRAD_MOD_UI_DIRECTCONNECTPORTTEXT">
                 <Original>Enter the port of the server you want to connect to!</Original>
                 <German>Gib den Port ein auf welchen du verbinden willst!</German>
             </Key>

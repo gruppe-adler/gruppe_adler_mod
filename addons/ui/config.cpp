@@ -15,5 +15,5 @@ class CfgPatches {
 };
 
 #include "cfgFunctions.hpp"
-#include "cfgEventhandlers.hpp"
+#include "CfgEventhandlers.hpp"
 #include "dialog\directConnect.hpp"
