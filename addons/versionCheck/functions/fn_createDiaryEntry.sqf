@@ -6,7 +6,7 @@ ISNILS(GVAR(versionlen), 10);
 ISNILS(GVAR(maxLines), 2000); // max lines would be 3121 total minus 2 for header
 
 private _pad = {
-	params ["_str", "_targetLen", "_overflowChar"];
+	params [["_str", "wrong_type", ["string"]], "_targetLen", "_overflowChar"];
 	private _strLen = count _str;
 
 	if (_strLen > _targetLen) exitWith {
