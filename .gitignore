@@ -4,7 +4,7 @@ releases/*
 *.biprivatekey
 *.pbo
 .idea/
-.vscode/
+# .vscode/
 .hemtt/local
 
 # Windows image file caches
