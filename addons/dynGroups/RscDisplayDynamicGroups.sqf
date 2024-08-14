@@ -2,7 +2,7 @@
 disableSerialization;
 
 // Include common defines file
-#include "\x\grad\addons\dynGroups\DynamicGroupsCommonDefines.inc"
+#include "\z\cvo_aux\addons\dynGroups\DynamicGroupsCommonDefines.inc"
 
 // Script parameters
 private ["_mode", "_params"];
@@ -56,7 +56,7 @@ switch _mode do
 		_editGroupName = _display displayCtrl IDC_DYNAMICGROUPS_EDITGROUPNAME;
 
 		// Add click events to list boxes
-		_groupsListbox ctrlAddEventHandler ["treeSelChanged", { with uiNamespace do { ['OnGroupsTreeSelChanged', _this] call DISPLAY; }; }];
+		_groupsListbox ctrlAddEventHandler ["TreeSelChanged", { with uiNamespace do { ['OnGroupsTreeSelChanged', _this] call DISPLAY; }; }];
 		_playersListbox ctrlAddEventHandler ["LBSelChanged", { with uiNamespace do { ['OnPlayersLbSelChanged', _this] call DISPLAY; }; }];
 		_manageListbox ctrlAddEventHandler ["LBSelChanged", { with uiNamespace do { ["OnManageLbSelChanged", _this] call DISPLAY; }; }];
 
@@ -313,7 +313,7 @@ switch _mode do
 			private _insignia = missionNamespace getVariable [VAR_FORCED_INSIGNIA, ""];
 			private _insigniaTexture = if (_insignia != "") then {["GetInsigniaTexture", [_insignia]] call GROUPS} else {["GetInsigniaTexture", [_groupPicture]] call GROUPS};
 			if (_insigniaTexture == "") then {
-				_groupIcon ctrlSetText "\x\grad\addons\dynGroups\data\noInsignia.paa";
+				_groupIcon ctrlSetText "\z\cvo_aux\addons\dynGroups\data\noInsignia.paa";
 			} else {
 				_groupIcon ctrlSetText _insigniaTexture;
 			};
@@ -588,8 +588,8 @@ switch _mode do
 		_isManageSection	= _params param [2, false, [true]];
 
 		private ["_targetVar", "_targetList"];
-		_targetVar	= if (_isManageSection) then { VAR_SELECTED_MEMBER } else { VAR_SELECTED_PLAYER };
-		_targetList	= if (_isManageSection) then { VAR_OLD_MEMBERS_LIST } else { VAR_OLD_PLAYERS_LIST };
+		_targetVar	= [VAR_SELECTED_PLAYER, VAR_SELECTED_MEMBER] select _isManageSection;
+		_targetList	= [VAR_OLD_PLAYERS_LIST, VAR_OLD_MEMBERS_LIST] select _isManageSection;
 
 		// All elements currently in list
 		private _unitElements = [];
@@ -622,7 +622,7 @@ switch _mode do
 				_textureIcon		= ["GetPlayerIcon", [_x]] call DISPLAY;
 				_textureRank		= "a3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa";
 				_isGroupLeader		= _x == leader group _x;
-				_texture 			= if (_isGroupLeader && ["IsGroupRegistered", [group _x]] call GROUPS) then { _textureRank } else { _textureIcon };
+				_texture 			= [_textureIcon, _textureRank] select (_isGroupLeader && ["IsGroupRegistered", [group _x]] call GROUPS);
 				_sameGroup			= group player == group _x;
 				/*_isDead				= !alive _x;
 				_isIncapacitated	= alive _x && _x getVariable ["BIS_revive_incapacitated", false];*/
@@ -1562,7 +1562,7 @@ switch _mode do
 		}
 		forEach _groupsOfSide;
 
-		if (typeName _clampedGroupName == typeName "" && {_clampedGroupName != _oldGroupName} && {_clampedGroupName != ""} && {!_nameTaken}) then
+		if (typeName _clampedGroupName == "STRING" && {_clampedGroupName != _oldGroupName} && {_clampedGroupName != ""} && {!_nameTaken}) then
 		{
 			(group player) setGroupId [_clampedGroupName];
 			["SendClientMessage", ["SetName", [group player, _clampedGroupName]]] call GROUPS;
@@ -1582,7 +1582,7 @@ switch _mode do
 		_backgroundGroupName ctrlSetBackgroundColor _color;
 		_editGroupName ctrlSetTextColor [1,1,1,1];
 
-		[_backgroundGroupName, _editGroupName, if (_wasUpdated) then { _clampedGroupName } else { _oldGroupName }] spawn
+		[_backgroundGroupName, _editGroupName, [_oldGroupName, _clampedGroupName] select (_wasUpdated)] spawn
 		{
 			scriptName "RscDisplayDynamicGroups RscEdit animation";
 
@@ -1721,7 +1721,7 @@ switch _mode do
 		private "_player";
 		_player = _params param [0, objNull, [objNull, ""]];
 
-		if (typeName _player == typeName "") then
+		if (typeName _player == "STRING") then
 		{
 			_player = [_player] call BIS_fnc_getUnitByUid;
 		};
