@@ -2,7 +2,7 @@
 disableSerialization;
 
 // Include common defines file
-#include "\z\cvo_aux\addons\dynGroups\DynamicGroupsCommonDefines.inc"
+#include "\x\grad\addons\dynGroups\DynamicGroupsCommonDefines.inc"
 
 // Script parameters
 private ["_mode", "_params"];
