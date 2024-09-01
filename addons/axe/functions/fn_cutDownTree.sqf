@@ -20,7 +20,7 @@ if !(_unit call ace_common_fnc_isSwimming) then {
 
 private _onCompletion = {
     (_this select 0) params ["_treeObject", "", "_unit"];
-    _treeObject setdamage 1;
+    _treeObject setDamage [1, true, _unit];
     [_treeObject] call FUNC(checkCutDown);
     if !(_unit call ace_common_fnc_isSwimming) then {
         [_unit, "AmovPknlMstpSrasWrflDnon", 1] call ace_common_fnc_doAnimation;
