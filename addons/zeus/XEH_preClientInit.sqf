@@ -38,77 +38,86 @@ if  (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
     [
         "TFAR_event_OnSWchannelSet",
         {
-            if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
+            [{
+                if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
 
-            params ["_unit", "_radio", "_channel", "_additional"];
+                params ["", "_args"];
+                _args params ["_unit", "_radio", "_channel", "_additional"];
 
-            private _frequency = [(call TFAR_fnc_activeSwRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
-            if (_additional) then {
-                if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW), -1])) exitWith {
-                    _unit setVariable [QGVAR(channelAdditionalSW), nil, true];
-                    _unit setVariable [QGVAR(freqAdditionalSW), nil, true];
+                private _frequency = [(call TFAR_fnc_activeSwRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
+                if (_additional) then {
+                    if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW), -1])) exitWith {
+                        _unit setVariable [QGVAR(channelAdditionalSW), nil, true];
+                        _unit setVariable [QGVAR(freqAdditionalSW), nil, true];
+                    };
+                    _unit setVariable [QGVAR(channelAdditionalSW), _channel, true];
+                    _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
+                }else{
+                    _unit setVariable [QGVAR(channelSW), _channel, true];
+                    _unit setVariable [QGVAR(freqSW), _frequency, true];
                 };
-                _unit setVariable [QGVAR(channelAdditionalSW), _channel, true];
-                _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
-            }else{
-                _unit setVariable [QGVAR(channelSW), _channel, true];
-                _unit setVariable [QGVAR(freqSW), _frequency, true];
-            };
+            }, _this] call CBA_fnc_directCall;
         }
     ] call CBA_fnc_addEventHandler;
 
     [
         "TFAR_event_OnLRchannelSet",
         {
-            if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
+            [{
+                if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
 
-            params ["_unit", "", "", "_channel", "_additional"];
+                params ["", "_args"];
+                _args params ["_unit", "", "", "_channel", "_additional"];
 
-            // TFAR_fnc_activeLRRadio has to be called in a non-scheduled environment
-            private _frequency = {[(call TFAR_fnc_activeLRRadio), (_channel + 1)] call TFAR_fnc_getChannelFrequency; } call CBA_fnc_directCall;
-            if (_additional) then {
+                // TFAR_fnc_activeLRRadio has to be called in a non-scheduled environment
+                private _frequency = {[(call TFAR_fnc_activeLRRadio), (_channel + 1)] call TFAR_fnc_getChannelFrequency; } call CBA_fnc_directCall;
+                if (_additional) then {
 
-                if (_channel isEqualTo (_unit getVariable [QGVAR(freqAdditionalLR), -1])) exitWith {
-                    _unit setVariable [QGVAR(channelAdditionalLR), nil, true];
-                    _unit setVariable [QGVAR(freqAdditionalLR), nil, true];
+                    if (_channel isEqualTo (_unit getVariable [QGVAR(freqAdditionalLR), -1])) exitWith {
+                        _unit setVariable [QGVAR(channelAdditionalLR), nil, true];
+                        _unit setVariable [QGVAR(freqAdditionalLR), nil, true];
+                    };
+                    _unit setVariable [QGVAR(channelAdditionalLR), _channel, true];
+                    _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
+                }else{
+                    _unit setVariable [QGVAR(channelLR), _channel, true];
+                    _unit setVariable [QGVAR(freqLR), _frequency, true];
                 };
-                _unit setVariable [QGVAR(channelAdditionalLR), _channel, true];
-                _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
-            }else{
-                _unit setVariable [QGVAR(channelLR), _channel, true];
-                _unit setVariable [QGVAR(freqLR), _frequency, true];
-            };
+            }, _this] call CBA_fnc_directCall;
         }
     ] call CBA_fnc_addEventHandler;
 
     [
         "TFAR_event_OnFrequencyChanged",
         {
-            if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
+            [{
+                if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
 
-            params ["_unit", "_radio", "_channel", "", "_frequency"];
+                params ["", "_args"];
+                params ["_unit", "_radio", "_channel", "", "_frequency"];
 
-            private _backpackLR = call TFAR_fnc_activeLRRadio;
-            if (_backpackLR isEqualTo _radio) then {
-                if (_channel isEqualTo (_unit getVariable [QGVAR(channelLR), -1])) then {
-                    _unit setVariable [QGVAR(freqLR), _frequency, true];
-                }else{
-                    if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalLR), -1])) then {
-                        _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
-                    };
-                };
-            }else{
-                private _loadoutRadio = call TFAR_fnc_activeSwRadio;
-                if (_loadoutRadio isEqualTo _radio) then {
-                    if (_channel isEqualTo (_unit getVariable [QGVAR(channelSW), -1])) then {
-                        _unit setVariable [QGVAR(freqSW), _frequency, true];
+                private _backpackLR = call TFAR_fnc_activeLRRadio;
+                if (_backpackLR isEqualTo _radio) then {
+                    if (_channel isEqualTo (_unit getVariable [QGVAR(channelLR), -1])) then {
+                        _unit setVariable [QGVAR(freqLR), _frequency, true];
                     }else{
-                        if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW), -1])) then {
-                            _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
+                        if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalLR), -1])) then {
+                            _unit setVariable [QGVAR(freqAdditionalLR), _frequency, true];
+                        };
+                    };
+                }else{
+                    private _loadoutRadio = call TFAR_fnc_activeSwRadio;
+                    if (_loadoutRadio isEqualTo _radio) then {
+                        if (_channel isEqualTo (_unit getVariable [QGVAR(channelSW), -1])) then {
+                            _unit setVariable [QGVAR(freqSW), _frequency, true];
+                        }else{
+                            if (_channel isEqualTo (_unit getVariable [QGVAR(channelAdditionalSW), -1])) then {
+                                _unit setVariable [QGVAR(freqAdditionalSW), _frequency, true];
+                            };
                         };
                     };
                 };
-            };
+            }, _this] call CBA_fnc_directCall;
         }
     ] call CBA_fnc_addEventHandler;
 
