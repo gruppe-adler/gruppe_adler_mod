@@ -41,8 +41,7 @@ if  (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
             [{
                 if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
 
-                params ["", "_args"];
-                _args params ["_unit", "_radio", "_channel", "_additional"];
+                params ["_unit", "_radio", "_channel", "_additional"];
 
                 private _frequency = [(call TFAR_fnc_activeSwRadio), (_channel +1)] call TFAR_fnc_getChannelFrequency;
                 if (_additional) then {
@@ -66,11 +65,9 @@ if  (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
             [{
                 if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
 
-                params ["", "_args"];
-                _args params ["_unit", "", "", "_channel", "_additional"];
+                params ["_unit", "", "", "_channel", "_additional"];
 
-                // TFAR_fnc_activeLRRadio has to be called in a non-scheduled environment
-                private _frequency = {[(call TFAR_fnc_activeLRRadio), (_channel + 1)] call TFAR_fnc_getChannelFrequency; } call CBA_fnc_directCall;
+                private _frequency = [(call TFAR_fnc_activeLRRadio), (_channel + 1)] call TFAR_fnc_getChannelFrequency;
                 if (_additional) then {
 
                     if (_channel isEqualTo (_unit getVariable [QGVAR(freqAdditionalLR), -1])) exitWith {
@@ -93,7 +90,6 @@ if  (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
             [{
                 if !(isNull (getAssignedCuratorLogic ace_player)) exitWith {};
 
-                params ["", "_args"];
                 params ["_unit", "_radio", "_channel", "", "_frequency"];
 
                 private _backpackLR = call TFAR_fnc_activeLRRadio;
