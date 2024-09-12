@@ -1562,7 +1562,7 @@ switch _mode do
 		}
 		forEach _groupsOfSide;
 
-		if (typeName _clampedGroupName == "STRING" && {_clampedGroupName != _oldGroupName} && {_clampedGroupName != ""} && {!_nameTaken}) then
+		if (_clampedGroupName isEqualType "" && {_clampedGroupName != _oldGroupName} && {_clampedGroupName != ""} && {!_nameTaken}) then
 		{
 			(group player) setGroupId [_clampedGroupName];
 			["SendClientMessage", ["SetName", [group player, _clampedGroupName]]] call GROUPS;
