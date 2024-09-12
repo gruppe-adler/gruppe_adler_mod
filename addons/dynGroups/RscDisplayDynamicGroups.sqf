@@ -1721,7 +1721,7 @@ switch _mode do
 		private "_player";
 		_player = _params param [0, objNull, [objNull, ""]];
 
-		if (typeName _player == "STRING") then
+		if (_player isEqualType "") then
 		{
 			_player = [_player] call BIS_fnc_getUnitByUid;
 		};
