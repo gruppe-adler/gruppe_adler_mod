@@ -15,7 +15,7 @@ jobs:
       id: build
 
     - name: Upload artifact
-      uses: actions/upload-artifact@1.0.0
+      uses: actions/upload-artifact@v2
       with:
-        name: 'gruppe_adler_mod'
+        name: ${{ steps.build.outputs.zip_name }}
         path: ${{ steps.build.outputs.zip_path }}
