@@ -15,7 +15,7 @@ jobs:
       id: build
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ steps.build.outputs.zip_name }}
         path: ${{ steps.build.outputs.zip_path }}
