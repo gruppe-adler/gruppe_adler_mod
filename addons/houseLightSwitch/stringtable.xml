@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="gruppe_adler_mod">
+    <Package name="houseLightSwitch">
+        <Key ID="STR_grad_houseLightSwitch_close">
+            <English>Close fuse box</English>
+            <German>Schaltschrank schließen</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_open">
+            <English>Open fuse box</English>
+            <German>Schaltschrank öffnen</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_on">
+            <English>Turn on fuses</English>
+            <German>Sicherung anschalten</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_off">
+            <English>Turn off fuses</English>
+            <German>Sicherung ausschalten</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_locate">
+            <English>Locate fuse box</English>
+            <German>Schaltschrank suchen</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_search">
+            <English>Searching fuse box...</English>
+            <German>Suche Schaltschrank...</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_settingCategory">
+            <English>GRAD House Light Switch</English>
+            <German>GRAD House Light Switch</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_allowMarker3D_displayName">
+            <English>Allow 3d Marker</English>
+            <German>3D Marker erlauben</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_allowMarker3D_tooltip">
+            <English>Allows a 3D Marker to be shown, if the fuse box is located.</English>
+            <German>Erlaubt es das ein 3D Marker angezeigt wird wenn der Schaltschrank gefunden wird.</German>
+        </Key>
+        <Key ID="STR_grad_houseLightSwitch_markerShowTime">
+            <English>3D Marker show Time</English>
+            <German>3D Marker anzeige Zeit</German>
+        </Key>
+    </Package>
+</Project>
