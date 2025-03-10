@@ -1,0 +1,12 @@
+PREP(actionFusebox);
+PREP(close);
+PREP(condition);
+PREP(conditionOff);
+PREP(conditionOn);
+PREP(ensureFusebox);
+PREP(isClosed);
+PREP(isOpen);
+PREP(lightsOff);
+PREP(lightsOn);
+PREP(open);
+PREP(server_fuseboxSwitched);
