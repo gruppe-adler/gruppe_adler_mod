@@ -1,7 +1,4 @@
 #include "script_component.hpp"
-// #include "\A3\Ui_f\hpp\defineResincl.inc"
-
-// #define UI_DIRECTCONNECTTIMEOUT        5
 
 #define ARMA_GRAD_IP "136.243.149.162"
 
