@@ -6,13 +6,13 @@ class CfgPatches {
 		name = QUOTE(ADDON);
 		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
-		requiredAddons[] = {"grad_main","A3_ui_f"};
+		requiredAddons[] = {"grad_main","A3_ui_f", "cba_ui"};
 		units[] = {};
 		weapons[] = {};
 		VERSION_CONFIG;
         authors[] = {
 			"McDiod",
-      "DerZade"
+      		"DerZade"
 		};
 	};
 };
